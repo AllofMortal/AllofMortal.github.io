@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            PHP基础
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="PHP基础"><a href="#PHP基础" class="headerlink" title="PHP基础"></a>PHP基础</h1><h2 id="1-PHP简述"><a href="#1-PHP简述" class="headerlink" title="1.	PHP简述"></a>1.	PHP简述</h2><p>PHP（全称：PHP：Hypertext Preprocessor，即”PHP：超文本预处理器”）是一种通用开源脚本语言。<br>在一个php文件中可以包括以下内容：<br> PHP 文件可包含文本、HTML、JavaScript代码和 PHP 代码<br>	PHP 代码在服务器上执行，结果以纯 HTML 形式返回给浏览器<br>	PHP 文件的默认文件扩展名是 “.php”</p>
+<p>php的使用：<br>1.	PHP 可以生成动态页面内容<br>2.	PHP 可以创建、打开、读取、写入、关闭服务器上的文件<br>3.	PHP 可以收集表单数据<br>4.	PHP 可以发送和接收 cookies<br>5.	PHP 可以添加、删除、修改您的数据库中的数据<br>6.	PHP 可以限制用户访问您的网站上的一些页面<br>7.	PHP 可以加密数据</p>
+<h2 id="2-基本语法格式"><a href="#2-基本语法格式" class="headerlink" title="2.	基本语法格式"></a>2.	基本语法格式</h2><p>PHP 脚本以 <?php 开始，以 ?> 结束</p>
+<?php
+//php脚本的基本格式
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * 多行注释，跟java的注释方法相同</span><br><span class="line"> * */</span><br></pre></td></tr></table></figure>
+变量的命名
+变量以 $ 符号开始，后面跟着变量的名称
+变量名必须以字母或者下划线字符开始
+变量名只能包含字母数字字符以及下划线（A-z、0-9 和 _ ）
+变量名不能包含空格
+//php的变量声明是以$开始的
+$num = 3.14;
+$str = "hello";
+
+/*static的关键字的使用
+ * 当一个函数完成时，它的所有变量通常都会被删除。
+ * 然而，有时候您希望某个局部变量不要被删除。
+ * 要做到这一点，请在您第一次声明变量时使用 static 关键字：
+ * */
+function test(){
+    static $n=0;
+    $n++;
+    echo "调用了一次".$n."\n";
+}
+test();test();test();
+?>
+
+<h2 id="3-数据类型、常量以及字符串"><a href="#3-数据类型、常量以及字符串" class="headerlink" title="3.	数据类型、常量以及字符串"></a>3.	数据类型、常量以及字符串</h2><p>php有5种数据类型：String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。<br><?php 
+$a = "字符串类型";
+$b = 1234;//整形
+$c = -3.1415;//浮点型
+$d = 8E-3;
+$e = true;//boolean类型
+$f = array("A","B","C");//数组类型
+class obj{//php对象的声明
+    var $num;
+    function name() { }
+}
+$o = new obj();//对象实例化类型
+$g = NULL;//NULL
+var_dump($a);var_dump($b);var_dump($c);var_dump($d);
+var_dump($e);var_dump($f);var_dump($o);var_dump($g);
+?></p>
+<p><em>常量：常量是一个简单值的标识符。该值在脚本中不能改变。（在整个脚本中都能使用）</em></p>
+<p>一个常量由英文字母、下划线、和数字组成,但数字不能作为首字母出现。 (常量名不需要加 $ 修饰符)。<br>设置常量，使用 define() 函数，函数语法如下：</p>
+<p>bool define ( string $name , mixed $value [, bool $case_insensitive &#x3D; false ] )<br>　　该函数有三个参数:<br>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">// 常量</span><br><span class="line">define(&quot;CL&quot;, &quot;这是一个全局常量&quot;, true);</span><br><span class="line">echo CL; // 默认false，变量名区分大小写</span><br><span class="line">echo cl; // true不区分大小写</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><em>预定义常量</em><br>PHP预定义了许多常量，这些常量无需使用define()函数定义，可直接在程序中使用。下面列举了一些常用的PHP预定义常量。</p>
+<p>（1）<strong>FILE</strong>(FILE前后分别是两个下画线)：当前正在处理的脚本文件名，若使用在一个被引用的文件中（include或require），那么　　它的值就是被引用的文件，而不是引用它的那个文件。</p>
+<p>（2）<strong>LINE</strong>(LINE前后分别是两个下画线)：正在处理的脚本文件的当前行数。</p>
+<p>（3）PHP_VERSION：当前PHP预处理器的版本，如5.4.16。</p>
+<p>（4）PHP_OS: PHP所在的操作系统的类型。如Linux。</p>
+<p>（5）TRUE：表示逻辑真。FALSE：表示逻辑假。NULL：表示没有值或值不确定。</p>
+<p>（6）DIRECTORY_SEPARATOR: 表示目录分隔符，UNIX或Linux操作系统环境时的值为“ &#x2F; ”, Window操作系统环境时的值为 “ \ ”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo __FILE__;</span><br><span class="line">echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo __LINE__;</span><br><span class="line">echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo PHP_VERSION;</span><br><span class="line">echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo PHP_OS;</span><br><span class="line">echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">echo DIRECTORY_SEPARATOR;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em>整型</em><br>整数类型：保存整数数值（范围限制），4个字节存储数据。PHP中默认为有符号。<br>在PHP中提供四种整形的定义方式，十进制定义，二进制定义，八进制定义和十六进制定义<br>$a &#x3D; 120 &#x2F;&#x2F;十进制<br>$a &#x3D; 0b110 &#x2F;&#x2F;二进制<br>$a &#x3D; 0120 	&#x2F;&#x2F;八进制<br>$a &#x3D; 0x120	&#x2F;&#x2F;十六进制</p>
+<p>&#x2F;&#x2F; 使用echo输出时。默认输出为十进制<br>decbin() &#x2F;&#x2F; 十进制转二进制<br>decoct() &#x2F;&#x2F; 十进制转八进制<br>dechex() &#x2F;&#x2F; 十进制转十六进制<br>bindec() &#x2F;&#x2F; 二进制转十进制<br>bin2hex() &#x2F;&#x2F;二进制转十六进制    </p>
+<p><em>字符串：字符串变量用于存储并处理文本</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$name=&#x27;mortal&#x27;;</span><br><span class="line">//双引号 里面有变量 会 输出变量的值</span><br><span class="line">$str =&quot;这是 $name 学习笔记 欢迎来学习。&quot;;</span><br><span class="line">//单引号 如果里面有变量都作为一个字符串处理</span><br><span class="line">$str1 =&#x27;这是 $name 学习笔记 欢迎来学习。&#x27;;</span><br><span class="line">echo $str;</span><br><span class="line">echo $str1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">// 字符串</span><br><span class="line">$text1 = &quot;hello&quot;;</span><br><span class="line">$text2 = &quot;world&quot;;</span><br><span class="line">echo $text1 . &quot; &quot; . $text2; // &quot;.&quot;是并置运算符（连接）</span><br><span class="line">echo &quot;返回字符串的长度：&quot;, strlen($text1);</span><br><span class="line">echo &quot;返回子串的第一次位置：&quot;, strpos($text1, &quot;l&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>字符的操作函数<br>addcslashes — 以 C 语言风格使用反斜线转义字符串中的字符<br>addslashes — 使用反斜线引用字符串<br>bin2hex — 函数把包含数据的二进制字符串转换为十六进制值<br>chop — rtrim 的别名<br>chr — 返回指定的字符<br>chunk_split — 将字符串分割成小块<br>convert_cyr_string — 将字符由一种 Cyrillic 字符转换成另一种<br>convert_uudecode — 解码一个 uuencode 编码的字符串<br>convert_uuencode — 使用 uuencode 编码一个字符串<br>count_chars — 返回字符串所用字符的信息<br>crc32 — 计算一个字符串的 crc32 多项式<br>crypt — 单向字符串散列<br>echo — 输出一个或多个字符串<br>explode — 使用一个字符串分割另一个字符串<br>fprintf — 将格式化后的字符串写入到流<br>get_html_translation_table — 返回使用 htmlspecialchars 和 htmlentities 后的转换表<br>hebrev — 将逻辑顺序希伯来文（logical-Hebrew）转换为视觉顺序希伯来文（visual-Hebrew）<br>hebrevc — 将逻辑顺序希伯来文（logical-Hebrew）转换为视觉顺序希伯来文（visual-Hebrew），并且转换换行符<br>hex2bin — 转换十六进制字符串为二进制字符串<br>html_entity_decode — Convert HTML entities to their corresponding characters<br>htmlentities — 将字符转换为 HTML 转义字符<br>htmlspecialchars_decode — 将特殊的 HTML 实体转换回普通字符<br>htmlspecialchars — 将特殊字符转换为 HTML 实体<br>implode — 将一个一维数组的值转化为字符串<br>join — 别名 implode<br>lcfirst — 使一个字符串的第一个字符小写<br>levenshtein — 计算两个字符串之间的编辑距离<br>localeconv — Get numeric formatting information<br>ltrim — 删除字符串开头的空白字符（或其他字符）<br>md5_file — 计算指定文件的 MD5 散列值<br>md5 — 计算字符串的 MD5 散列值<br>metaphone — Calculate the metaphone key of a string<br>money_format — 将数字格式化成货币字符串<br>nl_langinfo — Query language and locale information<br>nl2br — 在字符串所有新行之前插入 HTML 换行标记<br>number_format — 以千位分隔符方式格式化一个数字<br>ord — 转换字符串第一个字节为 0-255 之间的值<br>parse_str — 将字符串解析成多个变量<br>print — 输出字符串<br>printf — 输出格式化字符串<br>quoted_printable_decode — 将 quoted-printable 字符串转换为 8-bit 字符串<br>quoted_printable_encode — 将 8-bit 字符串转换成 quoted-printable 字符串<br>quotemeta — 转义元字符集<br>rtrim — 删除字符串末端的空白字符（或者其他字符）<br>setlocale — 设置地区信息<br>sha1_file — 计算文件的 sha1 散列值<br>sha1 — 计算字符串的 sha1 散列值<br>similar_text — 计算两个字符串的相似度<br>soundex — Calculate the soundex key of a string<br>sprintf — Return a formatted string<br>sscanf — 根据指定格式解析输入的字符<br>str_contains — Determine if a string contains a given substring<br>str_ends_with — Checks if a string ends with a given substring<br>str_getcsv — 解析 CSV 字符串为一个数组<br>str_ireplace — str_replace 的忽略大小写版本<br>str_pad — 使用另一个字符串填充字符串为指定长度<br>str_repeat — 重复一个字符串<br>str_replace — 子字符串替换<br>str_rot13 — 对字符串执行 ROT13 转换<br>str_shuffle — 随机打乱一个字符串<br>str_split — 将字符串转换为数组<br>str_starts_with — Checks if a string starts with a given substring<br>str_word_count — 返回字符串中单词的使用情况<br>strcasecmp — 二进制安全比较字符串（不区分大小写）<br>strchr — 别名 strstr<br>strcmp — 二进制安全字符串比较<br>strcoll — 基于区域设置的字符串比较<br>strcspn — 获取不匹配遮罩的起始子字符串的长度<br>strip_tags — 从字符串中去除 HTML 和 PHP 标记<br>stripcslashes — 反引用一个使用 addcslashes 转义的字符串<br>stripos — 查找字符串首次出现的位置（不区分大小写）<br>stripslashes — 反引用一个引用字符串<br>stristr — strstr 函数的忽略大小写版本<br>strlen — 获取字符串长度<br>strnatcasecmp — 使用“自然顺序”算法比较字符串（不区分大小写）<br>strnatcmp — 使用自然排序算法比较字符串<br>strncasecmp — 二进制安全比较字符串开头的若干个字符（不区分大小写）<br>strncmp — 二进制安全比较字符串开头的若干个字符<br>strpbrk — 在字符串中查找一组字符的任何一个字符<br>strpos — 查找字符串首次出现的位置<br>strrchr — 查找指定字符在字符串中的最后一次出现<br>strrev — 反转字符串<br>strripos — 计算指定字符串在目标字符串中最后一次出现的位置（不区分大小写）<br>strrpos — 计算指定字符串在目标字符串中最后一次出现的位置<br>strspn — 计算字符串中全部字符都存在于指定字符集合中的第一段子串的长度。<br>strstr — 查找字符串的首次出现<br>strtok — 标记分割字符串<br>strtolower — 将字符串转化为小写<br>strtoupper — 将字符串转化为大写<br>strtr — 转换指定字符<br>substr_compare — 二进制安全比较字符串（从偏移位置比较指定长度）<br>substr_count — 计算字串出现的次数<br>substr_replace — 替换字符串的子串<br>substr — 返回字符串的子串<br>trim — 去除字符串首尾处的空白字符（或者其他字符）<br>ucfirst — 将字符串的首字母转换为大写<br>ucwords — 将字符串中每个单词的首字母转换为大写<br>vfprintf — 将格式化字符串写入流<br>vprintf — 输出格式化字符串<br>vsprintf — 返回格式化字符串<br>wordwrap — 打断字符串为指定数量的字串</p>
+<?php
+$name='Mortal';
+//双引号 里面有变量 会 输出变量的值
+//$str =" 这是 $name 学习笔记 欢迎来学习。 ";
+//单引号 如果里面有变量都作为一个字符串处理
+//$str1 ='这是 $name 学习笔记 欢迎来学习。';
+
+$a='123456';
+//echo $str." 一共有 ".strlen($a)."字符";
+//去掉空格
+//echo trim($str);
+
+//echo $str1;
+
+//查找字符串 返回位置
+//echo strpos($str,'Mortal');
+//截取字符串
+//echo substr($str,strpos($str,'Mortal'),strpos($str,'笔记'));
+//md5  加密
+//echo md5($a);
+//通过下标 取字符的值
+//echo $a[0];
+//字符串替换函数
+$a1=str_replace('1','0',$a);
+echo $a1;
+//遍历字符串
+
+for($i=0;$i<=strlen($a);$i++){
+    echo $a[$i].'</br>';
+}
+
+
+
+
+function mb_str_split( $string ) {
+    // /u表示把字符串当作utf-8处理，并把字符串开始和结束之前所有的字符串分割成数组
+    return preg_split('/(?<!^)(?!$)/u', $string );
+}
+
+
+for($i=0;$i<strlen($str);$i++) {
+    $k = $str[$i]; //输出乱码
+}
+
+foreach (mb_str_split($str) as $c)
+{
+    echo $c; //正常输出：中 文 测 试
+}
+
+
+
+
+## 4.	运算符
+基本运算符：
+![基本运算符](基本运算符.png)
+赋值运算符：
+![赋值运算符](赋值运算符.png)
+递增/递减运算符：
+![递增/递减运算符.png](递增、递减运算符.png)
+比较运算符：
+![比较运算符](比较运算符.png)
+逻辑运算符：
+![逻辑运算符](逻辑运算符.png)
+三元运算符：
+(expr1) ? (expr2) : (expr3)
+
+## 5.	控制语句
+控制语法的语句结构和其他大多数语言结构相同，有以下两类：
+
+### 5.1.	条件控制语句
+
+if 语句 - 在条件成立时执行代码
+if...else 语句 - 在条件成立时执行一块代码，条件不成立时执行另一块代码
+if...elseif....else 语句 - 在若干条件之一成立时执行一个代码块
+switch 语句 - 在若干条件之一成立时执行一个代码块
+### 5.2.	循环控制语句
+while - 只要指定的条件成立，则循环执行代码块
+do...while - 首先执行一次代码块，然后在指定的条件成立时重复这个循环
+for - 循环执行代码块指定的次数
+foreach - 根据数组中每个元素来循环代码块
+
+break语句用于终止本次循环
+continue语句的作用是跳出本次循环，接着执行下一次循环
+
+## 6.	php数组
+
+数组是一个能在单个变量中存储多个值的特殊变量。
+在 PHP 中，array() 函数用于创建数组：
+array();
+在 PHP 中，有三种类型的数组：
+数值数组 - 带有数字 ID 键的数组
+关联数组 - 带有指定的键的数组，每个键关联一个值
+多维数组 - 包含一个或多个数组的数组
+数组的声明
+$array1 = array();
+<?php
+$cars=array("Volvo","BMW","Toyota");//简单的数组
+echo count($cars);//count()返回数组的长度
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");//关联数组
+//其中包含多个键值对
+echo "Peter is " . $age['Peter'] . " years old.";
+foreach($age as $x=>$x_value)//关联数组的遍历方法
+{
+    echo "Key=" . $x . ", Value=" . $x_value;
+    echo "<br>";
+}
+?>
+<p>在PHP 中定义了多个数组排序的内置函数：</p>
+<p>sort() - 对数组进行升序排列<br>rsort() - 对数组进行降序排列<br>asort() - 根据关联数组的值，对数组进行升序排列<br>ksort() - 根据关联数组的键，对数组进行升序排列<br>arsort() - 根据关联数组的值，对数组进行降序排列<br>krsort() - 根据关联数组的键，对数组进行降序排列</p>
+<p><em>数组的操作</em></p>
+<p>数组的合拼<br>$array1 &#x3D;array(‘a’,’b’,’c’);<br>$array2 &#x3D; array(‘a1’&#x3D;&gt;’php’,’a2’&#x3D;&gt;’python’,’a3’&#x3D;&gt;’java’);<br>$array3 &#x3D; array_merge($array1,$array2);</p>
+<p>填加数组元素<br>array_push() 函数向第一个参数的数组尾部添加一个或多个元素（入栈），然后返回新数组的长度。<br>array_push($array1,’d’,’e’);<br>print_r($array1);<br>下表为空 自动添加参数<br>$array1[]&#x3D;’d’;<br>有键值的<br>$array1[‘a4’]&#x3D;’javasciprt’;</p>
+<p>添加到指定位置<br><?php
+$array1 = array('a', 'b', 'c', 'd', 'e');
+$array2 = array('x');
+array_splice($array1, 3, 0, $array2); // 插入到位置3且删除0个
+print_r($array1);
+?><br>array_splice(数组，位置，删除几个，增加元素）<br>删除某一个元素<br><?php
+$array1 = array('a', 'b', 'c', 'd', 'e');
+$array2 = array('x');
+array_splice($array1, 3, 1); 
+print_r($array1);
+?></p>
+<p>unset 销毁指定的元素<br>$array1 &#x3D; array(‘a’, ‘b’, ‘c’, ‘d’, ‘e’);<br>unset($array1[0]);<br>print_r($array1);</p>
+<p>array_pop():将数组最后一个单元弹出（出栈）</p>
+<p>修改数组中某个元素<br>$array1 &#x3D; array(‘a’, ‘b’, ‘c’, ‘d’, ‘e’);<br>$array1[0]&#x3D;’aa’;<br>print_r($array1);</p>
+<p>常用的数组函数<br>is_array 判断是否为数组<br>count 数组的元素数目<br>array_search — 在数组中搜索给定的值，如果成功则返回相应的键名<br>array_key_exists()在给定的 key 存在于数组中时返回 TRUE<br>array_unshift()  将传入的单元插入到 array 数组的开头。注意单元是作为整体被插入的，因此传入单元将保持同样的顺序。所有的数值键名将修改为从零开始重新计数，所有的文字键名保持不变<br>array_shift()  将array 的第一个单元移出并作为结果返回，将 array 的长度减一并将所有其它单元向前移动一位。所有的数字键名将改为从零开始计数，文字键名将不变。<br>array_unique()  接受 array 作为输入并返回没有重复值的新数组。注意键名保留不变。 array_unique()  先将值作为字符串排序，然后对每个值只保留第一个遇到的键名，接着忽略所有后面的键名。这并不意味着在未排序的 array 中同一个值的第一个出现的键名会被保留。<br>in_array — 检查数组中是否存在某个值  如果找到指定的值则返回 TRUE，否则返回 FALSE 。in_array()是区分大小写的。</p>
+<h2 id="7-PHP-函数"><a href="#7-PHP-函数" class="headerlink" title="7.	PHP 函数"></a>7.	PHP 函数</h2><p>PHP 的真正力量来自它的函数：它拥有超过 1000 个内建的函数。<br>PHP 用户定义函数<br>除了内建的 PHP 函数，我们可以创建我们自己的函数。</p>
+<p>函数是可以在程序中重复使用的语句块。<br>页面加载时函数不会立即执行。<br>函数只有在被调用时才会执行。</p>
+<p>在 PHP 创建用户定义函数<br>用户定义的函数声明以单词 “function” 开头：</p>
+<p>语法<br>function functionName() {<br>  被执行的代码;<br>}<br>注释：函数名能够以字母或下划线开头（而非数字）。</p>
+<p>注释：函数名对大小写不敏感。</p>
+<p>提示：函数名应该能够反映函数所执行的任务。</p>
+<p>在下面的例子中，我们创建名为 “writeMsg()” 的函数。打开的花括号（{）指示函数代码的开始，而关闭的花括号（}）指示函数的结束。此函数输出 “Hello world!”。如需调用该函数，只要使用函数名即可：</p>
+<p>实例</p>
+<?php
+function sayHi() {
+  echo "Hello world!";
+}
+
+sayhi(); // 调用函数
+?>
+
+<p>PHP 函数参数<br>可以通过参数向函数传递信息。参数类似变量。<br>参数被定义在函数名之后，括号内部。您可以添加任意多参数，只要用逗号隔开即可。<br>下面的例子中的函数有一个参数（$fname）。当调用 familyName() 函数时，我们同时要传递一个名字（例如 Bill），这样会输出不同的名字，但是姓氏相同：</p>
+<?php
+function familyName($fname) {
+  echo "$fname Zhang.<br>";
+}
+
+familyName("Li");
+familyName("Hong");
+familyName("Tao");
+familyName("Xiao Mei");
+familyName("Jian");
+?>
+
+<p>PHP 默认参数值<br>下面的例子展示了如何使用默认参数。如果我们调用没有参数的 setHeight() 函数，它的参数会取默认值：</p>
+<p>实例<br>&lt;?php<br>function setHeight($minheight&#x3D;50) {<br>  echo “The height is : $minheight <br>“;<br>}</p>
+<p>setHeight(350);<br>setHeight(); &#x2F;&#x2F; 将使用默认值 50<br>setHeight(135);<br>setHeight(80);<br>?&gt;<br>PHP 函数 - 返回值<br>如需使函数返回值，请使用 return 语句：</p>
+<p>实例<br>&lt;?php<br>function sum($x,$y) {<br>  $z&#x3D;$x+$y;<br>  return $z;<br>}</p>
+<p>echo “5 + 10 &#x3D; “ . sum(5,10) . “<br>“;<br>echo “7 + 13 &#x3D; “ . sum(7,13) . “<br>“;<br>echo “2 + 4 &#x3D; “ . sum(2,4);<br>?&gt;<br>匿名函数<br>匿名函数就是没有名字的函数。<br>将一个匿名函数”赋值”给一个变量——此时该变量就代表该匿名函数了！<br>$callfunction&#x3D;function($name){<br>    return $name;<br>};<br>echo $callfunction(‘mortal’);<br>回调函数<br>回调函数是指调用函数的时候将另一个函数作为参数传递到调用的函数中，而不是传递一个普通的变量作为参数<br>使用回调函数是为了可以将一段自己定义的功能传到函数内部使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    function Speak($a,$b)&#123;</span><br><span class="line">        echo &quot;He can speak &quot;.$a;</span><br><span class="line">        echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">        echo &quot;She can speak &quot;.$b;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    function Speak_Test()&#123;</span><br><span class="line">        return call_user_func_array(&#x27;Speak&#x27;,array(&#x27;Chinese&#x27;,&#x27;English&#x27;));   </span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    Speak_Test()</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="8-PHP-变量作用域"><a href="#8-PHP-变量作用域" class="headerlink" title="8.	PHP 变量作用域"></a>8.	PHP 变量作用域</h2><p>在 PHP 中，可以在脚本的任意位置对变量进行声明。<br>变量的作用域指的是变量能够被引用&#x2F;使用的那部分脚本。<br>PHP 有三种不同的变量作用域：<br>local（局部）<br>global（全局）<br>static（静态）<br>Local 和 Global 作用域<br>函数之外声明的变量拥有 Global 作用域，只能在函数以外进行访问。<br>函数内部声明的变量拥有 LOCAL 作用域，只能在函数内部进行访问。<br>下面的例子测试了带有局部和全局作用域的变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$x=5; // 全局作用域</span><br><span class="line"></span><br><span class="line">function myTest() &#123;</span><br><span class="line">  $y=10; // 局部作用域</span><br><span class="line">  echo &quot;&lt;p&gt;测试函数内部的变量：&lt;/p&gt;&quot;;</span><br><span class="line">  echo &quot;变量 x 是：$x&quot;;</span><br><span class="line">  echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">  echo &quot;变量 y 是：$y&quot;;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">myTest();</span><br><span class="line"></span><br><span class="line">echo &quot;&lt;p&gt;测试函数之外的变量：&lt;/p&gt;&quot;;</span><br><span class="line">echo &quot;变量 x 是：$x&quot;;</span><br><span class="line">echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo &quot;变量 y 是：$y&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>在上例中，有两个变量 $x 和 $y，以及一个函数 myTest()。$x 是全局变量，因为它是在函数之外声明的，而 $y 是局部变量，因为它是在函数内声明的。</p>
+<p>如果我们在 myTest() 函数内部输出两个变量的值，$y 会输出在本地声明的值，但是无法 $x 的值，因为它在函数之外创建。</p>
+<p>然后，如果在 myTest() 函数之外输出两个变量的值，那么会输出 $x 的值，但是不会输出 $y 的值，因为它是局部变量，并且在 myTest() 内部创建。</p>
+<p>注释：您可以在不同的函数中创建名称相同的局部变量，因为局部变量只能被在其中创建它的函数识别。</p>
+<p>PHP global 关键词<br>global 关键词用于在函数内访问全局变量。<br>要做到这一点，请在（函数内部）变量前面使用 global 关键词：<br>实例<br>&lt;?php<br>$x&#x3D;5;<br>$y&#x3D;10;</p>
+<p>function myTest() {<br>  global $x,$y;<br>  $y&#x3D;$x+$y;<br>}</p>
+<p>myTest();<br>echo $y; &#x2F;&#x2F; 输出 15<br>?&gt;<br>PHP 同时在名为 $GLOBALS[index] 的数组中存储了所有的全局变量。下标存有变量名。这个数组在函数内也可以访问，并能够用于直接更新全局变量。<br>上面的例子可以这样重写：<br>&lt;?php<br>$x&#x3D;5;<br>$y&#x3D;10;</p>
+<p>function myTest() {<br>  $GLOBALS[‘y’]&#x3D;$GLOBALS[‘x’]+$GLOBALS[‘y’];<br>} </p>
+<p>myTest();<br>echo $y; &#x2F;&#x2F; 输出 15<br>?&gt;</p>
+<p>PHP static 关键词<br>通常，当函数完成&#x2F;执行后，会删除所有变量。不过，有时我需要不删除某个局部变量。实现这一点需要更进一步的工作。</p>
+<p>要完成这一点，请在您首次声明变量时使用 static 关键词：</p>
+<p>实例<br>&lt;?php</p>
+<p>function myTest() {<br>  static $x&#x3D;0;<br>  echo $x;<br>  $x++;<br>}</p>
+<p>myTest();<br>myTest();<br>myTest();</p>
+<p>?&gt;<br>然后，每当函数被调用时，这个变量所存储的信息都是函数最后一次被调用时所包含的信息。&#x2F;&#x2F;&#x2F;<br>注释：该变量仍然是函数的局部变量。</p>
+<h2 id="9-类与对象"><a href="#9-类与对象" class="headerlink" title="9.	类与对象"></a>9.	类与对象</h2><p>PHP 面向对象<br>在面向对象的程序设计（英语：Object-oriented programming，缩写：OOP）中，对象是一个由信息及对信息进行处理的描述所组成的整体，是对现实世界的抽象。<br>在现实世界里我们所面对的事情都是对象，如计算机、电视机、自行车等。<br>对象的主要三个特性：</p>
+<ul>
+<li>   对象的行为：可以对对象施加那些操作，开灯，关灯就是行为。</li>
+<li>   对象的形态：当施加那些方法是对象如何响应，颜色，尺寸，外型。</li>
+<li>   对象的表示：对象的表示就相当于身份证，具体区分在相同的行为与状态下有什么不同。<br>比如 Animal(动物) 是一个抽象类，我们可以具体到一只狗跟一只羊，而狗跟羊就是具体的对象，他们有颜色属性，可以写，可以跑等行为状态。<br><img src="/%E5%AF%B9%E8%B1%A1.png" alt="对象"><br>面向对象内容<br>类 − 定义了一件事物的抽象特点。类的定义包含了数据的形式以及对数据的操作。</li>
+</ul>
+<p>对象 − 是类的实例。</p>
+<p>成员变量 − 定义在类内部的变量。该变量的值对外是不可见的，但是可以通过成员函数访问，在类被实例化为对象后，该变量即可称为对象的属性。</p>
+<p>成员函数 − 定义在类的内部，可用于访问对象的数据。</p>
+<p>继承 − 继承性是子类自动共享父类数据结构和方法的机制，这是类之间的一种关系。在定义和实现一个类的时候，可以在一个已经存在的类的基础之上来进行，把这个已经存在的类所定义的内容作为自己的内容，并加入若干新的内容。</p>
+<p>父类 − 一个类被其他类继承，可将该类称为父类，或基类，或超类。</p>
+<p>子类 − 一个类继承其他类称为子类，也可称为派生类。</p>
+<p>多态 − 多态性是指相同的操作或函数、过程可作用于多种类型的对象上并获得不同的结果。不同的对象，收到同一消息可以产生不同的结果，这种现象称为多态性。</p>
+<p>重载 − 简单说，就是函数或者方法有同样的名称，但是参数列表不相同的情形，这样的同名不同参数的函数或者方法之间，互相称之为重载函数或者方法。</p>
+<p>抽象性 − 抽象性是指将具有一致的数据结构（属性）和行为（操作）的对象抽象成类。一个类就是这样一种抽象，它反映了与应用有关的重要性质，而忽略其他一些无关内容。任何类的划分都是主观的，但必须与具体的应用有关。</p>
+<p>封装 − 封装是指将现实世界中存在的某个客体的属性与行为绑定在一起，并放置在一个逻辑单元内。</p>
+<p>构造函数 − 主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中。</p>
+<p>析构函数 − 析构函数(destructor) 与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。析构函数往往用来做”清理善后” 的工作（例如在建立对象时用new开辟了一片内存空间，应在退出前在析构函数中用delete释放）。</p>
+<p>下图中我们通过 Car 类 创建了三个对象：Mercedes, Bmw, 和 Audi。<br>$mercedes &#x3D; new Car ();<br>$bmw &#x3D; new Car ();<br>$audi &#x3D; new Car ();<br><img src="/%E7%B1%BB.png" alt="类"><br><em>PHP 类定义</em><br>PHP 定义类通常语法格式如下：</p>
+<?php
+class phpClass {
+  var $var1;
+  var $var2 = "constant string";
+  
+  function myfunc ($arg1, $arg2) {
+     [..]
+  }
+  [..]
+}
+?>
+<p>解析如下：</p>
+<ul>
+<li><p>   类使用 class 关键字后加上类名定义。</p>
+</li>
+<li><p>   类名后的一对大括号({})内可以定义变量和方法。</p>
+</li>
+<li><p>   类的变量使用 var 来声明, 变量也可以初始化值。</p>
+</li>
+<li><p>   函数定义类似 PHP 函数的定义，但函数只能通过该类及其实例化的对象访问。</p>
+</li>
+</ul>
+<p>实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class Site &#123;</span><br><span class="line">  /* 成员变量 */</span><br><span class="line">  var $url;</span><br><span class="line">  var $title;</span><br><span class="line">  </span><br><span class="line">  /* 成员函数 */</span><br><span class="line">  function setUrl($par)&#123;</span><br><span class="line">     $this-&gt;url = $par;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  function getUrl()&#123;</span><br><span class="line">     echo $this-&gt;url . PHP_EOL;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  function setTitle($par)&#123;</span><br><span class="line">     $this-&gt;title = $par;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  function getTitle()&#123;</span><br><span class="line">     echo $this-&gt;title . PHP_EOL;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>变量 $this 代表自身的对象。<br>PHP_EOL 为换行符。<br>PHP 中创建对象<br>类创建后，我们可以使用 new 运算符来实例化该类的对象：<br>$w3cschool &#x3D; new Site;<br>$taobao &#x3D; new Site;<br>$google &#x3D; new Site;<br>以上代码我们创建了三个对象，三个对象各自都是独立的，接下来我们来看看如何访问成员方法与成员变量。<br>调用成员方法<br>在实例化对象后，我们可以使用该对象调用成员方法，该对象的成员方法只能操作该对象的成员变量：<br>&#x2F;&#x2F; 调用成员函数，设置标题和URL<br>$w3cschool-&gt;setTitle( “W3Cschool教程” );<br>$taobao-&gt;setTitle( “淘宝” );<br>$google-&gt;setTitle( “Google 搜索” );</p>
+<p>$w3cschool-&gt;setUrl( ‘<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/">www.w3cschool.cn</a>‘ );<br>$taobao-&gt;setUrl( ‘<a target="_blank" rel="noopener" href="http://www.taobao.com/">www.taobao.com</a>‘ );<br>$google-&gt;setUrl( ‘<a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a>‘ );</p>
+<p>&#x2F;&#x2F; 调用成员函数，获取标题和URL<br>$w3cschool-&gt;getTitle();<br>$taobao-&gt;getTitle();<br>$google-&gt;getTitle();</p>
+<p>$w3cschool-&gt;getUrl();<br>$taobao-&gt;getUrl();<br>$google-&gt;getUrl();<br>完整代码如下：<br>&lt;?php<br>class Site {<br>  &#x2F;* 成员变量 *&#x2F;<br>   var $url;<br>  var $title;</p>
+<p>  &#x2F;* 成员函数 *&#x2F;<br>   function setUrl($par){<br>     $this -&gt;url &#x3D; $par;<br>  }</p>
+<p>  function getUrl (){<br>     echo $this-&gt;url . PHP_EOL ;<br>  }</p>
+<p>  function setTitle($par){<br>     $this -&gt;title &#x3D; $par;<br>  }</p>
+<p>  function getTitle (){<br>     echo $this-&gt;title . PHP_EOL ;<br>  }<br>}</p>
+<p>$w3cschool &#x3D; new Site;<br>$taobao &#x3D; new  Site;<br>$google &#x3D; new Site;</p>
+<p>&#x2F;&#x2F; 调用成员函数，设置标题和URL<br>$w3cschool-&gt;setTitle( “W3Cschool教程” );<br>$taobao -&gt;setTitle( “淘宝” );<br>$google-&gt; setTitle( “Google 搜索” );</p>
+<p>$w3cschool-&gt; setUrl( ‘<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/">www.w3cschool.cn</a>‘ );<br>$taobao-&gt;setUrl ( ‘<a target="_blank" rel="noopener" href="http://www.taobao.com/">www.taobao.com</a>‘ );<br>$google-&gt;setUrl(  ‘<a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a>‘ );</p>
+<p>&#x2F;&#x2F; 调用成员函数，获取标题和URL<br>$w3cschool-&gt;getTitle ();<br>$taobao-&gt;getTitle();<br>$google-&gt; getTitle();</p>
+<p>$w3cschool-&gt;getUrl();<br>$taobao -&gt;getUrl();<br>$google-&gt;getUrl();<br>?&gt;</p>
+<p>执行以上代码，输出结果为：<br>W3Cschool教程<br>淘宝<br>Google 搜索<br><a target="_blank" rel="noopener" href="http://www.w3cschool.cn/">www.w3cschool.cn</a><br><a target="_blank" rel="noopener" href="http://www.taobao.com/">www.taobao.com</a><br><a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a></p>
+<p>PHP 构造函数<br>构造函数 ，是一种特殊的方法。主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中。</p>
+<p>PHP 5 允行开发者在一个类中定义一个方法作为构造函数，语法格式如下：</p>
+<p>void __construct ([ mixed $args [, $… ]] )</p>
+<p>在上面的例子中我们就可以通过构造方法来初始化 $url 和 $title 变量：<br>function __construct( $par1, $par2 ) {<br>   $this-&gt;url &#x3D; $par1;<br>   $this-&gt;title &#x3D; $par2;<br>}<br>现在我们就不需要再调用 setTitle 和 setUrl 方法了：</p>
+<p>$youj &#x3D; new Site(‘<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/">www.w3cschool.cn</a>‘, ‘W3Cschool教程’);<br>$taobao &#x3D; new Site(‘<a target="_blank" rel="noopener" href="http://www.taobao.com/">www.taobao.com</a>‘, ‘淘宝’);<br>$google &#x3D; new Site(‘<a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a>‘, ‘Google 搜索’);</p>
+<p>&#x2F;&#x2F; 调用成员函数，获取标题和URL<br>$youj-&gt;getTitle();<br>$taobao-&gt;getTitle();<br>$google-&gt;getTitle();</p>
+<p>$youj-&gt;getUrl();<br>$taobao-&gt;getUrl();<br>$google-&gt;getUrl();</p>
+<p>析构函数<br>析构函数(destructor) 与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。</p>
+<p>PHP 5 引入了析构函数的概念，这类似于其它面向对象的语言，其语法格式如下：</p>
+<p>void __destruct ( void )<br>实例<br>&lt;?php<br>class MyDestructableClass {<br>   function __construct() {<br>       print “构造函数\n”;<br>       $this-&gt;name &#x3D; “MyDestructableClass”;<br>   }</p>
+<p>   function __destruct() {<br>       print “销毁 “ . $this-&gt;name . “\n”;<br>   }<br>}</p>
+<p>$obj &#x3D; new MyDestructableClass();<br>?&gt;<br>执行以上代码，输出结果为：<br>构造函数<br>销毁 MyDestructableClass</p>
+<p>继承<br>继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的属性和方法，或子类从父类继承方法，使得子类具有父类相同的行为。<br>父类&#x3D;基类</p>
+<p>PHP 使用关键字 extends 来继承一个类，PHP 不支持多继承，格式<br>class Child extends Parent {<br>   &#x2F;&#x2F; 代码部分<br>}如下：<br>实例<br>实例中 Child_Site 类继承了 Site 类，并扩展了功能：<br>&lt;?php<br>&#x2F;&#x2F; 子类扩展站点类别<br>class Child_Site extends Site {<br>   var $category;</p>
+<pre><code>function setCate($par)&#123;
+    $this-&gt;category = $par;
+&#125;
+
+function getCate()&#123;
+    echo $this-&gt;category . PHP_EOL;
+&#125;
+</code></pre>
+<p>}<br>方法重写<br>如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</p>
+<p>实例中重写了 getUrl 与 getTitle 方法：<br>function getUrl() {<br>   echo $this-&gt;url . PHP_EOL;<br>   return $this-&gt;url;<br>}</p>
+<p>function getTitle(){<br>   echo $this-&gt;title . PHP_EOL;<br>   return $this-&gt;title;<br>}<br>访问控制<br>PHP 对属性或方法的访问控制，是通过在前面添加关键字 public（公有），protected（受保护）或 private（私有）来实现的。<br>public（公有）：公有的类成员可以在任何地方被访问。<br>protected（受保护）：受保护的类成员则可以被其自身以及其子类和父类访问。<br>private（私有）：私有的类成员则只能被其定义所在的类访问。<br>属性的访问控制<br>类属性必须定义为公有，受保护，私有之一。如果用 var 定义，则被视为公有。<br>&lt;?php<br>&#x2F;**</p>
+<ul>
+<li><p>Define MyClass<br> *&#x2F;<br>class MyClass<br>{<br> public $public &#x3D; ‘Public’;<br> protected $protected &#x3D; ‘Protected’;<br> private $private &#x3D; ‘Private’;</p>
+<p> function printHello()<br> {<br> echo $this-&gt;public;<br> echo $this-&gt;protected;<br> echo $this-&gt;private;<br> }</p>
+</li>
+</ul>
+<p>}</p>
+<p>$obj &#x3D; new MyClass();<br>echo $obj-&gt;public; &#x2F;&#x2F; 这行能被正常执行<br>echo $obj-&gt;protected; &#x2F;&#x2F; 这行会产生一个致命错误<br>echo $obj-&gt;private; &#x2F;&#x2F; 这行也会产生一个致命错误<br>$obj-&gt;printHello(); &#x2F;&#x2F; 输出 Public、Protected 和 Private</p>
+<p>&#x2F;**</p>
+<ul>
+<li><p>Define MyClass2<br> *&#x2F;<br>class MyClass2 extends MyClass<br>{<br> &#x2F;&#x2F; 可以对 public 和 protected 进行重定义，但 private 而不能<br> protected $protected &#x3D; ‘Protected2’;</p>
+<p> function printHello()<br> {<br> echo $this-&gt;public;<br> echo $this-&gt;protected;<br> echo $this-&gt;private;<br> }</p>
+</li>
+</ul>
+<p>}</p>
+<p>$obj2 &#x3D; new MyClass2();<br>echo $obj2-&gt;public; &#x2F;&#x2F; 这行能被正常执行<br>echo $obj2-&gt;private; &#x2F;&#x2F; 未定义 private<br>echo $obj2-&gt;protected; &#x2F;&#x2F; 这行会产生一个致命错误<br>$obj2-&gt;printHello(); &#x2F;&#x2F; 输出 Public、Protected2 和 Undefined</p>
+<p>?&gt;<br>方法的访问控制<br>类中的方法可以被定义为公有，私有或受保护。如果没有设置这些关键字，则该方公有</p>
+<?php
+/**
+ * Define MyClass
+ */
+class MyClass
+{
+    // 声明一个公有的构造函数
+    public function __construct() { }
+
+    // 声明一个公有的方法
+    public function MyPublic() { }
+
+    // 声明一个受保护的方法
+    protected function MyProtected() { }
+
+    // 声明一个私有的方法
+    private function MyPrivate() { }
+
+    // 此方法为公有
+    function Foo()
+    {
+        $this->MyPublic();
+        $this->MyProtected();
+        $this->MyPrivate();
+    }
+}
+
+$myclass = new MyClass;
+$myclass->MyPublic(); // 这行能被正常执行
+$myclass->MyProtected(); // 这行会产生一个致命错误
+$myclass->MyPrivate(); // 这行会产生一个致命错误
+$myclass->Foo(); // 公有，受保护，私有都可以执行
+
+
+/**
+ * Define MyClass2
+ */
+class MyClass2 extends MyClass
+{
+    // 此方法为公有
+    function Foo2()
+    {
+        $this->MyPublic();
+        $this->MyProtected();
+        $this->MyPrivate(); // 这行会产生一个致命错误
+    }
+}
+
+$myclass2 = new MyClass2;
+$myclass2->MyPublic(); // 这行能被正常执行
+$myclass2->Foo2(); // 公有的和受保护的都可执行，但私有的不行
+
+class Bar 
+{
+    public function test() {
+        $this->testPrivate();
+        $this->testPublic();
+    }
+
+    public function testPublic() {
+        echo "Bar::testPublic\n";
+    }
+    
+    private function testPrivate() {
+        echo "Bar::testPrivate\n";
+    }
+}
+
+class Foo extends Bar 
+{
+    public function testPublic() {
+        echo "Foo::testPublic\n";
+    }
+    
+    private function testPrivate() {
+        echo "Foo::testPrivate\n";
+    }
+}
+
+$myFoo = new foo();
+$myFoo->test(); // Bar::testPrivate 
+                // Foo::testPublic
+?>
+
+<p>接口<br>使用接口（interface），可以指定某个类必须实现哪些方法，但不需要定义这些方法的具体内容。</p>
+<p>接口是通过 interface 关键字来定义的，就像定义一个标准的类一样，但其中定义所有的方法都是空的。</p>
+<p>接口中定义的所有方法都必须是公有，这是接口的特性。</p>
+<p>要实现一个接口，使用 implements 操作符。类中必须实现接口中定义的所有方法，否则会报一个致命错误。类可以实现多个接口，用逗号来分隔多个接口的名称。<br>&lt;?php</p>
+<p>&#x2F;&#x2F; 声明一个’iTemplate’接口<br>interface iTemplate<br>{<br>    public function setVariable($name, $var);<br>    public function getHtml($template);<br>}</p>
+<p>&#x2F;&#x2F; 实现接口<br>class Template implements iTemplate<br>{<br>    private $vars &#x3D; array();</p>
+<pre><code>public function setVariable($name, $var)
+&#123;
+    $this-&gt;vars[$name] = $var;
+&#125;
+
+public function getHtml($template)
+&#123;
+    foreach($this-&gt;vars as $name =&gt; $value) &#123;
+        $template = str_replace(&#39;&#123;&#39; . $name . &#39;&#125;&#39;, $value, $template);
+    &#125;
+
+    return $template;
+&#125;
+</code></pre>
+<p>}<br>常量<br>可以把在类中始终保持不变的值定义为常量。在定义和使用常量的时候不需要使用 $ 符号。</p>
+<p>常量的值必须是一个定值，不能是变量，类属性，数学运算的结果或函数调用。</p>
+<p>自 PHP 5.3.0 起，可以用一个变量来动态调用类。但该变量的值不能为关键字（如 self，parent 或 static）。</p>
+<p>实例<br>&lt;?php<br>class MyClass<br>{<br>    const constant &#x3D; ‘常量值’;</p>
+<pre><code>function showConstant() &#123;
+    echo  self::constant . PHP_EOL;
+&#125;
+</code></pre>
+<p>}</p>
+<p>echo MyClass::constant . PHP_EOL;</p>
+<p>$classname &#x3D; “MyClass”;<br>echo $classname::constant . PHP_EOL; &#x2F;&#x2F; 自 5.3.0 起</p>
+<p>$class &#x3D; new MyClass();<br>$class-&gt;showConstant();</p>
+<p>echo $class::constant . PHP_EOL; &#x2F;&#x2F; 自 PHP 5.3.0 起<br>?&gt;<br>抽象类<br>任何一个类，如果它里面至少有一个方法是被声明为抽象的，那么这个类就必须被声明为抽象的。</p>
+<p>定义为抽象的类不能被实例化。</p>
+<p>被定义为抽象的方法只是声明了其调用方式（参数），不能定义其具体的功能实现。</p>
+<p>继承一个抽象类的时候，子类必须定义父类中的所有抽象方法；另外，这些方法的访问控制必须和父类中一样（或者更为宽松）。例如某个抽象方法被声明为受保护的，那么子类中实现的方法就应该声明为受保护的或者公有的，而不能定义为私有的。</p>
+<?php
+abstract class AbstractClass
+{
+ // 强制要求子类定义这些方法
+    abstract protected function getValue();
+    abstract protected function prefixValue($prefix);
+
+    // 普通方法（非抽象方法）
+    public function printOut() {
+        print $this->getValue() . PHP_EOL;
+    }
+}
+
+class ConcreteClass1 extends AbstractClass
+{
+    protected function getValue() {
+        return "ConcreteClass1";
+    }
+
+    public function prefixValue($prefix) {
+        return "{$prefix}ConcreteClass1";
+    }
+}
+
+class ConcreteClass2 extends AbstractClass
+{
+    public function getValue() {
+        return "ConcreteClass2";
+    }
+
+    public function prefixValue($prefix) {
+        return "{$prefix}ConcreteClass2";
+    }
+}
+
+$class1 = new ConcreteClass1;
+$class1->printOut();
+echo $class1->prefixValue('FOO_') . PHP_EOL;
+
+$class2 = new ConcreteClass2;
+$class2->printOut();
+echo $class2->prefixValue('FOO_') . PHP_EOL;
+?>
+<p>执行以上代码，输出结果为：</p>
+<p>ConcreteClass1<br>FOO_ConcreteClass1<br>ConcreteClass2<br>FOO_ConcreteClass2<br>此外，子类方法可以包含父类抽象方法中不存在的可选参数。例如，子类定义了一个可选参数，而父类抽象方法的声明里没有，则都是可以正常运行的。</p>
+<?php
+abstract class AbstractClass
+{
+    // 我们的抽象方法仅需要定义需要的参数
+    abstract protected function prefixName($name);
+
+}
+
+class ConcreteClass extends AbstractClass
+{
+
+    // 我们的子类可以定义父类签名中不存在的可选参数
+    public function prefixName($name, $separator = ".") {
+        if ($name == "Pacman") {
+            $prefix = "Mr";
+        } elseif ($name == "Pacwoman") {
+            $prefix = "Mrs";
+        } else {
+            $prefix = "";
+        }
+        return "{$prefix}{$separator} {$name}";
+    }
+}
+
+$class = new ConcreteClass;
+echo $class->prefixName("Pacman"), "\n";
+echo $class->prefixName("Pacwoman"), "\n";
+?>
+<p>输出结果为：</p>
+<p>Mr. Pacman<br>Mrs. Pacwoman</p>
+<p><em>接口与抽象类</em></p>
+<ol>
+<li>接口<br>（1）对接口的使用是通过关键字implements<br>（2）接口不能定义成员变量（包括类静态变量），能定义常量<br>（3）子类必须实现接口定义的所有方法<br>（4）接口只能定义不能实现该方法<br>（5）接口没有构造函数<br>（6）接口中的方法和实现它的类默认都是public类型的</li>
+<li>抽象类<br>（1）对抽象类的使用是通过关键字extends<br>（2）不能被实例化，可以定义子类必须实现的方法<br>（3）子类必须定义父类中的所有抽象方法，这些方法的访问控制必须和父类中一样（或者更为宽松）<br>（4）如一个类中有一个抽象方法，则该类必须定义为抽象类<br>（5）抽象类可以有构造函数<br>（6）抽象类中的方法可以使用private,protected,public来修饰。<br>（7）一个类可以同时实现多个接口，但一个类只能继承于一个抽象类。</li>
+</ol>
+<p>Static 关键字<br>声明类属性或方法为 static(静态)，就可以不实例化类而直接访问。</p>
+<p>静态属性不能通过一个类已实例化的对象来访问（但静态方法可以）。</p>
+<p>由于静态方法不需要通过对象即可调用，所以伪变量 $this 在静态方法中不可用。</p>
+<p>静态属性不可以由对象通过 -&gt; 操作符来访问。</p>
+<p>自 PHP 5.3.0 起，可以用一个变量来动态调用类。但该变量的值不能为关键字 self，parent 或 static。</p>
+<?php
+class Foo {
+  public static $my_static = 'foo';
+  
+  public function staticValue() {
+     return self::$my_static;
+  }
+}
+
+print Foo::$my_static . PHP_EOL;
+$foo = new Foo();
+
+print $foo->staticValue() . PHP_EOL;
+?><p>	<br>执行以上程序，输出结果为：</p>
+<p>foo<br>Foo</p>
+<p>Final 关键字<br>PHP 5 新增了一个 final 关键字。如果父类中的方法被声明为 final，则子类无法覆盖该方法。如果一个类被声明为 final，则不能被继承。</p>
+<p>以下代码执行会报错：</p>
+<?php
+class BaseClass {
+   public function test() {
+       echo "BaseClass::test() called" . PHP_EOL;
+   }
+   
+   final public function moreTesting() {
+       echo "BaseClass::moreTesting() called"  . PHP_EOL;
+   }
+}
+
+class ChildClass extends BaseClass {
+   public function moreTesting() {
+       echo "ChildClass::moreTesting() called"  . PHP_EOL;
+   }
+}
+// 报错信息 Fatal error: Cannot override final method BaseClass::moreTesting()
+?>
+<p>调用父类构造方法<br>PHP 不会在子类的构造方法中自动的调用父类的构造方法。要执行父类的构造方法，需要在子类的构造方法中调用 parent::__construct() 。</p>
+<?php
+class BaseClass {
+   function __construct() {
+       print "BaseClass 类中构造方法" . PHP_EOL;
+   }
+}
+class SubClass extends BaseClass {
+   function __construct() {
+       parent::__construct();  // 子类构造方法不能自动调用父类的构造方法
+       print "SubClass 类中构造方法" . PHP_EOL;
+   }
+}
+class OtherSubClass extends BaseClass {
+    // 继承 BaseClass 的构造方法
+}
+
+// 调用 BaseClass 构造方法
+$obj = new BaseClass();
+
+// 调用 BaseClass、SubClass 构造方法
+$obj = new SubClass();
+
+// 调用 BaseClass 构造方法
+$obj = new OtherSubClass();
+?>
+<p>执行以上程序，输出结果为：</p>
+<p>BaseClass 类中构造方法<br>BaseClass 类中构造方法<br>SubClass 类中构造方法<br>BaseClass 类中构造方法</p>
+<h1 id="10-PHP超级全局变量"><a href="#10-PHP超级全局变量" class="headerlink" title="10.	PHP超级全局变量"></a>10.	PHP超级全局变量</h1><p>PHP超级全局变量列表：<br>	$GLOBALS　　一个包含了全部变量的全局组合数组。变量的名字就是数组的键。<br>	$_SERVER　　一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组<br>	$_REQUEST　　用于收集HTML表单提交的数据。<br>它可以获取 cookie  get  post<br>	$_POST　　广泛应用于收集表单数据，在HTML form标签的指定该属性：”method&#x3D;”post”。<br>	$_GET　　广泛应用于收集表单数据，在HTML form标签的指定该属性：”method&#x3D;”get”。<br>Array []<br>	$_FILES　　<br>	$_ENV　　<br>	$_COOKIE　　<br>	$_SESSION</p>
+<?php 
+// php预定义方法
+echo "\n", $GLOBALS['y'];
+echo "\n", $_SERVER['PHP_SELF'];
+echo "\n", $_SERVER['SERVER_NAME'];
+echo "\n", $_SERVER['HTTP_HOST'];
+?>
+
+
+<h2 id="11-PHP-Include-文件"><a href="#11-PHP-Include-文件" class="headerlink" title="11.	PHP Include 文件"></a>11.	PHP Include 文件</h2><p>服务器端包含 (SSI) 用于创建可在多个页面重复使用的函数、页眉、页脚或元素。<br>include （或 require）语句会获取指定文件中存在的所有文本&#x2F;代码&#x2F;标记，并复制到使用 include 语句的文件中。<br>包含文件很有用，如果您需要在网站的多张页面上引用相同的 PHP、HTML 或文本的话。<br>PHP include 和 require 语句<br>通过 include 或 require 语句，可以将 PHP 文件的内容插入另一个 PHP 文件（在服务器执行它之前）。<br>include 和 require 语句是相同的，除了错误处理方面：<br>require 会生成致命错误（E_COMPILE_ERROR）并停止脚本<br>include 只生成警告（E_WARNING），并且脚本会继续<br>因此，如果您希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。否则，在框架、CMS 或者复杂的 PHP 应用程序编程中，请始终使用 require 向执行流引用关键文件。这有助于提高应用程序的安全性和完整性，在某个关键文件意外丢失的情况下。<br>包含文件省去了大量的工作。这意味着您可以为所有页面创建标准页头、页脚或者菜单文件。然后，在页头需要更新时，您只需更新这个页头包含文件即可。<br>语法<br>include ‘filename’;<br>或<br>require ‘filename’;</p>
+<h2 id="12-PHP-文件处理"><a href="#12-PHP-文件处理" class="headerlink" title="12.	PHP 文件处理"></a>12.	PHP 文件处理</h2><h3 id="12-1-PHP-操作文件"><a href="#12-1-PHP-操作文件" class="headerlink" title="12.1.	PHP 操作文件"></a>12.1.	PHP 操作文件</h3><p>PHP 拥有的多种函数可供创建、读取、上传以及编辑文件。<br>注意：请谨慎操作文件！<br>当您操作文件时必须非常小心。如果您操作失误，可能会造成非常严重的破坏。常见的错误是：<br>编辑错误的文件<br>被垃圾数据填满硬盘<br>意外删除文件内容<br>PHP readfile() 函数<br>readfile() 函数读取文件，并把它写入输出缓冲。<br>假设我们有一个名为 “webdictionary.txt” 的文本文件，存放在服务器上，就像这样：<br>AJAX &#x3D; Asynchronous JavaScript and XML<br>CSS &#x3D; Cascading Style Sheets<br>HTML &#x3D; Hyper Text Markup Language<br>PHP &#x3D; PHP Hypertext Preprocessor<br>SQL &#x3D; Structured Query Language<br>SVG &#x3D; Scalable Vector Graphics<br>XML &#x3D; EXtensible Markup Language<br>读取此文件并写到输出流的 PHP 代码如下（如读取成功则 readfile() 函数返回字节数）：<br>实例<br><?php
+echo readfile("webdictionary.txt");
+?></p>
+<h3 id="12-2-PHP-文件打开-x2F-读取-x2F-关闭"><a href="#12-2-PHP-文件打开-x2F-读取-x2F-关闭" class="headerlink" title="12.2.	PHP 文件打开&#x2F;读取&#x2F;关闭"></a>12.2.	PHP 文件打开&#x2F;读取&#x2F;关闭</h3><p>在本节中，我们向您讲解如何在服务器上打开、读取以及关闭文件。</p>
+<p>PHP Open File - fopen()<br>打开文件的更好的方法是通过 fopen() 函数。此函数为您提供比 readfile() 函数更多的选项。</p>
+<p>在课程中，我们将使用文本文件 “webdictionary.txt”：</p>
+<p>AJAX &#x3D; Asynchronous JavaScript and XML<br>CSS &#x3D; Cascading Style Sheets<br>HTML &#x3D; Hyper Text Markup Language<br>PHP &#x3D; PHP Hypertext Preprocessor<br>SQL &#x3D; Structured Query Language<br>SVG &#x3D; Scalable Vector Graphics<br>XML &#x3D; EXtensible Markup Language<br>fopen() 的第一个参数包含被打开的文件名，第二个参数规定打开文件的模式。如果 fopen() 函数未能打开指定的文件，下面的例子会生成一段消息：</p>
+<p>实例<br><?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+echo fread($myfile,filesize("webdictionary.txt"));
+fclose($myfile);
+?><br>提示：我们接下来将学习 fread() 以及 fclose() 函数。<br>文件会以如下模式之一打开：</p>
+<p>PHP 读取文件 - fread()<br>fread() 函数读取打开的文件。</p>
+<p>fread() 的第一个参数包含待读取文件的文件名，第二个参数规定待读取的最大字节数。</p>
+<p>如下 PHP 代码把 “webdictionary.txt” 文件读至结尾：</p>
+<p>fread($myfile,filesize(“webdictionary.txt”));<br>PHP 关闭文件 - fclose()<br>fclose() 函数用于关闭打开的文件。</p>
+<p>注释：用完文件后把它们全部关闭是一个良好的编程习惯。您并不想打开的文件占用您的服务器资源。</p>
+<p>fclose() 需要待关闭文件的名称（或者存有文件名的变量）：</p>
+<?php
+$myfile = fopen("webdictionary.txt", "r");
+// some code to be executed....
+fclose($myfile);
+?>
+<p>PHP 读取单行文件 - fgets()<br>fgets() 函数用于从文件读取单行。</p>
+<p>下例输出 “webdictionary.txt” 文件的首行：</p>
+<p>实例<br><?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+echo fgets($myfile);
+fclose($myfile);
+?><br>运行实例<br>注释：调用 fgets() 函数之后，文件指针会移动到下一行。</p>
+<p>PHP 检查 End-Of-File - feof()<br>feof() 函数检查是否已到达 “end-of-file” (EOF)。</p>
+<p>feof() 对于遍历未知长度的数据很有用。<br>feof() 函数检查是否已到达文件末尾(EOF)<br>下例逐行读取 “webdictionary.txt” 文件，直到 end-of-file：</p>
+<p>实例<br><?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+// 输出单行直到 end-of-file
+while(!feof($myfile)) {
+  echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
+?><br>运行实例<br>PHP 读取单字符 - fgetc()<br>fgetc() 函数用于从文件中读取单个字符。</p>
+<p>下例逐字符读取 “webdictionary.txt” 文件，直到 end-of-file：</p>
+<p>实例<br><?php
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+// 输出单字符直到 end-of-file
+while(!feof($myfile)) {
+  echo fgetc($myfile);
+}
+fclose($myfile);
+?><br>运行实例<br>注释：在调用 fgetc() 函数之后，文件指针会移动到下一个字符。<br>在本节中，我们将为您讲解如何在服务器上创建并写入文件。</p>
+<p>PHP 创建文件 - fopen()<br>fopen() 函数也用于创建文件。也许有点混乱，但是在 PHP 中，创建文件所用的函数与打开文件的相同。</p>
+<p>如果您用 fopen() 打开并不存在的文件，此函数会创建文件，假定文件被打开为写入（w）或增加（a）。</p>
+<p>下面的例子创建名为 “testfile.txt” 的新文件。此文件将被创建于 PHP 代码所在的相同目录中：</p>
+<p>实例<br>$myfile &#x3D; fopen(“testfile.txt”, “w”)<br>PHP 文件权限<br>如果您试图运行这段代码时发生错误，请检查您是否有向硬盘写入信息的 PHP 文件访问权限。</p>
+<p>PHP 写入文件 - fwrite()<br>fwrite() 函数用于写入文件。</p>
+<p>fwrite() 的第一个参数包含要写入的文件的文件名，第二个参数是被写的字符串。</p>
+<p>下面的例子把姓名写入名为 “newfile.txt” 的新文件中：</p>
+<p>实例<br><?php
+$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+$txt = "Bill Gates\n";
+fwrite($myfile, $txt);
+$txt = "Steve Jobs\n";
+fwrite($myfile, $txt);
+fclose($myfile);
+?><br>请注意，我们向文件 “newfile.txt” 写了两次。在每次我们向文件写入时，在我们发送的字符串 $txt 中，第一次包含 “Bill Gates”，第二次包含 “Steve Jobs”。在写入完成后，我们使用 fclose() 函数来关闭文件。</p>
+<p>如果我们打开 “newfile.txt” 文件，它应该是这样的：</p>
+<p>Bill Gates<br>Steve Jobs<br>PHP 覆盖（Overwriting）<br>如果现在 “newfile.txt” 包含了一些数据，我们可以展示在写入已有文件时发生的的事情。所有已存在的数据会被擦除并以一个新文件开始。</p>
+<p>在下面的例子中，我们打开一个已存在的文件 “newfile.txt”，并向其中写入了一些新数据：</p>
+<p>实例<br><?php
+$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+$txt = "Mickey Mouse\n";
+fwrite($myfile, $txt);
+$txt = "Minnie Mouse\n";
+fwrite($myfile, $txt);
+fclose($myfile);
+?><br>如果现在我们打开这个 “newfile.txt” 文件，Bill 和 Steve 都已消失，只剩下我们刚写入的数据：</p>
+<p>Mickey Mouse<br>Minnie Mouse</p>
+<p>12.3.	文件的 复制 删除 重名</p>
+<p>php文件重命名：函数rename()。<br>php文件复制：函数copy();<br>php文件删除：函数unlink();</p>
+<p>12.4.	文件的判断</p>
+<p>file_exists() 判断文件是否存在<br>is_file() 是否为文件。</p>
+<h2 id="13-PHP获取文件属性"><a href="#13-PHP获取文件属性" class="headerlink" title="13.	PHP获取文件属性"></a>13.	PHP获取文件属性</h2><p>当我们在程序中操作文件时，可能会使用到文件的一些常见属性，比如文件的大小、类型、修改时间、访问时间以及权限等等。PHP 中提供了非常全面的用来获取这些属性的内置函数，如下表所示。</p>
+<?php
+    $file = 'test.txt';
+    file_exists($file) or die('文件不存在，程序退出！');
+
+    echo $file.' 文件大小是：'.filesize($file).' 个字节<br>';
+    if(is_readable($file)){
+        echo $file.' 文件是可读的。<br>';
+    }else{
+        echo $file.' 文件是不可读的。<br>';
+    }
+    if(is_writable($file)){
+        echo $file.' 文件是可写的。<br>';
+    }else{
+        echo $file.' 文件是不可写的。<br>';
+    }
+    if(is_executable($file)){
+        echo $file.' 文件是可执行的。<br>';
+    }else{
+        echo $file.' 文件是不可执行的。<br>';
+    }
+    echo '文件的创建时间是：'.date('Y-m-d H:i:s',filectime($file)).'。<br>';
+    echo '文件的修改时间是：'.date('Y-m-d H:i:s',filemtime($file)).'。<br>';
+    echo '文件上次的访问时间是：'.date('Y-m-d H:i:s',fileatime($file)).'。<br>';
+?>
+
+<h2 id="14-PHP目录操作"><a href="#14-PHP目录操作" class="headerlink" title="14.	PHP目录操作"></a>14.	PHP目录操作</h2><p>目录操作<br>新建目录：mkdir(路径，权限，递归创建)<br>删除目录：rmdir()<br>移动（改名）：rename()<br>获取目录内容：<br>&#x2F;&#x2F;打开目录<br>目录句柄 &#x3D; opendir()<br>&#x2F;&#x2F;读取目录<br>文件名 &#x3D; readdir(目录句柄)<br>依次读取文件名，同时向下移动文件句柄指针，读取不到则返回false<br>&#x2F;&#x2F;关闭目录<br>closedir()</p>
+<p>当前目录. 上级目录用..<br>递归读取目录内容：</p>
+<?php
+//递归遍历目录
+$dirfile="c:/";
+
+function tree($dirfile){
+    $dir = opendir($dirfile);
+    while (($file = readdir($dir)) !== false)
+    {
+        if(is_dir("$dirfile{$file}") && ($file !=".") && ($file !="..")){
+            if(is_readable("$dirfile{$file}")){
+                echo "目录 $dirfile{$file} </br>";
+                tree("$dirfile{$file}");
+            }else{
+                echo "目录 $dirfile{$file} 不可访问</br>";
+            }
+
+        }
+        else{
+            if( ($file !=".") && ($file !="..")){
+                echo "文件 $dirfile/{$file} </br>";
+            }
+
+        }
+    }
+    closedir($dir);
+}
+
+tree($dirfile);
+?>
+<h2 id="15-命名空间"><a href="#15-命名空间" class="headerlink" title="15.	命名空间"></a>15.	命名空间</h2><p>PHP 命名空间可以解决以下两类问题：<br>1.用户编写的代码与PHP内部的类&#x2F;函数&#x2F;常量或第三方类&#x2F;函数&#x2F;常量之间的名字冲突。<br>2.为很长的标识符名称(通常是为了缓解第一类问题而定义的)创建一个别名（或简短）的名称，以提高源代码的可读性。</p>
+<p>命名空间（可以理解为创建文件夹）<br>定义：命名空间namespace，是指人为的将内存进行分隔，让不同内存区域的同名结构共存，从而解决在大型项目中可能出现的重名结构的问题<br>语法：namespace 空间名<br>作用：不同的空间可以有同名的结构，如：类<br>空间元素：函数，常量，类，不包括变量！！<br>子空间（子文件夹）<br>定义：命名空间内部再划分一个命名空间，让每个小空间独立起来<br>语法:<br>     namespace 空间名<br>     namespace 空间名\子空间<br>命名空间访问 （url）<br>非限定名称访问：直接访问空间元素的名字（只访问自己命名空间的元素）<br>限定名称访问：使用自己当前的子空间名字+ \ + 元素名字<br>完全限定名称访问：\ + 全局空间 + \  +  元素名字<br>注：任何空间元素访问，只针对函数，类，常量<br>全局空间（C盘）<br>如果定义了命名空间，非限定名称的寻找系统常量的方式：<br>首先：在自己的空间内找<br>然后：如果找不到元素<br>    系统常量–&gt;进入全局空间寻找<br>    系统类 –&gt; 不会自动进入全局空间寻找，而是会报错<br>命名空间的引入</p>
+<ol>
+<li>空间引入方式：use关键字<ol>
+<li>引入类：use 空间名\类名</li>
+<li>引入函数：use function 空间名\函数名</li>
+<li>引入常量：use const 空间名\常量名</li>
+</ol>
+</li>
+<li>当引入元素时重名，通过 as 来起别名<br> use 空间名\类名 as 别名</li>
+<li>引入多个元素<br> use 空间名{<br> 类名，<br> function 函数名，<br> const 常量<br> }   	</li>
+<li>引入空间<br> use 空间名</li>
+</ol>
+<p>	</p>
+<h2 id="16-正则表达式"><a href="#16-正则表达式" class="headerlink" title="16.	正则表达式"></a>16.	正则表达式</h2><p>正则表达式简介<br>正则表达式是用于描述字符排列和匹配模式的一种语法规则。它主要用于字符串的模式分割、匹配、查找及替换操作。到目前为止，我们前面所用过的精确（文本）匹配也是一种正则表达式。<br>在PHP中，正则表达式一般是由正规字符和一些特殊字符（类似于通配符）联合构成的一个文本模式的程序性描述。</p>
+<p>正则表达式较重要和较有用的角色是验证用户数据的有效性检查。PHP中，正则表达式有三个作用：<br> 匹配，也常常用于从字符串中析取信息。<br> 用新文本代替匹配文本。<br> 将一个字符串拆分为一组更小的信息块。</p>
+<p>正则表达式的基本语法<br>PCRE库函数中，正则匹配模式使用分隔符与元字符组成，分隔符可以是非数字、非反斜线、非空格的任意字符。经常使用的分隔符是正斜线(&#x2F;)、hash符号(#) 以及取反符号(~)<br>元字符是用于构造规则表达式的具有特殊含义的字符。如果要在正则表达式中包含元字符本身，必须在其前加上”\”进行转义 </p>
+<p>元字符			说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">*				0次、1次或多次匹配其前的原子</span><br><span class="line">+				1次或多次匹配其前的原子</span><br><span class="line">?				0次或1次匹配其前的原子</span><br><span class="line">|				匹配两个或多个选择</span><br><span class="line">^				匹配字符串串首的原子</span><br><span class="line">$				匹配字符串串尾的原子</span><br><span class="line">[]				匹配方括号中的任一原子</span><br><span class="line">[^]			匹配除方括号中的原子外的任何字符</span><br><span class="line">&#123;m&#125;			表示其前原子恰好出现m次</span><br><span class="line">&#123;m,n&#125;			表示其前原子至少出现m次，至少出现n次(n&gt;m)</span><br><span class="line">&#123;m,&#125;			表示其前原子出现不少于m次</span><br><span class="line">()				整体表示一个原子</span><br><span class="line">.				匹配除换行之外的任何一个字符</span><br></pre></td></tr></table></figure>
+<p>边界限制<br>在某些情况下，需要对匹配范围进行限定，以获得更准确的匹配结果。“^”和“$”分别指定字符串的开始和结束。<br>例如，在字符串“Tom and Jerry chased each other in the house until tom’s uncel come in”中<br>元字符“^” 置于字符串的开始确保模式匹配出现在字符串首端；<br>^Tom	<br>元字符“$” 置于字符串的结束，确保模式匹配出现字符串尾端。<br>in$	<br>如果不加边界限制元字符，将获得更多的匹配结果。<br>^Tom$精确匹配		Tom模糊匹配</p>
+<p>重复匹配</p>
+<p>正则表达式中有一些用于重复匹配某些原子的元字符：“?”、“<em>”、“+”。他们主要的不同是重复匹配的次数不同。<br>元字符“?”:表示0次或1次匹配紧接在其前的原子。<br>例如：colou?r匹配“colour”或“color”。<br>元字符“</em>”:表示0次、1次或多次匹配紧接在其前的原子。<br>例如：zo*可以匹配z、zoo<br><code>&lt;[A-Za-z][A-Za-z0-9]*&gt;</code>可以匹配<code>“&lt;P&gt;”、“&lt;hl&gt;”或“&lt;Body&gt;”</code>等HTML标签，并且不严格的控制大小写。<br>元字符“+”:表示1次或多次匹配紧接在其前的原子。<br>例如：go+gle匹配“gogle”、“google”或“gooogle”等中间含有多个o的字符串。<br>例子十六进制数字，匹配表达式是0?<code>[ xX][0-9a-fA-F]+,</code>可以匹配“0x9B3C”或者“X800”等。<br>元字符 “.”<br>元字符“.”匹配除换行符外任何一个字符，相当于<code>[^\n](Unix系统)</code>或<code>[^\r\n](windows系统)</code>。<br>例如：pr.y可以匹配的字符串“prey”、“pray”或“pr%y”等。<br>通常可以使用“.*”组合来匹配除换行符外的任何字符。在一些书籍中也称其为“全匹配符” 或 “单含匹配符”。<br>例如：<br>^a.*z$表示可以匹配字母“a”开头，字母“z”结束的任意不包括换行符的字符串。<br>.+也可以完成类似的匹配功能所不同的是其至少匹配一个字符。<br>^a.+z$将不匹配字符串“az”。<br>重复匹配<br>元字符“{}”准确地指定原子重复的次数，指定所匹配的原子出现的次数。<br>“{m}”表示其前原子恰好出现m次；<br>“{m，n}”表示其前原子至少出现m次，至多出现n次；<br>“{m，}”表示其前原子出现不少于m次。</p>
+<p>例如：<br>zo{1,3}m只能匹配字符串“zom”、“zoom”、或“zooom”。<br>zo{3}m只能匹配字符串“zooom”<br>zo{3，}m可以匹配以  “z” 开头，“m”结束，中间至少为3个“o”的字符串。<br>bo{0,1}u可以匹配字符串“bought a butter”  中的“bou”和“bu”,等价于bo?u。<br>原子表 －方括号表达式<br>原子表”[]”中存放一组原子，彼此地位平等，且仅匹配其中的一个原子。如果想匹配一个 ”a” 或 ”e” 使用 [ae]。<br>例如: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Pr[ae]y 匹配 ”Pray” 或者 ”Prey ”。</span><br><span class="line">原子表 ”[^]” 或者称为排除原子表，匹配除表内原子外的任意一个字符。</span><br><span class="line">例如：p[^u]匹配“part”中的“pa”，但无法匹配“computer”中的“pu”因为“u”在匹配中被排除。</span><br><span class="line">原子表“[-]”用于连接一组按ASCII码顺序排列的原子，简化书写。  </span><br><span class="line">例如：x[0123456789]可以写成x[0-9],用来匹配一个由 “x” 字母与一个数字组成的字符串。</span><br><span class="line">例如：</span><br><span class="line">[a-zA-Z]匹配所有大小写字母</span><br><span class="line">^[a-z][0-9]$匹配比如“z2”、 “t6” 、“g7”</span><br><span class="line">0[xX][0-9a-fA-F]匹配一个简单的十六进制数字，如“0x9”。</span><br><span class="line">[^0-9a-zA-Z_]匹配除英文字母、数字和下划线以外任何一个字符，其等价于\W。 </span><br><span class="line">模式选择符 </span><br></pre></td></tr></table></figure>
+<p>元字符“|”又称模式选择符。在正则表达式中匹配两个或更多的选择之一。<br>例如：在字符串“There are many apples and pears.”中，apple|pear在第一次运行时匹配“apple”；再次运行时匹配“ pear”。也可以继续增加选项，如：	apple|pear|banana|lemon<br>POSIX风格预定义的正则表达式的字符类：<br>     [[:alnum:]]  	字母和数字字符<br>     [[:alpha:]]		大小写字母<br>     [[:lower:]]		小写字母<br>     [[:upper:]]		大写字母<br>     [[:digit:]]		数字0-9<br>     [[:xdigit:]]		十六进制数字<br>     [[:punct:]]		标点符号，包括上档键!@<br>     [[:blank:]]		TAB制表符和空格<br>     [[:space:]]		任何空白字符,换行,回车符<br>     [[:cntrl:]]		控制字符（TAB，退格）<br>模式单元<br>元字符“（）”将其中的正则表达式变为原子（或称模式单元）使用。与数学表达式中的括号类似，“（）”可以做一个单元被单独使用。<br>例如：<br>(Dog)+匹配的“Dog”、“DogDog”、“DogDogDog”……..,因为紧接着“+”前的原子是元字符“（）”括起来的字符串“Dog”。<br>You (very)+ old匹配“You very old”、 “You very very old”<br>Hello (world|earth)匹配“Hello world”、“Hello earth”<br>一个模式单元中的表达式将被优先匹配或运算</p>
+<p>特殊字符<br>所谓特殊字符，就是一些有特殊含义的字符，如上面说的”*.txt”中的*，简单的说就是表示任何字符串的意思。如果要查找文件名中有＊的文件，则需要对＊进行转义，即在其前加一个\。ls *.txt。正则表达式有以下特殊字符。</p>
+<p>模式匹配的顺序<br>在使用正则表达式时，需要注意匹配的顺序。通常，正则表达式按照由左至右的顺序依次匹配。<br>模式匹配的顺序（从高到低）<br>    顺序	元字符		说明<br>     1		（）		     模式单元	<br>     2		？* +{}	    重复匹配<br>     3		 ^$		    边界限制<br>     4	            |		    模式选择</p>
+<p>元字符表<br>字符	描述<br>\	将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，’n’ 匹配字符 “n”。’\n’ 匹配一个换行符。序列 ‘\’ 匹配 “\” 而 “(” 则匹配 “(”。<br>^	匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。<br>$	匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。<br><code>*	匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于&#123;0,&#125;。</code><br><code>+	匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 &#123;1,&#125;。</code><br>?	匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 中的”do” 。? 等价于 {0,1}。<br>{n}	n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。<br>{n,}	n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o<em>’。<br>{n,m}	m 和 n 均为非负整数，其中n &lt;&#x3D; m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。<br>?	当 该字符紧跟在任何一个其他限制符 (</em>, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，’o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’。<br>.	匹配除 “\n” 之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用象 ‘[.\n]’ 的模式。<br>(pattern)	匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 ‘′或‘’。<br>(?:pattern)	匹 配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (|) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y|ies) 就是一个比 ‘industry|industries’ 更简略的表达式。<br>(?&#x3D;pattern)	正 向预查，在任何匹配 pattern 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，’Windows (?&#x3D;95|98|NT|2000)’ 能匹配 “Windows 2000″ 中的 “Windows” ，但不能匹配 “Windows 3.1″ 中的 “Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。<br>(?!pattern)	负 向预查，在任何不匹配 pattern 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如’Windows (?!95|98|NT|2000)’ 能匹配 “Windows 3.1″ 中的 “Windows”，但不能匹配 “Windows 2000″ 中的 “Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x|y	匹配 x 或 y。例如，’z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”。</span><br><span class="line">[xyz]	字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</span><br><span class="line">[^xyz]	负值字符集合。匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p&#x27;。</span><br><span class="line">[a-z]	字符范围。匹配指定范围内的任意字符。例如，’[a-z]’ 可以匹配 ‘a’ 到 ‘z’ 范围内的任意小写字母字符。</span><br><span class="line">[^a-z]	负值字符范围。匹配任何不在指定范围内的任意字符。例如，’[^a-z]’ 可以匹配任何不在 ‘a’ 到 ‘z’ 范围内的任意字符。</span><br></pre></td></tr></table></figure>
+<p>\b	匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。<br>\B	匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。<br>\cx	匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。<br>\d	匹配一个数字字符。等价于 [0-9]。<br>\D	匹配一个非数字字符。等价于 [^0-9]。<br>\f	匹配一个换页符。等价于 \x0c 和 \cL。<br>\n	匹配一个换行符。等价于 \x0a 和 \cJ。<br>\r	匹配一个回车符。等价于 \x0d 和 \cM。<br>\s	匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。<br>\S	匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。<br>\t	匹配一个制表符。等价于 \x09 和 \cI。<br>\v	匹配一个垂直制表符。等价于 \x0b 和 \cK。<br>\w	匹配包括下划线的任何单词字符。等价于’[A-Za-z0-9_]’。<br>\W	匹配任何非单词字符包括下划线。等价于 ‘[^A-Za-z0-9_]’。<br>\xn	匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，’\x41′ 匹配 “A”。’\x041′ 则等价于 ‘\x04′ &amp; “1″。正则表达式中可以使用 ASCII 编码。.<br>\num	匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1′ 匹配两个连续的相同字符。<br>\n	标识一个八进制转义值或一个向后引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。<br>\nm	标 识一个八进制转义值或一个向后引用。如果 \nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。<br>\nml	如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。<br>\un	匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</p>
+<p>例子 匹配32位md5<br>&#x2F;^[a-z0-9]{32}$&#x2F;</p>
+<h2 id="17-php与mysql"><a href="#17-php与mysql" class="headerlink" title="17.	php与mysql"></a>17.	php与mysql</h2><p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/php/php-mysql-select.html">https://www.w3cschool.cn/php/php-mysql-select.html</a><br>PHP 连接 MySQL<br>在 PHP 使用 MySQL 数据库前，你需要先将它们连接。<br>PHP 5 及以上版本建议使用以下方式连接 MySQL :</p>
+<p>MySQLi extension (“i” 意为 improved)<br>PDO (PHP Data Objects)<br>在 PHP 早起版本中我们使用 MySQL 扩展。但该扩展在 2012 年开始不建议使用。<br>我是该用 MySQLi ，还是 PDO?<br>如果你需要一个简短的回答，即 “你习惯哪个就用哪个”。<br>MySQLi 和 PDO 有它们自己的优势：<br>PDO 应用在 12 种不同数据库中， MySQLi 只针对 MySQL 数据库。<br>所以，如果你的项目需要在多种数据库中切换，建议使用 PDO ，这样你只需要修改连接字符串和部分查询语句即可。使用 MySQLi, 如果不同数据库，你需要重新所有代码，包括查询。<br>两者都是面向对象, 但 MySQLi 还提供了 API 接口。<br>两者都支持预处理语句。 预处理语句可以防止 SQL 注入，对于 web 项目的安全性是非常重要的。<br>MySQLi 和 PDO 连接 MySQL 实例<br>在本章节及接下来的章节中，我们会使用以下三种方式来演示 PHP 操作 MySQL:<br>MySQLi (面向对象)<br>MySQLi (面向过程)<br>PDO<br>MySQLi Installation<br>Linux 和 Windows: 在 php5 mysql 包安装时 MySQLi 扩展多事情况下是自动安装的。<br>安装详细信息，请查看： <a target="_blank" rel="noopener" href="http://php.net/manual/en/mysqli.installation.php">http://php.net/manual/en/mysqli.installation.php</a><br>PDO 安装<br>For 安装详细信息，请查看： <a target="_blank" rel="noopener" href="http://php.net/manual/en/pdo.installation.php">http://php.net/manual/en/pdo.installation.php</a><br>连接 MySQL<br>在我们访问 MySQL 数据库前，我们需要先连接到数据库服务器：</p>
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// 创建连接
+$conn = new mysqli($servername, $username, $password);
+
+// 检测连接
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+?>
+
+<p>面向过程</p>
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// 创建连接
+$conn = mysqli_connect($servername, $username, $password);
+
+// 检测连接
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+?>
+
+<p>PDO<br>&lt;?php<br>$servername &#x3D; “localhost”;<br>$username &#x3D; “username”;<br>$password &#x3D; “password”;</p>
+<p>try {<br>    $conn &#x3D; new PDO(“mysql:host&#x3D;$servername;dbname&#x3D;myDB”, $username, $password);<br>    echo “Connected successfully”;<br>    }<br>catch(PDOException $e)<br>    {<br>    echo $e-&gt;getMessage();<br>    }<br>?&gt;</p>
+<p>关闭连接<br>连接在脚本执行完后会自动关闭。你也可以使用以下代码来关闭连接：<br>实例 (MySQLi - 面向对象)<br>$conn-&gt;close();<br>实例 (MySQLi - 面向过程)<br>mysqli_close($conn);<br>实例 (PDO)<br>$conn &#x3D; null;<br>现在，你已经知道如何将 MySQL 数据库连接到 PHP 了，接下来，你应该了解 PHP 是如何创建数据库的！<br>PHP 创建 MySQL 表<br>在 PHP 中创建完数据库之后，我们需要在数据库中创建一个或者多个的数据表。<br>一个数据表有一个唯一名称，并有行和列组成。</p>
+<p>使用 MySQLi 和 PDO 创建 MySQL 表<br>CREATE TABLE 语句用于创建 MySQL 表。</p>
+<p>创建表前，我们需要使用 use myDB 来选择要操作的数据库：</p>
+<p>use myDB;<br>我们将创建一个名为 “MyGuests” 的表，有 5 个列： “id”, “firstname”, “lastname”, “email” 和 “reg_date”:</p>
+<p>CREATE TABLE MyGuests (<br>id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br>firstname VARCHAR(30) NOT NULL,<br>lastname VARCHAR(30) NOT NULL,<br>email VARCHAR(50),<br>reg_date TIMESTAMP<br>)<br>上表中的注意事项:</p>
+<p>数据类型指定列可以存储什么类型的数据。完整的数据类型请参考我们的 数据类型参考手册。</p>
+<p>在设置了数据类型后，你可以为每个列指定其他选项的属性：</p>
+<p>NOT NULL - 每一行都必须含有值（不能为空），null 值是不允许的。</p>
+<p>DEFAULT value - 设置默认值</p>
+<p>UNSIGNED - 使用无符号数值类型，0 及正数</p>
+<p>AUTO INCREMENT - 设置 MySQL 字段的值在新增记录时每次自动增长 1</p>
+<p>PRIMARY KEY - 设置数据表中每条记录的唯一标识。 通常列的 PRIMARY KEY 设置为 ID 数值，与AUTO_INCREMENT 一起使用。</p>
+<p>每个表都应该有一个主键(本列为 “id” 列)，主键必须包含唯一的值。</p>
+<p>以下实例展示了如何在 PHP 中创建表：</p>
+<p>实例 (MySQLi - 面向对象)<br>&lt;?php<br>$servername &#x3D; “localhost”;<br>$username &#x3D; “username”;<br>$password &#x3D; “password”;<br>$dbname &#x3D; “myDB”;</p>
+<p>&#x2F;&#x2F; 创建连接<br>$conn &#x3D; new mysqli($servername, $username, $password, $dbname);<br>&#x2F;&#x2F; 检测连接<br>if ($conn-&gt;connect_error) {<br>    die(“Connection failed: “ . $conn-&gt;connect_error);<br>}</p>
+<p>&#x2F;&#x2F; sql to create table<br>$sql &#x3D; “CREATE TABLE MyGuests (<br>id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br>firstname VARCHAR(30) NOT NULL,<br>lastname VARCHAR(30) NOT NULL,<br>email VARCHAR(50),<br>reg_date TIMESTAMP<br>)”;</p>
+<p>if ($conn-&gt;query($sql) &#x3D;&#x3D;&#x3D; TRUE) {<br>    echo “Table MyGuests created successfully”;<br>} else {<br>    echo “Error creating table: “ . $conn-&gt;error;<br>}</p>
+<p>$conn-&gt;close();<br>?&gt;</p>
+<p>实例 (MySQLi - 面向过程)<br>&lt;?php<br>$servername &#x3D; “localhost”;<br>$username &#x3D; “username”;<br>$password &#x3D; “password”;<br>$dbname &#x3D; “myDB”;</p>
+<p>&#x2F;&#x2F; 创建连接<br>$conn &#x3D; mysqli_connect($servername, $username, $password, $dbname);<br>&#x2F;&#x2F; 检测连接<br>if (!$conn) {<br>    die(“Connection failed: “ . mysqli_connect_error());<br>}</p>
+<p>&#x2F;&#x2F; sql to create table<br>$sql &#x3D; “CREATE TABLE MyGuests (<br>id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br>firstname VARCHAR(30) NOT NULL,<br>lastname VARCHAR(30) NOT NULL,<br>email VARCHAR(50),<br>reg_date TIMESTAMP<br>)”;</p>
+<p>if (mysqli_query($conn, $sql)) {<br>    echo “Table MyGuests created successfully”;<br>} else {<br>    echo “Error creating table: “ . mysqli_error($conn);<br>}</p>
+<p>mysqli_close($conn);<br>?&gt;</p>
+<p>实例 (PDO)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$servername = &quot;localhost&quot;;</span><br><span class="line">$username = &quot;username&quot;;</span><br><span class="line">$password = &quot;password&quot;;</span><br><span class="line">$dbname = &quot;myDBPDO&quot;;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    $conn = new PDO(&quot;mysql:host=$servername;dbname=$dbname&quot;, $username, $password);</span><br><span class="line">    // set the PDO error mode to exception</span><br><span class="line">    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line"></span><br><span class="line">    // sql to create table</span><br><span class="line">   $sql = &quot;CREATE TABLE MyGuests (</span><br><span class="line">    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,</span><br><span class="line">    firstname VARCHAR(30) NOT NULL,</span><br><span class="line">    lastname VARCHAR(30) NOT NULL,</span><br><span class="line">    email VARCHAR(50),</span><br><span class="line">    reg_date TIMESTAMP</span><br><span class="line">    )&quot;;</span><br><span class="line"></span><br><span class="line">    // use exec() because no results are returned</span><br><span class="line">    $conn-&gt;exec($sql);</span><br><span class="line">    echo &quot;Table MyGuests created successfully&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">catch(PDOException $e)</span><br><span class="line">    &#123;</span><br><span class="line">    echo $sql . &quot;&lt;br&gt;&quot; . $e-&gt;getMessage();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">$conn = null;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>现在，你的 MySQL 数据库已经创建好，并且有了需要的表格，但是这还不够，因为数据表中还没有数据，此时表还只是个架子，所以，我们需要继续完善数据表，为它插入一些数据！</p>
+<p>使用 MySQLi 和 PDO 向 MySQL 插入数据<br>在创建完数据库和表后，我们可以向表中添加数据。</p>
+<p>以下为一些语法规则：</p>
+<p>PHP 中 SQL 查询语句必须使用引号</p>
+<p>在 SQL 查询语句中的字符串值必须加引号</p>
+<p>数值的值不需要引号</p>
+<p>NULL 值不需要引号</p>
+<p>INSERT INTO 语句通常用于向 MySQL 表添加新的记录：    </p>
+<p>INSERT INTO table_name (column1, column2, column3,…)<br>VALUES (value1, value2, value3,…)<br>学习更多关于 SQL 知识，请查看我们的 SQL 教程。</p>
+<p>在前面的几个章节中我们已经创建了表 “MyGuests”，表字段有: “id”, “firstname”, “lastname”, “email” 和 “reg_date”。 现在，让我们开始向表填充数据。</p>
+<p>Note	注意： 如果列设置 AUTO_INCREMENT (如 “id” 列) 或 TIMESTAMP (如 “reg_date” 列),，我们就不需要在 SQL 查询语句中指定值； MySQL 会自动为该列添加值。<br>以下实例向 “MyGuests” 表添加了新的记录:</p>
+<p>实例 (MySQLi - 面向对象)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$servername = &quot;localhost&quot;;</span><br><span class="line">$username = &quot;username&quot;;</span><br><span class="line">$password = &quot;password&quot;;</span><br><span class="line">$dbname = &quot;myDB&quot;;</span><br><span class="line"></span><br><span class="line">// 创建连接</span><br><span class="line">$conn = new mysqli($servername, $username, $password, $dbname);</span><br><span class="line">// 检测连接</span><br><span class="line">if ($conn-&gt;connect_error) &#123;</span><br><span class="line">    die(&quot;Connection failed: &quot; . $conn-&gt;connect_error);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$sql = &quot;INSERT INTO MyGuests (firstname, lastname, email)</span><br><span class="line">VALUES (&#x27;John&#x27;, &#x27;Doe&#x27;, &#x27;john@example.com&#x27;)&quot;;</span><br><span class="line"></span><br><span class="line">if ($conn-&gt;query($sql) === TRUE) &#123;</span><br><span class="line">    echo &quot;New record created successfully&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    echo &quot;Error: &quot; . $sql . &quot;&lt;br&gt;&quot; . $conn-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$conn-&gt;close();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实例 (MySQLi - 面向过程)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$servername = &quot;localhost&quot;;</span><br><span class="line">$username = &quot;username&quot;;</span><br><span class="line">$password = &quot;password&quot;;</span><br><span class="line">$dbname = &quot;myDB&quot;;</span><br><span class="line"></span><br><span class="line">// 创建连接</span><br><span class="line">$conn = mysqli_connect($servername, $username, $password, $dbname);</span><br><span class="line">// 检测连接</span><br><span class="line">if (!$conn) &#123;</span><br><span class="line">    die(&quot;Connection failed: &quot; . mysqli_connect_error());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$sql = &quot;INSERT INTO MyGuests (firstname, lastname, email)</span><br><span class="line">VALUES (&#x27;John&#x27;, &#x27;Doe&#x27;, &#x27;john@example.com&#x27;)&quot;;</span><br><span class="line"></span><br><span class="line">if (mysqli_query($conn, $sql)) &#123;</span><br><span class="line">    echo &quot;New record created successfully&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    echo &quot;Error: &quot; . $sql . &quot;&lt;br&gt;&quot; . mysqli_error($conn);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mysqli_close($conn);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实例 (PDO)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$servername = &quot;localhost&quot;;</span><br><span class="line">$username = &quot;username&quot;;</span><br><span class="line">$password = &quot;password&quot;;</span><br><span class="line">$dbname = &quot;myDBPDO&quot;;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    $conn = new PDO(&quot;mysql:host=$servername;dbname=$dbname&quot;, $username, $password);</span><br><span class="line">    // set the PDO error mode to exception</span><br><span class="line">    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line">    $sql = &quot;INSERT INTO MyGuests (firstname, lastname, email)</span><br><span class="line">    VALUES (&#x27;John&#x27;, &#x27;Doe&#x27;, &#x27;john@example.com&#x27;)&quot;;</span><br><span class="line">    // use exec() because no results are returned</span><br><span class="line">    $conn-&gt;exec($sql);</span><br><span class="line">    echo &quot;New record created successfully&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">catch(PDOException $e)</span><br><span class="line">    &#123;</span><br><span class="line">    echo $sql . &quot;&lt;br&gt;&quot; . $e-&gt;getMessage();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">$conn = null;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>其实，你还可以在 PHP 的 MySQL 数据库中插入多条数据，这将在下面的一节内容中提及。</p>
+<p>PHP MySQL 插入多条数据<br>一般情况下，INSERT 语句只能向 MySQL 数据库添加一条语句，而本文将介绍如何使用函数批量的向数据表插入多条数据。<br>使用 MySQLi 和 PDO 向 MySQL 插入多条数据<br><code>mysqli_multi_query()</code> 函数可用来执行多条SQL语句。</p>
+<p>以下实例向 “MyGuests” 表添加了三条新的记录：</p>
+<p>实例 (MySQLi - 面向对象)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$servername = &quot;localhost&quot;;</span><br><span class="line">$username = &quot;username&quot;;</span><br><span class="line">$password =</span><br><span class="line">&quot;password&quot;;</span><br><span class="line">$dbname =</span><br><span class="line">&quot;myDB&quot;;</span><br><span class="line"></span><br><span class="line">// 创建链接</span><br><span class="line">$conn =</span><br><span class="line">new mysqli($servername, $username, $password, $dbname);</span><br><span class="line"></span><br><span class="line">// 检查链接</span><br><span class="line"></span><br><span class="line">if ($conn-&gt;connect_error) &#123;</span><br><span class="line">die(&quot;Connection failed: &quot; . $conn-&gt;connect_error);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$sql = &quot;INSERT INTO</span><br><span class="line">MyGuests (firstname, lastname, email)</span><br><span class="line"></span><br><span class="line">VALUES (&#x27;John&#x27;, &#x27;Doe&#x27;, &#x27;john@example.com&#x27;);&quot;;</span><br><span class="line"></span><br><span class="line">$sql .= &quot;INSERT INTO</span><br><span class="line">MyGuests (firstname, lastname, email)</span><br><span class="line"></span><br><span class="line">VALUES (&#x27;Mary&#x27;, &#x27;Moe&#x27;, &#x27;mary@example.com&#x27;);&quot;;</span><br><span class="line"></span><br><span class="line">$sql .= &quot;INSERT INTO</span><br><span class="line">MyGuests (firstname, lastname, email)</span><br><span class="line"></span><br><span class="line">VALUES (&#x27;Julie&#x27;, &#x27;Dooley&#x27;, &#x27;julie@example.com&#x27;)&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if ($conn-&gt;multi_query($sql) === TRUE) &#123;</span><br><span class="line">echo &quot;New</span><br><span class="line">records created successfully&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">echo</span><br><span class="line">&quot;Error: &quot; . $sql . &quot;</span><br><span class="line">&quot; . $conn-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$conn-&gt;close();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>Note	请注意，每个SQL语句必须用分号隔开。</p>
+<p>实例 (MySQLi - 面向过程)<br>&lt;?php<br>$servername &#x3D; “localhost”;<br>$username &#x3D; “username”;<br>$password &#x3D;<br>“password”;<br>$dbname &#x3D;<br>“myDB”;</p>
+<p>&#x2F;&#x2F; 创建链接<br>$conn &#x3D; mysqli_connect($servername, $username, $password,<br>$dbname);</p>
+<p>&#x2F;&#x2F; 检查链接</p>
+<p>if (!$conn) {<br>die(“Connection<br>failed: “ . mysqli_connect_error());<br>}</p>
+<p>$sql &#x3D; “INSERT INTO<br>MyGuests (firstname, lastname, email)</p>
+<p>VALUES (‘John’, ‘Doe’, ‘<a href="mailto:&#x6a;&#111;&#104;&#x6e;&#x40;&#101;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#99;&#x6f;&#x6d;">&#x6a;&#111;&#104;&#x6e;&#x40;&#101;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#99;&#x6f;&#x6d;</a>‘);”;</p>
+<p>$sql .&#x3D; “INSERT INTO<br>MyGuests (firstname, lastname, email)</p>
+<p>VALUES (‘Mary’, ‘Moe’, ‘<a href="mailto:&#x6d;&#97;&#114;&#121;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;">&#x6d;&#97;&#114;&#121;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#x6f;&#109;</a>‘);”;</p>
+<p>$sql .&#x3D; “INSERT INTO<br>MyGuests (firstname, lastname, email)</p>
+<p>VALUES (‘Julie’, ‘Dooley’, ‘<a href="mailto:&#106;&#117;&#108;&#105;&#x65;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#106;&#117;&#108;&#105;&#x65;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a>‘)”;</p>
+<p>if (mysqli_multi_query($conn, $sql)) {<br>echo “New<br>records<br>created successfully”;<br>} else {<br>echo “Error: “<br>. $sql . “<br>“ . mysqli_error($conn);<br>}</p>
+<p>mysqli_close($conn);<br>?&gt;</p>
+<p>实例 (PDO)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$servername = &quot;localhost&quot;;</span><br><span class="line">$username = &quot;username&quot;;</span><br><span class="line"></span><br><span class="line">$password = &quot;password&quot;;</span><br><span class="line">$dbname =</span><br><span class="line">&quot;myDBPDO&quot;;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">$conn = new PDO(&quot;mysql:host=$servername;dbname=$dbname&quot;,</span><br><span class="line">$username, $password);</span><br><span class="line"></span><br><span class="line">// set the PDO error mode to exception</span><br><span class="line">$conn-&gt;setAttribute(PDO::ATTR_ERRMODE,</span><br><span class="line">PDO::ERRMODE_EXCEPTION);</span><br><span class="line"></span><br><span class="line">// 开始事务</span><br><span class="line"></span><br><span class="line">$conn-&gt;beginTransaction();</span><br><span class="line">// SQL 语句</span><br><span class="line"></span><br><span class="line">$conn-&gt;exec(&quot;INSERT INTO MyGuests (firstname, lastname, email)</span><br><span class="line"></span><br><span class="line">VALUES (&#x27;John&#x27;, &#x27;Doe&#x27;, &#x27;john@example.com&#x27;)&quot;);</span><br><span class="line"></span><br><span class="line">$conn-&gt;exec(&quot;INSERT INTO MyGuests (firstname, lastname, email)</span><br><span class="line"></span><br><span class="line">VALUES (&#x27;Mary&#x27;, &#x27;Moe&#x27;, &#x27;mary@example.com&#x27;)&quot;);</span><br><span class="line"></span><br><span class="line">$conn-&gt;exec(&quot;INSERT INTO MyGuests (firstname, lastname, email)</span><br><span class="line"></span><br><span class="line">VALUES (&#x27;Julie&#x27;, &#x27;Dooley&#x27;, &#x27;julie@example.com&#x27;)&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// commit the transaction</span><br><span class="line">$conn-&gt;commit();</span><br><span class="line"></span><br><span class="line">echo &quot;New records created successfully&quot;;</span><br><span class="line">&#125;</span><br><span class="line">catch(PDOException $e)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">// roll back the transaction if something failed</span><br><span class="line"></span><br><span class="line">$conn-&gt;rollback();</span><br><span class="line"></span><br><span class="line">echo $sql . &quot;</span><br><span class="line">&quot; . $e-&gt;getMessage();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$conn = null;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用预处理语句<br>mysqli 扩展提供了第二种方式用于插入语句。</p>
+<p>我们可以预处理语句及绑定参数。</p>
+<p>mysql 扩展可以不带数据发送语句或查询到mysql数据库。 你可以向列关联或 “绑定” 变量。</p>
+<p>Example (MySQLi 使用预处理语句)<br>&lt;?php<br>$servername &#x3D; “localhost”;<br>$username &#x3D; “username”;<br>$password &#x3D;<br>“password”;<br>$dbname &#x3D;<br>“myDB”;</p>
+<p>&#x2F;&#x2F; Create connection<br>$conn &#x3D;<br>new mysqli($servername, $username, $password, $dbname);</p>
+<p>&#x2F;&#x2F; Check connection</p>
+<p>if ($conn-&gt;connect_error) {<br>die(“Connection failed: “ . $conn-&gt;connect_error);<br>} else {<br>$sql &#x3D; “INSERT INTO<br>MyGuests (firstname, lastname, email) VALUES(?, ?, ?)”;</p>
+<p>&#x2F;&#x2F; 为 mysqli_stmt_prepare() 初始化<br>statement 对象<br>$stmt &#x3D;<br>mysqli_stmt_init($conn);</p>
+<p>&#x2F;&#x2F;预处理语句</p>
+<p>if (mysqli_stmt_prepare($stmt, $sql)) {</p>
+<p>&#x2F;&#x2F; 绑定参数</p>
+<p>mysqli_stmt_bind_param($stmt, ‘sss’, $firstname, $lastname, $email);</p>
+<p>&#x2F;&#x2F; 设置参数并执行</p>
+<p>$firstname &#x3D; ‘John’;<br>$lastname<br>&#x3D; ‘Doe’;<br>$email &#x3D;<br>‘<a href="mailto:&#106;&#x6f;&#104;&#110;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#x6d;">&#106;&#x6f;&#104;&#110;&#x40;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#111;&#x6d;</a>‘;</p>
+<p>mysqli_stmt_execute($stmt);</p>
+<p>$firstname &#x3D; ‘Mary’;<br>$lastname<br>&#x3D; ‘Moe’;<br>$email &#x3D;<br>‘<a href="mailto:&#109;&#x61;&#114;&#121;&#64;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#109;&#x61;&#114;&#121;&#64;&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;</a>‘;</p>
+<p>mysqli_stmt_execute($stmt);</p>
+<p>$firstname &#x3D; ‘Julie’;</p>
+<p>$lastname &#x3D; ‘Dooley’;<br>$email &#x3D;<br>‘<a href="mailto:&#x6a;&#x75;&#x6c;&#x69;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;">&#x6a;&#x75;&#x6c;&#x69;&#101;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;</a>‘;</p>
+<p>mysqli_stmt_execute($stmt);<br>}<br>}<br>?&gt;</p>
+<p>我们可以看到以上实例中使用模块化来处理问题。我们可以通过创建代码块实现更简单的读取和管理。</p>
+<p>注意参数的绑定。让我们看下 mysqli_stmt_bind_param() 中的代码：</p>
+<p>mysqli_stmt_bind_param($stmt, ‘sss’, $firstname, $lastname, $email);<br>该函数绑定参数查询并将参数传递给数据库。第二个参数是 “sss” 。以下列表展示了参数的类型。 s 字符告诉 mysql 参数是字符串。</p>
+<p>可以是以下四种参数：</p>
+<p>i - integer</p>
+<p>d - double</p>
+<p>s - string</p>
+<p>b - BLOB</p>
+<p>每个参数必须指定类型，来保证数据的安全性。通过类型的判断可以减少SQL注入漏洞带来的风险。</p>
+<p>PHP MySQL 预处理语句<br>MySQL 从4.1版本开始提供了一种名为预处理语句（prepared statement）的机制。<br>MySQL 预处理语句不仅大大减少了需要传输的数据量，还提高了命令的处理效率。<br>预处理语句对于防止 MySQL 注入是非常有用的。</p>
+<p>预处理语句及绑定参数<br>预处理语句用于执行多个相同的 SQL 语句，并且执行效率更高。</p>
+<p>预处理语句的工作原理如下：</p>
+<p>预处理：创建 SQL 语句模板并发送到数据库。预留的值使用参数 “?” 标记 。例如：INSERT INTO MyGuests (firstname, lastname, email) VALUES(?, ?, ?)</p>
+<p>数据库解析，编译，对SQL语句模板执行查询优化，并存储结果不输出</p>
+<p>执行：最后，将应用绑定的值传递给参数（”?” 标记），数据库执行语句。应用可以多次执行语句，如果参数的值不一样。</p>
+<p>相比于直接执行SQL语句，预处理语句有两个主要优点：</p>
+<p>预处理语句大大减少了分析时间，只做了一次查询（虽然语句多次执行）</p>
+<p>绑定参数减少了服务器带宽，你只需要发送查询的参数，而不是整个语句</p>
+<p>预处理语句针对SQL注入是非常有用的，因为 参数值发送后使用不同的协议，保证了数据的合法性。</p>
+<p>MySQLi 预处理语句<br>以下实例在 MySQLi 中使用了预处理语句，并绑定了相应的参数:</p>
+<p>实例 (MySQLi 使用预处理语句)<br>&lt;?php<br>$servername &#x3D; “localhost”;<br>$username &#x3D; “username”;<br>$password &#x3D; “password”;<br>$dbname &#x3D; “myDB”;</p>
+<p>&#x2F;&#x2F; 创建连接<br>$conn &#x3D; new mysqli($servername, $username, $password, $dbname);</p>
+<p>&#x2F;&#x2F; 检测连接<br>if ($conn-&gt;connect_error) {<br>    die(“Connection failed: “ . $conn-&gt;connect_error);<br>}</p>
+<p>&#x2F;&#x2F; prepare and bind<br>$stmt &#x3D; $conn-&gt;prepare(“INSERT INTO MyGuests (firstname, lastname, email) VALUES(?, ?, ?)”);<br>$stmt-&gt;bind_param(“sss”, $firstname, $lastname, $email);</p>
+<p>&#x2F;&#x2F; 设置参数并执行<br>$firstname &#x3D; “John”;<br>$lastname &#x3D; “Doe”;<br>$email &#x3D; “<a href="mailto:&#106;&#111;&#x68;&#x6e;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;">&#106;&#111;&#x68;&#x6e;&#x40;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;</a>“;<br>$stmt-&gt;execute();</p>
+<p>$firstname &#x3D; “Mary”;<br>$lastname &#x3D; “Moe”;<br>$email &#x3D; “<a href="mailto:&#x6d;&#97;&#x72;&#x79;&#64;&#x65;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;">&#x6d;&#97;&#x72;&#x79;&#64;&#x65;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;</a>“;<br>$stmt-&gt;execute();</p>
+<p>$firstname &#x3D; “Julie”;<br>$lastname &#x3D; “Dooley”;<br>$email &#x3D; “<a href="mailto:&#106;&#x75;&#108;&#105;&#x65;&#x40;&#x65;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#109;">&#106;&#x75;&#108;&#105;&#x65;&#x40;&#x65;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#109;</a>“;<br>$stmt-&gt;execute();</p>
+<p>echo “New records created successfully”;</p>
+<p>$stmt-&gt;close();<br>$conn-&gt;close();<br>?&gt;</p>
+<p>解析以下实例的每行代码:</p>
+<p>“INSERT INTO MyGuests (firstname, lastname, email) VALUES(?, ?, ?)”<br>在 SQL 语句中，我们使用了问号 (?)，在此我们可以将问号替换为整型，字符串，双精度浮点型和布尔值。</p>
+<p>接下来，让我们来看下 bind_param() 函数：</p>
+<p>$stmt-&gt;bind_param(“sss”, $firstname, $lastname, $email);<br>该函数绑定了 SQL 的参数，且告诉数据库参数的值。 “sss” 参数列处理其余参数的数据类型。s 字符告诉数据库该参数为字符串。</p>
+<p>参数有以下四种类型:</p>
+<p>i - integer（整型）</p>
+<p>d - double（双精度浮点型）</p>
+<p>s - string（字符串）</p>
+<p>b - BLOB（布尔值）</p>
+<p>每个参数都需要指定类型。</p>
+<p>通过告诉数据库参数的数据类型，可以降低 SQL 注入的风险。</p>
+<p>Note	注意： 如果你想插入其他数据（用户输入），对数据的验证是非常重要的。</p>
+<p>PDO 中的预处理语句<br>以下实例我们在 PDO 中使用了预处理语句并绑定参数:</p>
+<p>实例 (PDO 使用预处理语句)<br>&lt;?php<br>$servername &#x3D; “localhost”;<br>$username &#x3D; “username”;<br>$password &#x3D; “password”;<br>$dbname &#x3D; “myDBPDO”;</p>
+<p>try {<br>    $conn &#x3D; new PDO(“mysql:host&#x3D;$servername;dbname&#x3D;$dbname”, $username, $password);<br>    &#x2F;&#x2F; 设置 PDO 错误模式为异常<br>    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</p>
+<pre><code>// 预处理 SQL 并绑定参数
+$stmt = $conn-&gt;prepare(&quot;INSERT INTO MyGuests (firstname, lastname, email)
+VALUES (:firstname, :lastname, :email)&quot;);
+$stmt-&gt;bindParam(&#39;:firstname&#39;, $firstname);
+$stmt-&gt;bindParam(&#39;:lastname&#39;, $lastname);
+$stmt-&gt;bindParam(&#39;:email&#39;, $email);
+
+// 插入行
+$firstname = &quot;John&quot;;
+$lastname = &quot;Doe&quot;;
+$email = &quot;john@example.com&quot;;
+$stmt-&gt;execute();
+
+// 插入其他行
+$firstname = &quot;Mary&quot;;
+$lastname = &quot;Moe&quot;;
+$email = &quot;mary@example.com&quot;;
+$stmt-&gt;execute();
+
+// 插入其他行
+$firstname = &quot;Julie&quot;;
+$lastname = &quot;Dooley&quot;;
+$email = &quot;julie@example.com&quot;;
+$stmt-&gt;execute();
+
+echo &quot;New records created successfully&quot;;
+&#125;
+</code></pre>
+<p>catch(PDOException $e)<br>    {<br>    echo $sql . “<br>“ . $e-&gt;getMessage();<br>    }<br>$conn &#x3D; null;<br>?&gt;<br>PHP MySQL 读取数据<br>当 PHP 连接到 MySQL 数据库后，需要向数据库读取数据？那么怎么读取呢？一起来看看。<br>从 MySQL 数据库读取数据<br>SELECT 语句用于从数据表中读取数据:</p>
+<p>SELECT column_name(s) FROM table_name<br>我们可以使用 * 号来读取所有数据表中的字段：</p>
+<p>SELECT * FROM table_name<br>如需学习更多关于 SQL 的知识，请访问我们的 SQL 教程。</p>
+<p>以下实例中我们从表 MyGuests 读取了 id, firstname 和 lastname 列的数据并显示在页面上：</p>
+<p>实例 (MySQLi - 面向对象)<br>&lt;?php<br>$servername &#x3D; “localhost”;<br>$username &#x3D; “username”;<br>$password &#x3D; “password”;<br>$dbname &#x3D; “myDB”;</p>
+<p>&#x2F;&#x2F; 创建连接<br>$conn &#x3D; mysqli_connect($servername, $username, $password, $dbname);<br>&#x2F;&#x2F; 检测连接<br>if ($conn-&gt;connect_error) {<br>    die(“Connection failed: “ . $conn-&gt;connect_error);<br>}</p>
+<p>$sql &#x3D; “SELECT id, firstname, lastname FROM MyGuests”;<br>$result &#x3D; $conn-&gt;query($sql);</p>
+<p>if ($result-&gt;num_rows &gt; 0) {<br>    &#x2F;&#x2F; 输出每行数据<br>    while($row &#x3D; $result-&gt;fetch_assoc()) {<br>        echo “id: “. $row[“id”]. “ - Name: “. $row[“firstname”]. “ “ . $row[“lastname”]. “<br>“;<br>    }<br>} else {<br>    echo “0 results”;<br>}</p>
+<p>mysqli_close($conn);<br>?&gt;</p>
+<p>以下实例读取了 MyGuests 表的所有记录并显示在 HTML 表格中：</p>
+<p>实例 (PDO)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;&lt;table style=&#x27;border: solid 1px black;&#x27;&gt;&quot;;</span><br><span class="line">echo &quot;&lt;tr&gt;&lt;th&gt;Id&lt;/th&gt;&lt;th&gt;Firstname&lt;/th&gt;&lt;th&gt;Lastname&lt;/th&gt;&lt;th&gt;Email&lt;/th&gt;&lt;th&gt;Reg date&lt;/th&gt;&lt;/tr&gt;&quot;;</span><br><span class="line"></span><br><span class="line">class TableRows extends RecursiveIteratorIterator &#123;</span><br><span class="line">    function __construct($it) &#123;</span><br><span class="line">        parent::__construct($it, self::LEAVES_ONLY);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function current() &#123;</span><br><span class="line">        return &quot;&lt;td style=&#x27;width: 150px; border: 1px solid black;&#x27;&gt;&quot; . parent::current(). &quot;&lt;/td&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function beginChildren() &#123;</span><br><span class="line">        echo &quot;&lt;tr&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function endChildren() &#123;</span><br><span class="line">        echo &quot;&lt;/tr&gt;&quot; . &quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$servername = &quot;localhost&quot;;</span><br><span class="line">$username = &quot;username&quot;;</span><br><span class="line">$password = &quot;password&quot;;</span><br><span class="line">$dbname = &quot;myDBPDO&quot;;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    $conn = new PDO(&quot;mysql:host=$servername;dbname=$dbname&quot;, $username, $password);</span><br><span class="line">    $conn-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span><br><span class="line">    $stmt = $conn-&gt;prepare(&quot;SELECT * FROM MyGuests&quot;);</span><br><span class="line">    $stmt-&gt;execute();</span><br><span class="line"></span><br><span class="line">    // 设置结果集为关联数组</span><br><span class="line">    $result = $stmt-&gt;setFetchMode(PDO::FETCH_ASSOC);</span><br><span class="line"></span><br><span class="line">    foreach(new TableRows(new RecursiveArrayIterator($stmt-&gt;fetchAll())) as $k=&gt;$v) &#123;</span><br><span class="line">        echo $v;</span><br><span class="line">    &#125;</span><br><span class="line">    $dsn = null;</span><br><span class="line">    &#125;</span><br><span class="line">catch(PDOException $e)</span><br><span class="line">    &#123;</span><br><span class="line">    echo &quot;Error: &quot; . $e-&gt;getMessage();</span><br><span class="line">    &#125;</span><br><span class="line">$conn = null;</span><br><span class="line">echo &quot;&lt;/table&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>PHP MySQL Where 子句<br>通过上一节的内容，你已经可以使用 MySQL 的 SELECT 命令从数据表中获取数据，本节我们可以用 WHERE 命令来筛选出满足条件的结果。<br>WHERE 子句用于过滤记录。</p>
+<p>WHERE 子句<br>WHERE 子句用于提取满足指定标准的的记录。</p>
+<p>语法<br>SELECT column_name(s)<br> FROM table_name<br> WHERE column_name operator value<br>如需学习更多关于 SQL 的知识，请访问我们的 SQL 教程。</p>
+<p>为了让 PHP 执行上面的语句，我们必须使用 mysqli_query() 函数。该函数用于向 MySQL 连接发送查询或命令。</p>
+<p>实例<br>下面的实例将从 “Persons” 表中选取所有 FirstName&#x3D;’Peter’ 的行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"> $con=mysqli_connect(&quot;example.com&quot;,&quot;peter&quot;,&quot;abc123&quot;,&quot;my_db&quot;);</span><br><span class="line"> // Check connection</span><br><span class="line"> if (mysqli_connect_errno())</span><br><span class="line"> &#123;</span><br><span class="line"> echo &quot;Failed to connect to MySQL: &quot; . mysqli_connect_error();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> $result = mysqli_query($con,&quot;SELECT * FROM Persons</span><br><span class="line"> WHERE FirstName=&#x27;Peter&#x27;&quot;);</span><br><span class="line"></span><br><span class="line"> while($row = mysqli_fetch_array($result))</span><br><span class="line"> &#123;</span><br><span class="line"> echo $row[&#x27;FirstName&#x27;] . &quot; &quot; . $row[&#x27;LastName&#x27;];</span><br><span class="line"> echo &quot;&lt;br&gt;&quot;;</span><br><span class="line"> &#125;</span><br><span class="line"> ?&gt;</span><br></pre></td></tr></table></figure>
+<p>以上代码将输出：</p>
+<p>Peter Griffin<br>在下一节内容中，我们会讲解如何对筛选出来的记录进行排序。</p>
+<p>PHP MySQL Order By 关键词<br>你可以对 MySQL 数据库中的记录集进行排序，具体请阅读本节内容。<br>ORDER BY 关键词用于对记录集中的数据进行排序。</p>
+<p>ORDER BY 关键词<br>ORDER BY 关键词用于对记录集中的数据进行排序。</p>
+<p>ORDER BY 关键词默认对记录进行升序排序。</p>
+<p>如果你想降序排序，请使用 DESC 关键字。</p>
+<p>语法</p>
+<p>SELECT column_name(s)</p>
+<p>FROM table_name</p>
+<p>ORDER BY column_name(s) ASC|DESC</p>
+<p>如需学习更多关于 SQL 的知识，请访问我们的 SQL 教程。</p>
+<p>实例<br>下面的实例选取 “Persons” 表中存储的所有数据，并根据 “Age” 列对结果进行排序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"> $con=mysqli_connect(&quot;example.com&quot;,&quot;peter&quot;,&quot;abc123&quot;,&quot;my_db&quot;);</span><br><span class="line"> // Check connection</span><br><span class="line"> if (mysqli_connect_errno())</span><br><span class="line"> &#123;</span><br><span class="line"> echo &quot;Failed to connect to MySQL: &quot; . mysqli_connect_error();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> $result = mysqli_query($con,&quot;SELECT * FROM Persons ORDER BY age&quot;);</span><br><span class="line"></span><br><span class="line"> while($row = mysqli_fetch_array($result))</span><br><span class="line"> &#123;</span><br><span class="line"> echo $row[&#x27;FirstName&#x27;];</span><br><span class="line"> echo &quot; &quot; . $row[&#x27;LastName&#x27;];</span><br><span class="line"> echo &quot; &quot; . $row[&#x27;Age&#x27;];</span><br><span class="line"> echo &quot;&lt;br&gt;&quot;;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> mysqli_close($con);</span><br><span class="line"> ?&gt;</span><br></pre></td></tr></table></figure>
+<p>以上结果将输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Glenn Quagmire 33</span><br><span class="line">        </span><br><span class="line">Peter Griffin 35</span><br></pre></td></tr></table></figure>
+
+<p>根据两列进行排序<br>可以根据多个列进行排序。当按照多个列进行排序时，只有第一列的值相同时才使用第二列：</p>
+<p>SELECT column_name(s)<br>FROM table_name<br>ORDER BY column1, column2<br>PHP MySQL Update<br>对于 MySQL 数据库中的数据你可以根据需要进行更新！<br>UPDATE 语句用于中修改数据库表中的数据。</p>
+<p>更新数据库中的数据<br>UPDATE 语句用于更新数据库表中已存在的记录。</p>
+<p>语法<br>UPDATE table_name<br> SET column1&#x3D;value, column2&#x3D;value2,…<br> WHERE some_column&#x3D;some_value</p>
+<p>注释：请注意 UPDATE 语法中的 WHERE 子句。WHERE 子句规定了哪些记录需要更新。如果您想省去 WHERE 子句，所有的记录都会被更新！</p>
+<p>如需学习更多关于 SQL 的知识，请访问我们的 SQL 教程。</p>
+<p>为了让 PHP 执行上面的语句，我们必须使用 mysqli_query() 函数。该函数用于向 MySQL 连接发送查询或命令。</p>
+<p>实例<br>在本教程的前面章节中，我们创建了一个名为 “Persons” 的表，如下所示：</p>
+<p>FirstName	LastName	Age<br>Peter	Griffin	35<br>Glenn	Quagmire	33<br>下面的例子更新 “Persons” 表的一些数据：</p>
+<?php
+ $con=mysqli_connect("example.com","peter","abc123","my_db");
+ // Check connection
+ if (mysqli_connect_errno())
+ {
+ echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ }
+
+ mysqli_query($con,"UPDATE Persons SET Age=36
+ WHERE FirstName='Peter' AND LastName='Griffin'");
+
+ mysqli_close($con);
+ ?>
+<p>在这次更新后，”Persons” 表如下所示：</p>
+<p>FirstName	LastName	Age<br>Peter	Griffin	36<br>Glenn	Quagmire	33<br>PHP MySQL Delete<br>如果你不再需要 MySQL 数据库中的某条记录了，那么你也可以根据需要将其删除！<br>DELETE 语句用于从数据库表中删除行。</p>
+<p>删除数据库中的数据<br>DELETE FROM 语句用于从数据库表中删除记录。</p>
+<p>语法<br>DELETE FROM table_name<br> WHERE some_column &#x3D; some_value</p>
+<p>注释：请注意 DELETE 语法中的 WHERE 子句。WHERE 子句规定了哪些记录需要删除。如果您想省去 WHERE 子句，所有的记录都会被删除！</p>
+<p>如需学习更多关于 SQL 的知识，请访问我们的 SQL 教程。</p>
+<p>为了让 PHP 执行上面的语句，我们必须使用 mysqli_query() 函数。该函数用于向 MySQL 连接发送查询或命令。</p>
+<p>实例<br>请看下面的 “Persons” 表：</p>
+<p>FirstName	LastName	Age<br>Peter	Griffin	35<br>Glenn	Quagmire	33<br>下面的实例删除 “Persons” 表中所有 LastName&#x3D;’Griffin’ 的记录：</p>
+<?php
+ $con=mysqli_connect("example.com","peter","abc123","my_db");
+ // Check connection
+ if (mysqli_connect_errno())
+ {
+ echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ }
+
+ mysqli_query($con,"DELETE FROM Persons WHERE LastName='Griffin'");
+
+ mysqli_close($con);
+ ?>
+<p>在这次删除后，”Persons” 表如下所示：</p>
+<p>FirstName|LastName|<br>–|:–:|–:<br>Glenn|Quagmire|33</p>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

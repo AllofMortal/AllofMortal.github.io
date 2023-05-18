@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            Linux基础命令
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="Linux-基础"><a href="#Linux-基础" class="headerlink" title="Linux 基础"></a>Linux 基础</h1><h2 id="1-Linux-介绍"><a href="#1-Linux-介绍" class="headerlink" title="1. Linux 介绍"></a>1. Linux 介绍</h2><h3 id="1-1-Linux-的介绍"><a href="#1-1-Linux-的介绍" class="headerlink" title="1.1 Linux 的介绍"></a>1.1 Linux 的介绍</h3><p>Linux，全称GNU&#x2F;Linux，是一种免费使用和自由传播的类UNIX操作系统，其内核由林纳斯·本纳第克特·托瓦兹于1991年10月5日首次发布，它主要受到Minix和Unix思想的启发，是一个基于POSIX和Unix的多用户、多任务、支持多线程和多CPU的操作系统。​Linux继承了Unix以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统。它能运行主要的Unix工具软件、应用程序和网络协议。它支持32位和64位硬件。​严格来讲，Linux这个词本身只表示Linux内核，但实际上人们已经习惯了用Linux来形容整个基于Linux内核，并且使用GNU 工程各种工具和数据库的操作系统。</p>
+<h3 id="1-2-Linux-的发行版"><a href="#1-2-Linux-的发行版" class="headerlink" title="1.2 Linux 的发行版"></a>1.2 Linux 的发行版</h3><p>Linux有上百种不同的发行版，其中大体分为两类，一类是商业公司维护的发行版本，一类是社区组织维护的发行版本。如基于商业开发的Red Hat Enterprise Linux、SUSE、Oracle Linux，和基于社区开发的debian、archlinux等。前者以著名的Redhat（RHEL）为代表，后者以Debian为代表。</p>
+<p>Redhat，应该称为Redhat系列，包括RHEL(Redhat Enterprise Linux，也就是所谓的Redhat Advance Server，收费版本)、Fedora Core(由原来的Redhat桌面版本发展而来，免费版本)、CentOS(RHEL的社区克隆版本，免费)。Redhat应该说是在国内使用人群最多的Linux版本，甚至有人将Redhat等同于Linux。Redhat系列的包管理方式采用的是基于RPM包的YUM包管理方式，包分发方式是编译好的二进制文件。稳定性方面RHEL和CentOS的稳定性非常好，适合于服务器使用，但是Fedora Core的稳定性较差，最好只用于桌面应用。</p>
+<p>Debian，或者称Debian系列，包括Debian和Ubuntu等，我们所用的kali也属于这个系列。Debian是社区类Linux的典范，是迄今为止最遵循GNU规范的Linux系统。Debian最早由Ian Murdock于1993年创建。Debian最具特色的是apt-get &#x2F; dpkg包管理方式。</p>
+<p>在实际使用中，所感受到的最大差别应是两个体系在安装软件时所用的软件包的安装方式不同，例如redhat的yum与RPM，debian的apt-get与dpkg。有关这方面知识我们会在下节课详述。</p>
+<p>除了这具有代表性的两大体系外，Linux发行版还有其他体系，例如Slackware系的SUSE Linux。我们的教程主要使用的是redhat与debian系。</p>
+<h3 id="2-Linux的文件结构"><a href="#2-Linux的文件结构" class="headerlink" title="2. Linux的文件结构"></a>2. Linux的文件结构</h3><p>在Linux系统中有一个重要的概念：一切都是文件。 其实这是UNIX哲学的一个体现，而Linux是重写UNIX而来，所以这个概念也就传承了下来。在UNIX系统中，把一切资源都看作是文件，包括硬件设备。</p>
+<p>在Linux系统中文件后缀是没有作用的，后缀名只是为了能让自己能够更好的区别文件的作用。</p>
+<p>Linux系统中的各类文件被Linux使用目录树进行管理， 所谓的目录树就是以根目录 <code>/</code> 为主，向下呈现分支状的一种文件结构。<br><img src="/Linux%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png" alt="Linux文件结构"></p>
+<p>与Windows 系统不同，Linux 系统没有C盘、D盘、E盘那么多的盘符，只有一个根目录（&#x2F;），所有的文件（资源）都存储在以根目录（&#x2F;）为树根的树形目录结构中。</p>
+<ol>
+<li>这样做最明显的好处是，开发者仅需要使用一套 API 和开发工具即可调取 Linux 系统中绝大部分的资源。举个简单的例子，Linux 中几乎所有读（读文件，读系统状态，读 socket，读PIPE）的操作都可以用read函数来进行；几乎所有更改（更改文件，更改系统参数，写 socket，写 PIPE）的操作都可以用write函数来进行。</li>
+<li>不利之处在于，使用任何硬件设备都必须与根目录下某一目录执行挂载操作，否则无法使用。我们知道，本身Linux具有一个以根目录为树根的文件目录结构，每个设备也同样如此，它们是相互独立的。如果我们想通过Linux上的根目录找到设备文件的目录结构，就必须将这两个文件系统目录合二为一，这就是挂载的真正含义。</li>
+</ol>
+<p>下面介绍Linux根目录下的各个目录：</p>
+<ul>
+<li><code>/bin</code> 目录下包含了用户命令文件，也就是<strong>shell</strong>命令</li>
+<li><code>/boot</code> 包含了系统启动过程中所需要的所有内容</li>
+<li><code>/dev</code> 目录是设备文件或者专有文件的存放位置</li>
+<li><code>/etc</code> 目录包含了系统的配置文件。</li>
+<li><code>/root  /home</code> 用户专有的家目录。一个影虎对自己家目录拥有绝对的控制权</li>
+<li><code>/lib</code> 目录里面存放着共享库和内核模块。在系统的启动阶段和运行根文件系统的各种命令时，都需要用到这些共享库，所以必须与根文件放在一起。</li>
+<li><code>/media</code> 与 <code>/mnt</code> 是常见挂载点。</li>
+<li><code>/opt</code> 目录系统附加软件的存放地址</li>
+<li><code>/sbin</code> 目录必备的系统软件存放处。用户系统维护的软件和某些只限<strong>root</strong>用户使用的命令存储在 <em>&#x2F;sbin &#x2F;usr&#x2F;sbin</em> 以及 <em>&#x2F;usr&#x2F;local&#x2F;sbin</em> 目录下。</li>
+<li><code>/srv</code> 目录某些服务进程启动以后，他们需要读取的数据会放在<strong>srv</strong>目录中</li>
+<li><code>/tmp</code> 目录存放临时文件。任何程序都不用对 <strong>&#x2F;tmp</strong> 目录下的任何文件或目录负责</li>
+<li><code>/var</code> 目录包含着系统中绝大多数的随时变化着的数据，比如系统日志。&#x2F;var的某些内容是不能共享给其他系统的，典型的就是&#x2F;var&#x2F;logs &#x2F;var&#x2F;run。当然某些是可以共享的，如&#x2F;var&#x2F;spool&#x2F;news。</li>
+</ul>
+<h2 id="3-Linux-常用命令总结"><a href="#3-Linux-常用命令总结" class="headerlink" title="3. Linux 常用命令总结"></a>3. Linux 常用命令总结</h2><h3 id="3-1-Linux-的命令格式"><a href="#3-1-Linux-的命令格式" class="headerlink" title="3.1 Linux 的命令格式"></a>3.1 Linux 的命令格式</h3><p>linux命令的格式表现为：命令+选项+对象</p>
+<p><code>COMMAND options arguments</code></p>
+<p>具体说明:<br><strong>COMMAND</strong>: 表示命令的名称, 如 <code>ls</code> 。<br><strong>options</strong>: 定义命令的执行特性，可以有长短两种选项：</p>
+<ul>
+<li>长选项: 用 – 引导,后面跟完整的单词,如 <code>--help</code></li>
+<li>短选项: 用 - 引导,后面跟单个的字符, 如 <code>-a</code></li>
+<li>多个短选项可以组合使用,例如: <code>-h</code> <code>-l</code> <code>-a</code> <code>==</code> -<code>hla</code>， 但是长选项不能组合使用,如 –help后面就不能再跟另外一个单词了。</li>
+</ul>
+<p>options也可以有自己的参数，<strong>注意：选项与选项之间、选项与参数之间、参数与参数之间必须有空格。</strong><br>arguments：表示命令的作用对象，如上述示例中farmsec 就是ls命令的作用对象。<br><strong>在Linux中严格区分大小写。</strong></p>
+<h3 id="3-2-Linux-获取命令帮助的方式"><a href="#3-2-Linux-获取命令帮助的方式" class="headerlink" title="3.2 Linux 获取命令帮助的方式"></a>3.2 Linux 获取命令帮助的方式</h3><p>使用<code>-h</code>,<code>–help</code>和<code>man</code>可以查看命令的帮助文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping -h</span><br><span class="line">cp --help</span><br><span class="line">man cp</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-绝对路径与相对路径"><a href="#3-3-绝对路径与相对路径" class="headerlink" title="3.3 绝对路径与相对路径"></a>3.3 绝对路径与相对路径</h3><p>绝对路径就是你的主页上的文件或目录在硬盘上真正的路径，linux的绝对路径是指从根目录说起的。万物起源为<code>/</code>目录 。<br>例如： <code>/dev/somedir/...</code>   <code>/etc/password</code><br>而相对路径则是从当前目录说起: 即 <code>./</code>。例如在当前目录为根的情况下的<code>./usr/bin</code>和<code>usr/bin</code>是一个目录。</p>
+<h3 id="3-4-Tab键的使用"><a href="#3-4-Tab键的使用" class="headerlink" title="3.4 Tab键的使用"></a>3.4 Tab键的使用</h3><p>Tab键的两大作用:</p>
+<ul>
+<li>tab补全：只需输入文件或目录名以及命令的前几个字符，然后按TAB键，如无相重的，完整的文件名或者命令立即自动在命令行出现；如有相重的，再按一下TAB键，系统会列出当前目录下所有以这几个字符开头的名字。</li>
+<li>tab键查看：在命令行下，只需输入例如m，再连续按两次TAB键，系统将列出所有以m开头的命令，(包括自定义的Bshell命令函数)，对查找某些记不清楚的命令特有用。熟练使用tab键可提高工作效率。</li>
+</ul>
+<h3 id="3-5-四个特殊文件名"><a href="#3-5-四个特殊文件名" class="headerlink" title="3.5 四个特殊文件名"></a>3.5 四个特殊文件名</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.    #代表当前目录</span><br><span class="line">..   #代表上一级目录</span><br><span class="line">-    #代表上一个工作的目录</span><br><span class="line">~    #代表家目录（root为/root,其他用户在/home下)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Linux-常用命令"><a href="#4-Linux-常用命令" class="headerlink" title="4. Linux 常用命令"></a>4. Linux 常用命令</h2><p>接下来，我们要开始了解一部分常用Linux命令。你可以选择在上一节搭建好的centos环境中练习命令，远程连接到centos的命令为ssh root@ip。你也可以在kali上使用linux命令，除了打开命令终端的方式，还可使用快捷键以将图形化界面切换为字符界面。按CTRL+ALT+F3至F7，kali将切换至字符界面。按CTRL+ALT+F1至F2，kali将切换回图形化界面。</p>
+<h3 id="4-1-mkdir-命令-make-directory"><a href="#4-1-mkdir-命令-make-directory" class="headerlink" title="4.1 mkdir 命令     (make directory)"></a>4.1 mkdir 命令     (make directory)</h3><p><code>mkdir</code> 命令用于创建目录。<br>用法：<code>mkdir [选项] [目录名] 参数：</code>-p&#96; 创建多级目录，如果目录名称不存在，就创建一个。<br>案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir mortal</span><br><span class="line">mkdir mortal1 mortal2</span><br><span class="line">mkdir -p mortal3/mortral4</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-ls-命令-list-files"><a href="#4-2-ls-命令-list-files" class="headerlink" title="4.2 ls 命令     (list files)"></a>4.2 ls 命令     (list files)</h3><p><code>ls</code> 命令用于显示指定工作目录下之内容（列出指定目录所含之文件及子目录)，ls命令的输出信息可以进行彩色加亮显示，以区分不同类型的文件。<br>用法：&#96;ls [项目] [目录]<br>参数:</p>
+<ul>
+<li><code>-a</code>显示所有文件及目录（**.**开头的隐藏文件也会列出）</li>
+<li><code>l</code>除文件名称外，也将文件型态、权限、拥有者、文件大小等咨询详细列出</li>
+<li><code>-h</code>以人类定义的格式列出文件大小<br>案例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">ls -l</span><br><span class="line">ls -a mortal3</span><br><span class="line">ls -al mortal3</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-3-pwd-命令-print-work-directory"><a href="#4-3-pwd-命令-print-work-directory" class="headerlink" title="4.3 pwd 命令    (print work directory)"></a>4.3 pwd 命令    (print work directory)</h3><p><code>pwd</code>命令以绝对路径的方式显示用户当前工作目录。命令将当前目录的全路径名称（从根目录）写入标准输出。全部目录使用&#x2F;分隔。第一个&#x2F;表示根目录，最后一个目录是当前目录。执行pwd命令可立刻得知您目前所在的工作目录的<strong>绝对路径名称</strong>。<br>用法：<code>pwd</code><br>案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-cd-命令-change-directory"><a href="#4-4-cd-命令-change-directory" class="headerlink" title="4.4 cd 命令     (change directory)"></a>4.4 cd 命令     (change directory)</h3><p><code>cd</code> 命令用于切换当前工作目录<br>用法：<code>cd [目录]</code></p>
+<p>用法：&#96;cd [绝对路径]</p>
+<p>用法：<code>.</code>代表当前目录，<code>..</code>代表上一级目录，<code>cd~</code>用于切换至登录用户家目录。<code>cd-</code>用于回到上一个目录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd .</span><br><span class="line">cd ..</span><br><span class="line">cd ~</span><br><span class="line">cd -</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-touch-命令"><a href="#4-5-touch-命令" class="headerlink" title="4.5 touch 命令"></a>4.5 touch 命令</h3><p><code>touch</code>命令用于创建一个空白的新文件，如果同名文件已存在，则修改其时间属性。</p>
+<p>用法：<code>touch [选项] [文件名]</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch mortal</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-cp-命令-copy-file"><a href="#4-6-cp-命令-copy-file" class="headerlink" title="4.6 cp 命令     (copy file)"></a>4.6 cp 命令     (copy file)</h3><p><code>cp</code>命令主要用于复制文件或目录。<br>用法：&#96;cp [选项] [源文件]<br>参数:</p>
+<ul>
+<li><code>-r</code>: 若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。（递归）</li>
+<li><code>-p</code>: 除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。(保持默认属性)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp mor mortal1</span><br><span class="line">cp /root/mortal/mortal1 mortal111</span><br><span class="line">cp /root/mortal1/mor1 /root/mortal2</span><br><span class="line">cp -r mortal111 mortal3/mortral4</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-mv-命令-move-file"><a href="#4-7-mv-命令-move-file" class="headerlink" title="4.7 mv 命令     (move file)"></a>4.7 mv 命令     (move file)</h3><p><code>mv</code>命令用来为文件或目录改名、或将文件或目录移入其它位置。<br>用法：&#96;mv [选项] [源文件&#x2F;源目录] [目录]<br>参数:</p>
+<ul>
+<li><code>-f</code>: 如果指定移动的源目录或文件与目标的目录或文件同名，不会询问，直接覆盖旧文件。（直接覆盖不询问）</li>
+<li><code>-n</code>: 不要覆盖任何已存在的文件或目录。(不覆盖已存在的文件)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv mortal1 m1</span><br><span class="line">mv m1 mortal111</span><br><span class="line">mv mortal mortal1</span><br></pre></td></tr></table></figure>
+
+<p><code>mv</code>命令的另一种用法是将文件剪切</p>
+<p>&#96;mv [路径&#x2F;文件名] [路径&#x2F;文件名]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv 1.txt /root</span><br><span class="line">mv 2.txt /root/3.txt</span><br><span class="line">mv /root/2.txt /root/1/1.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-文本查看相关命令"><a href="#5-文本查看相关命令" class="headerlink" title="5. 文本查看相关命令"></a>5. 文本查看相关命令</h2><h3 id="5-1-cat-命令-concatenate"><a href="#5-1-cat-命令-concatenate" class="headerlink" title="5.1 cat 命令    (concatenate)"></a>5.1 cat 命令    (concatenate)</h3><p><code>cat</code>命令用于打开文件查看文件内容。<br>用法：&#96;cat [选项] [文件]<br>案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><code>cat -v mortal</code><br>参数：</p>
+<ul>
+<li><code>-v</code>： 除了LFD(换行)和TAB之外所有的控制符，用<code>^</code>和<code>M-</code>显示。</li>
+</ul>
+<h3 id="5-2-echo-命令"><a href="#5-2-echo-命令" class="headerlink" title="5.2 echo 命令"></a>5.2 echo 命令</h3><p><code>echo</code>命令用于输出指定内容<br>用法：<code>echo &#39;[文本]&#39;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo `123`</span><br></pre></td></tr></table></figure>
+
+<p>利用<code>&gt;&gt;</code>和<code>&gt;</code>也可以将输出内容写入到文件中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;     #为覆盖</span><br><span class="line">&gt;&gt;    #为追加</span><br></pre></td></tr></table></figure>
+<p>使用&gt;&gt;和&gt;可以将命令的输出结果保存于文件中。<br><code>cat /etc/passwd &gt;1.txt</code></p>
+<h3 id="5-3-more-命令"><a href="#5-3-more-命令" class="headerlink" title="5.3 more 命令"></a>5.3 more 命令</h3><p><code>more</code> 命令类似 <code>cat</code> ，不过会以一页一页的形式显示，更方便使用者逐页阅读，而最基本的指令就是，按空格键<code>Space</code>就往下一页显示，按<code>Enier</code>键显示文本的下一行内容,按 <code>b</code>键就会往回(back)一页显示，按q键退出。<br>用法：<code>more [选项] [文件]</code><br>案例：<br><code>more /etc/passwd</code></p>
+<h3 id="5-4-less-命令"><a href="#5-4-less-命令" class="headerlink" title="5.4 less 命令"></a>5.4 less 命令</h3><p><code>less</code> 与<code>more</code>类似，用less命令显示文件时，用<code>PageUp</code>键向上翻页，用<code>PageDown</code>键向下翻页。要退出less程序按<code>q</code>键。<br>用法：<code>less [选项] [文件] 案例： </code>less &#x2F;etc&#x2F;passwd&#96;</p>
+<h3 id="5-5-head-命令"><a href="#5-5-head-命令" class="headerlink" title="5.5 head 命令"></a>5.5 head 命令</h3><p><code>head</code>命令用于查看文件的开头的内容。在默认情况下，head命令显示文件的头10行内容<br>用法：&#96;head [选项] [文件]<br>参数：</p>
+<ul>
+<li><code>-n&lt;行数&gt;</code> 显示的行数<br>案例：显示<strong>passwd</strong>文件前两行<br><code>head -n 2 /etc/passwd</code></li>
+</ul>
+<h3 id="5-6-tail-命令"><a href="#5-6-tail-命令" class="headerlink" title="5.6 tail 命令"></a>5.6 tail 命令</h3><p><code>tail</code> 文件中的尾部内容。tail命令默认在屏幕上显示指定文件的末尾10行，如果给定的文件不止一个，则在显示的每个文件前面加一个文件名标题<br>用法：&#96;tail [选项] [文件]</p>
+<ul>
+<li><p>参数: <code>-n &lt;行数&gt;</code> 显示的行数<br>案例： 查看passwd文件尾部三行内容。<br><code>tail -n /etc/passwd</code></p>
+</li>
+<li><p>参数：<code>-f</code>循环读取<br>案例：<br><code>tail -f /var/log/secure</code><br><code>/var/log/secure</code>是系统远程登录日志，我们可以通过<code>tail -f</code>命令监控日志变化情况。</p>
+</li>
+</ul>
+<p>随后我们另开一个命令终端远程登录此台计算机。</p>
+<p>可以看到<code>tail -f</code>命令监控到了日志变化。<code>Ctrl+c</code>取消命令。</p>
+<p>使用管道操作符<code>|</code>可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。</p>
+<p>案例： 只显示passwd文本的 20-25 行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">head -n 25 /etc/passwd|nl| tail -n 5</span><br><span class="line">cat /etc/passwd|nl|head -n 25|tail -n 6</span><br></pre></td></tr></table></figure>
+<p><img src="/%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E6%8C%87%E5%AE%9A%E8%A1%8C.png" alt="显示文件指定行"></p>
+<h3 id="5-7-wc-命令-word-count"><a href="#5-7-wc-命令-word-count" class="headerlink" title="5.7 wc 命令     (word count)"></a>5.7 wc 命令     (word count)</h3><p><code>wc</code>命令用来计算数字。利用wc指令我们可以计算文件的Byte数、字数或是列数。<br>用法：<code>wc [选项] [文件]</code><br>参数：</p>
+<ul>
+<li><code>-l</code>显示行数</li>
+<li><code>-c</code>显示Bytes数</li>
+<li><code>-w</code>显示字数<br>案例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wc -l /etc/passwd</span><br><span class="line">wc -c /etc/passwd</span><br><span class="line">wc -w /etc/passwd</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="5-8-du-Disk-Usage"><a href="#5-8-du-Disk-Usage" class="headerlink" title="5.8 du      (Disk Usage)"></a>5.8 du      (Disk Usage)</h3><p><code>du</code>命令可查看文件使用空间<br>参数：</p>
+<ul>
+<li>-h 以K, M，G为单位，提高信息的可读性。<br>案例：<br><code>du -h /etc/passwd</code></li>
+</ul>
+<h3 id="5-9-df-命令-disk-free"><a href="#5-9-df-命令-disk-free" class="headerlink" title="5.9 df 命令     (disk free)"></a>5.9 df 命令     (disk free)</h3><p><code>df</code>命令用于显示磁盘分区上的可使用的磁盘空间。默认显示单位为KB。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。<br>用法：&#96;df [选项]<br>参数：</p>
+<ul>
+<li><code>-h</code> 使用人类可读的格式<br>案例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="5-10-diff-命令"><a href="#5-10-diff-命令" class="headerlink" title="5.10 diff 命令"></a>5.10 diff 命令</h3><p><code>diff</code> 命令用于比较文件的差异。<br><code>diff</code>以逐行的方式，比较文本文件的异同处。如果指定要比较目录，则 diff 会比较目录中相同文件名的文件，但不会比较其中子目录。<br>案例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff 1.txt 2.txt</span><br></pre></td></tr></table></figure>
+<p>diff命令所参考的不是第一个文件，而是第二个文件，它的输出信息有以下几种字符：</p>
+<ul>
+<li>c:表示必须做一些修改才能使两个文件相同</li>
+<li>a: 表示必须添加一些内容才能使两个文件相同</li>
+<li>d: 表示必须删除一些内容才能使两个文件相同</li>
+</ul>
+<h2 id="6-输入-x2F-输出重定向"><a href="#6-输入-x2F-输出重定向" class="headerlink" title="6. 输入&#x2F;输出重定向"></a>6. 输入&#x2F;输出重定向</h2><p>大多数系统命令从您的终端获取输入并将结果输出发送回您的终端。</p>
+<p>通常用于标准输出的命令的输出可以很容易地转移到文件中。此功能称为输出重定向。</p>
+<p>正如命令的输出可以重定向到文件一样，命令的输入也可以从文件重定向。</p>
+<h3 id="6-1-输出重定向"><a href="#6-1-输出重定向" class="headerlink" title="6.1 输出重定向"></a>6.1 输出重定向</h3><p>当我们执行命令时，命令的输出会显示在终端上。但有时，我们需要命令的输出保存在文件中，这时就需要<code>&gt;</code>和<code>&gt;&gt;</code>对命令输出进行重定向。<br><code>&gt;</code>符号，是将命令的输出存入文件，并覆盖文件原本的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls &gt; 1.txt</span><br><span class="line">cat /etc/passwd &gt; 1.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>&gt;&gt;</code>符号，表示将命令输出结果追加入文件，不会覆盖文件内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;1&#x27; &gt;&gt; 1.txt</span><br><span class="line">echo &#x27;2&#x27; &gt;&gt; 2.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-输入重定向"><a href="#6-2-输入重定向" class="headerlink" title="6.2 输入重定向"></a>6.2 输入重定向</h3><p>正如命令的输出可以可重定向到文件，命令的输入也可以重定向到文件。一般使用<code>&lt;</code>和<code>&lt;&lt;</code>，其中<code>&lt;&lt;</code>可以引入多行命令的输入。<br>用法：<code>command1 &lt; file1</code><br>这样，本来需要从键盘获取输入的命令会转移到文件读取内容。<br><strong>注意：输出重定向是大于号(&gt;)，输入重定向是小于号(&lt;)。</strong></p>
+<p>案例：<br>我们需要统计 users 文件的行数,执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wc -l users</span><br><span class="line">    2 users</span><br></pre></td></tr></table></figure>
+<p>也可以将输入重定向到 users 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wc -l &lt; users</span><br><span class="line">       2 </span><br></pre></td></tr></table></figure>
+<p>注意：上面两个例子的结果不同：第一个例子，会输出文件名；第二个不会，因为它仅仅知道从标准输入读取内容。</p>
+<p><code>command1 &lt; infile &gt; outfile</code><br>同时替换输入和输出，执行command1，从文件infile读取内容，然后将输出写入到outfile中。</p>
+<h3 id="6-3-Here-Document"><a href="#6-3-Here-Document" class="headerlink" title="6.3 Here Document"></a>6.3 Here Document</h3><p>Here Document 是 Shell 中的一种特殊的重定向方式，用来将输入重定向到一个交互式 Shell 脚本或程序。</p>
+<p><code>&lt;&lt;</code>，则更为常用一些，它将运算符解释为读取输入的指令，直到找到包含指定分隔符的行。直到包含分隔符的行的所有输入行都被输入到命令的标准输入中。命令形式一般如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">command &lt;&lt; delimiter</span><br><span class="line">    document</span><br><span class="line">delimiter</span><br></pre></td></tr></table></figure>
+<p>它的作用是将两个 delimiter 之间的内容(document) 作为输入传递给 command。</p>
+<p>其中delimiter代表用户定义的分隔符，两个分隔符之间，是输入的多行参数。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wc -l &lt;&lt; EOF</span><br><span class="line">abcd</span><br><span class="line">1234</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">## 其输出结果为2，统计了输入的行数。</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-VI-编辑器"><a href="#7-VI-编辑器" class="headerlink" title="7. VI 编辑器"></a>7. VI 编辑器</h2><p>v编辑器：<code>vi</code>是Linux系统的第一个全屏幕交互式编辑程序，它从诞生至今一直得到广大用户的青睐，历经数十年仍然是人们主要使用的文本编辑工具，它可以执行输出、删除、查找、替换、块操作等众多文本操作，而且用户可以根据自己的需要对其进行定制，这是其他编辑程序所没有的。 vi编辑器具有三种模式：<code>一般模式</code>、<code>编辑模式</code>、<code>指令模式</code>。 这三种模式可以通过观察vi界面的左下角判断。</p>
+<p>在命令行执行<code>vi [文件名] </code>命令可进入vi编辑器并编辑文件，如果没有同名文件则创建。</p>
+<p>此时，vi编辑器处于一般模式。</p>
+<p>从<code>一般模式</code>输入字母<code>i</code>进入<code>编辑模式</code>，特征是左下角有插入字样。</p>
+<p>在<code>编辑模式下</code>，可以用方向键移动光标，同时写入字符。</p>
+<p><code>编辑模式</code>下按<code>ESC</code> 回到<code>一般模式</code>。</p>
+<p><code>一般模式</code>下按<code>:</code>进入<code>命令模式</code>。特征是右下角有<code>:</code>。</p>
+<p><code>命令模式</code>下常用指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">w         # 保存 write</span><br><span class="line">q         # 退出 quit</span><br><span class="line">wq        # 保存并退出</span><br><span class="line">q!        # 不保存强制退出</span><br><span class="line">set nu    # 显示行号</span><br><span class="line">wq!       # 强制保存并退出</span><br></pre></td></tr></table></figure>
+
+
+<p>在<code>一般模式</code>下可使用的指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/farmsec           # 搜索“farmsec”内容</span><br><span class="line">gg                 # 光标立马回到第一行</span><br><span class="line">2                  # 光标向下跳2行，以此类推</span><br><span class="line">G                  # 移动到最后一行</span><br><span class="line">dd                 # 删除当前行</span><br><span class="line">d2j                # 删除当前行和下两行</span><br><span class="line">yy                 # 复制一行</span><br><span class="line">y2y                # 复制2行</span><br><span class="line">p (小写)            # 粘贴到光标之后</span><br><span class="line">P (大写)            # 粘贴到光标之前</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

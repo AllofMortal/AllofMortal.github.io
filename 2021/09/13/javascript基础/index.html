@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            javascript基础
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="javascript基础"><a href="#javascript基础" class="headerlink" title="javascript基础"></a>javascript基础</h1><h2 id="0-概述："><a href="#0-概述：" class="headerlink" title="0. 概述："></a>0. 概述：</h2><p>JavaScript是目前web开发中不可缺少的脚本语言，js不需要编译即可运行，运行在客户端，需要通过浏览器来解析执行JavaScript代码。<br>诞生于1995年，当时的主要目的是验证表单的数据是否合法。<br>JavaScript本来应该叫Livescript，但是在发布前夕，想搭上当时超热的java顺风车，临时把名字改为了JavaScript。（也就是说js跟java没有关系，当时只是想借助java的名气）。</p>
+<p>javaScript 被用来改进设计、验证表单、检测浏览器、创建cookies，等等。JavaScript 是因特网上最流行的脚本语言，并且可在所有主要的浏览器中运行，比如： Internet Explorer、 Maxthon、Mozilla、Firefox、Netscape、Chrome和 Opera等。<br>常用 1 修改html及css代码 （2）验证表单</p>
+<h2 id="1-嵌入方法"><a href="#1-嵌入方法" class="headerlink" title="1.	嵌入方法"></a>1.	嵌入方法</h2><h3 id="1-1-内嵌式"><a href="#1-1-内嵌式" class="headerlink" title="1.1.	内嵌式"></a>1.1.	内嵌式</h3><p>理论上js可以写在任何第一个地方 但是一般写在head标签里或者 body下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;application/javascript&quot;&gt;</span><br><span class="line">alert(&quot;内嵌式&quot;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;alert(&quot;内嵌式&quot;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-外链式"><a href="#1-2-外链式" class="headerlink" title="1.2.	外链式"></a>1.2.	外链式</h3><p>首先新建一个文件类型为.js的文件，然后在该文件中写js语句，通过script标签对引入到html页面中。<br><code>&lt;script src=&quot;js文件路径地址&quot;&gt;这里不能写js语句&lt;/script&gt;</code></p>
+<h3 id="1-3-行内式"><a href="#1-3-行内式" class="headerlink" title="1.3.	行内式"></a>1.3.	行内式</h3><p>直接书写在标签身上，是一个简写的事件，所以又称之为事件属性。<br>onclick单击事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;点我呀!&quot; onclick=&quot;alert(&#x27;暗月渗透测试培训&#x27;);&quot;&gt;</span><br><span class="line">&lt;button onclick=&quot;alert(&#x27;恭喜你,加入暗月渗透测试培训&#x27;);&quot;&gt;点我呀!&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="2-语句"><a href="#2-语句" class="headerlink" title="2.	语句"></a>2.	语句</h2><h3 id="1-在编程语言中，这些编程指令被称为语句。"><a href="#1-在编程语言中，这些编程指令被称为语句。" class="headerlink" title="1.在编程语言中，这些编程指令被称为语句。"></a>1.在编程语言中，这些编程指令被称为语句。</h3><p>JavaScript 程序就是一系列的编程语句。<br>注释：在 HTML 中，JavaScript 程序由 web 浏览器执行。</p>
+<h3 id="2-JavaScript-语句由以下构成："><a href="#2-JavaScript-语句由以下构成：" class="headerlink" title="2.JavaScript 语句由以下构成："></a>2.JavaScript 语句由以下构成：</h3><p>值、运算符、表达式、关键词和注释。<br>3.用分号（;）分隔JavaScript语句。</p>
+<h2 id="3-注释"><a href="#3-注释" class="headerlink" title="3.	注释"></a>3.	注释</h2><p>单行注释：		&#x2F;&#x2F;	注释语句		快捷键ctrl+&#x2F;<br>多行注释：		&#x2F;* 注释语句 *&#x2F;    快捷键ctrl+shift+&#x2F;<br>注意：多行注释相互不能嵌套使用，只能在多行注释里面使用单行注释！</p>
+<h2 id="4-变量"><a href="#4-变量" class="headerlink" title="4.	变量"></a>4.	变量</h2><p>变量是用于存储信息的”容器”<br>javascript单双引号没区别<br>var a&#x3D;’moonsec’;</p>
+<h2 id="5-JavaScript-保留关键字"><a href="#5-JavaScript-保留关键字" class="headerlink" title="5.	JavaScript 保留关键字"></a>5.	JavaScript 保留关键字</h2><p>Javascript 的保留关键字不可以用作变量、标签或者函数名。有些保留关键字是作为 Javascript 以后扩展使用。<br><img src="/js%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F%E5%90%8D.png" alt="js基础变量名"></p>
+<h2 id="6-JavaScript-作用域"><a href="#6-JavaScript-作用域" class="headerlink" title="6.	JavaScript 作用域"></a>6.	JavaScript 作用域</h2><h3 id="6-1-Javascrpt-局部变量"><a href="#6-1-Javascrpt-局部变量" class="headerlink" title="6.1.	Javascrpt 局部变量"></a>6.1.	Javascrpt 局部变量</h3><p>局部作用域 变量在函数内声明，变量为局部作用域。<br>function myFunction() {<br>    var carName &#x3D; “Volvo”;<br>    &#x2F;&#x2F; 函数内可调用 carName 变量<br>}</p>
+<h3 id="6-2-JavaScript-全局变量"><a href="#6-2-JavaScript-全局变量" class="headerlink" title="6.2.	JavaScript 全局变量"></a>6.2.	JavaScript 全局变量</h3><p>变量在函数外定义，即为全局变量。<br>全局变量有 全局作用域: 网页中所有脚本和函数均可使用。<br>var carName &#x3D; “ Volvo”;<br>&#x2F;&#x2F; 此处可调用 carName 变量<br>function myFunction() {<br>    &#x2F;&#x2F; 函数内可调用 carName 变量<br>}</p>
+<h2 id="7-数据类型"><a href="#7-数据类型" class="headerlink" title="7.	数据类型"></a>7.	数据类型</h2><p>数值型：number（凡是数字都是数值型，不区分整数和小数）<br>字符串：string（凡是引号包裹起来的内容全部都是字符串）<br>布尔：boolean（true、false）<br>对象类型：object（特殊取值null）<br>未定义型：undefined<br>对象类型 数组 字典</p>
+<h3 id="7-1-判断类型"><a href="#7-1-判断类型" class="headerlink" title="7.1.	判断类型"></a>7.1.	判断类型</h3><p>var a &#x3D; “iamstring.”;<br>var b &#x3D; 222;<br>var c&#x3D; [1,2,3];<br>var d &#x3D; new Date();<br>var e &#x3D; function(){alert(111);};<br>var f &#x3D; function(){this.name&#x3D;”22”;};　</p>
+<p>alert(typeof a)  ————&gt; string<br>alert(typeof b)  ————&gt; number<br>alert(typeof c)  ————&gt; object<br>alert(typeof d)  ————&gt; object<br>alert(typeof e)  ————&gt; function<br>alert(typeof f)  ————&gt; function</p>
+<h3 id="7-2-数字类型（Number）"><a href="#7-2-数字类型（Number）" class="headerlink" title="7.2.	数字类型（Number）"></a>7.2.	数字类型（Number）</h3><p>只有一种数字类型，数字 可以是小数 ，也可以的整数<br>以0开头 默认使用8进制来表示我的这个数字<br>以0x开头 默认使用16进制来表述我的这个数字<br>如果以-开头 默认以负数<br>如果我带有e：以科学计数法来解析我的这个数字</p>
+<p>parseInt(..)    将某值转换成数字，不成功则NaN<br>parseFloat(..) 将某值转换成浮点数，不成功则NaN<br>特殊值：<br>NaN，非数字。可使用 isNaN(num) 来判断。<br>Infinity，无穷大。可使用 isFinite(num) 来判断。</p>
+<h3 id="7-3-字符串型（string）"><a href="#7-3-字符串型（string）" class="headerlink" title="7.3.	字符串型（string）"></a>7.3.	字符串型（string）</h3><p>字符串是存储字符的变量，用来表示文本的数据类型，程序中的字符串是包含单引号&#x2F;双引号的，由单引号来界定我双引号中包含的字符串 </p>
+<p>obj.length                           长度</p>
+<p>obj.trim()                           移除空白<br>obj.trimLeft()<br>obj.trimRight)<br>obj.charAt(n)                        返回字符串中的第n个字符<br>obj.concat(value, …)               拼接<br>obj.indexOf(substring,start)         子序列位置<br>obj.lastIndexOf(substring,start)     子序列位置<br>obj.substring(from, to)              根据索引获取子序列</p>
+<p>obj.substring(obj.indexof(‘’),obj.lastindexof(‘’))  截取片段</p>
+<p>obj.slice(<br>, end)                切片<br>obj.toLowerCase()                    大写<br>obj.toUpperCase()                    小写<br>obj.split(delimiter, limit)          分割<br>obj.search(regexp)                   从头开始匹配，返回匹配成功的第一个位置(g无效)<br>obj.match(regexp)                    全局搜索，如果正则中有g表示找到全部，否则只找到第一个。<br>obj.replace(regexp, replacement)     替换，正则中有g则替换所有，否则只替换第一个匹配项，<br>                                     $数字：匹配的第n个组内容；<br>                                     $&amp;：当前匹配的内容；<br>                                     $&#96;：位于匹配子串左侧的文本；<br>                                     $’：位于匹配子串右侧的文本<br>                                     $$：直接量$符号</p>
+<h3 id="7-4-布尔类型（boolean）"><a href="#7-4-布尔类型（boolean）" class="headerlink" title="7.4.	布尔类型（boolean）"></a>7.4.	布尔类型（boolean）</h3><p>一般是用在流程控制语句中，字符串和数字类型都是无穷多个，然而我们的布尔数据类型只有两个：true 和 false<br>这两个个值一般用于说明某个事物是真或者假<br>js一般用布尔类型来比较所得到的结果</p>
+<p>布尔类型仅包含真假，<br>&#x3D;&#x3D;      比较值相等<br>!&#x3D;       不等于<br>&#x3D;&#x3D;&#x3D;   比较值和类型相等<br>!&#x3D;&#x3D;&#x3D;  不等于<br>||        或<br>&amp;&amp;      且</p>
+<h3 id="7-5-null（空）"><a href="#7-5-null（空）" class="headerlink" title="7.5.	null（空）"></a>7.5.	null（空）</h3><p>null<br>关键字null是一个特殊的值，它表示变量为空值，用来定义空的或者是不存在的引用。<br>如果试图去引用一个没有定义的值，就会返回一个null。<br>这里注意一点：null并不等于”” 或者0</p>
+<p>7.6.	undefined（未定义）<br>这个值表示变量不含有值，没有定义的值，或者被定义了一个不存在的属性值</p>
+<p>！null和undefined区别：<br>null它表示一个变量被赋予一个空值，而undefined是表示变量还没有被赋值</p>
+<h3 id="7-7-数组"><a href="#7-7-数组" class="headerlink" title="7.7.	数组"></a>7.7.	数组</h3><p>1、数组内可以存放任意数据类型的数据（本质上它也是对象）<br>2、数组元素不赋值的情况下 值为undefined<br>3、如果数组打印的时候，元素不赋值””<br>4、访问数组范围之外的元素，不会出现越界的问题，undefined<br>5、定义数组大小，照样可以添加更多元素</p>
+<h3 id="7-7-1-定义数组的方法："><a href="#7-7-1-定义数组的方法：" class="headerlink" title="7.7.1.	定义数组的方法："></a>7.7.1.	定义数组的方法：</h3><p>1、var arr&#x3D;[]&#x2F;&#x2F;定义一个空数组<br>2、var arr&#x3D;[10,20,{“name”:”tomy”,”age”:19},0.1,”string”,true,[“aaa”,”bbb”]]&#x2F;&#x2F;定义的同时赋值<br>3、var arr&#x3D;new Array();&#x2F;&#x2F;定义一个空数组<br>4、var arr &#x3D; new Array(10,20,{“name”:”tomy”,”age”:19},0.1,”string”,true,[“aaa”,”bbb”])&#x2F;&#x2F;定义的同时赋值<br>5、var arr&#x3D;new Array(10)&#x2F;&#x2F;定义一个长度为10的数组</p>
+<h3 id="7-7-2-数组的操作"><a href="#7-7-2-数组的操作" class="headerlink" title="7.7.2.	数组的操作"></a>7.7.2.	数组的操作</h3><p>obj.length          数组的大小<br>obj.push(ele)       尾部追加元素<br>obj.pop()           尾部获取一个元素<br>obj.unshift(ele)    头部插入元素<br>obj.shift()         头部移除元素<br>obj.splice(start, deleteCount, value, …)  插入、删除或替换数组的元素<br>                    obj.splice(n,0,val) 指定位置插入元素  n：位置0：添加<br>                    obj.splice(n,1,val) 指定位置替换元素  1：替换<br>                    obj.splice(n,1)     指定位置删除元素<br>obj.slice( )        切片<br>obj.reverse( )      反转<br>obj.join(sep)       将数组元素连接起来以构建一个字符串<br>obj.concat(val,..)  连接数组<br>obj.sort( )         对数组元素进行排序</p>
+<h2 id="8-函数"><a href="#8-函数" class="headerlink" title="8.	函数"></a>8.	函数</h2><p>JavaScript 函数语法<br>JavaScript 函数通过 function 关键词进行定义，其后是函数名和括号 ()。<br>函数名可包含字母、数字、下划线和美元符号（规则与变量名相同）。<br>圆括号可包括由逗号分隔的参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var x = myFunction(7, 8);        // 调用函数，返回值被赋值给 x</span><br><span class="line">function myFunction(a, b) &#123;</span><br><span class="line">    return a * b;                // 函数返回 a 和 b 的乘积</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>普通函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function func(arg)&#123;</span><br><span class="line">	return arg+1;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	var result = func(1);</span><br><span class="line">	console.log(result);		var result = func(1);</span><br><span class="line">	console.log(result);</span><br><span class="line">匿名函数（没有名字的函数称为匿名函数）</span><br><span class="line">setInterval(function()&#123;</span><br><span class="line">		console.log(123);</span><br><span class="line">&#125;,500)</span><br><span class="line">自执行函数 （创建函数并且自动执行）</span><br><span class="line">(function(arg)&#123;</span><br><span class="line">	console.log(arg);</span><br><span class="line">&#125;)(1);</span><br></pre></td></tr></table></figure>
+<h2 id="9-字典"><a href="#9-字典" class="headerlink" title="9.	字典"></a>9.	字典</h2><p>字典 是一种以键-值对形式存储数据的数据结构<br><code>var dict = &#123;&#39;k1&#39;:&quot;moonsec&quot;,&#39;k2&#39;:&#39;moon&#39;,&#39;age&#39;:18&#125;;</code><br>输出字典元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for(var item in dict)&#123;</span><br><span class="line">console.log(dict[item]);</span><br><span class="line">&#125;</span><br><span class="line">获取指定元素</span><br><span class="line">dict[&#x27;age&#x27;] 获取key为age的元素</span><br><span class="line">赋值</span><br><span class="line">dict[&#x27;age&#x27;]=10</span><br><span class="line">删除元素</span><br><span class="line">delete dict[&#x27;one&#x27;];</span><br><span class="line">delete dict.age;</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-js的序列化和反序列化"><a href="#10-js的序列化和反序列化" class="headerlink" title="10.	js的序列化和反序列化"></a>10.	js的序列化和反序列化</h2><p>Json与字符串的转换<br>把对象转为字符串<br>JSON.stringify()<br>把字符串转为数组<br>newli &#x3D; JSON.parse()</p>
+<p>序列化 即js中的Object转化为字符串<br>使用toJSONString<br>var last&#x3D;obj.toJSONString(); &#x2F;&#x2F;将JSON对象转化为JSON字符<br>使用stringify<br> var last&#x3D;JSON.stringify(obj); &#x2F;&#x2F;将JSON对象转化为JSON字符<br>反序列化   即js中JSON字符串转化为Object</p>
+<h2 id="11-转义"><a href="#11-转义" class="headerlink" title="11.	转义"></a>11.	转义</h2><p>	decodeURI( )                   URl中未转义的字符<br>	decodeURIComponent( )   URI组件中的未转义字符<br>	encodeURI( )                   URI中的转义字符<br>	encodeURIComponent( )   转义URI组件中的字符<br>	escape( )                         对字符串转义<br>	unescape( )                     给转义字符串解码<br>	URIError                         由URl的编码和解码方法抛出</p>
+<h2 id="12-eval"><a href="#12-eval" class="headerlink" title="12.	eval"></a>12.	eval</h2><p>eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。</p>
+<h2 id="13-时间"><a href="#13-时间" class="headerlink" title="13.	时间"></a>13.	时间</h2><p>Date 对象<br>var myDate &#x3D; new Date();<br>myDate.getYear(); &#x2F;&#x2F;获取当前年份(2位)<br>myDate.getFullYear(); &#x2F;&#x2F;获取完整的年份(4位,1970-????)<br>myDate.getMonth(); &#x2F;&#x2F;获取当前月份(0-11,0代表1月) 所以获取当前月份是 myDate.getMonth()+1;<br>myDate.getDate(); &#x2F;&#x2F;获取当前日(1-31)<br>myDate.getDay(); &#x2F;&#x2F;获取当前星期X(0-6,0代表星期天)<br>myDate.getTime(); &#x2F;&#x2F;获取当前时间(从1970.1.1开始的毫秒数)<br>myDate.getHours(); &#x2F;&#x2F;获取当前小时数(0-23)<br>myDate.getMinutes(); &#x2F;&#x2F;获取当前分钟数(0-59)<br>myDate.getSeconds(); &#x2F;&#x2F;获取当前秒数(0-59)<br>myDate.getMilliseconds(); &#x2F;&#x2F;获取当前毫秒数(0-999)<br>myDate.toLocaleDateString(); &#x2F;&#x2F;获取当前日期<br>var mytime &#x3D; myDate.toLocaleTimeString(); &#x2F;&#x2F;获取当前时间<br>myDate.toLocaleString( ); &#x2F;&#x2F;获取日期与时间<br>加一天<br>var dateTime &#x3D; new Date();<br>dateTime&#x3D;dateTime.setDate(dateTime.getDate()+1);<br>dateTime&#x3D;new Date(dateTime);<br>dateTime&#x3D;dateTime.setDate(dateTime.getDate()+1);</p>
+<h2 id="14-面向对象"><a href="#14-面向对象" class="headerlink" title="14.	面向对象"></a>14.	面向对象</h2><p>JavaScript是一种基于原型的语言，它没类的声明语句，比如C+ +或Java中用的。这有时会对习惯使用有类申明语句语言的程序员产生困扰。相反，JavaScript可用方法作类。定义一个类跟定义一个函数一样简单。在下面的例子中，我们定义了一个新类Person。<br>第一种方法<br>function Person(name) {<br>     &#x2F;&#x2F;构造函数里面的方法和属性<br>    this._name &#x3D; name;<br>    this.getName &#x3D; function () {<br>         console.log(this._name);<br>     };<br>     this.setName &#x3D; function (name) {<br>         this._name &#x3D; name;<br>     };<br> }</p>
+<p> var p &#x3D; new Person(“张三”);<br> p.getName();  &#x2F;&#x2F; 张三<br> p.setName(“李四”);<br> p.getName();  &#x2F;&#x2F; 李四<br>对于上述代码需要注意：<br>Person充当的构造函数<br>this代指对象<br>创建对象时需要使用 new</p>
+<p>第二方法<br>&#x2F;&#x2F; 定义类class Person {<br>     &#x2F;&#x2F;类的构造函数，实例化的时候执行，new的时候执行<br>     constructor(name) {<br>         this._name &#x3D; name;<br>     }<br>     getName() {<br>         console.log(this._name);<br>     }<br>     setName(name) {<br>        this._name &#x3D; name<br>    }<br>}<br> let p &#x3D; new Preson(‘张三’)<br> p.getName();  &#x2F;&#x2F; 张三<br> p.setName(‘李四’);<br> p.getName();  &#x2F;&#x2F; 李四</p>
+<h2 id="15-原型"><a href="#15-原型" class="headerlink" title="15.	原型"></a>15.	原型</h2><p>我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype<br>这个属性对应着一个对象，这个对象就是我们所谓的原型对象<br>如果函数作为普通函数调用时 prototype没有任何作用<br>当函数以构造函数调用时，它所创建的对象中都会有一个隐含的的属性<br>指向该构造函数的原型 我们可以通过__proto__来访问该属性<br>我们可以将对象中公有的内容，统一设置到原型对象中</p>
+<p>function Persion(username,age){<br>}<br>&#x2F;&#x2F;console.log(Persion.prototype);<br>var p &#x3D; new Persion();<br>console.log(p.<strong>proto</strong> &#x3D;&#x3D; Persion.prototype);</p>
+<p>定义原型变量和原型变量<br>function Persion(username,age){</p>
+<p>}<br>&#x2F;&#x2F;console.log(Persion.prototype);<br>Persion.prototype.a &#x3D; ‘女’;<br>Persion.prototype.Sayname&#x3D;function(){<br>    return Persion.name;<br>}<br>var p1 &#x3D; new Persion(‘moonsec’);<br>var p2 &#x3D; new Persion();<br>alert(p1.Sayname());</p>
+<p>只有构造函数才有.prototype的属性，对象是没有这个属性的，<strong>proto</strong> 只是浏览器提供的非标准化的访问对象的构造函数的原型对象的一种方式，其实更标准的是这样 Object.getPrototypeOf( a ) 获取 a 对象的原型对象，因为对象是没有.prototype的，实际上获取的是 a.<strong>proto</strong>.prototype</p>
+<h2 id="16-运算符"><a href="#16-运算符" class="headerlink" title="16.	运算符"></a>16.	运算符</h2><p>用于执行程序代码运算，会针对一个以上操作数来进行</p>
+<h3 id="16-1-算术运算符"><a href="#16-1-算术运算符" class="headerlink" title="16.1.	算术运算符"></a>16.1.	算术运算符</h3><p><code>+   -   *   /   %  ++  --</code></p>
+<p>字符串拼接使用“+”</p>
+<h3 id="16-2-比较运算符"><a href="#16-2-比较运算符" class="headerlink" title="16.2.	比较运算符"></a>16.2.	比较运算符</h3><h1 id="lt-gt"><a href="#lt-gt" class="headerlink" title="&lt;&gt;"></a>&lt;<br>&gt;</h1><p>！&#x3D;<br>&lt;&#x3D;</p>
+<blockquote>
+<p>&#x3D;<br>&#x3D;&#x3D;&#x3D; 全等于：将数值以及数据类型一并比较<br>！&#x3D;&#x3D;不全等于：将数值以及数据类型一并比较	</p>
+</blockquote>
+<h1 id="16-3-赋值运算符"><a href="#16-3-赋值运算符" class="headerlink" title="16.3.	赋值运算符"></a>16.3.	赋值运算符</h1><p>+&#x3D; </p>
+<p>-&#x3D;<br><em>&#x3D;<br>&#x2F;&#x3D;<br>%&#x3D;<br>a&#x3D;a+2;&#x3D;&#x3D;&gt;a+&#x3D;2<br>a&#x3D;a-2;&#x3D;&#x3D;&gt;a-&#x3D;2<br>a&#x3D;a</em>2;&#x3D;&#x3D;&gt;a*&#x3D;2<br>a&#x3D;a&#x2F;2;&#x3D;&#x3D;&gt;a&#x2F;&#x3D;2<br>a&#x3D;a%2;&#x3D;&#x3D;&gt;a%&#x3D;2</p>
+<p>16.4.	逻辑运算符<br>&amp;&amp;  全真为真<br>||  一个为真就是真<br>！  取反</p>
+<h3 id="16-5-三元运算符（三目运算符）"><a href="#16-5-三元运算符（三目运算符）" class="headerlink" title="16.5.	三元运算符（三目运算符）"></a>16.5.	三元运算符（三目运算符）</h3><p>表达式1?表达式2:表达式3<br>当我的表达式1成立时  执行表达式2  否则执行表达式3<br>var max &#x3D; 2&gt;1?’&gt;’:’&lt;’;<br>console.log(max);</p>
+<h2 id="17-流程控制语句"><a href="#17-流程控制语句" class="headerlink" title="17.	流程控制语句"></a>17.	流程控制语句</h2><h3 id="17-1-if语句"><a href="#17-1-if语句" class="headerlink" title="17.1.	if语句"></a>17.1.	if语句</h3><p>if(条件){<br>函数体<br>}</p>
+<h3 id="17-2-if-else语句"><a href="#17-2-if-else语句" class="headerlink" title="17.2.	if else语句"></a>17.2.	if else语句</h3><p>if(条件){<br>函数体1<br>}else{<br>函数体2<br>}</p>
+<h3 id="17-3-if…-else-if……else语句"><a href="#17-3-if…-else-if……else语句" class="headerlink" title="17.3.	if…..else if……else语句"></a>17.3.	if…..else if……else语句</h3><p>if(条件1){</p>
+<p>}else if(条件2){</p>
+<p>}else if(条件n){</p>
+<p>}else{</p>
+<p>}</p>
+<h3 id="17-4-switch语句-多分支语句"><a href="#17-4-switch语句-多分支语句" class="headerlink" title="17.4.	switch语句:多分支语句"></a>17.4.	switch语句:多分支语句</h3><p>switch(表达式) {<br>     case n:<br>        代码块<br>        break;<br>     case n:<br>        代码块<br>        break;<br>     default:<br>        默认代码块<br>} </p>
+<p>switch (new Date().getDay()) {<br>    case 6:<br>        text &#x3D; “今天是周六”;<br>        break;<br>    case 0:<br>        text &#x3D; “今天是周日”;<br>        break;<br>    default:<br>        text &#x3D; “期待周末~”;<br>} </p>
+<h3 id="17-5-循环结构："><a href="#17-5-循环结构：" class="headerlink" title="17.5.	循环结构："></a>17.5.	循环结构：</h3><p><em>1、while循环：先判断条件 当条件成立 再执行</em><br>while(循环成立条件){<br>….<br>}</p>
+<h3 id="17-6-do…while循环"><a href="#17-6-do…while循环" class="headerlink" title="17.6.	do…while循环"></a>17.6.	do…while循环</h3><p>do…while循环:不论条件成不成立 先执行一遍 再判断<br>do{<br>…..<br>}while(循环成立条件)</p>
+<h3 id="17-7-for循环"><a href="#17-7-for循环" class="headerlink" title="17.7.	for循环"></a>17.7.	for循环</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (i = 0; i &lt; cars.length; i++) &#123; </span><br><span class="line">    text += cars[i] + &quot;&lt;br&gt;&quot;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="17-8-for-in循环"><a href="#17-8-for-in循环" class="headerlink" title="17.8.	for in循环"></a>17.8.	for in循环</h3><p>continue：<br>跳过当前循环，直接进入循环的下一个步骤<br>break:<br>结束循环</p>
+<h2 id="18-JS操作DOM"><a href="#18-JS操作DOM" class="headerlink" title="18.	JS操作DOM"></a>18.	JS操作DOM</h2><p>18.1.	什么是DOM？<br>DOM（document object model）文档对象模型，是针对HTML和XML的一个API（应用程序接口）。DOM给我们描述了一个具有层次化特点的节点树，允许开发人员增删改查页面的某些部分。<br> <img src="/1.png" alt="js基础变量名"></p>
+<ul>
+<li>JavaScript 能够改变页面中的所有 HTML 元素</li>
+<li>JavaScript 能够改变页面中的所有 HTML 属性</li>
+<li>JavaScript 能够改变页面中的所有 CSS 样式</li>
+<li>JavaScript 能够对页面中的所有事件做出反应</li>
+</ul>
+<h3 id="18-2-DOM查找元素"><a href="#18-2-DOM查找元素" class="headerlink" title="18.2.	DOM查找元素"></a>18.2.	DOM查找元素</h3><p>document获取节点的基本方法<br>document.getElementById(‘id’);  &#x2F;&#x2F;通过id来获取元素,返回指定的唯一元素。<br>document.getElementsByName(“name”); &#x2F;&#x2F;通过name来获取元素，返回name&#x3D;’name’的集合。<br>.document.getElementsByClassName(“classname”)  &#x2F;&#x2F;用classname来获取元素，返回的是一个class&#x3D;”classname”的集合(不兼容IE8及以下)。<br>document.getElementsByTagName(‘div’); &#x2F;&#x2F;用元素的标签获取元素，返回所有标签&#x3D;“div”的集合。</p>
+<h3 id="18-2-1-查找"><a href="#18-2-1-查找" class="headerlink" title="18.2.1.	查找"></a>18.2.1.	查找</h3><p>直接查找<br>var obj &#x3D; document.getElementById(‘id’);<br>间接查找<br>文件内容操作<br>innerText 仅文本<br>innerHTML 全内容<br>value<br>input value 获取当前的值<br>select 获取选中的value的值 document.getElementById(‘s1’).selectedIndex&#x3D;1<br>Textarea 获取value的值</p>
+<h3 id="18-2-2-操作"><a href="#18-2-2-操作" class="headerlink" title="18.2.2.	操作"></a>18.2.2.	操作</h3><p><em>样式操作</em><br>className 列出样式 字符串<br>classList 列出样式 返回数组<br>    classList.add 增加样式<br>    classList.remove 删除样式</p>
+<p><code>&lt;div class=&#39;c1 c2&#39; styple=&#39;font-size:16px&#39;&gt;&lt;/div&gt;</code><br>obj.style.fontSize&#x3D;’16px’;</p>
+<p><em>属性操作</em><br>获取属性<br>getAttribute()<br>增加设置一个属性<br>添加属性<br>setAttribute(‘xxx’,’alexe’)<br>删除属性<br>removeAttribute(value)</p>
+<p><em>创建标签 并添加到html中</em><br><em>第一种方式 字符串方式</em><br>insertAdjacentHTML()</p>
+<pre><code>    &lt;input type=&quot;button&quot; value=&quot;+&quot; onclick=&quot;add();&quot;/&gt;
+    &lt;div id=&quot;div1&quot;&gt;
+        &lt;p&gt;&lt;input type=&quot;text&quot;/&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        function add()&#123;
+            var tag=&quot;&lt;p&gt;&lt;input type=&#39;text&#39;&gt;&lt;/p&gt;&quot;
+            document.getElementById(&#39;div1&#39;).insertAdjacentHTML(&#39;beforeEnd&#39;,tag);
+        &#125;
+        
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<p>有四种值可用：</p>
+<ul>
+<li>beforeBegin: 插入到标签开始前</li>
+<li>afterBegin:插入到标签开始标记之后</li>
+<li>beforeEnd:插入到标签结束标记前</li>
+<li>afterEnd:插入到标签结束标记后</li>
+</ul>
+<p><em>第二种方式 对象的方式</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">document.createElement</span><br><span class="line">appendChild 在节点后面增加一个子节点</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;+&quot; onclick=&quot;add2();&quot;/&gt;</span><br><span class="line">		&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">			&lt;p&gt;&lt;input type=&quot;text&quot;/&gt;&lt;/p&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			function add()&#123;</span><br><span class="line">				var tag=&quot;&lt;p&gt;&lt;input type=&#x27;text&#x27;&gt;&lt;/p&gt;&quot;</span><br><span class="line">				document.getElementById(&#x27;div1&#x27;).insertAdjacentHTML(&#x27;beforeEnd&#x27;,tag);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			function add2()&#123;</span><br><span class="line">				var tag =document.createElement(&#x27;input&#x27;);</span><br><span class="line">				tag.setAttribute(&#x27;type&#x27;,&#x27;text&#x27;);</span><br><span class="line">				tag.style.color=&#x27;red&#x27;;</span><br><span class="line">				var p =document.createElement(&#x27;p&#x27;);</span><br><span class="line">				p.appendChild(tag)</span><br><span class="line">				document.getElementById(&#x27;div1&#x27;).appendChild(p);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>appendChild 在节点后面增加一个子节点</p>
+<p>提交表单<br>任何标签都可以通过dom提交<br>getElementById(‘id’).submit()<br>                <form id='f1' action="https://www.moonsec.com/"><br>            <input type="submit" value="提交" /><br>            <input type="button" value="botton" onclick="Sub();" /><br>            <a onclick="Sub();">提交</a><br>        </form><br>        <script><br>            function Sub(){<br>                document.getElementById('f1').submit();<br>            }</p>
+<pre><code>    &lt;/script&gt;
+</code></pre>
+<p>其他<br>console.log 终端输出<br>alert 弹出框<br>confirm 确认框 标题 true false</p>
+<p>url和刷新<br>location.href  获取url<br>location.href ='url' 重定向<br>location.reload() 重新加载</p>
+<p>定时器<br>setInterval()<br>clearInterval()</p>
+<pre><code>            &lt;input id=&quot;i1&quot; type=&quot;text&quot; /&gt;
+    &lt;input type=&quot;button&quot; value=&quot;停止&quot; onclick=&quot;stop();&quot;&gt;
+    
+    &lt;script&gt;
+
+    
+    function setTime()&#123;
+        var tag = new Date();
+        document.getElementById(&#39;i1&#39;).value=tag;
+    &#125;
+    
+    var obj=setInterval(&#39;setTime()&#39;,&#39;500&#39;);
+    
+    function stop()&#123;
+        clearInterval(obj);
+    &#125;
+    
+
+    
+            
+        
+</code></pre>
+<p>只执行一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setTimeout()</span><br><span class="line">clearTimeout()</span><br><span class="line">&lt;div id=&quot;status&quot;&gt;&lt;/div&gt;</span><br><span class="line">		&lt;input type=&quot;button&quot; value=&quot;删除&quot; onclick=&quot;Delele();&quot;&gt;</span><br><span class="line">	&lt;script&gt;</span><br><span class="line">	function Delele()&#123;</span><br><span class="line">		document.getElementById(&#x27;status&#x27;).innerText=&quot;已删除&quot;;</span><br><span class="line">		setTimeout(function()&#123;</span><br><span class="line">			document.getElementById(&#x27;status&#x27;).innerText=&quot;&quot;;</span><br><span class="line">		&#125;,5000)</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>事件<br>绑定事件两种方式<br>a.直接标签绑定 直接标签绑定 onclick=''<br>先获取dom对象，然后进行绑定<br>document.getElementById('xxx').onclick()</p>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

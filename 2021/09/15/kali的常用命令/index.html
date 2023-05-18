@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            kali的常用命令
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="kali的常用命令"><a href="#kali的常用命令" class="headerlink" title="kali的常用命令"></a>kali的常用命令</h1><h2 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1.常用命令"></a>1.常用命令</h2><p>passwd 修改密码</p>
+<p>passwd root 修改root用户密码</p>
+<p>date 显示系统日期</p>
+<p>sudo 后面加命令 就可以调用管理权限</p>
+<p>apt-get update 更新软件列表</p>
+<p>这个命令，会访问源列表里的每个网址，并读取软件列表，然后保存在本地电脑。我们在新立得软件包管理器里看到的软件列表，都是通过update命令更新的。</p>
+<p>apt-get upgrade 更新软件</p>
+<p>这个命令，会把本地已安装的软件，与刚下载的软件列表里对应软件进行对比，如果发现已安装的软件版本太低，就会提示你更新。如果你的软件都是最新版本，会提示： 升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。</p>
+<p>apt-get dist-upgrade 更新软件  </p>
+<p>apt-get upgrade 与 apt-get dist-upgrade 的区别</p>
+<p>upgrade:系统将现有的Package升级,如果有相依性的问题,而此相依性需要安装其它新的Package或影响到其它Package的相依性时,此Package就不会被升级,会保留下来.</p>
+<p>dist-upgrade:可以聪明的解决相依性的问题,如果有相依性问题,需要安装&#x2F;移除新的Package,就会试着去安装&#x2F;移除它.<br>(所以通常这个会被认为是有点风险的升级)</p>
+<p>apt-get upgrade 和 apt-get dist-upgrade 本质上是没有什么不同的。</p>
+<p>只不过，dist-upgrade<br>会识别出当依赖关系改变的情形并作出处理，而upgrade对此情形不处理。</p>
+<p>例如软件包 a 原先依赖 b c d，但是在源里面可能已经升级了，现在是 a 依赖 b c e。这种情况下，dist-upgrade 会删除 d 安装 e，并把 a 软件包升级，而 upgrade 会认为依赖关系改变而拒绝升级 a<br>软件包。</p>
+<p>clear 清屏</p>
+<p>sudo gpedit 特权调用gpedit编辑器</p>
+<p>reboot 重启</p>
+<p>apt-get install XXXXX 安装缺少的依赖包，（XXX）里面输入缺少依赖包的名字</p>
+<p>apt-get autoremove –purge 软件名 删除包及其依赖的软件包+配置文件等</p>
+<p>apt-get install +模块名 这种方法也可以安装模块,或者apt-get install python-模块名</p>
+<p>firefox 浏览器打开</p>
+<p>shutdown -h now 关闭系统(1)</p>
+<p>init 0 关闭系统(2)</p>
+<p>telinit 0 关闭系统(3)</p>
+<p>shutdown -h hours:minutes &amp; 按预定时间关闭系统</p>
+<p>shutdown -c 取消按预定时间关闭系统</p>
+<p>shutdown -r now 重启(1)</p>
+<p>reboot 重启(2)</p>
+<p>su -l 切换登陆用户</p>
+<p>logout 注销用户登陆</p>
+<p>pwd 当前路径</p>
+<h2 id="2-文件夹或文本操作"><a href="#2-文件夹或文本操作" class="headerlink" title="2.文件夹或文本操作"></a>2.文件夹或文本操作</h2><p>cd .. 返回上一级目录</p>
+<p>cd ..&#x2F;.. 返回上级两级目录</p>
+<p>cd - 返回上次所在的目录</p>
+<p>cd 文件夹名  进去文件夹</p>
+<p>cd ~ 进去当前用户主目录</p>
+<p>pwd 显示当前工作路径</p>
+<p>touch 文件名  常见文件</p>
+<p>cat 文件名 读取文档内容</p>
+<p>mkdir 文件名 创建文件夹</p>
+<p>mkdir -p 文件夹 递归创建文件夹</p>
+<p>cp 复制命令</p>
+<p>cp -r moon moons 复制moon 文件夹到当前 moons 如果有里面有文件 使用-r </p>
+<p>mv 移动命令</p>
+<p>mv moon moon 也可以说是改名</p>
+<p>mkdir 文件名 文件名 创建多个文件夹</p>
+<p>ls 显示文件和文件夹名</p>
+<p>ls -a 显示所有的文件和文件夹 包含隐藏文件</p>
+<p>ls -l 显示文件和目录的详细资料</p>
+<p>删除</p>
+<p>rm -f 文件  删除文件</p>
+<p>rm 文件夹名 删除文件夹</p>
+<p>rm -rf  文件&#x2F;文件夹  删除文件夹 及其目录下的文件</p>
+<p>压缩和解压<br>bzip2 file1 压缩一个叫做 ‘file1’ 的文件</p>
+<p>gunzip file1.gz 解压一个叫做 ‘file1.gz’的文件</p>
+<p>gzip file1 压缩一个叫做 ‘file1’的文件</p>
+<p>gzip -9 file1 最大程度压缩</p>
+<p>rar a file1.rar test_file 创建一个叫做 ‘file1.rar’ 的包</p>
+<p>rar x file1.rar 解压rar包</p>
+<p>unrar x file1.rar 解压rar包</p>
+<p>DEB 包 (Debian, Ubuntu 以及类似系统)<br>dpkg -i package.deb 安装&#x2F;更新一个 deb 包</p>
+<p>dpkg -r package_name 从系统删除一个 deb 包</p>
+<p>dpkg -l 显示系统中所有已经安装的 deb 包</p>
+<p>dpkg -l | grep httpd 显示所有名称中包含 “httpd” 字样的deb包</p>
+<p>dpkg -s package_name 获得已经安装在系统中一个特殊包的信息</p>
+<p>dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表</p>
+<p>dpkg –contents package.deb 显示尚未安装的一个包所提供的文件列表</p>
+<p>tar zcvf +压缩文件名 压缩文件</p>
+<p>tar zxvf +解压包名 解压文件</p>
+<p>tar -jcvf renwolesshel.tar.bz2 打包</p>
+<p>tar jxvf renwolesshel.tar.bz2 解压</p>
+<p>压缩成zip格式</p>
+<p>zip -q -r renwolesshel.zip renwolesshel&#x2F;<br>解压zip格式的压缩包</p>
+<p>unzip renwolesshel.zip</p>
+<p>which 加软件名 可以查出软件目录在哪</p>
+<p>.&#x2F;+文件名或者apt-get +文件名 安装文件</p>
+<h2 id="3-系统信息"><a href="#3-系统信息" class="headerlink" title="3.系统信息"></a>3.系统信息</h2><p>arch 显示机器的处理器架构(1)</p>
+<p>uname -m 显示机器的处理器架构(2)</p>
+<p>uname -r 显示正在使用的内核版本</p>
+<p>cat &#x2F;proc&#x2F;version 显示内核的版本</p>
+<p>cat &#x2F;proc&#x2F;net&#x2F;dev 显示网络适配器及统计</p>
+<p>cat &#x2F;proc&#x2F;cpuinfo 显示CPU info的信息</p>
+<p>cat &#x2F;proc&#x2F;mounts 显示已加载的文件系统</p>
+<h2 id="4-vi-常用命令"><a href="#4-vi-常用命令" class="headerlink" title="4.vi 常用命令"></a>4.vi 常用命令</h2><h2 id="vi编辑器的概念"><a href="#vi编辑器的概念" class="headerlink" title="vi编辑器的概念"></a>vi编辑器的概念</h2><p>vi编辑器分为三种状态，分别是：<br>1.命令模式（command mode）<br>控制屏幕光标的移动，字符、字或行的删除，移动复制某区段及进入Insert mode下，或者到 last line mode。</p>
+<p>2.插入模式（Insert mode）</p>
+<p>只有在Insert mode下，才可以做文字输入，按「ESC」键可回到命令行模式。</p>
+<p>3.底行模式（last line mode）</p>
+<p>将文件保存或退出vi，也可以设置编辑环境，如寻找字符串、列出行号……等。</p>
+<p><strong>打开</strong></p>
+<p>vi filename :打开或新建文件，并将光标置于第一行首<br>vi +n filename ：打开文件，并将光标置于第n行首<br>vi + filename ：打开文件，并将光标置于最后一行首</p>
+<p><strong>编辑</strong></p>
+<p>i 在当前位置生前插入<br>I 在当前行首插入<br>a 在当前位置后插入<br>A 在当前行尾插入<br>o 在当前行之后插入一行<br>O 在当前行之前插入一行<br>编辑结束，按Esc返回命令模式</p>
+<p><strong>基本查找</strong></p>
+<p>&#x2F;text　　查找text，按n健查找下一个，按N健查找前一个。<br>?text　　查找text，反向查找，按n健查找下一个，按N健查找前一个。<br>查找很长的词，如果一个词很长，键入麻烦，可以将光标移动到该词上，按*或#键即可以该单词进行搜索，相当于&#x2F;搜索。而#命令相当于?搜索。</p>
+<p><strong>删除</strong></p>
+<p>删除当前行 dd<br>删除2行 2dd</p>
+<p><strong>拷贝和粘贴</strong></p>
+<p>yy 拷贝当前行<br>nyy 拷贝当前后开始的n行，比如2yy拷贝当前行及其下一行。<br>p  在当前光标后粘贴</p>
+<p>区块拷贝</p>
+<ol>
+<li>将光标移动到要复制的文本开始的地方，按 v进入可视模式。</li>
+<li>将光标移动到要复制的文本的结束的地方，按y复制。此时vim会自动将光标定位到选中文本的开始的地方，并退出可视模式。</li>
+<li>我移动光标到文本结束的地方，按 p粘贴。</li>
+</ol>
+<p><strong>退出命令</strong></p>
+<p>:wq 保存并退出<br>:q! 强制退出并忽略所有更改<br>:e! 放弃所有修改，并打开原来文件<br>:w保存修改</p>
+<p><strong>显示行号</strong></p>
+<p>set number</p>
+<p>set nu</p>
+<p>输入:n，代表跳转到第n行，如:100，就跳转到第100行。</p>
+<p>撤销操作</p>
+<p>u</p>
+<p>vim与vi的区别</p>
+<p>vim是vi的延申 vim编辑源码会高亮 vim的命令对vi是完全兼容的</p>
+<h2 id="5-文件搜索"><a href="#5-文件搜索" class="headerlink" title="5.文件搜索"></a>5.文件搜索</h2><p>find &#x2F; -name file1 从 ‘&#x2F;’ 开始进入根文件系统搜索文件和目录</p>
+<p>find &#x2F; -user user1 搜索属于用户 ‘user1’ 的文件和目录<br>find &#x2F;home&#x2F;user1 -name *.bin 在目录 ‘&#x2F; home&#x2F;user1’ 中搜索带有’.bin’ 结尾的文件<br>find &#x2F;usr&#x2F;bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件<br>find &#x2F;usr&#x2F;bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件</p>
+<p>find . -name ‘<em>.php’ -mmin -30  查找最近30分钟修改的当前目录下的.php文件<br>find . -name ‘</em>.php’ -mtime 0<br>查找最近24小时修改的当前目录下的.php文件</p>
+<p>find . -name ‘*.inc’ -mtime 0 -ls<br>查找最近24小时修改的当前目录下的.php文件，并列出详细信息</p>
+<p>find . -type f -mtime 1</p>
+<p>查找当前目录下，最近24-48小时修改过的常规文件。<br>find . -type f -mtime +1<br>查找当前目录下，最近1天前修改过的常规文件。</p>
+<p>-atime 文件访问时间</p>
+<p>-ctime 文件常见时间</p>
+<p>-mtime文件修改时间</p>
+<p>-mtime n : n为数字，意思为在n天之前的“一天之内”被更改过内容的文件<br>-mtime +n : 列出在n天之前（不含n天本身）被更改过内容的文件名<br>-mtime -n : 列出在n天之内（含n天本身）被更改过内容的文件名</p>
+<p>-type f 代表一个普通格式的文件 二进制文件</p>
+<p>-type d 代表文件夹</p>
+<p>find &#x2F; -name *.rpm -exec chmod 755 ‘{}’ ; 搜索以 ‘.rpm’ 结尾的文件并定义其权限<br>find &#x2F; -xdev -name *.rpm 搜索以 ‘.rpm’ 结尾的文件，忽略光驱、捷盘等可移动设备<br>locate *.ps 寻找以 ‘.ps’ 结尾的文件 - 先运行 ‘updatedb’ 命令<br>whereis halt 显示一个二进制文件、源码或man的位置<br>which halt 显示一个二进制文件或可执行文件的完整路径</p>
+<p>grep kali &#x2F;etc&#x2F;passwd grep关键词搜索</p>
+<p>find &#x2F; -name moonsec 2&gt;&#x2F;dev&#x2F;null   搜索某个文件&#x2F;文件夹 屏蔽出错信息</p>
+<h2 id="6-用户和群组"><a href="#6-用户和群组" class="headerlink" title="6.用户和群组"></a>6.用户和群组</h2><p>groupadd group_name 创建一个新用户组<br>groupdel group_name 删除一个用户组</p>
+<p>cat &#x2F;etc&#x2F;group | grep group_name </p>
+<p>usermod -a -G moontea k1把用户k1附加其他用户组</p>
+<p>创建目录</p>
+<p>useradd moonsec</p>
+<p>passwd moonsec</p>
+<p>创建用户以及分配目录</p>
+<p>useradd -r -m -s &#x2F;bin&#x2F;bash moonsec</p>
+<p>参数的意思：<br>-r 建立系统账号<br>-m 自动建立用户的登入目录<br>-s &#x2F;bin&#x2F;bash 指定用户登入后所使用的shell</p>
+<p>切换用户</p>
+<p>su - root 切换到root用户</p>
+<p>su 用户名 切换到普通用户</p>
+<h2 id="7-系统管理"><a href="#7-系统管理" class="headerlink" title="7.系统管理"></a>7.系统管理</h2><p>top</p>
+<p>查看正在指向的程序信息</p>
+<p>进程</p>
+<p>ps -ef 查看所有进程信息</p>
+<p>ps -ef | grep tomcat 查找指定进程</p>
+<p>kill -9 id 强制杀死进程</p>
+<p>env 当前的变量</p>
+<p>查看系统变量</p>
+<p>echo $PATH</p>
+<p>hostname 查看主机名</p>
+<p>history 查看历史命令</p>
+<h2 id="8-查看磁盘信息"><a href="#8-查看磁盘信息" class="headerlink" title="8.查看磁盘信息"></a>8.查看磁盘信息</h2><p>df   默认不带单位，挂载点、总容量、已用、可用</p>
+<p>df  -h   友好显示（带单位），很多命令的友好显示都是-h</p>
+<h2 id="9-查看内存信息"><a href="#9-查看内存信息" class="headerlink" title="9.查看内存信息"></a>9.查看内存信息</h2><p>free   默认以KB为单位，总容量、已用、可用、缓存大小</p>
+<p>free  -m   默认以MB为单位</p>
+<p>free  -h   上面2种都不带单位、只显示数值，这种是友好显示的，会带单位G、M等</p>
+<h2 id="10-查看环境变量"><a href="#10-查看环境变量" class="headerlink" title="10.查看环境变量"></a>10.查看环境变量</h2><p>echo  $JAVA_HOME<br>echo $PATH | grep jdk</p>
+<h2 id="11开机自启"><a href="#11开机自启" class="headerlink" title="11开机自启"></a>11开机自启</h2><p>有很多程序往往都需要设置开机自启，比如tomcat、mysql、nginx等。</p>
+<p>在&#x2F;etc&#x2F;rc.d&#x2F;rc.local文件中加入开机要自动执行的程序</p>
+<p>vim &#x2F;etc&#x2F;rc.d&#x2F;rc.local</p>
+<p>挂载一个windows网络共享</p>
+<p>mount -t smbfs -o username&#x3D;user,password&#x3D;pass &#x2F;&#x2F;WinClient&#x2F;share &#x2F;mnt&#x2F;share </p>
+<h2 id="12网卡配置"><a href="#12网卡配置" class="headerlink" title="12网卡配置"></a>12网卡配置</h2><p>vi &#x2F;etc&#x2F;network&#x2F;interfaces</p>
+<p>auto eth0  &#x2F;&#x2F;指定网卡（根据ifconfig结果修改）<br>iface eth0 inet static  &#x2F;&#x2F;启动静态ip<br>address 192.168.0.66  &#x2F;&#x2F; 设置静态ip<br>netmask 255.255.255.0  &#x2F;&#x2F;子网掩码<br>gateway 192.168.0.1  &#x2F;&#x2F;指定网关</p>
+<p>重启网络</p>
+<p>service networking restart<br>或者：<br>systemctl restart networking</p>
+<p>设置临时ip</p>
+<p>ifconfig eth0 192.168.0.33</p>
+<h2 id="13网卡DNS服务器"><a href="#13网卡DNS服务器" class="headerlink" title="13网卡DNS服务器"></a>13网卡DNS服务器</h2><p>vi &#x2F;etc&#x2F;resovl.conf</p>
+<p>nameserver 114.114.114.114</p>
+<p>重启网卡</p>
+<p>service networking restart</p>
+<p>systemctl restart networking</p>
+<p>注意有时候重启才生效</p>
+<h2 id="14-服务相关"><a href="#14-服务相关" class="headerlink" title="14.服务相关"></a>14.服务相关</h2><p>启动apache2服务器</p>
+<p> &#x2F;etc&#x2F;init.d&#x2F;apache2 start</p>
+<p>打开：&#x2F;etc&#x2F;init.d&#x2F;apache2 start<br>重启：&#x2F;etc&#x2F;init.d&#x2F;apache2 restart<br>关闭：&#x2F;etc&#x2F;init.d&#x2F;apache2 stop</p>
+<p>启动网卡</p>
+<p>&#x2F;etc&#x2F;init.d&#x2F;network start</p>
+<p>网络相关</p>
+<p>开启路由转发</p>
+<p>echo 1 &gt; &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward</p>
+<h2 id="15-linux常用网络命令"><a href="#15-linux常用网络命令" class="headerlink" title="15.linux常用网络命令"></a><strong>15.linux常用网络命令</strong></h2><p>网络和监控命令类似于这些： hostname, ping, ifconfig, iwconfig, netstat, nslookup, traceroute, finger, telnet, ethtool 用于查看 linux 服务器 ip 地址，管理服务器网络配置，通过 telnet 和 ethernet 建立与 linux 之间的网络链接，查看 linux 的服务器信息等。下面让我们看看在 Linux 下的网络和监控命令的使用。</p>
+<p>hostname 查看本机名</p>
+<p>ping  一般用于测试网络是否通 内网icmp</p>
+<p>ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> -c 3 执行3次</p>
+<p>ifconfig 网卡信息</p>
+<p>iwconfig 用于配置或获取无线网络设备信息</p>
+<p>netstat </p>
+<p>-a (all)显示所有选项，默认不显示LISTEN相关<br>-t (tcp)仅显示tcp相关选项<br>-u (udp)仅显示udp相关选项<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服務状态</p>
+<p>-p 显示建立相关链接的程序名<br>-r 显示路由信息，路由表<br>-e 显示扩展信息，例如uid等<br>-s 按各个协议进行统计<br>-c 每隔一个固定时间，执行该netstat命令。</p>
+<p>提示：LISTEN和LISTENING的状态只有用-a或者-l才能看到</p>
+<p>常用命令</p>
+<p>netstat -ano</p>
+<p>-an 查看当前所有已连接端口<br>-nlpt 查看当前所有tcp端口<br>-nlpu 查看当前所有udp端口<br>-nlpt | grep 80 查看所有80端口使用情况</p>
+<p>netstat -lntup 查看所有的tcp和upd端口</p>
+<p>nslookup </p>
+<p>查询其他记录<br>直接查询返回的是A记录，我们可以指定参数，查询其他记录，比如AAAA、MX等。</p>
+<p>nslookup -qt&#x3D;type domain [dns-server]<br>其中，type可以是以下这些类型：</p>
+<p>A 地址记录<br>AAAA 地址记录<br>AFSDB Andrew文件系统数据库服务器记录<br>ATMA ATM地址记录<br>CNAME 别名记录<br>HINFO 硬件配置记录，包括CPU、操作系统信息<br>ISDN 域名对应的ISDN号码<br>MB 存放指定邮箱的服务器<br>MG 邮件组记录<br>MINFO 邮件组和邮箱的信息记录<br>MR 改名的邮箱记录<br>MX 邮件服务器记录<br>NS 名字服务器记录<br>PTR 反向记录<br>RP 负责人记录<br>RT 路由穿透记录<br>SRV TCP服务器信息记录<br>TXT 域名对应的文本信息<br>X25 域名对应的X.25地址记录</p>
+<p>http协议</p>
+<p>curl</p>
+<p>wget</p>
+<p>traceroute</p>
+<p>traceroute是用来检测发出数据包的主机到目标主机之间所经过的网关数量的工具。traceroute的原理是试图以最小的TTL（存活时间）发出探测包来跟踪数据包到达目标主机所经过的网关，然后监听一个来自网关ICMP的应答。发送数据包的大小默认为38个字节。</p>
+<p>-d 使用Socket层级的排错功能。<br>-f 设置第一个检测数据包的存活数值TTL的大小。<br>-F 设置勿离断位。<br>-g 设置来源路由网关，最多可设置8个。<br>-i 使用指定的网络界面送出数据包。<br>-I 使用ICMP回应取代UDP资料信息。<br>-m 设置检测数据包的最大存活数值TTL的大小。<br>-n 直接使用IP地址而非主机名称。<br>-p 设置UDP传输协议的通信端口。<br>-r 忽略普通的Routing Table，直接将数据包送到远端主机上。<br>-s 设置本地主机送出数据包的IP地址。<br>-t 设置检测数据包的TOS数值。<br>-v 详细显示指令的执行过程。<br>-w 设置等待远端主机回报的时间。</p>
+<p>-x 开启或关闭数据包的正确性检验。</p>
+<p>telnet</p>
+<p>Linux telnet命令用于远端登入。</p>
+<p>执行telnet指令开启终端机阶段作业，并登入远端主机。</p>
+<p>现在多数用于检测某个端口是否开放</p>
+<p>Finger</p>
+<p>Finger是一种用户信息分享服务。它工作在TCP 79端口，可以用来公开用户的特定信息。Nmap的finger的脚本可以向Finger服务器发送请求，查询并获取用户的相关信息，如登录名、用户名、TTY类型、登录时间等。</p>
+<p>ethtool 是用于查询及设置网卡参数的命令</p>
+<h2 id="16-防火墙iptables"><a href="#16-防火墙iptables" class="headerlink" title="16.防火墙iptables"></a>16.防火墙iptables</h2><p>查看防火墙规则</p>
+<p>iptalbes -L</p>
+<p>清除规则</p>
+<p>iptables -F</p>
+<p>关闭防火墙 </p>
+<p>&#x2F;etc&#x2F;init.d&#x2F;iptables stop</p>
+<p>service iptables stop</p>
+<p>安装：apt-get install ufw</p>
+<p>关闭：ufw disable # To disable the firewall</p>
+<p>开启：ufw enable # To enable the firewall</p>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

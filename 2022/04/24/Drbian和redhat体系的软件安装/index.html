@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            Debian和redhat体系的软件安装
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="Drbian和redhat体系的软件安装"><a href="#Drbian和redhat体系的软件安装" class="headerlink" title="Drbian和redhat体系的软件安装"></a>Drbian和redhat体系的软件安装</h1><h2 id="1-Debian体系的软件安装"><a href="#1-Debian体系的软件安装" class="headerlink" title="1. Debian体系的软件安装"></a>1. Debian体系的软件安装</h2><p>在前文中，我们了解到linux系统的发行版主要分为debian和redhat两个体系。</p>
+<p>两个体系最直观的不同是软件安装命令的不同。我们来学习debian体系的软件安装。</p>
+<p>前文我们使用的Kali系统，就以本节所介绍的命令来管理软件的安装与卸载。</p>
+<h3 id="1-1-dpkg-命令"><a href="#1-1-dpkg-命令" class="headerlink" title="1.1 dpkg 命令"></a>1.1 dpkg 命令</h3><p><code>dpkg</code> 是为”Debian”操作系统专门开发的套件管理系统，用于软件的安装，更新和移除。能被<code>dpkg</code>命令安装的软件包一般以<code>.deb</code>为文件后缀。</p>
+<p><code>dpkg</code> 是为”Debian”操作系统专门开发的套件管理系统，用于软件的安装，更新和移除。能被<code>dpkg</code>命令安装的软件包一般以<code>.deb</code>为文件后缀。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">`dpkg -i     # 安装软件包</span><br><span class="line">dpkg -r     # 移除软件（保留配置）</span><br><span class="line">dpkg -P     # 移除软件（不保留配置）</span><br><span class="line">dpkg -c     # 列出deb包的内容</span><br><span class="line">dpkg -l     # 配合|grep，查找主机包</span><br><span class="line">dpkg -s     # 查找包的详细信息</span><br><span class="line">dpkg -L     # 查看已安装的软件包，都存在系统哪有文件</span><br><span class="line">dpkg -S     # 显示指定包的状态信息`</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-1-apt-命令"><a href="#1-2-1-apt-命令" class="headerlink" title="1.2.1. apt 命令"></a>1.2.1. apt 命令</h3><hr>
+<p><code>apt</code>是一个在Debian中的Shell前端软件包管理器。</p>
+<p><code>apt</code>命令提供了查找、安装、升级、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
+<p><code>apt</code>命令执行需要超级管理员权限(root)</p>
+<h3 id="1-2-2-源的配置"><a href="#1-2-2-源的配置" class="headerlink" title="1.2.2. 源的配置"></a>1.2.2. 源的配置</h3><p><code>apt</code>命令更新和安装软件包是从软件安装源中请求的。</p>
+<p>kali系统的源文件在<code>/etc/apt/sources.list</code>。</p>
+<p>常见kali源：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">官方源</span><br><span class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">中科大源</span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">阿里云源</span><br><span class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">清华大学源</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">浙大源</span><br><span class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">东软大学源</span><br><span class="line">deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">新加坡kali源</span><br><span class="line">deb http://mirror.nus.edu.sg/kali/kali/ kali main non-free contrib</span><br><span class="line">deb-src http://mirror.nus.edu.sg/kali/kali/ kali main non-free contrib</span><br><span class="line">163 Kali源</span><br><span class="line">deb http://mirrors.163.com/debian wheezy main non-free contrib</span><br><span class="line">deb-src http://mirrors.163.com/debian wheezy main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>可以编辑<code>/etc/apt/sources.list</code>文件，将源切换成需要的源。</p>
+<p>修改之后，需要通过<code>apt update</code>命令来更新源。</p>
+<h3 id="1-3-apt-命令"><a href="#1-3-apt-命令" class="headerlink" title="1.3. apt 命令"></a>1.3. apt 命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apt-get install      #安装软件包                </span><br><span class="line">apt-get remove       #仅卸载软件，但是并不卸载配置文件</span><br><span class="line">apt-get purge        #卸载指令，同时卸载相应的配置文件</span><br><span class="line">apt-get update       #将所有包的来源更新（更新源）</span><br><span class="line">apt-get upgrade      #将系统中旧版本的包升级成最新的</span><br><span class="line">apt-cache search     #用关键字搜索包</span><br><span class="line">apt-cache show       #显示特定包的基本信息</span><br><span class="line">apt-cache depends    #列出包的依赖</span><br><span class="line">apt-get clean        #清理本地包占用的磁盘空间(/var/cache/apt/archives)</span><br><span class="line">apt-get autoremove   #卸载软件的时候同时卸载那些当初作为依赖但是现在并不需要的包</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-redhat体系的软件安装"><a href="#2-redhat体系的软件安装" class="headerlink" title="2. redhat体系的软件安装"></a>2. redhat体系的软件安装</h3><p>在前文中，我们了解到linux系统的发行版主要分为debian和redhat两个体系。两个体系最直观的不同是软件安装命令的不同。</p>
+<p>这一节，我们要来学习rehad体系的软件安装。前文我们使用的Centos实验环境，就以本节所介绍的命令来管理软件的安装与卸载。</p>
+<h2 id="1-rpm-命令"><a href="#1-rpm-命令" class="headerlink" title="1. rpm 命令"></a>1. rpm 命令</h2><p><code>rpm</code>命令用于管理软件。rpm原本是 Red Hat Linux 发行版专门用来管理 Linux 各项套件的程序，由于它遵循 GPL 规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM 套件管理方式的出现，让 Linux 易于安装，升级，间接提升了 Linux 的适用度。能被<code>rpm</code>命令安装的软件包一般以<code>.rpm</code>为文件后缀。</p>
+<h3 id="2-1-常见命令"><a href="#2-1-常见命令" class="headerlink" title="2.1 常见命令"></a>2.1 常见命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh [package_name]         #安装软件包</span><br><span class="line">rpm -evh [package_name]         #卸载软件</span><br><span class="line">rpm -qlp *.rpm                  #列出rpm包的内容</span><br><span class="line">rpm -qa |grep [字符串]           #在已安装的所有软件中查询包含某字符串的软件版本</span><br><span class="line">rpm -ql [软件名]                 #列出该软件所有文件与目录所在的完整文件名</span><br><span class="line">rpm -qc [软件名]                 #列出软件的所有设置文件</span><br><span class="line">rpm -qR [软件名]                 #查询某软件依赖的其他软件</span><br><span class="line">rpm -qf [文件名]                 #查询文件属于哪个软件包</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-yum-命令"><a href="#2-2-yum-命令" class="headerlink" title="2.2. yum 命令"></a>2.2. yum 命令</h3><hr>
+<p><code>yum</code>命令是一个在 Fedora 和 RedHat 以及 SUSE 中的 Shell 前端软件包管理器。</p>
+<p>基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令。</p>
+<h3 id="2-3-yum-源配置"><a href="#2-3-yum-源配置" class="headerlink" title="2.3 yum 源配置"></a>2.3 yum 源配置</h3><p>同apt命令一样，<code>yum</code>依然从源获取软件。在centos中yum源文件存储在<code>/etc/yum.repos.d</code>目录中。</p>
+<p><a href="../../../bookimages/image-20220422100609634.png"><img src="/../../../bookimages/image-20220422100609634.png">
+</a></p>
+<p>repo文件的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[baseos]</span><br><span class="line">name=Rocky Linux $releasever - BaseOS</span><br><span class="line">mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&amp;repo=BaseOS-$releasever</span><br><span class="line">#baseurl=http://dl.rockylinux.org/$contentdir/$releasever/BaseOS/$basearch/os/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rockyofficial</span><br></pre></td></tr></table></figure>
+
+<p>epel源是redhat系比较常用的源。</p>
+<p>EPEL (Extra Packages for Enterprise Linux)是基于Fedora的一个项目，为“红帽系”的操作系统提供额外的软件包，适用于RHEL、CentOS和Scientific Linux.</p>
+<p>安装epel源只需要安装一个叫”epel-release”的软件包，这个软件包会自动配置yum的软件仓库。</p>
+<p>命令为：<code>dnf install -y epel-release</code></p>
+<h3 id="2-2-yum-命令-1"><a href="#2-2-yum-命令-1" class="headerlink" title="2.2 yum 命令"></a>2.2 yum 命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum makecache                         #更新源（安装新源后执行）</span><br><span class="line">yum clean all                         #清除缓存目录（/var/cache/yum）下的软件包及旧的headers</span><br><span class="line">yum list |grep                        #显示所有已经安装和可以安装的程序包</span><br><span class="line">yum info [package-name]               #显示安装包信息</span><br><span class="line">yum -y install [package-name]         #安装软件,默认选yes</span><br><span class="line">yum remove [package-name]             #卸载</span><br><span class="line">yum deplist rpm                       #查看程序rpm依赖情况</span><br><span class="line">yum update                            #更新全部软件包</span><br><span class="line">yum group list                        #列出组</span><br><span class="line">yum group install &quot;Security Tools&quot;    #安装‘Security Tools’软件组</span><br><span class="line">yum search                            #检索安装包</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-dnf-命令"><a href="#2-3-dnf-命令" class="headerlink" title="2.3 dnf 命令"></a>2.3 dnf 命令</h3><p><code>DNF</code>是新一代的rpm软件包管理器。它正在逐步取代<code>yum</code>命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">dnf repolist                                           #该命令用于显示系统中可用的 DNF 软件库</span><br><span class="line">dnf repolist all                                       #该命令用于显示系统中可用和不可用的所有的 DNF 软件库</span><br><span class="line">dnf list                                               #用户系统上的所有来自软件库的可用软件包和所有已经安装在系统上的软件包</span><br><span class="line">dnf list installed                                     #该命令用于列出所有安装了的 RPM 包</span><br><span class="line">dnf list available                                     #用于列出来自所有可用软件库的可供安装的软件包</span><br><span class="line">dnf search [pakage]                                    #用该命令来搜索软件包</span><br><span class="line">dnf provides /bin/bash                                 #查找某一文件的提供者</span><br><span class="line">dnf info nano                                          #查看软件包详情</span><br><span class="line">dnf install [pakage]                                   #安装软件包</span><br><span class="line">dnf update systemd                                     #该命令用于升级指定软件包</span><br><span class="line">dnf check-update                                       #该命令用于检查系统中所有软件包的更新</span><br><span class="line">dnf update                                             #该命令用于升级系统中所有有可用升级的软件包</span><br><span class="line">dnf remove [pakage]                                    #删除系统中指定的软件包</span><br><span class="line">dnf autoremove                                         #删除无用孤立的软件包</span><br><span class="line">dnf clean all                                          #删除缓存的无用软件包</span><br><span class="line">dnf history                                            #查看您系统上 DNF 命令的执行历史</span><br><span class="line">dnf grouplist                                          #该命令用于列出所有的软件包组</span><br><span class="line">dnf groupinstall ‘Educational Software’                #该命令用于安装一个软件包组</span><br><span class="line">dnf groupupdate ‘Educational Software’                 #升级一个软件包组中的软件包</span><br><span class="line">dnf groupremove ‘Educational Software’                 #该命令用于删除一个软件包组</span><br><span class="line">dnf reinstall [pakage]                                 #该命令用于重新安装特定软件包</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Debian-与-redhat-命令的异同"><a href="#3-Debian-与-redhat-命令的异同" class="headerlink" title="3. Debian 与 redhat 命令的异同"></a>3. Debian 与 redhat 命令的异同</h2><table>
+<th>功能</th> <th>debian</th> <th colspan="2">redhat</th>
+    <tr>
+<td>单机</td> <td>dpkg</td> <td colspan="2">rmp</td>
+    </tr>
+    <tr>
+<td>安装</td> <td>dpkg -i</td> <td colspan="2">rpm -ivh [package_name]</td>
+</tr>
+    <tr>
+<td rowspan="2">卸载</td> <td>dpkg -r (保留配置)</td> <td colspan="2"rowspan="2">rpm -evh [package_name]</td>
+</tr>
+    <tr>
+        <td>dpkg -P (不保留配置)</td> <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td>查看对应包文件</td> <td>dpkg -s</td> <td colspan="2">rpm -qf [文件名]</td>
+    </tr>
+    <tr>
+        <td>显示指定包的状态信息</td> </td> <td>dekp -L</td> <td colspan="2">rpm -ql [软件名]</td>
+    </tr>
+<tr>
+<td>&nbsp;</td> <td>&nbsp;</td> <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td>网络同步</td> <td>apt-get</td> <td>dnf</td> <td>yum</td>
+</tr>
+<tr>
+<td>更新源</td> <td>apt-get update</td> <td>dnf list</td> <td>yum makecache</td>
+</tr>
+<tr>
+<td>安装软件包</td> <td>apt-get install</td> <td>dnf install [pakage]</td> <td>yum -y install [package-name]</td>
+</tr>
+<tr>
+    <td rowspan="3">卸载</td> <td>apt-get remove</br>仅卸载软件，但是并不卸载配置文件</td> <td>dnf remove [pakage]</br>#删除系统中指定的软件包</td> <td>yum remove [package-name]</br>#删除无用孤立的软件包</td>
+</tr>
+<tr>
+    <td rowspan="2">apt-get purge</br>卸载指令，同时卸载相应的配置文件</td>  <td>dnf autoremove</br>#删除缓存的无用软件包</td> <td></td>
+</tr>
+<tr>
+<td >dnf clean all</td> <td></td>
+</tr>
+<tr>
+<td>配置文件</td> <td></td> <td>dnf info nano</td> <td>yum info [package-name]</td> 
+</tr>
+
+
+
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

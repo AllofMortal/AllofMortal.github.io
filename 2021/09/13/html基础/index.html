@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            html基础
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="html基础"><a href="#html基础" class="headerlink" title="html基础"></a>html基础</h1><h2 id="1-简单的HTML页面架构"><a href="#1-简单的HTML页面架构" class="headerlink" title="1. 简单的HTML页面架构"></a>1. 简单的HTML页面架构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>charset  编码 gbk gbk2312 utf-8</p>
+<p>保存内容的快捷方式 crtl+s </p>
+<h2 id="2-HTML常见标签"><a href="#2-HTML常见标签" class="headerlink" title="2. HTML常见标签"></a>2. HTML常见标签</h2><h3 id="2-1-meta标签"><a href="#2-1-meta标签" class="headerlink" title="2.1. meta标签"></a>2.1. meta标签</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta&gt; 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。</span><br><span class="line"></span><br><span class="line">设置网站关键字</span><br><span class="line">meta name=&quot;keywords&quot; content=&quot;网络安全，WEB渗透，数据安全，渗透测试，安全培训&quot; /&gt;</span><br><span class="line">&lt;link&gt; 标签定义文档与外部资源的关系。</span><br><span class="line">&lt;script&gt; 引入js文件</span><br><span class="line"></span><br><span class="line">注释</span><br><span class="line">&lt;!--这是一段注释。注释不会在浏览器中显示。--&gt;</span><br><span class="line">&lt;p&gt;这是一段普通的段落。&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-标题标签"><a href="#2-2-标题标签" class="headerlink" title="2.2. 标题标签"></a>2.2. 标题标签</h3><p>由大到小</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;h1&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;h2&lt;/h2&gt;</span><br><span class="line">&lt;h3&gt;h3&lt;/h3&gt;</span><br><span class="line">&lt;h4&gt;h4&lt;/h4&gt;</span><br><span class="line">&lt;h5&gt;h5&lt;/h5&gt;</span><br><span class="line">&lt;h6&gt;6&lt;/h6&gt;</span><br><span class="line">&lt;/br&gt; 换行标签</span><br><span class="line">&lt;hr&gt;换行线标签</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-文本属性"><a href="#2-3-文本属性" class="headerlink" title="2.3.文本属性"></a>2.3.文本属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;strong&gt;加粗&lt;/strong&gt;</span><br><span class="line">&lt;b&gt;&lt;/b&gt;加粗</span><br><span class="line">&lt;i&gt;&lt;/i&gt;斜体</span><br><span class="line">&lt;u&gt;&lt;/u&gt; 下划线</span><br><span class="line">&lt;sup&gt;&lt;/sup&gt;上标</span><br><span class="line">&lt;sub&gt;&lt;/sub&gt;下标</span><br><span class="line">&lt;del&gt;&lt;/del&gt; 删除线</span><br><span class="line">&lt;font&gt;&lt;/font&gt; 规定字体属性</span><br><span class="line">	size 字体的大小</span><br><span class="line">	color 字体颜色</span><br><span class="line">	</span><br><span class="line">代码样式原样输出</span><br><span class="line">&lt;pre&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-form表单"><a href="#2-4-form表单" class="headerlink" title="2.4. form表单"></a>2.4. form表单</h3><p>form表单 规定当提交表单时向何处发送表单数据<br>method 提交的方法有 get、post</p>
+<p>规定在发送表单数据之前如何对其进行编码。</p>
+<p>enctype 属性可能的值<br>        application&#x2F;x-www-form-urlencoded<br>        multipart&#x2F;form-data<br>        text&#x2F;plain</p>
+<p>input标签<br>name：同样是表示的该文本输入框名称。<br>size：输入框的长度大小。<br>maxlength：输入框中允许输入字符的最大数。<br>value：输入框中的默认值<br>readonly：表示该框中只能显示，不能添加修改。</p>
+<p>input的类型</p>
+<p>type&#x3D;password  密码输入框</p>
+<p>type&#x3D;file 文件上传</p>
+<p>type&#x3D;hidden 隐藏域</p>
+<p>button 按钮</p>
+<p>checkbox 复选框</p>
+<p>radio 单选框</p>
+<p>type&#x3D;submit 提交按钮<br>type&#x3D;reset   重置按钮</p>
+<p>##2.5. a标签、img标签、table标签</p>
+<p>a标签的作用：就是用于控制界面与页面之间的跳转</p>
+<p>默认就是self<br>self：用于在当前选项卡中跳转，也就是不新建页面跳转</p>
+<p>_blank ：用于在新的选项卡中跳转，也就是新建页面跳转</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://www.baidu.com&quot; target=&quot;self&quot;&gt;百度&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://www.baidu.com&quot; target=&quot;_blank&quot;&gt;百度&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>_blank	在新窗口中打开被链接文档。<br>_self	默认。在相同的框架中打开被链接文档。<br>_parent	在父框架集中打开被链接文档。<br>_top	在整个窗口中打开被链接文档。</p>
+<h3 id="2-6-锚文本"><a href="#2-6-锚文本" class="headerlink" title="2.6. 锚文本"></a>2.6. 锚文本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#2&quot;&gt;锚点&lt;/a&gt;</span><br><span class="line">&lt;a name=&quot;2&quot;&gt;锚点&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-7-img-标签"><a href="#2-7-img-标签" class="headerlink" title="2.7. img 标签"></a>2.7. img 标签</h3><p>img 元素向网页中嵌入一幅图像。<br><code>&lt;img src=&quot;/i/eg_tulip.jpg&quot;  alt=&quot;上海鲜花港 - 郁金香&quot; /&gt;</code></p>
+<p>alt 规定图像的替代文本。<br>src  规定显示图像的url<br>width 规定图片的高度<br>height 规定图片的宽度</p>
+<h3 id="2-8-table-表格"><a href="#2-8-table-表格" class="headerlink" title="2.8. table 表格"></a>2.8. table 表格</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;caption&gt;我的标题&lt;/caption&gt;表格带标题</span><br><span class="line">border 边框</span><br><span class="line">width 宽度</span><br><span class="line">height 高度</span><br><span class="line">colspan 行</span><br><span class="line">rowspan 竖</span><br><span class="line">&lt;th&gt;&lt;/th&gt;</span><br><span class="line">&lt;tr&gt;行&lt;/tr&gt;</span><br><span class="line">&lt;td&gt;表格&lt;/td&gt;</span><br><span class="line">cellpadding 单元边与内容的空白</span><br><span class="line">cellspacing 单元格的空白</span><br></pre></td></tr></table></figure>
+<h3 id="2-9-列表标签"><a href="#2-9-列表标签" class="headerlink" title="2.9. 列表标签"></a>2.9. 列表标签</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-1-无序列表"><a href="#2-9-1-无序列表" class="headerlink" title="2.9.1. 无序列表"></a>2.9.1. 无序列表</h3><pre><code>项目符号 square circle disc
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-9-2-有序列表"><a href="#2-9-2-有序列表" class="headerlink" title="2.9.2. 有序列表"></a>2.9.2. 有序列表</h3><pre><code>数字列表 默认 数字
+小写字母列表 
+大写字母列表 A
+罗马字母列表  I
+小写罗马字母列表 i
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol type=&quot;1&quot;&gt; &lt;!--有序列表--&gt;</span><br><span class="line">			&lt;li&gt;暗月实战项目九 不出网的情况下的内网多域控渗透&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;xp/2003开关3389指令&lt;/li&gt;</span><br><span class="line">			&lt;li&gt;一条命令修改windows注册表&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-10-框架的使用"><a href="#2-10-框架的使用" class="headerlink" title="2.10. 框架的使用"></a>2.10. 框架的使用</h3><p>frameset 元素可定义一个框架集。它被用来组织多个窗口（框架）。每个框架存有独立的文档。在其最简单的应用中，frameset 元素仅仅会规定在框架集中存在多少列或多少行。您必须使用 cols 或 rows 属性。</p>
+<p>frameset 在一个页面中设置一个或多个框架 不能嵌套在body标签里<br>iframe 是在html页面内嵌入框架 框架内可以连接另一个页面</p>
+<p>frameset 不能在body内使用<br>frame 一般都是在frameset中使用<br>cols 定义框架集中列的数目和尺寸<br>rows 定义框架集中行的数目和尺寸</p>
+<p>scrolling   滚动条<br>auto	在需要的情况下出现滚动条（默认值）。<br>yes	始终显示滚动条（即使不需要）。<br>no	从不显示滚动条（即使需要）</p>
+<p><img src="/html.png" alt="网站框架"></p>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

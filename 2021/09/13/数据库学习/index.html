@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            数据库学习
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="数据库学习"><a href="#数据库学习" class="headerlink" title="数据库学习"></a>数据库学习</h1><h2 id="1-数据库的基本操作"><a href="#1-数据库的基本操作" class="headerlink" title="1.	数据库的基本操作"></a>1.	数据库的基本操作</h2><h3 id="1-1-MYSQL登录与退出"><a href="#1-1-MYSQL登录与退出" class="headerlink" title="1.1.	MYSQL登录与退出"></a>1.1.	MYSQL登录与退出</h3><p>D:\phpStudy\MySQL\bin<br>输入 mysql -uroot -p -P3306 -h127.0.0.1<br>退出的三种方法<br>mysql &gt; exit;<br>mysql &gt; quit;<br>mysql &gt; \q;</p>
+<h3 id="1-2-MYSQL数据库的一些解释"><a href="#1-2-MYSQL数据库的一些解释" class="headerlink" title="1.2.	MYSQL数据库的一些解释"></a>1.2.	MYSQL数据库的一些解释</h3><h1 id="注意：数据库就相当于文件夹-表就相当于文件-1-3-mysql注释符有三种：CREATE-TABLE-表名-属性名-数据类型-完整约束条件-属性名-数据类型-完整约束条件-…-…-属性名-数据类型-完整约束条件"><a href="#注意：数据库就相当于文件夹-表就相当于文件-1-3-mysql注释符有三种：CREATE-TABLE-表名-属性名-数据类型-完整约束条件-属性名-数据类型-完整约束条件-…-…-属性名-数据类型-完整约束条件" class="headerlink" title="注意：数据库就相当于文件夹      表就相当于文件### 1.3.	mysql注释符有三种：CREATE TABLE 表名 (        属性名 数据类型 [完整约束条件],        属性名 数据类型 [完整约束条件],        …        …        属性名 数据类型 [完整约束条件]    );"></a>注意：数据库就相当于文件夹<br>      表就相当于文件<br><br>### 1.3.	mysql注释符有三种：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">	1、#...</span><br><span class="line">	2、&quot;--  ...&quot;</span><br><span class="line">	3、/*...*/</span><br><span class="line">```	  </span><br><span class="line">## 2.	数据库的一些基本操作</span><br><span class="line"></span><br><span class="line">### 2.1.	数据库的增删改查(sql语句)</span><br><span class="line">增：create database db1;</span><br><span class="line">删：drop database db1;</span><br><span class="line">改：alter database db1 charset utf8</span><br><span class="line">查：show databases;#查看所有的数据库</span><br><span class="line"></span><br><span class="line">show create database db1;</span><br><span class="line">查看指定的数据库	</span><br><span class="line">设置默认的utf8,在配置文件中：写上character_set_server = utf8</span><br><span class="line">use db2   </span><br><span class="line">select database() #查看你当前在哪个文件夹</span><br><span class="line"></span><br><span class="line">重命名数据库 RENAME database olddbname TO newdbname</span><br><span class="line"></span><br><span class="line">show status; -- 显示一些系统特定资源的信息，例如，正在运行的线程数量。 </span><br><span class="line"></span><br><span class="line">desc tabl_name; 显示表结构，字段类型，主键，是否为空等属性，但不显示外键。</span><br><span class="line"></span><br><span class="line">show databases 查看这个mysql里面有多少个库</span><br><span class="line"></span><br><span class="line">use mysql </span><br><span class="line"></span><br><span class="line">use 选择数据库</span><br><span class="line"></span><br><span class="line">show tables 查看当前库里面所有的表</span><br><span class="line"></span><br><span class="line">mysql&gt; select password from user where user=&#x27;root&#x27;;</span><br><span class="line"></span><br><span class="line">Mysql 5.7 select authentication_string,user from mysql.user;</span><br><span class="line"></span><br><span class="line">查看当前数据库 里面的表user 用户为root的密码</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">alter database 数据库名 character set utf8;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 3.	table 表的操作</span><br><span class="line"></span><br><span class="line">### 3.1.	查看表结构</span><br><span class="line"></span><br><span class="line">desc table</span><br><span class="line">	</span><br><span class="line">DESCRIBE 表名;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 3.2.	查看表的内容</span><br><span class="line">select * from table_name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 3.3.	建立表</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>CREATE TABLE 表名 (<br>        属性名 数据类型 [完整约束条件],<br>        属性名 数据类型 [完整约束条件],<br>        …<br>        …<br>        属性名 数据类型 [完整约束条件]<br>    );<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">字段名就是属性名</span><br><span class="line"></span><br><span class="line">完整的建立表的语句</span><br><span class="line">create table users(id int(7) AUTO_INCREMENT,</span><br><span class="line">						username varchar(100) not null,</span><br><span class="line">						password varchar(100) not null,</span><br><span class="line">						PRIMARY KEY(id)</span><br><span class="line">						)ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line">	</span><br><span class="line">mysql&gt; create table users(id int(7) UNSIGNED auto_increment,username varchar(30) not null,password varchar(32) not null,email varchar(40),primary key (id))engine=myisam default charset=utf8;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if not exists表示当相同的表名存在时，则不执行此创建语句，避免语句执行错误</span><br><span class="line">	</span><br><span class="line">create database if not exists [table];      </span><br><span class="line">	</span><br><span class="line">ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line">ENGINE 设置表的引擎 和默认的字符类型</span><br><span class="line">	</span><br><span class="line">常见的数据库引擎 </span><br><span class="line">	</span><br><span class="line">InnoDB myisam </span><br><span class="line">	</span><br><span class="line">数据类型 </span><br><span class="line">https://www.cnblogs.com/-xlp/p/8617760.html</span><br><span class="line">	</span><br><span class="line">### 3.4.	约束条件</span><br><span class="line"></span><br><span class="line">PRIMARY KEY 标识该属性为该表的主键，可以唯一的标识对应的元组</span><br><span class="line"></span><br><span class="line">FOREIGN KEY 标识该属性为该表的外键，是与之联系某表的主键</span><br><span class="line"></span><br><span class="line">NOT NULL	标识该属性不能为空</span><br><span class="line"></span><br><span class="line">		UNIQUE 标识该属性的值是唯一的</span><br><span class="line"></span><br><span class="line">		AUTO_INCREMENT	标识该属性的值是自动增加，这是MySQL的SQL语句的特色</span><br><span class="line"></span><br><span class="line">		DEFAULT	 为该属性设置默认值</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">### 3.5.	修改表的操作</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">修改表</span><br><span class="line">	</span><br><span class="line">格式：ALTER TABLE 旧表名 RENAME 新表名;</span><br><span class="line">	</span><br><span class="line">修改字段的数据类型</span><br><span class="line">	</span><br><span class="line">		ALTER TABLE 表名 MODIFY 属性名 数据类型;</span><br><span class="line"></span><br><span class="line">修改字段名：</span><br><span class="line">	</span><br><span class="line">		ALTER TABLE 表名 CHANGE 旧属性名 新属性名 新数据类型;</span><br><span class="line">	</span><br><span class="line">增加字段名</span><br><span class="line">	</span><br><span class="line">		ALTER TABLE 表名 ADD 属性名1 数据类型 [完整性约束条件] [FIRST | AFTER 属性名2];</span><br><span class="line">	</span><br><span class="line">删除字段</span><br><span class="line">	</span><br><span class="line">		ALTER TABLE 表名 DROP 属性名;</span><br><span class="line"></span><br><span class="line">更改表的存储引擎</span><br><span class="line">	</span><br><span class="line">		格式：ALTER TABLE 表名 ENGINE = 存储引擎名;</span><br><span class="line">	</span><br></pre></td></tr></table></figure></h1><pre><code>
+
+## 4.	数据的增删改查
+
+
+为表中所有字段添加数据
+
+语法：INSERT INTO 表名（字段名1，字段名2，…）VALUES（值1，值2，…）；
+
+mysql&gt; insert into users (id,username,password)values(1,&#39;moon&#39;,&#39;123456&#39;);
+
+### 4.1.	增
+
+语法：INSERT INTO 表名 VALUES(值11，值2，…）；
+
+mysql&gt; insert into users values(null,&#39;test&#39;,&#39;123456&#39;);
+
+语法：INSERT INTO 表名（字段1，字段2，…）VALUES(值1，值2，…）
+
+语法：INSERT INTO 表名 SET 字段名1=值1[,字段名2=值2，…]
+举例：INSERT INTO student SET id=4，name=&#39;zhaoliu&#39;,grade=72;
+
+同时添加多条数据
+语法：INSERT INTO 表名[(字段名1，字段名2，…)]VALUES （值1，值2，…），（值1，值2，…），
+
+mysql&gt; insert into users (id,username,password)values(null,&#39;moon&#39;,&#39;123456&#39;),(null,&#39;alex&#39;,&#39;123456&#39;);
+
+：INSERT INTO 表名[(字段名1，字段名2，…)]VALUES （值1，值2，…），（值1，值2，…），（值1，值2，…）
+
+mysql&gt; insert into users values(null,&#39;moon1&#39;,&#39;123456&#39;),(null,&#39;alex1&#39;,&#39;123456&#39;);
+
+### 4.2.	删
+
+DELETE FROM 表名 [WHERE 条件表达式
+
+delete from users where id=1;
+
+删除全部数据
+
+若 DELETE 语句中没有使用WHERE语句，则会将表中所有记录都删除。
+
+DELETE FROM 表名
+
+删除全部数据的另一种方法——TRUNCATE
+
+### 4.3.	更新
+
+语法：UPDATE 表名 SET 字段名1=值1，[ ，字段名2=值2，…][ WHERE 条件表达式 ]
+
+update users set  password=&#39;aaaa&#39; where id=1;
+
+
+update users set  password=&#39;123456&#39;,username=&#39;moon&#39; where id=1
+
+update users set  password=456789;
+
+
+
+### 4.4.	查 
+
+select * from users;
+
+星号代表所有的字段
+
+查询指定的字段
+
+select username,password from users;
+
+按条件调节查询
+
+按关系来查询
+
+语法：SELECT 字段名1，字段名2，…FROM 表名WHERE 条件表达式
+
+in 查询
+
+SELECT * FROM student2 WHERE id IN （1,2,3）；
+
+
+带 BETWEEN AND 关键字的查询
+
+select * from users where id not between 1 and 10;
+
+
+带 DISTINCT 关键字的查询
+ 
+select distinct username from users
+
+like查询 一般都会给跟着%
+
+select * from users where username like &quot;%m%&quot; ;
+
+
+下划线 _ 匹配一个字符
+
+select* from users where username like &quot;moo_&quot;
+
+
+and查询
+满足多个条件
+ select * from users where id=1 and username=&#39;moon&#39;;
+ 
+or查询
+ 
+满足任意一个条件
+select * from users where id=1 or username=&#39;moon&#39;;
+
+OR 和 AND 一起使用的情况
+OR 和 AND 一起使用的时候，AND 的优先级高于 OR，因此二者一起使用时，会先运算 AND 两边的表达式，再运算 OR 两边的表达式。
+
+mysql&gt; select * from users where id &gt;5 and password=&#39;123456c&#39; or username=&#39;moon1&#39;;
+
+
+聚合查询
+
+count 返回行数
+
+select count(*) from users;
+
+select count(id) from users;
+
+
+COUNT() 返回某列的行数
+SUM() 返回某列值的和
+AVG() 返回某列的平均值
+MAX() 返回某列的最大值
+MIN() 返回某列的最小值
+
+
+
+分组查询
+如果报错请在 my.ini添加  
+sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+
+GROUP BY
+
+mysql&gt; SELECT * FROM users GROUP BY password;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  3 | moon1    | 123456   |
+|  1 | moon     | 456789   |
++----+----------+----------+
+2 rows in set (0.01 sec)
+
+mysql&gt; SELECT * FROM users GROUP BY username;
++----+----------+----------+
+| id | username | password |
++----+----------+----------+
+|  2 | alex1    | 456789   |
+|  1 | moon     | 456789   |
+|  3 | moon1    | 123456   |
++----+----------+----------+
+3 rows in set (0.01 sec)
+
+
+使用 LIMIT 限制查询结果的数量
+
+select * from users limit 2,10;
+
+select * from users as u where u.id=1;
+
+为表和字段取别名
+
+select username as myname from users;
+
+mysql的子查询
+
+where型子查询
+    （把内层查询结果当作外层查询的比较条件）	
+         select * from users where id in (select id from users where id&gt;10);
+         
+         
+                    
+from型子查询 
+    (把内层的查询结果供外层再次查询)					
+        select * from (select username,age from users) as agev_a where age&gt;20	
+        select * from (select * from users where id&gt;=10) as age_10;	
+            (select * from users where id&gt;=10)查询出来的是一个集合 别名为age_10
+            select * from age_10
+            
+exists型子查询
+    （把外层查询结果拿到内层，看内层的查询是否成立）
+1
+0
+select * from users where EXISTS (select * from users where id&gt;1)
+
+
+联合查询（两个表的查询）
+
+注释：默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。
+当 ALL 随 UNION 一起使用时（即 UNION ALL），不消除重复行
+
+UNION ALL 查询全部 而且不会消除重复的行
+
+union 
+
+SQL UNION ALL 语法
+
+
+union的用法及注意事项
+    两次查询的列数必须一致
+
+     select * from users union select *,1 from news;
+
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) not NULL,
+  `content` varchar(255) not null,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8; 
+
+insert into news (title,content)values(&#39;a1&#39;,&#39;a1&#39;);
+</code></pre>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>

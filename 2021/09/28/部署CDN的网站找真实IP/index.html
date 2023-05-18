@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            部署CDN的网站找真实IP
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="部署CDN的网络找真实IP"><a href="#部署CDN的网络找真实IP" class="headerlink" title="部署CDN的网络找真实IP"></a>部署CDN的网络找真实IP</h1><h2 id="1-判断是否CDN"><a href="#1-判断是否CDN" class="headerlink" title="1.判断是否CDN"></a>1.判断是否CDN</h2><p>ping 域名<br><img src="/ping.PNG" alt="查看是否有CDN"><br>使用超级ping<br><a target="_blank" rel="noopener" href="http://ping.chinaz.com/">http://ping.chinaz.com/</a>     <a target="_blank" rel="noopener" href="http://ping.chinaz.com/">站长之家</a><br><a target="_blank" rel="noopener" href="http://ping.aizhan.com/">http://ping.aizhan.com/</a>     <a target="_blank" rel="noopener" href="http://ping.aizhan.com/">爱站</a><br><a target="_blank" rel="noopener" href="https://www.17ce.com/">https://www.17ce.com/</a>       <a target="_blank" rel="noopener" href="https://www.17ce.com/">17ce</a><br><a target="_blank" rel="noopener" href="http://ping.chinaz.com/www.t00ls.net">http://ping.chinaz.com/www.t00ls.net</a>    <a target="_blank" rel="noopener" href="http://ping.chinaz.com/www.t00ls.net">ChinaZ</a></p>
+<h2 id="2-找真实IP的方法集合"><a href="#2-找真实IP的方法集合" class="headerlink" title="2. 找真实IP的方法集合"></a>2. 找真实IP的方法集合</h2><h3 id="2-1-DNS历史绑定记录"><a href="#2-1-DNS历史绑定记录" class="headerlink" title="2.1 DNS历史绑定记录"></a>2.1 DNS历史绑定记录</h3><p>通过以下这些网站可以访问dns的解析，有可能存在未有绑cdn之前的记录。<br><a target="_blank" rel="noopener" href="https://dnsdb.io/zh-cn/">https://dnsdb.io/zh-cn/</a>     <a target="_blank" rel="noopener" href="https://dnsdb.io/zh-cn/">DNS查询</a><br><a target="_blank" rel="noopener" href="https://x.threatbook.cn/">https://x.threatbook.cn/</a>    <a target="_blank" rel="noopener" href="https://x.threatbook.cn/">微步在线</a><br><a target="_blank" rel="noopener" href="http://viewdns.info/">http://viewdns.info/</a>        <a target="_blank" rel="noopener" href="http://viewdns.info/">DNS、IP等查询</a><br><a target="_blank" rel="noopener" href="https://tools.ipip.net/cdn.php">https://tools.ipip.net/cdn.php</a>      <a target="_blank" rel="noopener" href="https://tools.ipip.net/cdn.php">CDN查询IP</a><br><a target="_blank" rel="noopener" href="https://sitereport.netcraft.com/?url=%E5%9F%9F%E5%90%8D">https://sitereport.netcraft.com/?url=域名</a><br><a target="_blank" rel="noopener" href="https://site.ip138.com/www.t00ls.net/">https://site.ip138.com/www.t00ls.net/</a>       <a target="_blank" rel="noopener" href="https://site.ip138.com/www.t00ls.net/">ip138</a></p>
+<h3 id="2-2-域名解析"><a href="#2-2-域名解析" class="headerlink" title="2.2 域名解析"></a>2.2 域名解析</h3><p>通过子域名的解析指向 也有可能指向目标的同一个IP上。<br>使用工具对其子域名进行穷举<br><em>在线子域名查询</em><br><a target="_blank" rel="noopener" href="https://securitytrails.com/list/apex_domain/t00ls.net">https://securitytrails.com/list/apex_domain/t00ls.net</a><br><a target="_blank" rel="noopener" href="http://tool.chinaz.com/subdomain/t00ls.net">http://tool.chinaz.com/subdomain/t00ls.net</a><br><a target="_blank" rel="noopener" href="https://phpinfo.me/domain/">https://phpinfo.me/domain/</a><br>找到子域名继续确认子域名没有cdn的情况下批量进行域名解析查询，有cdn的情况继续查询历史。<br>域名批量解析<br><a target="_blank" rel="noopener" href="http://tools.bugscaner.com/domain2ip.html">http://tools.bugscaner.com/domain2ip.html</a></p>
+<h3 id="2-3-国外dns获取真实IP"><a href="#2-3-国外dns获取真实IP" class="headerlink" title="2.3 国外dns获取真实IP"></a>2.3 国外dns获取真实IP</h3><p>部分cdn只针对国内的ip访问，如果国外ip访问域名 即可获取真实IP<br><em>全世界DNS地址：</em><br><a target="_blank" rel="noopener" href="http://www.ab173.com/dns/dns_world.php">http://www.ab173.com/dns/dns_world.php</a><br><a target="_blank" rel="noopener" href="https://dnsdumpster.com/">https://dnsdumpster.com/</a><br><a target="_blank" rel="noopener" href="https://dnshistory.org/">https://dnshistory.org/</a><br><a target="_blank" rel="noopener" href="http://whoisrequest.com/history/">http://whoisrequest.com/history/</a><br><a target="_blank" rel="noopener" href="https://completedns.com/dns-history/">https://completedns.com/dns-history/</a><br><a target="_blank" rel="noopener" href="http://dnstrails.com/">http://dnstrails.com/</a><br><a target="_blank" rel="noopener" href="https://who.is/domain-history/">https://who.is/domain-history/</a><br><a target="_blank" rel="noopener" href="http://research.domaintools.com/research/hosting-history/">http://research.domaintools.com/research/hosting-history/</a> <a target="_blank" rel="noopener" href="http://site.ip138.com/">http://site.ip138.com/</a><br><a target="_blank" rel="noopener" href="http://viewdns.info/iphistory/">http://viewdns.info/iphistory/</a><br><a target="_blank" rel="noopener" href="https://dnsdb.io/zh-cn/">https://dnsdb.io/zh-cn/</a><br><a target="_blank" rel="noopener" href="https://www.virustotal.com/">https://www.virustotal.com/</a><br><a target="_blank" rel="noopener" href="https://x.threatbook.cn/">https://x.threatbook.cn/</a><br><a target="_blank" rel="noopener" href="http://viewdns.info/">http://viewdns.info/</a><br><a target="_blank" rel="noopener" href="http://www.17ce.com/">http://www.17ce.com/</a><br><a target="_blank" rel="noopener" href="http://toolbar.netcraft.com/site_report?url=">http://toolbar.netcraft.com/site_report?url=</a> <a target="_blank" rel="noopener" href="https://securitytrails.com/">https://securitytrails.com/</a><br><a target="_blank" rel="noopener" href="https://tools.ipip.net/cdn.php">https://tools.ipip.net/cdn.php</a></p>
+<h3 id="2-4-ico图标通过空间搜索找真实ip"><a href="#2-4-ico图标通过空间搜索找真实ip" class="headerlink" title="2.4 ico图标通过空间搜索找真实ip"></a>2.4 ico图标通过空间搜索找真实ip</h3><p>下载图标<br>放到fofa识别<br>通过zoomeye搜图标<br>查询 快速定位资源 查看端口是否开放<br>绑定hosts进行测试<br><em>win10</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\drivers\etc\host</span><br><span class="line">参数配置说明: ip + 空格 + 域名</span><br></pre></td></tr></table></figure>
+<p><em>kali</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br><span class="line">vim</span><br></pre></td></tr></table></figure>
+<p><code>curl</code> 进行测试</p>
+<h3 id="2-5-fofa搜索真实IP"><a href="#2-5-fofa搜索真实IP" class="headerlink" title="2.5 fofa搜索真实IP"></a>2.5 fofa搜索真实IP</h3><p>domain&#x3D;”t00ls.net” 302一般是cdn</p>
+<h3 id="2-6-通过censys找真实ip"><a href="#2-6-通过censys找真实ip" class="headerlink" title="2.6 通过censys找真实ip"></a>2.6 通过censys找真实ip</h3><p>Censys工具就能实现对整个互联网的扫描，Censys是一款用以搜索联网设备信息的新型搜索引擎，能够扫描整个互联网，Censys会将互联网所有的ip进行扫面和连接，以及证书探测。<br>若目标站点有https证书，并且默认虚拟主机配了https证书，我们就可以找所有目标站点是该https证书的站点。<br>通过协议查询<br><a target="_blank" rel="noopener" href="https://search.censys.io/">https://search.censys.io/</a>       <a target="_blank" rel="noopener" href="https://search.censys.io/">censys</a></p>
+<h3 id="2-7-360测绘中心"><a href="#2-7-360测绘中心" class="headerlink" title="2.7 360测绘中心"></a>2.7 360测绘中心</h3><p><a target="_blank" rel="noopener" href="https://quake.360.cn/">https://quake.360.cn</a>    <a target="_blank" rel="noopener" href="https://quake.360.cn/">360quake</a></p>
+<h3 id="2-8-利用SSL证书寻找真实IP"><a href="#2-8-利用SSL证书寻找真实IP" class="headerlink" title="2.8 利用SSL证书寻找真实IP"></a>2.8 利用SSL证书寻找真实IP</h3><p>证书颁发机构(CA)必须将他们发布的每个SSL&#x2F;TLS证书发布到公共日志中，SSL&#x2F;TLS证书通常包含域名、子域名和电子邮件地址。因此SSL&#x2F;TLS证书成为了攻击者的切入点。<br>获取网站SSL证书的HASH再结合Censys<br>利用Censys搜索网站的SSL证书及HASH，在<a target="_blank" rel="noopener" href="https://crt.sh上查找目标网站ssl证书的hash/">https://crt.sh上查找目标网站SSL证书的HASH</a><br>再用Censys搜索该HASH即可得到真实IP地址<br>SSL证书搜索引擎：<br><a target="_blank" rel="noopener" href="https://crt.sh/">https://crt.sh</a>      <a target="_blank" rel="noopener" href="https://crt.sh/">crt</a><br>找到hash    Decimal<br>转成ipv4 进行搜索</p>
+<h3 id="2-9-邮箱获取真实IP"><a href="#2-9-邮箱获取真实IP" class="headerlink" title="2.9 邮箱获取真实IP"></a>2.9 邮箱获取真实IP</h3><p>网站在发信的时候，会附带真实的IP地址 </p>
+<ol>
+<li>进入邮箱 </li>
+<li>查看源文件头部信息</li>
+<li>选择from</li>
+</ol>
+<h3 id="2-10-网站敏感文件获取真实IP"><a href="#2-10-网站敏感文件获取真实IP" class="headerlink" title="2.10 网站敏感文件获取真实IP"></a>2.10 网站敏感文件获取真实IP</h3><ul>
+<li>文件探针</li>
+<li>   phpinfo</li>
+<li>   网站源代码</li>
+<li>   信息泄露</li>
+<li>   GitHub信息泄露</li>
+<li>   js文件</li>
+</ul>
+<h3 id="2-11-F5-LTM解码法"><a href="#2-11-F5-LTM解码法" class="headerlink" title="2.11 F5 LTM解码法"></a>2.11 F5 LTM解码法</h3><p>当服务器使用F5 LTM做负载均衡时，通过对set-cookie关键字的解码真实ip也可被获取.<br>例如：Set-Cookie: BIGipServerpool_8.29_8030&#x3D;487098378.24095.0000，先把第一小节的十进制数即487098378取来，然后将其转为十六进制数1d08880a，接着从后至前，以此取四位数出来，也就是0a.88.08.1d，最后依次把他们转为十进制数10.136.8.29，也就是最后的真实ip。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rverpool-cas01=3255675072.20480.0000; path=/</span><br><span class="line">3255675072 转十六进制 c20da8c0 从右向左取 c0a80dc2 转10进制 192 168 13 194</span><br></pre></td></tr></table></figure>
+<h3 id="2-12-APP获取真实IP"><a href="#2-12-APP获取真实IP" class="headerlink" title="2.12 APP获取真实IP"></a>2.12 APP获取真实IP</h3><p>如果网站有app，使用Fiddler或BurpSuite抓取数据包 可能获取真实IP<br>模拟器 mumu模拟器抓包 </p>
+<h3 id="2-13-小程序获取真实IP"><a href="#2-13-小程序获取真实IP" class="headerlink" title="2.13 小程序获取真实IP"></a>2.13 小程序获取真实IP</h3><h3 id="2-14-配置不当获取真实IP"><a href="#2-14-配置不当获取真实IP" class="headerlink" title="2.14 配置不当获取真实IP"></a>2.14 配置不当获取真实IP</h3><p>在配置CDN的时候，需要指定域名、端口等信息，有时候小小的配置细节就容易导致CDN防护被绕过。<br>*	案例1：为了方便用户访问，我们常常将<a target="_blank" rel="noopener" href="http://www.test.com/">www.test.com</a> 和 test.com 解析到同一个站点，而CDN只配置了<a target="_blank" rel="noopener" href="http://www.test.com,通过访问test.com,就可以绕过/">www.test.com，通过访问test.com，就可以绕过</a> CDN 了。<br>*	案例2：站点同时支持http和https访问，CDN只配置 https协议，那么这时访问http就可以轻易绕过。</p>
+<h3 id="2-15-banner"><a href="#2-15-banner" class="headerlink" title="2.15 banner"></a>2.15 banner</h3><p>获取目标站点的banner，在全网搜索引擎搜索，也可以使用AQUATONE，在Shodan上搜索相同指纹站点。<br>可以通过互联网络信息中心的IP数据，筛选目标地区IP，遍历Web服务的banner用来对比CDN站的banner，可以确定源IP。<br>欧洲：<br><a target="_blank" rel="noopener" href="http://ftp.ripe.net/pub/stats/ripencc/delegated-ripencc-latest">http://ftp.ripe.net/pub/stats/ripencc/delegated-ripencc-latest</a>       <a target="_blank" rel="noopener" href="http://ftp.ripe.net/pub/stats/ripencc/delegated-ripencc-latest">欧洲</a><br>北美：<br><a target="_blank" rel="noopener" href="https://ftp.arin.net/pub/stats/arin/delegated-arin-extended-latest">https://ftp.arin.net/pub/stats/arin/delegated-arin-extended-latest</a>   <a target="_blank" rel="noopener" href="https://ftp.arin.net/pub/stats/arin/delegated-arin-extended-latest">北美</a><br>亚洲：<br><a href="ftp://ftp.apnic.net/public/apnic/stats/apnic/delegated-apnic-latest">ftp://ftp.apnic.net/public/apnic/stats/apnic/delegated-apnic-latest</a>  <a href="ftp://ftp.apnic.net/public/apnic/stats/apnic/delegated-apnic-latest">亚洲</a><br>非洲：<br><a href="ftp://ftp.afrinic.net/pub/stats/afrinic/delegated-afrinic-latest">ftp://ftp.afrinic.net/pub/stats/afrinic/delegated-afrinic-latest</a>     <a href="ftp://ftp.afrinic.net/pub/stats/afrinic/delegated-afrinic-latest">非洲</a><br>拉美：<br><a href="ftp://ftp.lacnic.net/pub/stats/lacnic/delegated-lacnic-extended-latest">ftp://ftp.lacnic.net/pub/stats/lacnic/delegated-lacnic-extended-latest</a>  <a href="ftp://ftp.lacnic.net/pub/stats/lacnic/delegated-lacnic-extended-latest">拉美</a><br>获取CN的IP<br><a target="_blank" rel="noopener" href="http://www.ipdeny.com/ipblocks/data/countries/cn.zone">http://www.ipdeny.com/ipblocks/data/countries/cn.zone</a>       <a target="_blank" rel="noopener" href="http://www.ipdeny.com/ipblocks/data/countries/cn.zone">CN</a></p>
+<ol>
+<li>ZMap号称是最快的互联网扫描工具，能够在45分钟扫遍全网。<a target="_blank" rel="noopener" href="https://github.com/zmap/zmap">https://github.com/zmap/zmap</a>   <a target="_blank" rel="noopener" href="https://github.com/zmap/zmap">ZMap</a></li>
+<li>Masscan号称是最快的互联网端口扫描器，最快可以在六分钟内扫遍互联网。<a target="_blank" rel="noopener" href="https://github.com/robertdavidgraham/masscan">https://github.com/robertdavidgraham/masscan</a>    <a target="_blank" rel="noopener" href="https://github.com/robertdavidgraham/masscan">Masscan</a></li>
+</ol>
+<h3 id="2-16-长期关注"><a href="#2-16-长期关注" class="headerlink" title="2.16 长期关注"></a>2.16 长期关注</h3><p>在长期渗透的时候，设置程序每天访问网站，可能有新的发现。每天零点 或者业务需求增大 它会换ip 换服务器的。</p>
+<h3 id="2-17-流量攻击"><a href="#2-17-流量攻击" class="headerlink" title="2.17 流量攻击"></a>2.17 流量攻击</h3><p>发包机可以一下子发送很大的流量。<br>这个方法是很笨，但是在特定的目标下渗透，建议采用。<br>cdn除了能隐藏ip，可能还考虑到分配流量，<br>不设防的cdn 量大就会挂，高防cdn 要大流量访问。<br>经受不住大流量冲击的时候可能会显示真实ip。<br>站长-&gt;业务不正常-&gt;cdn不使用-&gt;更换服务器。</p>
+<h3 id="2-18-被动获取"><a href="#2-18-被动获取" class="headerlink" title="2.18 被动获取"></a>2.18 被动获取</h3><p>被动获取就是让服务器或网站主动连接我们的服务器，从而获取服务器的真实IP<br>如果网站有编辑器可以填写远程url图片，即可获取真实IP<br>如果存在ssrf漏洞 或者xss 让服务器主动连接我们的服务器 均可获取真实IP。</p>
+<h3 id="2-19-扫全网获取真实IP"><a href="#2-19-扫全网获取真实IP" class="headerlink" title="2.19 扫全网获取真实IP"></a>2.19 扫全网获取真实IP</h3><p><a target="_blank" rel="noopener" href="https://github.com/superfish9/hackcdn">https://github.com/superfish9/hackcdn</a><br><a target="_blank" rel="noopener" href="https://github.com/boy-hack/w8fuckcdn">https://github.com/boy-hack/w8fuckcdn</a></p>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
