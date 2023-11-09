@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            C language
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <h1 id="常量命名"><a href="#常量命名" class="headerlink" title="常量命名"></a>常量命名</h1><p>有一个不常用的命名约定，即在名称前带c_或k_前缀来表示常量（如，c_level或k_line）。</p>
+<h1 id="显示八进制和十六进制"><a href="#显示八进制和十六进制" class="headerlink" title="显示八进制和十六进制"></a>显示八进制和十六进制</h1><p>在C程序中，既可以使用和显示不同进制的数。不同的进制要使用不同的转换说明。以十进制显示数字，使用<code>%d</code>；以八进制显示数字，使用<code>%o</code>；以十六进制显示数字，使用<code>%x</code>。另外，要显示各进制数的前缀<code>0</code>、<code>0x</code>和<code>0X</code>必须分别使用<code>%#o</code>、<code>%#x</code>、<code>%#X</code>。，</p>
+<h1 id="打印short、long、long-long和unsigned类型"><a href="#打印short、long、long-long和unsigned类型" class="headerlink" title="打印short、long、long long和unsigned类型"></a>打印short、long、long long和unsigned类型</h1><p>打印unsigned int类型的值，使用%u转换说明；打印long类型的值，使用<code>%ld</code>转换说明。如果系统中int和long的大小相同，使用<code>%d</code>就行。但是，这样的程序被移植到其他系统（int和long类型的大小不同）中会无法正常工作。在x和o前面可以使用l前缀，<code>%lx</code>表示以<code>十六进制格式打印long类型整数</code>，<code>%lo</code>表示以<code>八进制格式打印long类型整数</code>。</p>
+<ul>
+<li>注意，虽然C允许使用大写或小写的常量后缀，但是在转换说明中只能用小写。</li>
+</ul>
+<p>C语言有多种<code>printf()</code>格式。对于short类型，可以使用h前缀。<code>%hd</code>表示以<code>十进制显示short类型的整数</code>，<code>%ho</code>表示以<code>八进制显示short类型的整数</code>。h和l前缀都可以和u一起使用，用于表示无符号类型。例如，<code>%lu</code>表示打印<code>unsigned long类型</code>的值。</p>
+<h1 id="scanf"><a href="#scanf" class="headerlink" title="scanf()"></a>scanf()</h1><p><code>scanf()</code>的输入形式，<code>scanf(&quot;%d&quot;,&amp;Alphabet)</code> 要先将<code>%d</code>包含以后才能使用<code>&amp;</code>进行传参。</p>
+<h1 id="打印浮点数"><a href="#打印浮点数" class="headerlink" title="打印浮点数"></a>打印浮点数</h1><p>十六进制浮点数<br><code>printf(&quot;And it&#39;s %a in hexadecimal, powers of 2 notation\n&quot;,a boat);</code></p>
+<h1 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h1><p><img src="/printf()%E8%BD%AC%E6%8D%A2%E6%A0%87%E5%87%86.png" alt="ANSI C标准 printf() 转换说明"></p>
+<p><img src="/printf()%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="printf()的修饰符"><br><strong>注意类型可移植性</strong></p>
+<p><img src="/printf()%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0.png" alt="printf()中的标记"></p>
+<h1 id="scanf-1"><a href="#scanf-1" class="headerlink" title="scanf()"></a>scanf()</h1><p><img src="/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E.png" alt="ANSI C中scanf()的转换说明"></p>
+<p><img src="/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E%E4%B8%AD%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="scanf()转换说明中的修饰符"><br><img src="/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E%E4%B8%AD%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%BB%AD.png" alt="scanf()转换说明中的修饰符续"></p>
+<h1 id="经典习题"><a href="#经典习题" class="headerlink" title="经典习题"></a>经典习题</h1><ol>
+<li>编写一个程序，要求用户输入一个华氏温度。程序应读取double类型的值作为温度值，并把该值作为参数传递给一个用户自定义的函数Temperatures()。该函数计算摄氏温度和开氏温度，并以小数点后面两位数字的精度显示3种温度。要使用不同的温标来表示这3个温度值。下面是华氏温度转摄氏温度的公式：<br><strong>摄氏温度 &#x3D; 5.0 &#x2F; 9.0 * (华氏温度 - 32.0)</strong><br>开氏温标常用于科学研究，0表示绝对零，代表最低的温度。下面是摄氏温度转开氏温度的公式：<br><strong>开氏温度 &#x3D; 摄氏温度 + 273.16</strong><br>Temperatures()函数中用const创建温度转换中使用的变量。在main()函数中使用一个循环让用户重复输入温度，当用户输入 q 或其他非数字时，循环结束。scanf()函数返回读取数据的数量，所以如果读取数字则返回1，如果读取q则不返回1。可以使用&#x3D;&#x3D;运算符将scanf()的返回值和1作比较，测试两值是否相等。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void Temperatures(double fahrenheit);</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    double fahrenheit;</span><br><span class="line">    printf(&quot;This program converts fahrenheit to celsius and kelvin.\n&quot;);</span><br><span class="line">    printf(&quot;Enter a temperature in dgrees fahrenheit (q to quit):&quot;);</span><br><span class="line">    while(scanf(&quot;%lf&quot;, &amp;fahrenheit) == 1)   // continue executing loop if user enters valid number</span><br><span class="line">    &#123;</span><br><span class="line">        Temperatures(fahrenheit);   // convert fahrenheit to celsius and kelvin</span><br><span class="line"></span><br><span class="line">        //prompt for new input</span><br><span class="line">        printf(&quot;Enter a temperatures in degrees fahrenheit (q to quit):&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Bye!\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Temperatures(double fahrenheit)&#123;</span><br><span class="line">    const double FAHR_TO_CEL_SCALE = 5.0 / 9.0;</span><br><span class="line">    const double FAHR_TO_OFFSET = -32.0;</span><br><span class="line">    const double CEL_TO_KEL_OFFSET = 273.16;</span><br><span class="line"></span><br><span class="line">    double celsius = (fahrenheit + FAHR_TO_OFFSET) * FAHR_TO_CEL_SCALE;</span><br><span class="line">    double kelvin = celsius + CEL_TO_KEL_OFFSET;</span><br><span class="line"></span><br><span class="line">    printf(&quot;%.2f degrees fahrenheit is %.2f degrees celsius or %.2f degrees kelvin.\n&quot;,</span><br><span class="line">           fahrenheit, celsius, kelvin);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
