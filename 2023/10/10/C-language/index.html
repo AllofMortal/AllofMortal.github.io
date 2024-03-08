@@ -42,15 +42,173 @@
 <p>C语言有多种<code>printf()</code>格式。对于short类型，可以使用h前缀。<code>%hd</code>表示以<code>十进制显示short类型的整数</code>，<code>%ho</code>表示以<code>八进制显示short类型的整数</code>。h和l前缀都可以和u一起使用，用于表示无符号类型。例如，<code>%lu</code>表示打印<code>unsigned long类型</code>的值。</p>
 <h1 id="scanf"><a href="#scanf" class="headerlink" title="scanf()"></a>scanf()</h1><p><code>scanf()</code>的输入形式，<code>scanf(&quot;%d&quot;,&amp;Alphabet)</code> 要先将<code>%d</code>包含以后才能使用<code>&amp;</code>进行传参。</p>
 <h1 id="打印浮点数"><a href="#打印浮点数" class="headerlink" title="打印浮点数"></a>打印浮点数</h1><p>十六进制浮点数<br><code>printf(&quot;And it&#39;s %a in hexadecimal, powers of 2 notation\n&quot;,a boat);</code></p>
-<h1 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h1><p><img src="/printf()%E8%BD%AC%E6%8D%A2%E6%A0%87%E5%87%86.png" alt="ANSI C标准 printf() 转换说明"></p>
-<p><img src="/printf()%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="printf()的修饰符"><br><strong>注意类型可移植性</strong></p>
-<p><img src="/printf()%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0.png" alt="printf()中的标记"></p>
-<h1 id="scanf-1"><a href="#scanf-1" class="headerlink" title="scanf()"></a>scanf()</h1><p><img src="/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E.png" alt="ANSI C中scanf()的转换说明"></p>
-<p><img src="/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E%E4%B8%AD%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="scanf()转换说明中的修饰符"><br><img src="/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E%E4%B8%AD%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%BB%AD.png" alt="scanf()转换说明中的修饰符续"></p>
-<h1 id="经典习题"><a href="#经典习题" class="headerlink" title="经典习题"></a>经典习题</h1><ol>
-<li>编写一个程序，要求用户输入一个华氏温度。程序应读取double类型的值作为温度值，并把该值作为参数传递给一个用户自定义的函数Temperatures()。该函数计算摄氏温度和开氏温度，并以小数点后面两位数字的精度显示3种温度。要使用不同的温标来表示这3个温度值。下面是华氏温度转摄氏温度的公式：<br><strong>摄氏温度 &#x3D; 5.0 &#x2F; 9.0 * (华氏温度 - 32.0)</strong><br>开氏温标常用于科学研究，0表示绝对零，代表最低的温度。下面是摄氏温度转开氏温度的公式：<br><strong>开氏温度 &#x3D; 摄氏温度 + 273.16</strong><br>Temperatures()函数中用const创建温度转换中使用的变量。在main()函数中使用一个循环让用户重复输入温度，当用户输入 q 或其他非数字时，循环结束。scanf()函数返回读取数据的数量，所以如果读取数字则返回1，如果读取q则不返回1。可以使用&#x3D;&#x3D;运算符将scanf()的返回值和1作比较，测试两值是否相等。</li>
+<h1 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h1><p><img src="/C-language/printf()%E8%BD%AC%E6%8D%A2%E6%A0%87%E5%87%86.png" alt="ANSI C标准 printf() 转换说明"></p>
+<p><img src="/C-language/printf()%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="printf()的修饰符"><br><strong>注意类型可移植性</strong></p>
+<p><img src="/C-language/printf()%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AE%B0.png" alt="printf()中的标记"></p>
+<h1 id="scanf-1"><a href="#scanf-1" class="headerlink" title="scanf()"></a>scanf()</h1><p><img src="/C-language/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E.png" alt="ANSI C中scanf()的转换说明"></p>
+<p><img src="/C-language/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E%E4%B8%AD%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="scanf()转换说明中的修饰符"><br><img src="/C-language/scanf()%E8%BD%AC%E6%8D%A2%E8%AF%B4%E6%98%8E%E4%B8%AD%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%BB%AD.png" alt="scanf()转换说明中的修饰符续"></p>
+<ul>
+<li><code>scanf()</code> 更像是获取单词的函数，而不是获取整个字符串的函数。</li>
+<li>使用 <code>%s</code> 转换说明时，<code>scanf()</code> 会从第一个非空白字符开始，读取直到遇到下一个空白字符（空格、制表符、换行符等）为止。</li>
+<li>如果指定了字段宽度，如 <code>%10s</code>，<code>scanf()</code> 将读取指定数量的字符或者在遇到第一个空白字符时停止（以先满足条件为准）。<br><img src="/C-language/%E5%AD%97%E6%AE%B5%E5%AE%BD%E5%BA%A6%E5%92%8Cscanf().png" alt="字段宽度和scanf()"></li>
+</ul>
+<p><code>scanf()</code>的典型用法是读取并转换混合数据类型为某种标准形式。<br>例如，如果输入行包含一种工具名、库存量和单价，就可以使用<code>scanf()</code>。</p>
+<h1 id="真值"><a href="#真值" class="headerlink" title="真值"></a>真值</h1><p>从数值方面而不是从真&#x2F;假方面来看测试条件。要牢记：关系表达式为真，求值得1；关系表达式为假，求值得0。因此，这些表达式实际上相当于数值。<br>例如，用<code>while(goats)</code>替换<code>while (goats !=0)</code>，因为表达式<code>goats != 0</code>和<code>goats</code>都只有在goats的值为0时才为0或假。<br>第1种形式（while (goats !&#x3D; 0)）对初学者而言可能比较清楚，但是第2种形式（while (goats)）才是C程序员最常用的。</p>
+<h1 id="比较常量"><a href="#比较常量" class="headerlink" title="比较常量"></a>比较常量</h1><p>如果待比较的一个值是常量，可以把该常量放在左侧有助于编译器捕获错误：<br>5 &#x3D; canoes   &lt;—— 语法错误<br>5 &#x3D;&#x3D; canoes  &lt;—— 检查canoes的值是否为5<br>可以这样做是因为C语言不允许给常量赋值，编译器会把赋值运算符的这种用法作为语法错误标记出来。许多经验丰富的程序员在构建比较是否相等的表达式时，都习惯把常量放在左侧。</p>
+<h1 id="比较算数运算符优先级"><a href="#比较算数运算符优先级" class="headerlink" title="比较算数运算符优先级"></a>比较算数运算符优先级</h1><p><img src="/C-language/%E6%AF%94%E8%BE%83%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7.png" alt="比较算数运算符优先级"></p>
+<h1 id="ctype-h-头文件中的字符测试函数"><a href="#ctype-h-头文件中的字符测试函数" class="headerlink" title="ctype.h 头文件中的字符测试函数"></a>ctype.h 头文件中的字符测试函数</h1><p><img src="/C-language/ctype.%E5%A4%B4%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E6%B5%8B%E8%AF%95%E5%87%BD%E6%95%B0.png" alt=" ctype.h头文件中的字符测试函数"><br><img src="/C-language/ctype.h%E5%A4%B4%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%A0%E5%B0%84%E5%87%BD%E6%95%B0.png" alt="ctype.h头文件中的字符映射函数"></p>
+<h1 id="ctype-h"><a href="#ctype-h" class="headerlink" title="ctype.h"></a>ctype.h</h1><p><code>ctype.h</code>系列的字符函数（如，<code>issapce()</code>和<code>isalpha()</code>）为创建以分类字符为基础的测试表达式提供了便捷的工具。</p>
+<h1 id="条件运算符"><a href="#条件运算符" class="headerlink" title="条件运算符:  ?:"></a>条件运算符:  <code>?:</code></h1><p>expression1 ? expression2 : expression3</p>
+<p>如果 expression1 为真（非 0），那么整个条件表达式的值与 expression2的值相同；如果expression1为假（0），那么整个条件表达式的值与expression3的值相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(5 &gt; 3) ? 1 : 2 值为1</span><br><span class="line">(3 &gt; 5) ? 1 : 2 值为2</span><br><span class="line">(a &gt; b) ? a : b 如果a &gt;b，则取较大的值</span><br></pre></td></tr></table></figure>
+
+<h1 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h1><p>switch在圆括号中的测试表达式的值应该是一个整数值（包括char类型）。case标签必须是整数类型（包括char类型）的常量或整型常量表达式（即，表达式中只包含整型常量）。不能用变量作为case标签。<br>switch的构造如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">switch ( 整型表达式)</span><br><span class="line">&#123;</span><br><span class="line">case 常量1:</span><br><span class="line">语句 &lt;--可选</span><br><span class="line">case 常量2:</span><br><span class="line">语句 &lt;--可选</span><br><span class="line">default : &lt;--可选</span><br><span class="line">语句 &lt;--可选</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h1><p>考虑下面的输入：<br><code>is 28 12.4</code><br>在我们眼中，这就像是一个由字符、整数和浮点数组成的字符串。但是对 C程序而言，这是一个字节流。第1个字节是字母i的字符编码，第2个字节是字母s的字符编码，第3个字节是空格字符的字符编码，第4个字节是数字2的字符编码，等等。所以，如果get_long()函数处理这一行输入，第1个字符是非数字，那么整行输入都会被丢弃，包括其中的数字，因为这些数字只是该输入行中的其他字符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while ((ch = getchar()) != &#x27;\n&#x27;)</span><br><span class="line">putchar(ch); // 处理错误的输入</span><br></pre></td></tr></table></figure>
+<p>虽然输入流由字符组成，但是也可以设置scanf()函数把它们转换成数值。例如，考虑下面的输入：<br><code>42</code><br>如果在scanf()函数中使用%c转换说明，它只会读取字符4并将其储存在char类型的变量中。如果使用%s转换说明，它会读取字符4和字符2这两个字符，并将其储存在字符数组中。如果使用%d转换说明，scanf()同样会读取两个字符，但是随后会计算出它们对应的整数值：4×10+2，即42，然后将表示该整数的二进制数储存在 int 类型的变量中。如果使用%f 转换说明，scanf()也会读取两个字符，计算出它们对应的数值42.0，用内部的浮点表示法表示该值，并将结果储存在float类型的变量中。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="1-1-ANSI-C要求在每个变量前都声明其类型"><a href="#1-1-ANSI-C要求在每个变量前都声明其类型" class="headerlink" title="1.1 ANSI C要求在每个变量前都声明其类型"></a>1.1 ANSI C要求在每个变量前都声明其类型</h2><p>不能像普通变量声明那样使用同一类型的变量列表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void dibs(int x, y, z) /* 无效的函数头 */</span><br><span class="line">void dubs(int x, int y, int z) /* 有效的函数头 */</span><br></pre></td></tr></table></figure>
+<p>如果变量是同一类型，这种形式可以用逗号分隔变量名列表，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void dibs(x, y, z)</span><br><span class="line">int x, y, z; /* 有效 */</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-使用函数前先声明"><a href="#1-2-使用函数前先声明" class="headerlink" title="1.2 使用函数前先声明"></a>1.2 使用函数前先声明</h2><p>在使用函数之前，要用ANSI C形式声明函数原型：<br><code>void show_n_char(char ch, int num);</code><br>当函数接受参数时，函数原型用逗号分隔的列表指明参数的数量和类型。根据个人喜好，你也可以省略变量名：<br><code>void show_n_char(char, int);</code><br>在原型中使用变量名并没有实际创建变量，char仅代表了一个char类型的变量，以此类推。</p>
+<h2 id="1-3-省略函数原型却保留函数原型的优点"><a href="#1-3-省略函数原型却保留函数原型的优点" class="headerlink" title="1.3 省略函数原型却保留函数原型的优点"></a>1.3 省略函数原型却保留函数原型的优点</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 下面这行代码既是函数定义，也是函数原型</span><br><span class="line">int imax(int a, int b) &#123; return a &gt; b ? a : b; &#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int x, z;</span><br><span class="line">...</span><br><span class="line">z = imax(x, 50);</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>递归的关键在于每个递归调用都会等待它的下一级递归完成，然后再继续执行后面的代码，最终实现整个递归的效果。</p>
+<p>可以假设有一条函数调用链——fun1()调用fun2()、fun2()调用 fun3()、fun3()调用fun4()。当 fun4()结束时，控制传回<br>fun3()；当fun3()结束时，控制传回 fun2()；当fun2()结束时，控制传回fun1()。递归的情况与此类似，只不过fun1()、fun2()、fun3()和fun4()都是相同的函数。</p>
+<h2 id="递归的基本原理"><a href="#递归的基本原理" class="headerlink" title="递归的基本原理"></a>递归的基本原理</h2><ol>
+<li>每级函数调用都有自己的变量。也就是说，第1级的n和第2级的n不同，所以程序创建了4个单独的变量，每个变量名都是n，但是它们的值各<br>不相同。当程序最终返回 up_and_down()的第1 级调用时，最初的n仍然是它的初值1。<br><img src="/C-language/%E9%80%92%E5%BD%92%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F.png" alt="递归中的变量"></li>
+<li>每次函数调用都会返回一次。当函数执行完毕后，控制权将被传回上一级递归。程序必须按顺序逐级返回递归，从某级up_and_down()返回<br>上一级的up_and_down()，不能跳级回到main()中的第1级调用。</li>
+<li>递归函数中位于递归调用之前的语句，均按被调函数的顺序执行。例如，程序清单9.6中的打印语句#1位于递归调用之前，它按照递归的<br>顺序：第1级、第2级、第3级和第4级，被执行了4次。</li>
+<li>递归函数中位于递归调用之后的语句，均按被调函数相反的顺序执行。例如，打印语句#2位于递归调用之后，其执行的顺序是第4级、第3<br>级、第2级、第1级。递归调用的这种特性在解决涉及相反顺序的编程问题时很有用。稍后将介绍一个这样的例子。</li>
+<li>虽然每级递归都有自己的变量，但是并没有拷贝函数的代码。程序按顺序执行函数中的代码，而递归调用就相当于又从头开始执行函数的代<br>码。除了为每次递归调用创建变量外，递归调用非常类似于一个循环语句。实际上，递归有时可用循环来代替，循环有时也能用递归来代替。</li>
+<li>递归函数必须包含能让递归调用停止的语句。通常，递归函数都使用if或其他等价的测试条件在函数形参等于某特定值时终止递归。为此，<br>每次递归调用的形参都要使用不同的值。例如，程序中的up_and_down(n)调用up_and_down(n+1)。最终，实际参数等于4时，if的测试<br>条件(n &lt; 4)为假。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void Temperatures(double fahrenheit);</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    double fahrenheit;</span><br><span class="line">    printf(&quot;This program converts fahrenheit to celsius and kelvin.\n&quot;);</span><br><span class="line">    printf(&quot;Enter a temperature in dgrees fahrenheit (q to quit):&quot;);</span><br><span class="line">    while(scanf(&quot;%lf&quot;, &amp;fahrenheit) == 1)   // continue executing loop if user enters valid number</span><br><span class="line">    &#123;</span><br><span class="line">        Temperatures(fahrenheit);   // convert fahrenheit to celsius and kelvin</span><br><span class="line"></span><br><span class="line">        //prompt for new input</span><br><span class="line">        printf(&quot;Enter a temperatures in degrees fahrenheit (q to quit):&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Bye!\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Temperatures(double fahrenheit)&#123;</span><br><span class="line">    const double FAHR_TO_CEL_SCALE = 5.0 / 9.0;</span><br><span class="line">    const double FAHR_TO_OFFSET = -32.0;</span><br><span class="line">    const double CEL_TO_KEL_OFFSET = 273.16;</span><br><span class="line"></span><br><span class="line">    double celsius = (fahrenheit + FAHR_TO_OFFSET) * FAHR_TO_CEL_SCALE;</span><br><span class="line">    double kelvin = celsius + CEL_TO_KEL_OFFSET;</span><br><span class="line"></span><br><span class="line">    printf(&quot;%.2f degrees fahrenheit is %.2f degrees celsius or %.2f degrees kelvin.\n&quot;,</span><br><span class="line">           fahrenheit, celsius, kelvin);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="return"><a href="#return" class="headerlink" title="return"></a>return</h1><p>返回值不仅可以赋给变量，也可以被用作表达式的一部分。<br>返回值不一定是变量的值，也可以是任意表达式的值。<br><code>return (n &lt; m) ? n : m;</code></p>
+<p><code>void variables(double *, double *, double *);</code></p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>如果初始化数组时省略方括号中的数字，编译器会根据初始化列表中的项数来确定数组的大小。</p>
+<p>整个数组的大小除以单个元素的大小就是数组元素的个数。</p>
+<p>for (index &#x3D; 0; index &lt; sizeof days &#x2F; sizeof days[0]; index++)<br>sizeof days是整个数组的大小（以字节为单位），sizeof day[0]是数组中一个元素的大小（以字节为单位）。</p>
+<p>只有在函数原型或函数定义头中，才可以用<code>int ar[]</code>代替<code>int * ar</code></p>
+<p>由于函数原型可以省略参数名，所以下面4种原型都是等价的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int sum(int *ar, int n);</span><br><span class="line">int sum(int *, int);</span><br><span class="line">int sum(int ar[], int n);</span><br><span class="line">int sum(int [], int);</span><br></pre></td></tr></table></figure>
+<p>但是，在函数定义中不能省略参数名。下面两种形式的函数定义等价：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int sum(int *ar, int n)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int sum(int ar[], int n)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果函数的意图不是修改数组中的数据内容，那么在函数原型和函数定义中声明形式参数时应使用关键字<code>const</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int sum(const int ar[], int n); /* 函数原型 */</span><br><span class="line">int sum(const int ar[], int n) /* 函数定义 */</span><br><span class="line">&#123;</span><br><span class="line">int i;</span><br><span class="line">int total = 0;</span><br><span class="line">for( i = 0; i &lt; n; i++)</span><br><span class="line">total += ar[i];</span><br><span class="line">return total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般而言，如果编写的函数需要修改数组，在声明数组形参时则不使用const；如果编写的函数不用修改数组，那么在声明数组形参时最好使用const。</p>
+<p><strong>复合字面量</strong></p>
+<p>普通的数组声明：<code>int diva[2] = &#123;10, 20&#125;;</code><br>下面的复合字面量创建了一个和diva数组相同的匿名数组，也有两个int类型的值：<br><code>(int [2])&#123;10, 20&#125; // 复合字面量</code></p>
+<ul>
+<li>去掉声明中的数组名，留下的int [2]即是复合字面量的类型名<br><code>(int [])&#123;50, 20, 90&#125; // 内含3个元素的复合字面量</code><br>因为复合字面量是匿名的，所以不能先创建然后再使用它，必须在创建的同时使用它。<br>还可以把复合字面量作为实际参数传递给带有匹配形式参数的函数：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int sum(const int ar[], int n);</span><br><span class="line">...</span><br><span class="line">int total3;</span><br><span class="line">total3 = sum((int [])&#123;4,4,4,5,5,5&#125;, 6);</span><br></pre></td></tr></table></figure>
+第1个实参是内含6个int类型值的数组，和数组名类似，这同时也是该数组首元素的地址。这种用法的好处是，把信息传入函数前不必先创建<br>数组，这是复合字面量的典型用法。</li>
+</ul>
+<p>可以把这种用法应用于二维数组或多维数组。例如，下面的代码演示了如何创建二维int数组并储存其地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int (*pt2)[4]; // 声明一个指向二维数组的指针，该数组内含2个数组元素，</span><br><span class="line">// 每个元素是内含4个int类型值的数组</span><br><span class="line">pt2 = (int [2][4]) &#123; &#123;1,2,3,-9&#125;, &#123;4,5,6,-8&#125; &#125;;</span><br></pre></td></tr></table></figure>
+<p>如上所示，该复合字面量的类型是<code>int [2][4]</code>，即一个2×4的int数组。</p>
+<p><strong>变长数组</strong></p>
+<p>C99引入了变长数组（Variable-Length Arrays，VLA），允许使用变量表示数组的维度。以下是一个使用变长数组的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int quarters = 4;</span><br><span class="line">int regions = 5;</span><br><span class="line">double sales[regions][quarters]; // 变长数组（VLA）</span><br></pre></td></tr></table></figure>
+<p>变长数组的限制和特点：</p>
+<ol>
+<li><p>存储类别限制： 变长数组必须是自动存储类别，不能使用static或extern存储类别说明符。</p>
+</li>
+<li><p>初始化限制： 不能在声明中初始化变长数组。</p>
+</li>
+<li><p>可选特性： C11标准将变长数组作为可选特性，而不是必须强制实现的特性。</p>
+</li>
+<li><p>不能改变大小： 变长数组的”变”指的是在创建数组时可以使用变量指定数组的维度，而不是可以修改已创建数组的大小。一旦创建，数组的大小保持不变。</p>
+</li>
+</ol>
+<p>计算二维数组元素之和的示例：<br>考虑一个函数 sum2d，计算int类型的二维数组所有元素之和。以下是该函数的声明和定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int sum2d(int rows, int cols, int ar[rows][cols]); // ar是一个变长数组（VLA）</span><br><span class="line"></span><br><span class="line">int sum2d(int rows, int cols, int ar[rows][cols])</span><br><span class="line">&#123;</span><br><span class="line">    int r;</span><br><span class="line">    int c;</span><br><span class="line">    int tot = 0;</span><br><span class="line"></span><br><span class="line">    for (r = 0; r &lt; rows; r++)</span><br><span class="line">        for (c = 0; c &lt; cols; c++)</span><br><span class="line">            tot += ar[r][c];</span><br><span class="line"></span><br><span class="line">    return tot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数原型中，<code>ar</code> 是一个二维变长数组，使用了 <code>rows</code> 和 <code>cols</code> 作为两个维度。</li>
+<li>函数定义中，使用了 <code>rows</code> 和 <code>cols</code> 来表示二维数组的大小，可以处理任意大小的二维int数组。<br><strong>注意：</strong> 形参列表中必须在声明 <code>ar</code> 之前先声明 <code>rows</code> 和 <code>cols</code>。</li>
+</ul>
+<p>此外，函数的定义也可以使用省略形参名的方式：<br><code>int sum2d(int, int, int ar[*][*]); // ar是一个变长数组（VLA），省略了维度形参名</code></p>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p><strong>声明指针</strong></p>
+<p>声明指针时需要需要带有变量，如果不想加变量则需要有<code>*</code></p>
+<p>不要混淆 <code>*(dates+2)</code> 和<code>*dates+2</code> 。间接运算符（*）的优先级高于+，所以 <code>*dates+2</code> 相当于(*dates)+2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*(dates + 2) // dates第3个元素的值</span><br><span class="line"></span><br><span class="line">*dates + 2 // dates第1个元素的值加2</span><br></pre></td></tr></table></figure>
+
+<p>一元运算符<code>*</code>和<code>++</code>的优先级相同，但结合律是从右往左，所以<code>start++</code>先求值，然后才是<code>*start</code>。也就是说，指针start先递增后指向。使用后缀形式（即<code>start++</code>而不是<code>++start</code>）如果使用<code>*++start</code>，顺序则反过来，先递增指针，再使用指针指向位置上的值。如果使<code>(*start)++</code>，则先使用start指向的值，再递增该值，而不是递增指针。这样，指针将一直指向同一个位置，但是该位置上的值发生了变化。虽然<code>*start++</code>的写法比较常用，但是<code>*(start++)</code>这样写更清楚。</p>
+<p><strong>当涉及到 <code>const</code> 修饰符和指针时，有几个要点需要注意：</strong></p>
+<ul>
+<li><p><code>const </code>修饰指针所指向的数据，表示指针所指向的数据不能通过这个指针进行修改。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const double *pd = rates; // pd指向数组的首元素</span><br><span class="line">*pd = 29.89; // 不允许修改</span><br><span class="line">pd[2] = 222.22; // 不允许修改</span><br><span class="line">rates[0] = 99.99; // 允许修改，因为rates未被const限定</span><br></pre></td></tr></table></figure></li>
+<li><p>指向 <code>const</code> 的指针 (<code>const double *pc</code>) 可以指向非 <code>const</code> 的数据，但不能通过这个指针修改所指向的数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">double rates[5] = &#123;88.99, 100.12, 59.45, 183.11, 340.5&#125;;</span><br><span class="line">const double *pc = rates; // 有效</span><br><span class="line">pc = &amp;rates[3]; // 有效</span><br><span class="line">*pc = 92.99; // 不允许修改</span><br></pre></td></tr></table></figure></li>
+<li><p>指向非 <code>const</code> 的指针（<code>double *pnc</code>）可以指向 <code>const</code> 数据，但也不能通过这个指针修改所指向的 const 数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">double rates[5] = &#123;88.99, 100.12, 59.45, 183.11, 340.5&#125;;</span><br><span class="line">const double locked[4] = &#123;0.08, 0.075, 0.0725, 0.07&#125;;</span><br><span class="line">double *pnc = rates; // 有效</span><br><span class="line">pnc = &amp;rates[3]; // 有效</span><br><span class="line">pnc = locked; // 不允许</span><br></pre></td></tr></table></figure></li>
+<li><p><code>const</code> 可以用于指向数组的指针，保护数组数据不被修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">double rates[5] = &#123;88.99, 100.12, 59.45, 183.11, 340.5&#125;;</span><br><span class="line">const double *pc = rates; // 指向数组的首元素</span><br><span class="line">show_array(rates, 5); // 有效，数组名转换成指向 const 的指针</span><br><span class="line">show_array(locked, 4); // 有效，数组名转换成指向 const 的指针</span><br></pre></td></tr></table></figure></li>
+<li><p><code>const</code> 还可以用于创建常量指针，该指针一旦指向一个地址，就不能再指向别处：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">double rates[5] = &#123;88.99, 100.12, 59.45, 183.11, 340.5&#125;;</span><br><span class="line">double * const pc = rates; // pc指向数组的开始</span><br><span class="line">pc = &amp;rates[2]; // 不允许，因为该指针不能指向别处</span><br><span class="line">*pc = 92.99; // 允许修改 rates[0] 的值</span><br></pre></td></tr></table></figure></li>
+<li><p><code>const</code> 也可以用于创建既不能更改所指向地址，也不能修改指向地址上的值的指针：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">double rates[5] = &#123;88.99, 100.12, 59.45, 183.11, 340.5&#125;;</span><br><span class="line">const double * const pc = rates; // 不能修改指向的地址，也不能修改地址上的值</span><br><span class="line">pc = &amp;rates[2]; // 不允许</span><br><span class="line">*pc = 92.99; // 不允许</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>演示程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* order.c -- 指针运算中的优先级 */</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int data[2] = &#123; 100, 200 &#125;;</span><br><span class="line">int moredata[2] = &#123; 300, 400 &#125;;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int * p1, *p2, *p3;</span><br><span class="line">    p1 = p2 = data;</span><br><span class="line">    p3 = moredata;</span><br><span class="line">    printf(&quot;*p1 = %d, *p2 = %d, *p3 = %d\n&quot;, *p1, *p2, *p3);</span><br><span class="line">    printf(&quot;*p1++=%d, *++p2=%d, (*p3)++=%d\n&quot;, *p1++, *++p2, (*p3)++);</span><br><span class="line">    printf(&quot;*p1 = %d, *p2 = %d, *p3 = %d\n&quot;, *p1, *p2, *p3);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>该程序输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*p1 = 100, *p2 = 100, *p3 = 300</span><br><span class="line">*p1++=100, *++p2=200, (*p3)++=300</span><br><span class="line">*p1 = 200, *p2 = 200, *p3 = 301</span><br></pre></td></tr></table></figure>
+<p>只有(*p3)++改变了数组元素的值，其他两个操作分别把p1和p2指向数组的下一个元素。</p>
+</li>
+</ul>
+<h2 id="字符串声明比较"><a href="#字符串声明比较" class="headerlink" title="字符串声明比较"></a>字符串声明比较</h2><p>两种声明几乎相同：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const char *pt1 = &quot;Something is pointing at me;&quot;;</span><br><span class="line">const char ar1[] = &quot;Something is pointing at me;&quot;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组形式（ar1-）"><a href="#数组形式（ar1-）" class="headerlink" title="数组形式（ar1[]）"></a>数组形式（ar1[]）</h3><ul>
+<li>在内存中分配一个内含29个元素的数组，每个元素对应一个字符，还有一个末尾的空字符’\0’。</li>
+<li>字符串作为可执行文件的一部分储存在数据段中，静态存储区。</li>
+<li>程序开始运行时为数组分配内存，将字符串拷贝到数组中，此时有两个副本：一个在静态内存中，一个在数组中。</li>
+<li>数组名ar1是该数组首元素地址的别名，是地址常量，不能更改。可以进行<code>ar1+1</code>等操作，但不允许进行<code>++ar1</code>这样的操作。</li>
+</ul>
+<h3 id="指针形式（-pt1）"><a href="#指针形式（-pt1）" class="headerlink" title="指针形式（*pt1）"></a>指针形式（*pt1）</h3><ul>
+<li>编译器为字符串在静态存储区预留29个元素的空间，并为指针变量pt1留出一个储存位置，将字符串的地址储存在指针变量中。</li>
+<li>指针形式只拷贝字符串的地址给指针，不会拷贝字符串本身。指针可以改变指向的位置，可以使用递增运算符。</li>
+<li>字符串字面量被视为const数据，因此指针pt1需要声明为指向const数据的指针，不能通过pt1改变所指向的数据。</li>
+</ul>
+<p><strong>总结：初始化数组把静态存储区的字符串拷贝到数组中，而初始化指针只把字符串的地址拷贝给指针。</strong></p>
+<h3 id="空字符与空指针的区别"><a href="#空字符与空指针的区别" class="headerlink" title="空字符与空指针的区别"></a>空字符与空指针的区别</h3><ul>
+<li><p><strong>空字符 (‘\0’)：</strong></p>
+<ul>
+<li>用于标记C字符串的末尾。</li>
+<li>对应字符编码是0。</li>
+<li>在字符串中不可能是其他字符的一部分。</li>
+<li>是整数类型，占1字节。</li>
+</ul>
+</li>
+<li><p><strong>空指针 (NULL)：</strong></p>
+<ul>
+<li>有一个值，该值不会与任何数据的有效地址对应。</li>
+<li>通常用于表示特殊情况，例如遇到文件结尾或未能按预期执行。</li>
+<li>是指针类型，占4字节（通常）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意：</strong><br>虽然它们可以用数值0来表示，但从概念上看，空字符和空指针是不同类型的0。</p>
+<h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><ul>
+<li><strong>请注意，那些使用const关键字的函数原型表明，函数不会更改字符串。</strong></li>
+</ul>
+<p><code>char *strcpy(char * restrict s1, const char * restrict s2);</code><br>该函数把s2指向的字符串（包括空字符）拷贝至s1指向的位置，返回值是s1。</p>
+<p><code>char *strncpy(char * restrict s1, const char * restrict s2, size_t n);</code><br>该函数把s2指向的字符串拷贝至s1指向的位置，拷贝的字符数不超过n，其返回值是s1。该函数不会拷贝空字符后面的字符，如果源字符串的字符少于n个，目标字符串就以拷贝的空字符结尾；如果源字符串有n个或超过n个字符，就不拷贝空字符。</p>
+<p><code>char *strcat(char * restrict s1, const char * restrict s2);</code><br>该函数把s2指向的字符串拷贝至s1指向的字符串末尾。s2字符串的第1个字符将覆盖s1字符串末尾的空字符。该函数返回s1。</p>
+<p><code>char *strncat(char * restrict s1, const char * restrict s2, size_t n);</code><br>该函数把s2字符串中的n个字符拷贝至s1字符串末尾。s2字符串的第1个字符将覆盖s1字符串末尾的空字符。不会拷贝s2字符串中空字符和其后的字符，并在拷贝字符的末尾添加一个空字符。该函数返回s1。</p>
+<p><code>int strcmp(const char * s1, const char * s2);</code><br>如果s1字符串在机器排序序列中位于s2字符串的后面，该函数返回一个正数；如果两个字符串相等，则返回0；如果s1字符串在机器排序序列中位于s2字符串的前面，则返回一个负数。</p>
+<p><code>int strncmp(const char * s1, const char * s2, size_t n);</code><br>该函数的作用和strcmp()类似，不同的是，该函数在比较n个字符后或遇到第1个空字符时停止比较。</p>
+<p><code>char *strchr(const char * s, int c);</code><br>如果s字符串中包含c字符，该函数返回指向s字符串首位置的指针（末尾的空字符也是字符串的一部分，所以在查找范围内）；如果在字符串s中未找到c字符，该函数则返回空指针。</p>
+<p><code>char *strpbrk(const char * s1, const char * s2);</code><br>如果 s1 字符中包含 s2 字符串中的任意字符，该函数返回指向 s1 字符串首位置的指针；如果在s1字符串中未找到任何s2字符串中的字符，则返回空字符。</p>
+<p><code>char *strrchr(const char * s, int c);</code><br>该函数返回s字符串中c字符的最后一次出现的位置（末尾的空字符也是字符串的一部分，所以在查找范围内）。如果未找到c字符，则返回空指针。</p>
+<p><code>char *strstr(const char * s1, const char * s2);</code><br>该函数返回指向s1字符串中s2字符串出现的首位置。如果在s1中没有找到s2，则返回空指针。</p>
+<p><code>size_t strlen(const char * s);</code><br>该函数返回s字符串中的字符数，不包括末尾的空字符。</p>
+<h2 id="s-gets"><a href="#s-gets" class="headerlink" title="s_gets()"></a>s_gets()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">char * s_get(char * st, int n)</span><br><span class="line">&#123;</span><br><span class="line">char * ret_val;</span><br><span class="line">ret_val = fgets(st, n, stdin);</span><br><span class="line">if (ret_val)</span><br><span class="line">&#123;</span><br><span class="line">while (*st != &#x27;\n&#x27; &amp;&amp; *st != &#x27;\0&#x27;)</span><br><span class="line">st++;</span><br><span class="line">if (*st == &#x27;\n&#x27;)</span><br><span class="line">*st = &#x27;\0&#x27;;</span><br><span class="line">else</span><br><span class="line">while (getchar() != &#x27;\n&#x27;)</span><br><span class="line">continue;</span><br><span class="line">&#125;</span><br><span class="line">return ret_val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;        // 提供 fgets()和getchar()的原型</span><br><span class="line">#include &lt;string.h&gt;       // 提供 strchr()的原型</span><br><span class="line">char * s_gets(char * st, int n)</span><br><span class="line">&#123;</span><br><span class="line">char * ret_val;</span><br><span class="line">char * find;</span><br><span class="line">ret_val = fgets(st, n, stdin);</span><br><span class="line">if (ret_val)</span><br><span class="line">&#123;</span><br><span class="line">find = strchr(st,  &#x27;\n&#x27;);</span><br><span class="line">if (find)		      // 如果地址不是 NULL,</span><br><span class="line">*find = &#x27;\0&#x27;;	    // 在此处放置一个空字符</span><br><span class="line">else</span><br><span class="line">while (getchar() != &#x27;\0&#x27;)</span><br><span class="line">continue;</span><br><span class="line">&#125;</span><br><span class="line">return ret_val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     

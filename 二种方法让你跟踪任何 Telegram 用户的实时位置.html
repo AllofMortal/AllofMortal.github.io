@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <pre><code>                        二种方法让你跟踪任何 Telegram 用户的实时位置                                                           
+</code></pre>
+<h1 id="二种方法让你跟踪任何-Telegram-用户的实时位置"><a href="#二种方法让你跟踪任何-Telegram-用户的实时位置" class="headerlink" title="二种方法让你跟踪任何 Telegram 用户的实时位置"></a>二种方法让你跟踪任何 Telegram 用户的实时位置</h1><p>良辰 <a href="javascript:void(0);">红队笔记录</a></p>
+<p><strong>红队笔记录</strong> </p>
+<p>微信号 gh_0162f0882c95</p>
+<p>功能介绍 分享各种红队攻击手法，内网渗透，代码审计，工具开发，公开漏洞测试等内容</p>
+<p><em>2023-11-29 15:14</em> <em>发表于安徽</em></p>
+<p>收录于合集</p>
+<p>您是否知道 Telegram 不仅仅是一个聊天应用程序？它有一个很酷的功能，称为“地理位置跟踪”。这是一种奇特的说法，表示您可以在地图上找到您的朋友所在的位置。让我们谈谈如何使用这个有趣的功能以及如何保守您自己的位置秘密。Telegram 有一个特殊的技巧可以告诉你谁在附近。这就像在手机上玩捉迷藏游戏一样。您甚至可以假装您的朋友在世界不同的地方。但有一条规则——每 5 分钟只能执行一次。问题是：如果你的朋友不使用 Telegram 或关闭了他们的位置，它就不起作用。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdnQ7ZT1qJL8sg6wzyC8xBdX8JB7O1icOmppRynLdEWgpPm5zjhibW3g9Q/640?wx_fmt=jpeg"></p>
+<p>想象一下你正在玩一个游戏，它变得有点太棘手了。这就是 Telegram 最近发生的事情。他们有一个叫做“附近的人”的功能，但是它太强大了，就像超级英雄的能力一样。一年多后，他们意识到了这一点，并削弱了它的威力。现在，当你使用它时，你只能看到某人是否在500米、1公里、2公里之外，等等。这就像看一张更大的地图而不是一张小地图。</p>
+<p>他们花了很长时间才意识到自己的错误，但现在你将看不到你的朋友到底在哪里。我不太确定 Telegram 和保密事宜。也可能是俄罗斯和乌克兰媒体突然爆发的巨大负面情绪终于让他们醒悟了。   </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdTsfb7sGwmiauRicudaCMg4CEQfvaNEEAahdFz04ic0vqBXiby8wNEJQ2ew/640?wx_fmt=jpeg">
+    </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdEyyUiaic7PZ31aJdaIkITicMHc1DNDhaJ2Q33Y75cp61vhKVEfQtMA2dw/640?wx_fmt=jpeg"></p>
+<p>方法一：使用 Telegram 附近地图</p>
+<p>Telegram 附近地图使用 OpenStreetMap 和官方 Telegram 库来查找附近用户的位置。</p>
+<p>请注意：Telegram 的 API 不久前进行了更新，使附近的用户距离不太精确，从而妨碍了精确的位置计算。因此，Telegram 附近地图会显示附近的用户，但不会显示他们的确切位置。</p>
+<p>它是如何工作的？</p>
+<p>每 25 秒，所有附近的用户都会收到来自Telegram 的TDLib。这包括附近每个用户到“我的”位置的距离。通过距三个不同点的三个距离，可以计算附近用户的位置。   </p>
+<p>这只会找到已激活附近功能的 Telegram 用户。默认情况下它是禁用的。</p>
+<p><strong>安装</strong></p>
+<p>要求：node.js 和 Telegram 帐户</p>
+<p>在此处为您的 Telegram 帐户创建 API 密钥</p>
+<p>从<a target="_blank" rel="noopener" href="https://github.com/tejado/telegram-nearby-map%E4%B8%8B%E8%BD%BD%E5%AD%98%E5%82%A8%E5%BA%93">https://github.com/tejado/telegram-nearby-map下载存储库</a></p>
+<p>创建config.js（请参阅 config.example.js）并将您的 Telegram API 凭据放入其中</p>
+<p>安装所有依赖项：npm install</p>
+<p>启动应用程序：npm start</p>
+<p>仔细查看输出：您需要确认您的 Telegram 登录</p>
+<p>访问<a href="http://localhost:3000并享受乐趣">http://localhost:3000并享受乐趣</a>    </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdw6KXTtAoIg1hjzarXaZ9BdqN8jRdeMyLB4qFuqS1mpice8pRdPDDSRw/640?wx_fmt=png">
+    </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdzcvHDSuYqqfBaf6vNTax2JrPPoJDw7R0MGYeASf8sxMmiaTgvqIxxrA/640?wx_fmt=png"></p>
+<p><strong>方法 2：Geogramint</strong></p>
+<p>Geogramint 是一种 OSINT 工具，它使用 Telegram 的 API 来查找附近的用户和组。受到Tejado 的 Telegram 附近地图（已不再维护）的启发，它旨在提供一个更加用户友好的替代方案。Geogramint 仅查找已激活附近功能的 Telegram 用户和群组。默认情况下它是禁用的。该工具在 Windows 上完全支持，在 Mac OS 和 Linux 发行版上部分支持。   </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdcCWZmDxaKlgBAU32CibgLFia5w3BeszpEgrFCJBuic9daKDgPQg7Wkvjg/640?wx_fmt=png">
+    </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdFOdCcIs5EqjItkw5F18Ppmzmic5X1XwTicKdIwMOwrt2gC2Ovoaib39oQ/640?wx_fmt=png"></p>
+<p>在 Windows 上安装    </p>
+<p>要求：Python 3.8 或 3.9和 Telegram 帐户</p>
+<p>在此处为您的 Telegram 帐户创建 API 密钥</p>
+<p>从<a target="_blank" rel="noopener" href="https://github.com/Alb-310/Geogramint/releases%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F">https://github.com/Alb-310/Geogramint/releases下载安装程序</a></p>
+<p>在 Mac 操作系统&#x2F;Linux 上安装</p>
+<p>要求：Python 3.8 或 3.9和 Telegram 帐户</p>
+<p>在终端上使用以下命令</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">git</span> <span class="string">clone https://github.com/Alb-310/Geogramint.git</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">Geogramint/</span></span><br><span class="line"><span class="attr">pip</span> <span class="string">install -r requirements.txt</span></span><br><span class="line"><span class="attr">python</span> <span class="string">geogramint.py # for GUI mode          </span></span><br><span class="line"><span class="attr">or </span></span><br><span class="line"><span class="attr">python</span> <span class="string">geogramint.py --help # for CLI mode</span></span><br></pre></td></tr></table></figure>
+
+<p>如何使用 Geogramint？：图形用户界面</p>
+<p>1.首先在此处为您的 Telegram 帐户创建 API 密钥。您还需要在您的帐户中添加个人资料图片，并在您的Privacy and Security设置中为每个人启用个人资料图片。   </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RRrILrELHYibic2EJYFO0EZvtia5k2UquOd75DSzuuVcrmzXh1JZJ4RagM0YDS3JLvch8ZPBZ9dmRS8ed8nggQRmQ/640?wx_fmt=jpeg"></p>
+<p>2. 启动 Geogramint</p>
+<p>3. 在设置中，写入您的信息（api_id、api_hash 和电话号码），就像我们在本博客中对方法 1 所做的那样，报告首选项，然后save    </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdsSYicoa30niaoTLoyqw9Uq6rIKIrphdthmMCXicLrBflFkz2HEC2QbSkQ/640?wx_fmt=png">
+    </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdP43rH1TuDcdibYmJDXVHlDc4a6COq4TySyCiavO4icGTp9eib4ROgicOWIA/640?wx_fmt=png"></p>
+<p>4. 通过在地图上移动或使用坐标格式的搜索功能来选择要搜索的位置    </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdAHiaxnaiakedPNrpibSUcoI2SxWJ6zaSQZpQoofGtIJP2s2XvbWJgS5Sw/640?wx_fmt=png"></p>
+<p>5. Telegram会向您发送验证码，请在弹出窗口中填写（+您的两步验证密码（如果有的话））</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOd7kFolDwE1icpgCG1EKzOloicVuaMkAsxuAOyMOV0nicRfOGATnpCvc2bg/640?wx_fmt=png"></p>
+<p>6.然后单击Start Search</p>
+<p>7. 所有结果将显示如下：</p>
+<p>🟢 绿色500m</p>
+<p>🟡 1000m 为黄色</p>
+<p>🟠 橙色2000m    </p>
+<p>🔴 红色&gt;3000m</p>
+<p>注意：Geogramint&#x2F;cache_telegram&#x2F;结果也可以在json格式csv+ 个人资料图片中找到</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdO3yBLoyHkGElWSV1Bq0E1ZnOqcnjF3icdbvyhPW8ib0axQNHZVJGcAqg/640?wx_fmt=png"></p>
+<p>8.Reset将清除结果并删除cache_telegram</p>
+<p><strong>如何使用 Geogramint？：命令行界面</strong></p>
+<p>首先在此处为您的 Telegram 帐户创建 API 密钥。您还需要在您的帐户中添加个人资料图片，并在您的Privacy and Security设置中为每个人启用个人资料图片。   </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RRrILrELHYibic2EJYFO0EZvtia5k2UquOd75DSzuuVcrmzXh1JZJ4RagM0YDS3JLvch8ZPBZ9dmRS8ed8nggQRmQ/640?wx_fmt=jpeg"></p>
+<p>2. 在终端中使用以下命令启动 Geogramint：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python geogramint<span class="selector-class">.py</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOd3iccCStDF67Kz8vYnsoebxJPxu5eMeEI9DLec8OBBF1j0Evtm7yUEmQ/640?wx_fmt=png"></p>
+<p>3. 从配置开始，使用命令set-config设置您的信息（api_id、api_hash 和电话号码）</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdibyl3CoFCfloNMJRW72h2PjjwVGibKicHMGKctHmibib8wXChicP5ibbLCreg/640?wx_fmt=png"></p>
+<p>4.通过以下命令使用坐标格式启动搜索功能start-scan：   </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdOVPLb8YMscEIBic0AEw5sebWBBFsQIhhbvMhfVv8LyHcchqplZibCLTg/640?wx_fmt=png"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdlR2kVUn8TJryhsnW02k1kJZ4zbx8EZFeSahjkdLWKD6QdYn9Bl6r3w/640?wx_fmt=png">
+    </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RRrILrELHYibic2EJYFO0EZvtia5k2UquOd10NyfljjWylIjMiayMOJ4AlyAtk7SDm218TcHnrOQLZlFB33EgIXYtg/640?wx_fmt=png"></p>
+<p>5. 所有结果将显示如下：</p>
+<p>🟢 绿色500m</p>
+<p>🟡 1000m 为黄色    </p>
+<p>🟠 橙色2000m</p>
+<p>🔴 红色&gt;3000m</p>
+<p>注意：可以根据使用的选项导出结果start-scan，默认情况下，个人资料图片和结果json格式存在于Geogramint&#x2F;cache_telegram&#x2F;</p>
+<p>6.reset-scan将清除cache_telegram</p>
+<p>预览时标签不可点</p>
+<p><a href="javascript:;">阅读原文</a></p>
+<p>​</p>
+<p>喜欢此内容的人还喜欢</p>
+<p>神兵利器丨GodPotato新版土豆提权</p>
+<p>神兵利器丨GodPotato新版土豆提权</p>
+<p>红队笔记录</p>
+<p>不喜欢</p>
+<p>不看的原因</p>
+<p>确定</p>
+<ul>
+<li>内容质量低</li>
+<li>不看此公众号</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RRrILrELHYibic2EJYFO0EZvtia5k2UquOdicGPqwibwoSOSwT1LwtOY5ZU7ahed5vIZPibtQkQPTCwrPcdFbibRCwLSA/0?wx_fmt=jpeg"></p>
+<p>超赞的 GPTs！最佳精选列表 - 1</p>
+<p>超赞的 GPTs！最佳精选列表 - 1</p>
+<p>AI魔法学园</p>
+<p>不喜欢</p>
+<p>不看的原因</p>
+<p>确定</p>
+<ul>
+<li>内容质量低</li>
+<li>不看此公众号</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/zSspsWgkd7f61COpXwaLBjntiaf22dm6sOkA4TDSiaMmckSPvmY0PgEPyJ0GDDcQU90YbFoqWTiaXx1r80V42NGmw/0?wx_fmt=jpeg"></p>
+<p>搜索引擎合集</p>
+<p>搜索引擎合集</p>
+<p>网络情报研究</p>
+<p>不喜欢</p>
+<p>不看的原因</p>
+<p>确定</p>
+<ul>
+<li>内容质量低</li>
+<li>不看此公众号</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/Bd3wtic8QU4q4vlyeNJUf56j5AicStxMTy0zd58m8ErDOIfkkXTylh0kErtAPJwBIfZx7j26en6QxoVM3eSjqz6A/0?wx_fmt=jpeg"></p>
+<p>取消</p>
+<p>留言</p>
+<p><strong>我的留言</strong></p>
+<p><a href="javascript:;">写留言</a></p>
+<p>展开我的留言</p>
+<p>留言被精选后将公开</p>
+<p><strong>精选留言</strong></p>
+<p><a href="javascript:;">写留言</a></p>
+<p><a href="javascript:;">写留言</a></p>
+<p>全部留言</p>
+<p>已无更多数据</p>
+<p><a href="javascript:;">发消息</a></p>
+<p>留言精选后，将对所有人可见并外显IP归属地</p>
+<p><a href="javascript:;" title="轻点两下打开表情键盘"></a></p>
+<p>关闭</p>
+<p><strong>写留言</strong></p>
+<p>提交更多</p>
+<p>正在加载</p>
+<p><a href="javascript:;">表情</a></p>
+<p>正在加载</p>
+<p><strong>留言</strong></p>
+<p><img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000004&size=102&__biz=Mzg4Njc3NzM1OA==&mid=2247484838&idx=1&sn=d0de23e93397c65e6c43ac004892cbeb&send_time="></p>
+<p>微信扫一扫<br>关注该公众号</p>
+<p>轻触阅读原文</p>
+<p>正在加载</p>
+<p>当前内容可能存在未经审核的第三方商业营销信息，请确认是否继续访问。</p>
+<p>正在加载</p>
+<p><a href="javascript:">继续访问</a><a href="javascript:">取消</a></p>
+<p><a href="javacript:;">微信公众平台广告规范指引</a></p>
+<p>继续滑动看下一个</p>
+<p><a href="javascript:;">知道了</a></p>
+<p> 微信扫一扫<br>使用小程序</p>
+<p><a href="javascript:void(0);">取消</a> <a href="javascript:void(0);">允许</a></p>
+<p><a href="javascript:void(0);">取消</a> <a href="javascript:void(0);">允许</a></p>
+<p>： ， 。  视频 小程序 赞 ，轻点两下取消赞 在看 ，轻点两下取消在看</p>
+<p>,</p>
+<p>选择留言身份</p>
+<p><strong>红队笔记录</strong></p>
+<p>二种方法让你跟踪任何 Telegram 用户的实时位置</p>
+<p>人划线</p>
+<p>Please config API token before clipping content 剪藏前请先配置 API token</p>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
