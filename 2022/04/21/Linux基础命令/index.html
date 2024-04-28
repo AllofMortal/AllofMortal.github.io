@@ -41,7 +41,7 @@
 <p>除了这具有代表性的两大体系外，Linux发行版还有其他体系，例如Slackware系的SUSE Linux。我们的教程主要使用的是redhat与debian系。</p>
 <h3 id="2-Linux的文件结构"><a href="#2-Linux的文件结构" class="headerlink" title="2. Linux的文件结构"></a>2. Linux的文件结构</h3><p>在Linux系统中有一个重要的概念：一切都是文件。 其实这是UNIX哲学的一个体现，而Linux是重写UNIX而来，所以这个概念也就传承了下来。在UNIX系统中，把一切资源都看作是文件，包括硬件设备。</p>
 <p>在Linux系统中文件后缀是没有作用的，后缀名只是为了能让自己能够更好的区别文件的作用。</p>
-<p>Linux系统中的各类文件被Linux使用目录树进行管理， 所谓的目录树就是以根目录 <code>/</code> 为主，向下呈现分支状的一种文件结构。<br><img src="/Linux%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png" alt="Linux文件结构"></p>
+<p>Linux系统中的各类文件被Linux使用目录树进行管理， 所谓的目录树就是以根目录 <code>/</code> 为主，向下呈现分支状的一种文件结构。<br><img src="/image/Linux%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png" alt="Linux文件结构"></p>
 <p>与Windows 系统不同，Linux 系统没有C盘、D盘、E盘那么多的盘符，只有一个根目录（&#x2F;），所有的文件（资源）都存储在以根目录（&#x2F;）为树根的树形目录结构中。</p>
 <ol>
 <li>这样做最明显的好处是，开发者仅需要使用一套 API 和开发工具即可调取 Linux 系统中绝大部分的资源。举个简单的例子，Linux 中几乎所有读（读文件，读系统状态，读 socket，读PIPE）的操作都可以用read函数来进行；几乎所有更改（更改文件，更改系统参数，写 socket，写 PIPE）的操作都可以用write函数来进行。</li>
@@ -153,7 +153,7 @@
 <p>使用管道操作符<code>|</code>可以把一个命令的标准输出传送到另一个命令的标准输入中，连续的|意味着第一个命令的输出为第二个命令的输入，第二个命令的输入为第一个命令的输出，依次类推。</p>
 <p>案例： 只显示passwd文本的 20-25 行。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">head -n 25 /etc/passwd|nl| tail -n 5</span><br><span class="line">cat /etc/passwd|nl|head -n 25|tail -n 6</span><br></pre></td></tr></table></figure>
-<p><img src="/%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E6%8C%87%E5%AE%9A%E8%A1%8C.png" alt="显示文件指定行"></p>
+<p><img src="/image/%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E6%8C%87%E5%AE%9A%E8%A1%8C.png" alt="显示文件指定行"></p>
 <h3 id="5-7-wc-命令-word-count"><a href="#5-7-wc-命令-word-count" class="headerlink" title="5.7 wc 命令     (word count)"></a>5.7 wc 命令     (word count)</h3><p><code>wc</code>命令用来计算数字。利用wc指令我们可以计算文件的Byte数、字数或是列数。<br>用法：<code>wc [选项] [文件]</code><br>参数：</p>
 <ul>
 <li><code>-l</code>显示行数</li>

@@ -150,15 +150,15 @@ foreach (mb_str_split($str) as $c)
 
 ## 4.	运算符
 基本运算符：
-![基本运算符](基本运算符.png)
+![基本运算符](/image/基本运算符.png)
 赋值运算符：
-![赋值运算符](赋值运算符.png)
+![赋值运算符](/image/赋值运算符.png)
 递增/递减运算符：
-![递增/递减运算符.png](递增、递减运算符.png)
+![递增/递减运算符.png](/image/递增、递减运算符.png)
 比较运算符：
-![比较运算符](比较运算符.png)
+![比较运算符](/image/比较运算符.png)
 逻辑运算符：
-![逻辑运算符](逻辑运算符.png)
+![逻辑运算符](/image/逻辑运算符.png)
 三元运算符：
 (expr1) ? (expr2) : (expr3)
 
@@ -279,7 +279,7 @@ familyName("Jian");
 <ul>
 <li>   对象的行为：可以对对象施加那些操作，开灯，关灯就是行为。</li>
 <li>   对象的形态：当施加那些方法是对象如何响应，颜色，尺寸，外型。</li>
-<li>   对象的表示：对象的表示就相当于身份证，具体区分在相同的行为与状态下有什么不同。<br>比如 Animal(动物) 是一个抽象类，我们可以具体到一只狗跟一只羊，而狗跟羊就是具体的对象，他们有颜色属性，可以写，可以跑等行为状态。<br><img src="/%E5%AF%B9%E8%B1%A1.png" alt="对象"><br>面向对象内容<br>类 − 定义了一件事物的抽象特点。类的定义包含了数据的形式以及对数据的操作。</li>
+<li>   对象的表示：对象的表示就相当于身份证，具体区分在相同的行为与状态下有什么不同。<br>比如 Animal(动物) 是一个抽象类，我们可以具体到一只狗跟一只羊，而狗跟羊就是具体的对象，他们有颜色属性，可以写，可以跑等行为状态。<br><img src="/image/%E5%AF%B9%E8%B1%A1.png" alt="对象"><br>面向对象内容<br>类 − 定义了一件事物的抽象特点。类的定义包含了数据的形式以及对数据的操作。</li>
 </ul>
 <p>对象 − 是类的实例。</p>
 <p>成员变量 − 定义在类内部的变量。该变量的值对外是不可见的，但是可以通过成员函数访问，在类被实例化为对象后，该变量即可称为对象的属性。</p>
@@ -293,7 +293,7 @@ familyName("Jian");
 <p>封装 − 封装是指将现实世界中存在的某个客体的属性与行为绑定在一起，并放置在一个逻辑单元内。</p>
 <p>构造函数 − 主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与new运算符一起使用在创建对象的语句中。</p>
 <p>析构函数 − 析构函数(destructor) 与构造函数相反，当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函数。析构函数往往用来做”清理善后” 的工作（例如在建立对象时用new开辟了一片内存空间，应在退出前在析构函数中用delete释放）。</p>
-<p>下图中我们通过 Car 类 创建了三个对象：Mercedes, Bmw, 和 Audi。<br>$mercedes &#x3D; new Car ();<br>$bmw &#x3D; new Car ();<br>$audi &#x3D; new Car ();<br><img src="/%E7%B1%BB.png" alt="类"><br><em>PHP 类定义</em><br>PHP 定义类通常语法格式如下：</p>
+<p>下图中我们通过 Car 类 创建了三个对象：Mercedes, Bmw, 和 Audi。<br>$mercedes &#x3D; new Car ();<br>$bmw &#x3D; new Car ();<br>$audi &#x3D; new Car ();<br><img src="/image/%E7%B1%BB.png" alt="类"><br><em>PHP 类定义</em><br>PHP 定义类通常语法格式如下：</p>
 <?php
 class phpClass {
   var $var1;
@@ -913,11 +913,11 @@ echo "Connected successfully";
 <p>&#x2F;&#x2F; 检查链接</p>
 <p>if (!$conn) {<br>die(“Connection<br>failed: “ . mysqli_connect_error());<br>}</p>
 <p>$sql &#x3D; “INSERT INTO<br>MyGuests (firstname, lastname, email)</p>
-<p>VALUES (‘John’, ‘Doe’, ‘<a href="mailto:&#106;&#111;&#x68;&#110;&#x40;&#101;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#109;">&#106;&#111;&#x68;&#110;&#x40;&#101;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#x6f;&#109;</a>‘);”;</p>
+<p>VALUES (‘John’, ‘Doe’, ‘<a href="mailto:&#106;&#x6f;&#x68;&#110;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#106;&#x6f;&#x68;&#110;&#64;&#x65;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;</a>‘);”;</p>
 <p>$sql .&#x3D; “INSERT INTO<br>MyGuests (firstname, lastname, email)</p>
-<p>VALUES (‘Mary’, ‘Moe’, ‘<a href="mailto:&#109;&#x61;&#114;&#x79;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;">&#109;&#x61;&#114;&#x79;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#109;</a>‘);”;</p>
+<p>VALUES (‘Mary’, ‘Moe’, ‘<a href="mailto:&#109;&#x61;&#114;&#121;&#64;&#101;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#x63;&#111;&#x6d;">&#109;&#x61;&#114;&#121;&#64;&#101;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#x63;&#111;&#x6d;</a>‘);”;</p>
 <p>$sql .&#x3D; “INSERT INTO<br>MyGuests (firstname, lastname, email)</p>
-<p>VALUES (‘Julie’, ‘Dooley’, ‘<a href="mailto:&#x6a;&#x75;&#108;&#x69;&#x65;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;">&#x6a;&#x75;&#108;&#x69;&#x65;&#x40;&#x65;&#120;&#x61;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#x6f;&#109;</a>‘)”;</p>
+<p>VALUES (‘Julie’, ‘Dooley’, ‘<a href="mailto:&#106;&#x75;&#x6c;&#x69;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#106;&#x75;&#x6c;&#x69;&#x65;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a>‘)”;</p>
 <p>if (mysqli_multi_query($conn, $sql)) {<br>echo “New<br>records<br>created successfully”;<br>} else {<br>echo “Error: “<br>. $sql . “<br>“ . mysqli_error($conn);<br>}</p>
 <p>mysqli_close($conn);<br>?&gt;</p>
 <p>实例 (PDO)</p>
@@ -936,12 +936,12 @@ echo "Connected successfully";
 <p>&#x2F;&#x2F; 绑定参数</p>
 <p>mysqli_stmt_bind_param($stmt, ‘sss’, $firstname, $lastname, $email);</p>
 <p>&#x2F;&#x2F; 设置参数并执行</p>
-<p>$firstname &#x3D; ‘John’;<br>$lastname<br>&#x3D; ‘Doe’;<br>$email &#x3D;<br>‘<a href="mailto:&#x6a;&#111;&#x68;&#110;&#x40;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#x6d;">&#x6a;&#111;&#x68;&#110;&#x40;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#101;&#46;&#99;&#x6f;&#x6d;</a>‘;</p>
+<p>$firstname &#x3D; ‘John’;<br>$lastname<br>&#x3D; ‘Doe’;<br>$email &#x3D;<br>‘<a href="mailto:&#106;&#111;&#x68;&#x6e;&#x40;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;">&#106;&#111;&#x68;&#x6e;&#x40;&#101;&#x78;&#x61;&#x6d;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#x6d;</a>‘;</p>
 <p>mysqli_stmt_execute($stmt);</p>
-<p>$firstname &#x3D; ‘Mary’;<br>$lastname<br>&#x3D; ‘Moe’;<br>$email &#x3D;<br>‘<a href="mailto:&#x6d;&#97;&#114;&#121;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x6d;&#97;&#114;&#121;&#x40;&#x65;&#x78;&#97;&#109;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#x6d;</a>‘;</p>
+<p>$firstname &#x3D; ‘Mary’;<br>$lastname<br>&#x3D; ‘Moe’;<br>$email &#x3D;<br>‘<a href="mailto:&#x6d;&#97;&#114;&#121;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#99;&#111;&#x6d;">&#x6d;&#97;&#114;&#121;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#99;&#111;&#x6d;</a>‘;</p>
 <p>mysqli_stmt_execute($stmt);</p>
 <p>$firstname &#x3D; ‘Julie’;</p>
-<p>$lastname &#x3D; ‘Dooley’;<br>$email &#x3D;<br>‘<a href="mailto:&#x6a;&#117;&#108;&#105;&#101;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x6a;&#117;&#108;&#105;&#101;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;</a>‘;</p>
+<p>$lastname &#x3D; ‘Dooley’;<br>$email &#x3D;<br>‘<a href="mailto:&#106;&#117;&#x6c;&#105;&#101;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#106;&#117;&#x6c;&#105;&#101;&#x40;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;</a>‘;</p>
 <p>mysqli_stmt_execute($stmt);<br>}<br>}<br>?&gt;</p>
 <p>我们可以看到以上实例中使用模块化来处理问题。我们可以通过创建代码块实现更简单的读取和管理。</p>
 <p>注意参数的绑定。让我们看下 mysqli_stmt_bind_param() 中的代码：</p>
@@ -967,9 +967,9 @@ echo "Connected successfully";
 <p>&#x2F;&#x2F; 创建连接<br>$conn &#x3D; new mysqli($servername, $username, $password, $dbname);</p>
 <p>&#x2F;&#x2F; 检测连接<br>if ($conn-&gt;connect_error) {<br>    die(“Connection failed: “ . $conn-&gt;connect_error);<br>}</p>
 <p>&#x2F;&#x2F; prepare and bind<br>$stmt &#x3D; $conn-&gt;prepare(“INSERT INTO MyGuests (firstname, lastname, email) VALUES(?, ?, ?)”);<br>$stmt-&gt;bind_param(“sss”, $firstname, $lastname, $email);</p>
-<p>&#x2F;&#x2F; 设置参数并执行<br>$firstname &#x3D; “John”;<br>$lastname &#x3D; “Doe”;<br>$email &#x3D; “<a href="mailto:&#x6a;&#x6f;&#x68;&#x6e;&#64;&#101;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#109;">&#x6a;&#x6f;&#x68;&#x6e;&#64;&#101;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#46;&#99;&#x6f;&#109;</a>“;<br>$stmt-&gt;execute();</p>
-<p>$firstname &#x3D; “Mary”;<br>$lastname &#x3D; “Moe”;<br>$email &#x3D; “<a href="mailto:&#x6d;&#x61;&#114;&#121;&#64;&#101;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;">&#x6d;&#x61;&#114;&#121;&#64;&#101;&#x78;&#97;&#x6d;&#x70;&#x6c;&#101;&#46;&#x63;&#x6f;&#x6d;</a>“;<br>$stmt-&gt;execute();</p>
-<p>$firstname &#x3D; “Julie”;<br>$lastname &#x3D; “Dooley”;<br>$email &#x3D; “<a href="mailto:&#x6a;&#x75;&#x6c;&#105;&#x65;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#109;">&#x6a;&#x75;&#x6c;&#105;&#x65;&#64;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#46;&#x63;&#x6f;&#109;</a>“;<br>$stmt-&gt;execute();</p>
+<p>&#x2F;&#x2F; 设置参数并执行<br>$firstname &#x3D; “John”;<br>$lastname &#x3D; “Doe”;<br>$email &#x3D; “<a href="mailto:&#x6a;&#x6f;&#x68;&#110;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#109;">&#x6a;&#x6f;&#x68;&#110;&#64;&#x65;&#120;&#x61;&#x6d;&#112;&#108;&#101;&#46;&#x63;&#x6f;&#109;</a>“;<br>$stmt-&gt;execute();</p>
+<p>$firstname &#x3D; “Mary”;<br>$lastname &#x3D; “Moe”;<br>$email &#x3D; “<a href="mailto:&#x6d;&#x61;&#x72;&#121;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#46;&#99;&#111;&#x6d;">&#x6d;&#x61;&#x72;&#121;&#x40;&#101;&#x78;&#97;&#109;&#x70;&#108;&#x65;&#46;&#99;&#111;&#x6d;</a>“;<br>$stmt-&gt;execute();</p>
+<p>$firstname &#x3D; “Julie”;<br>$lastname &#x3D; “Dooley”;<br>$email &#x3D; “<a href="mailto:&#106;&#117;&#108;&#105;&#101;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;">&#106;&#117;&#108;&#105;&#101;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#46;&#x63;&#x6f;&#x6d;</a>“;<br>$stmt-&gt;execute();</p>
 <p>echo “New records created successfully”;</p>
 <p>$stmt-&gt;close();<br>$conn-&gt;close();<br>?&gt;</p>
 <p>解析以下实例的每行代码:</p>

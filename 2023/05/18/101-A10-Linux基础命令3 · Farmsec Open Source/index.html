@@ -41,16 +41,13 @@
 <p>案例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat 1.txt|awk &#x27;&#123;print($2)&#125;&#x27;                 #打印出文本中每行的第二个字段</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122195506148.png"><img src="http://book.fsec.io/bookimages/image-20211122195506148.png">
-</a></p>
+<p><img src="http://book.fsec.io/bookimages/image-20211122195506148.png"><br><img src="http://book.fsec.io/bookimages/image-20211122195506148.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd |awk -F &quot;:&quot; &#x27;&#123;print($1)&#125;&#x27;  #-F指定分隔符，以“：”为分隔符，打印出文本中每行第一个字段</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122195728291.png"><img src="http://book.fsec.io/bookimages/image-20211122195728291.png">
-</a></p>
+<p><img src="http://book.fsec.io/bookimages/image-20211122195728291.png"><br><img src="http://book.fsec.io/bookimages/image-20211122195728291.png"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd |awk -F &quot;:&quot; &#x27;&#123;print($1,&quot;+++&quot;,$3)&#125;&#x27;   #打印出第一个字段与第三个字段，并在其中间添加+++内容</span><br><span class="line">cat /etc/passwd |awk -F &quot;:&quot; &#x27;&#123;print($1&quot;+++&quot;$3)&#125;&#x27;     #对比差异</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122200509841.png"><img src="http://book.fsec.io/bookimages/image-20211122200509841.png">
-</a></p>
+<p><img src="http://book.fsec.io/bookimages/image-20211122200509841.png"><br><img src="http://book.fsec.io/bookimages/image-20211122200509841.png"></p>
 <p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122200548688.png"><img src="http://book.fsec.io/bookimages/image-20211122200548688.png">
 </a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat passwd | awk -F &quot;:&quot; &#x27;&#123;print $NF&#125;&#x27;       #打印出文本中每行的最后一个字段</span><br><span class="line">cat passwd | awk -F &quot;:&quot; &#x27;&#123;print $(NF-1)&#125;&#x27;   #打印出文本中每行的倒数第二个字段。$（NF-1）为倒数第二，依此类推。</span><br></pre></td></tr></table></figure>

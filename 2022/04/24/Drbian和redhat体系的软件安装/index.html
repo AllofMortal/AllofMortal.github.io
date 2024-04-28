@@ -62,8 +62,7 @@
 <p><code>yum</code>命令是一个在 Fedora 和 RedHat 以及 SUSE 中的 Shell 前端软件包管理器。</p>
 <p>基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令。</p>
 <h3 id="2-3-yum-源配置"><a href="#2-3-yum-源配置" class="headerlink" title="2.3 yum 源配置"></a>2.3 yum 源配置</h3><p>同apt命令一样，<code>yum</code>依然从源获取软件。在centos中yum源文件存储在<code>/etc/yum.repos.d</code>目录中。</p>
-<p><a href="../../../bookimages/image-20220422100609634.png"><img src="/../../../bookimages/image-20220422100609634.png">
-</a></p>
+<p><img src="/../../../bookimages/image-20220422100609634.png"><br><img src="/../../../bookimages/image-20220422100609634.png"></p>
 <p>repo文件的示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[baseos]</span><br><span class="line">name=Rocky Linux $releasever - BaseOS</span><br><span class="line">mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&amp;repo=BaseOS-$releasever</span><br><span class="line">#baseurl=http://dl.rockylinux.org/$contentdir/$releasever/BaseOS/$basearch/os/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rockyofficial</span><br></pre></td></tr></table></figure>
 
