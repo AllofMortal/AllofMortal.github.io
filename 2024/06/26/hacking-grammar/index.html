@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Hexo
+    </title>
+    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
+    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            hacking grammar
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <p>site：可以限制你搜索范围的域名.<br>    site:.gov</p>
+<p>inurl：用于搜索网页上包含的URL，这个语法对寻找网页上的搜索，帮助之类的很有用.<br>    inurl:qq.com</p>
+<p>intext: 只搜索网页<body>部分中包含的文字(也就是忽略了标题、URL等的文字)<br>    intext:色色</p>
+<p>intitle: 查包含关键词的页面，一般用于社工别人的webshell密码<br>    intitle:edu</p>
+<p>filetype:搜索文件的后缀或者扩展名<br>    filetype:txt<br>    filetype:pdf</p>
+<p>link: 可以得到一个所有包含了某个指定URL的页面列表.<br>    link:weixin.com</p>
+<p>related: 搜索相关网站<br>    related:qq.com</p>
+<p>define: 搜索词语的解释,  可以搜索名词及名人<br>    define:锻炼<br>    天天:define<br>    刘翔 define<br>    吴亦凡 define</p>
+<p>翻译<br>    I don’t know the means of the word 翻译<br>    翻译 apple</p>
+<p>allinurl: 搜索网址中包含以下所有词<br>    allinurl:渗透 安全</p>
+<p>allintext: 指定范围搜索（正文出现关键词）<br>    allintext:渗透</p>
+<p>精确搜索: 给关键词加引号<br>    “渗透”<br>    ‘渗透’</p>
+<p><code>-</code> （减号）: 从搜索结果中排除特定字词,<br>      从要排除的字词前加上’-‘<br>    linux常用命令<br>    #会显示所有搜索结果<br>    linux常用命令 -CSDN<br>    #会屏蔽掉搜索结果中的CSDN相关内容</p>
+<p><code>+</code> （加号）: 只显示+后面的内容<br>    linux常用命令 +CSDN<br>    #只显示搜索结果中CSDN的相关内容<br>    linux常用命令 +博客园<br>    #只显示搜索结果中博客园的相关内容</p>
+<p>cache: 查看网站的Google缓存版本,<br>           在相对应网址前加上”cache:”<br>    cache:qq.com</p>
+<p>搜索#标签: 在字词前加上’#’<br>    #body<br>    #安全</p>
+<p>搜索特定价格: 在数字前加上$<br>    $400</p>
+<p>搜索社交媒体: 在用于搜索社交媒体的字词前加上 @<br>    @qq<br>   @twitter</p>
+<p>camera: 在某个数字范围内执行搜索<br>             在两个数字之间加上…<br>    camera $50…$100<br>    camera 9999…100000</p>
+<p>inanchor or allinanchor: 搜索范围限制在页面的链接锚点描述文本进行搜索</p>
+<p>AROUND: 查找两个字或词在不超过指定的距离<br>渗透 AROUND(5) 安全</p>
+<p>OR: 组合搜索.默认搜索，中间空格是与(AND)，而使用OR,可以达到或的效果。<br>       在各个搜索查询之间加上“OR”<br>    marathon OR race<br>    渗透 OR 安全</p>
+<p>|代表或: login|admin|manget</p>
+<p>不常用语法:</p>
+<p>Phonebook: 搜索电话列表</p>
+<p>Rphonebook: 搜索住宅电话列表</p>
+<p>Bphonebook: 商业电话列表</p>
+<p>Author: 搜索Google中新闻组帖子的作者</p>
+<p>Group: 搜索Google标题</p>
+<p>Inanchor: 在链接文本中查找文本</p>
+<p>Masgid: 通过消息id来查找谷歌的帖子</p>
+<p>Daterange: 查找某个特定日期范围内发布的网页</p>
+<p>Insubject: 搜索Googlegroup的主题行</p>
+<p>Stocks: 搜索股票信息</p>
+<p>Info: 显示Google的摘要信息</p>
+<p>Define: 显示某术语的定义</p>
+<p>Numrang: 搜索数字需要两个参数一个最小数，一个最大数，用破折号隔开</p>
+<p><code>~</code> 同意词即类似的词</p>
+<p><code>.</code> 单一的通配符</p>
+<p><code>*</code> 通配符，可代表多个字母</p>
+<p><code>“ ”</code> 精确查询匹配</p>
+<p>布尔操作:<br>and 与<br>or 或<br>not 不</p>
+<p>叠加使用: 组合使用上述所有方法，自行测试</p>
+<p>注意事项:<br>1、所有的冒号都是半角，也就是英文的冒号，而不是中文的冒号<br>2、空格很重要，关键词之间一定要加空格</p>
+<p>Google Hacking数据库: 汇集了非常多的有价值的搜索语句</p>
+<p><a target="_blank" rel="noopener" href="https://www.exploit-db.com/google-hacking-database">https://www.exploit-db.com/google-hacking-database</a></p>
+<p>查找后台地址：<br>site:xxx.com  intext:管理|后台|登录|登陆|用户名|密码|系统|账号|login|system|admin<br>site:xxx.com  inurl:login|admin|manage|member|admin_login|login_admin|system|login|user|main|cms<br>inurl:edu.cn intitle:管理<br>site:xxx.com inurl:login|inurl:admin|inurl:admin_login|inurl:system<br>site:xxx.com intitle:管理|后台|后台管理|登录|登陆<br>inurl:login|admin|admin_login|login_admin|system|user<br>site:xxx.com</p>
+<p>查找文本内容： </p>
+<p>site:xxx.com  intext:管理|后台|登陆|用户名|密码|验证码|系统|帐号|admin|login|sys|managetem|password|username</p>
+<p>查找可注入点：site:xxx.com inurl:aspx|jsp|php|asp<br>            site:xxx.com inurl:php?id&#x3D;</p>
+<p>查找上传漏洞：site:xxx.com inurl:file|load|editor|files|</p>
+<p>找eweb编辑器：site:xxx.com inurl:ewebeditor|editor|uploadfile|eweb|edit</p>
+<p>存在的数据库：site:域名 filetype:mdb|asp|#<br>           site:xxx.com filetype:mdb<br>           site:xxx.com filetype:数据库格式</p>
+<p>查看脚本类型：site:xxx.com filetype:asp&#x2F;aspx&#x2F;php&#x2F;jsp<br>            site:xxx.com filetype:php</p>
+<p>查找目录遍历漏洞:  site:xxx.com intitle:index of </p>
+<p>社工信息: site:xxx.com intitle:账号|密码|工号|学号|身份证</p>
+<p>搜索各类开源的网站上面的信息: site:github.com intext:xiaodi8.com</p>
+<p>迂回策略入侵：inurl:cms&#x2F;data&#x2F;templates&#x2F;images&#x2F;index&#x2F;</p>
+<pre><code>        实战演示
+</code></pre>
+<p>01 首先用google搜索这个站点的基本情况</p>
+<p>site:xxx.com<br>从搜索结果中找到了几处该站点的域名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://aaa.xxx.com</span><br><span class="line">http://bbb.xxx.com</span><br><span class="line">http://ccc.xxx.com</span><br></pre></td></tr></table></figure>
+
+<p>然后查看这几个域名的ip，并确认是否存在CDN<br>发现不存在CDN服务，并且子域名ip有的也不同</p>
+<p>02 搜索该站点的后台地址</p>
+<p>site:xxx.com intext:管理<br>site:xxx.com inurl:login<br>site:xxx.com inurl:admin<br>site:xxx.com intitle:管理<br>等其他方式也可以，自行组合即可</p>
+<p>最终获取到了多个后台地址</p>
+<p>03 查看服务器脚本语言</p>
+<p>site:aaa.xxx.com filetype:asp<br>site:aaa.xxx.com filetype:php<br>site:aaa.xxx.com filetype:aspx<br>site:aaa.xxx.com filetype:jsp<br>等其他方式也可判断</p>
+<p>最终获取到了基本的搭建组合后</p>
+<p>04 尝试获取漏洞</p>
+<p>site:aaa.xxx.com intext:ftp:&#x2F;&#x2F;<em>.</em><br>site:bbb.xxx.com inurl:file<br>site:ccc.xxx.com inurl:load<br>等其他漏洞的关键字自行搜索</p>
+<p>得到地址后就可以进行下一步渗透了</p>
+<p>05 获取人员类相关信息</p>
+<p>获取二级域名<br>site:xxx.com<br>获取邮箱地址<br>site:xxx.com intext:*@xxx.com<br>获取电话信息<br>site:xxx.com intext:电话</p>
+<p>在搜集到信息后，可以生成社工字典，使用工具进行跑一遍</p>
+
+    </div>
+
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
+    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+</body>
+</html>
