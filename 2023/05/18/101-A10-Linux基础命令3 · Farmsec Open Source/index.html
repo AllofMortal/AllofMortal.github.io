@@ -1,38 +1,267 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-Hans">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
-     <link rel="shortcut icon" href= /img/favicon.ico >
-    <title>
-        Hexo
-    </title>
-    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
-    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
-    
-<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/main.css">
 
-    
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body id="bodyx">
-    <div class="hd posts">
-    <a href="/index.html"><i class="fa fa-home
- replay-btn" aria-hidden="true"></i></a>
-    <div class="post-title">
-        <p>
-            
-        </p>
-        <hr>
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"allofmortal.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本节主要介绍一些文本处理相关的linux命令，是日后信息安全工作中的情报侦察、数据梳理、日志分析等技术的重要基础。 1. awk 命令awk是一种处理文本文件的语言，是一个强大的文本分析工具。 相比较屏幕处理的优点，awk在处理庞大文件时不会出现内存溢出或是处理缓慢的问题，通常用来格式化文本信息。 awk也是一个非常棒的数据处理工具！相较于sed常常作用于一整个行的处理, awk则比较倾向于一行当">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://allofmortal.github.io/2023/05/18/101-A10-Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A43%20%C2%B7%20Farmsec%20Open%20Source/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本节主要介绍一些文本处理相关的linux命令，是日后信息安全工作中的情报侦察、数据梳理、日志分析等技术的重要基础。 1. awk 命令awk是一种处理文本文件的语言，是一个强大的文本分析工具。 相比较屏幕处理的优点，awk在处理庞大文件时不会出现内存溢出或是处理缓慢的问题，通常用来格式化文本信息。 awk也是一个非常棒的数据处理工具！相较于sed常常作用于一整个行的处理, awk则比较倾向于一行当">
+<meta property="og:locale">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122195506148.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122195506148.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122195728291.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122195728291.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122200509841.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122200509841.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122200548688.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122200733645.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122200819645.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122211825410.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122211341555.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122211940687.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122214057586.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122214437426.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122215435921.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211122215921901.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123000918840.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123001220076.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123001325985.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123021226466.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123021254134.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20220412183125843.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20220412183104764.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20220412183337999.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123022227993.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123023039232.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20220412183616115.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20220412194944379.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123024457498.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123025355278.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123025422931.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123025657891.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123030635872.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123030719113.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123030931008.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123032507587.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123225552183.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123225645062.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123225755764.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123230640059.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123231255763.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123231525997.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123231737387.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20211123231723830.png">
+<meta property="og:image" content="http://book.fsec.io/bookimages/image-20220412191424135.png">
+<meta property="article:published_time" content="2023-05-18T04:05:30.223Z">
+<meta property="article:modified_time" content="2024-04-28T01:41:55.423Z">
+<meta property="article:author" content="Mortal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://book.fsec.io/bookimages/image-20211122195506148.png">
+
+<link rel="canonical" href="https://allofmortal.github.io/2023/05/18/101-A10-Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A43%20%C2%B7%20Farmsec%20Open%20Source/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    <div class="post-content">
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://allofmortal.github.io/2023/05/18/101-A10-Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A43%20%C2%B7%20Farmsec%20Open%20Source/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mortal">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2023-05-18 12:05:30" itemprop="dateCreated datePublished" datetime="2023-05-18T12:05:30+08:00">2023-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2024-04-28 09:41:55" itemprop="dateModified" datetime="2024-04-28T09:41:55+08:00">2024-04-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
         <p>本节主要介绍一些文本处理相关的linux命令，是日后信息安全工作中的情报侦察、数据梳理、日志分析等技术的重要基础。</p>
 <h2 id="1-awk-命令"><a href="#1-awk-命令" class="headerlink" title="1. awk 命令"></a>1. awk 命令</h2><p><code>awk</code>是一种处理文本文件的语言，是一个强大的文本分析工具。</p>
 <p>相比较屏幕处理的优点，<code>awk</code>在处理庞大文件时不会出现内存溢出或是处理缓慢的问题，通常用来格式化文本信息。 <code>awk</code>也是一个非常棒的数据处理工具！相较于<code>sed</code>常常作用于一整个行的处理, <code>awk</code>则比较倾向于一行当中分成数个<code>字段</code>来处理。</p>
@@ -40,97 +269,89 @@
 <p>命令的基本格式是：<code>awk ‘&#123;print($1)&#125;’</code></p>
 <p>案例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat 1.txt|awk &#x27;&#123;print($2)&#125;&#x27;                 #打印出文本中每行的第二个字段</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="http://book.fsec.io/bookimages/image-20211122195506148.png"><br><img src="http://book.fsec.io/bookimages/image-20211122195506148.png"></p>
+<p><img src="http://book.fsec.io/bookimages/image-20211122195506148.png" alt=""><br><img src="http://book.fsec.io/bookimages/image-20211122195506148.png" alt=""></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd |awk -F &quot;:&quot; &#x27;&#123;print($1)&#125;&#x27;  #-F指定分隔符，以“：”为分隔符，打印出文本中每行第一个字段</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="http://book.fsec.io/bookimages/image-20211122195728291.png"><br><img src="http://book.fsec.io/bookimages/image-20211122195728291.png"></p>
+<p><img src="http://book.fsec.io/bookimages/image-20211122195728291.png" alt=""><br><img src="http://book.fsec.io/bookimages/image-20211122195728291.png" alt=""></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd |awk -F &quot;:&quot; &#x27;&#123;print($1,&quot;+++&quot;,$3)&#125;&#x27;   #打印出第一个字段与第三个字段，并在其中间添加+++内容</span><br><span class="line">cat /etc/passwd |awk -F &quot;:&quot; &#x27;&#123;print($1&quot;+++&quot;$3)&#125;&#x27;     #对比差异</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://book.fsec.io/bookimages/image-20211122200509841.png"><br><img src="http://book.fsec.io/bookimages/image-20211122200509841.png"></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122200548688.png"><img src="http://book.fsec.io/bookimages/image-20211122200548688.png">
+<p><img src="http://book.fsec.io/bookimages/image-20211122200509841.png" alt=""><br><img src="http://book.fsec.io/bookimages/image-20211122200509841.png" alt=""></p>
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122200548688.png"><img src="http://book.fsec.io/bookimages/image-20211122200548688.png" alt="">
 </a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat passwd | awk -F &quot;:&quot; &#x27;&#123;print $NF&#125;&#x27;       #打印出文本中每行的最后一个字段</span><br><span class="line">cat passwd | awk -F &quot;:&quot; &#x27;&#123;print $(NF-1)&#125;&#x27;   #打印出文本中每行的倒数第二个字段。$（NF-1）为倒数第二，依此类推。</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122200733645.png"><img src="http://book.fsec.io/bookimages/image-20211122200733645.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122200733645.png"><img src="http://book.fsec.io/bookimages/image-20211122200733645.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122200819645.png"><img src="http://book.fsec.io/bookimages/image-20211122200819645.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122200819645.png"><img src="http://book.fsec.io/bookimages/image-20211122200819645.png" alt="">
 </a></p>
 <h2 id="2-sed-命令"><a href="#2-sed-命令" class="headerlink" title="2. sed 命令"></a>2. sed 命令</h2><p><code>sed</code> 是stream editor(流编辑器)的简称，是一款强大的,并且有些复杂的程序。</p>
 <p><code>sed</code> 本身是一个管线命令，可以将数据进行替换、删除、新增、提取特定行等功能，主要用来自动编辑一个或多个文件、简化对文件的反复操作、编写转换程序等。sed按行来执行命令。</p>
-<p>接下来的实验，我们要以&#x2F;etc&#x2F;passwd文件内容为例子。</p>
+<p>接下来的实验，我们要以/etc/passwd文件内容为例子。</p>
 <p>拷贝文件<code>cat /etc/passwd &gt; 1.txt</code></p>
 <p>我们以一个例子来介绍<code>sed</code>命令，<code>sed &#39;s/:/+/g&#39;</code></p>
 <p>s代表搜索，g代表的则是全文。不加g的话则是替换每行第一个出现的。所以这条命令代表的将文件中所有的：替换为+</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122211825410.png"><img src="http://book.fsec.io/bookimages/image-20211122211825410.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122211825410.png"><img src="http://book.fsec.io/bookimages/image-20211122211825410.png" alt="">
 </a></p>
 <p><code>cat 1.txt |sed &#39;s/:/+/3g&#39;</code> #代表的则是从第三次匹配开始替换，依此类推。</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122211341555.png"><img src="http://book.fsec.io/bookimages/image-20211122211341555.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122211341555.png"><img src="http://book.fsec.io/bookimages/image-20211122211341555.png" alt="">
 </a></p>
 <p><code>sed -i &#39;s/:/+/g&#39; 1.txt</code> #参数<code>-i</code>,直接修改文件，并非打印出来。</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122211940687.png"><img src="http://book.fsec.io/bookimages/image-20211122211940687.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122211940687.png"><img src="http://book.fsec.io/bookimages/image-20211122211940687.png" alt="">
 </a></p>
-<p>以上这些命令中是以&#x2F;做为该命令的定界符，如果需要修改或者匹配的字段带有&#x2F;则不能再使用&#x2F;做为该条命令的定界符，可以使用任意的定界符，不冲突就行。<code>cat passwd |sed &#39;s!:!/!g&#39;</code> 以！号做为定界也是一样的。</p>
+<p>以上这些命令中是以/做为该命令的定界符，如果需要修改或者匹配的字段带有/则不能再使用/做为该条命令的定界符，可以使用任意的定界符，不冲突就行。<code>cat passwd |sed &#39;s!:!/!g&#39;</code> 以！号做为定界也是一样的。</p>
 <p>此外，在此命令中，搜索位置使用<code>^</code>代表一行的开头，<code>$</code>代表一行的结尾。<code>sed</code>是以行为单位执行的。</p>
 <p>我们用如下案例展示：</p>
 <p><code>cat ip.txt |sed &#39;s#^#http://#g&#39;</code>在每行之前加上<code>http://</code>。</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122214057586.png"><img src="http://book.fsec.io/bookimages/image-20211122214057586.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122214057586.png"><img src="http://book.fsec.io/bookimages/image-20211122214057586.png" alt="">
 </a></p>
 <p><code>cat ip.txt |sed &#39;s#$#:8080#g&#39;</code>在每行末尾加上“:8080”</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122214437426.png"><img src="http://book.fsec.io/bookimages/image-20211122214437426.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122214437426.png"><img src="http://book.fsec.io/bookimages/image-20211122214437426.png" alt="">
 </a></p>
 <p><code>sed &#39;/^$/d&#39; 2.txt</code>删除空白的行。</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122215435921.png"><img src="http://book.fsec.io/bookimages/image-20211122215435921.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122215435921.png"><img src="http://book.fsec.io/bookimages/image-20211122215435921.png" alt="">
 </a></p>
 <p><code>sed &#39;/^s/&#39;d</code> 删除文件中所有开头是s的行。</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122215921901.png"><img src="http://book.fsec.io/bookimages/image-20211122215921901.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211122215921901.png"><img src="http://book.fsec.io/bookimages/image-20211122215921901.png" alt="">
 </a></p>
 <h2 id="3-grep-命令"><a href="#3-grep-命令" class="headerlink" title="3. grep 命令"></a>3. grep 命令</h2><p>grep这个名字来自于短语“global regular expression print”，所以我们能看出 grep 程序和正则表达式有关联。</p>
 <p>本质上，grep 程序会在文本文件中查找一个指定的正则表达式,并把匹配行输出到标准输出。</p>
 <p>命令格式： <code>grep [options] [pattern]　[filename]</code></p>
 <p>案例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat passwd |grep root                          # 只显示带有root关键字的行</span><br><span class="line">grep -e root passwd                            # 匹配有root的行</span><br><span class="line">grep -v root passwd                            # 忽略匹配到的行</span><br><span class="line">cat passwd |grep -E &quot;root|sshd&quot;                # 包含多个可能性的行</span><br><span class="line">cat passwd |grep -E &#x27;^r&#x27;                       # 以r开头的行</span><br><span class="line">cat passwd |grep -E &#x27;n$&#x27;                       # 以n结尾的行</span><br><span class="line">grep “root” /etc/passwd /etc/shadow            # 查询多个文件</span><br><span class="line">grep &quot;passwd&quot; /etc -rn                         # -r 为递归 -n 显示关键字出现在第几行   在多级目录中对文本进行递归查找</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123000918840.png"><img src="http://book.fsec.io/bookimages/image-20211123000918840.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123000918840.png"><img src="http://book.fsec.io/bookimages/image-20211123000918840.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123001220076.png"><img src="http://book.fsec.io/bookimages/image-20211123001220076.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123001220076.png"><img src="http://book.fsec.io/bookimages/image-20211123001220076.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123001325985.png"><img src="http://book.fsec.io/bookimages/image-20211123001325985.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123001325985.png"><img src="http://book.fsec.io/bookimages/image-20211123001325985.png" alt="">
 </a></p>
 <h2 id="4-find-命令"><a href="#4-find-命令" class="headerlink" title="4. find 命令"></a>4. find 命令</h2><p><code>find</code> 命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则 find 命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
 <p>这是一个超级复杂的命令，最简单的模式为：<code>find 路径 -name [名字]</code>。</p>
 <p>案例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">find / -size 1000k                #从根目录查找大小为1000K的文件</span><br><span class="line">find   -name &#x27;1*&#x27;                 #在当前目录下查找文件名以1开始的文件</span><br><span class="line">find / -name &#x27;1*&#x27;                 #从根目录查找文件名以1开始的文件</span><br><span class="line">find / -user farmsec1             #从根目录查找属主为farmsec1的文件</span><br><span class="line">find / -group farmsec             #从根目录查找属组为farmsec的文件</span><br><span class="line">find /etc -type f/d               #按sock类型查找，f代表文件，d代表目录</span><br><span class="line">find . -type f -mtime -7          #搜索7天内当前目录下修改过的文件（-7代表7天内，7代表前7天那一天，+7代表7天前）</span><br><span class="line">find . -type f -mmin -10          #搜索10分钟内当前目录下修改过的文件 </span><br><span class="line">find . -atime -1 -type f          #搜索当前目录下一天内被访问的文件（-1代表1天内，1代表前1天那一天，+1代表1天前）</span><br><span class="line">find . -amin -10 -type f          #搜索当前目录下10分钟内被访问的文件</span><br><span class="line">find . -ctime -1 -type f          #搜索当前目录下一天内状态被改变（列如权限）的文件（-1代表1天内，1代表前1天那一天，+1代表1天前）</span><br><span class="line">find . -cmin -10 -type f          #搜索当前目录下10分钟内状态被改变的文件</span><br><span class="line">find . -perm 777                  #搜索处当前文件下符合777权限的文件</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123021226466.png"><img src="http://book.fsec.io/bookimages/image-20211123021226466.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123021226466.png"><img src="http://book.fsec.io/bookimages/image-20211123021226466.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123021254134.png"><img src="http://book.fsec.io/bookimages/image-20211123021254134.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123021254134.png"><img src="http://book.fsec.io/bookimages/image-20211123021254134.png" alt="">
 </a></p>
 <ul>
 <li>exec选项</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find 搜索路径 [选项] 搜索内容 -exec 命令2&#123;&#125;\;</span><br><span class="line">find . -type f -perm 644 -exec ls -l &#123;&#125; \;</span><br><span class="line">find / -exec grep &quot;Hello&quot; &#123;&#125; \;</span><br><span class="line"></span><br><span class="line">find / -name &quot;*.tmp&quot; -exec rm -f &#123;&#125; \;   (危险)</span><br><span class="line">find / -name &quot;*&quot; -ctime +2 -exec rm -f &#123;&#125; \;（危险，别敲）</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412183125843.png"><img src="http://book.fsec.io/bookimages/image-20220412183125843.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412183125843.png"><img src="http://book.fsec.io/bookimages/image-20220412183125843.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412183104764.png"><img src="http://book.fsec.io/bookimages/image-20220412183104764.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412183104764.png"><img src="http://book.fsec.io/bookimages/image-20220412183104764.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412183337999.png"><img src="http://book.fsec.io/bookimages/image-20220412183337999.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412183337999.png"><img src="http://book.fsec.io/bookimages/image-20220412183337999.png" alt="">
 </a></p>
 <h2 id="5-ag-命令"><a href="#5-ag-命令" class="headerlink" title="5. ag 命令"></a>5. ag 命令</h2><p><code>ag</code>类似<code>grep</code>和<code>find</code>，但是执行效率比后两者高。</p>
 <p>最基本的用法为<code>ag -g &lt;File Name&gt;</code>,从当前目录寻找文件</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123022227993.png"><img src="http://book.fsec.io/bookimages/image-20211123022227993.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123022227993.png"><img src="http://book.fsec.io/bookimages/image-20211123022227993.png" alt="">
 </a></p>
 <p>案例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ag -g &lt;File Name&gt;            # 类似于 find . -name &lt;File Name&gt;</span><br><span class="line">ag -i PATTERN                # 忽略大小写搜索含PATTERN文本</span><br><span class="line">ag -A [number] PATTERN       #搜索含PATTERN文本，并显示匹配内容之后的n行文本，例如：ag -A 5  abc会显示搜索到的包含abc的行以及它之后5行的文本信息。</span><br><span class="line">ag -B [number] PATTERN       #搜索含PATTERN文本，并显示匹配内容之前的n行文本</span><br><span class="line">ag -C [number] PATTERN       #搜索含PATTERN文本，并同时显示匹配内容以及它前后各n行文本的内容。</span><br><span class="line">ag --ignore-dir &lt;Dir Name&gt;   #忽略某些文件目录进行搜索。</span><br><span class="line">ag -w PATTERN                #全匹配搜索，只搜索与所搜内容完全匹配的文本。</span><br><span class="line">ag --java PATTERN            #在java文件中搜索含PATTERN的文本。</span><br><span class="line">ag --xml PATTERN             #在XML文件中搜索含PATTERN的</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123023039232.png"><img src="http://book.fsec.io/bookimages/image-20211123023039232.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123023039232.png"><img src="http://book.fsec.io/bookimages/image-20211123023039232.png" alt="">
 </a></p>
 <h2 id="6-stat命令"><a href="#6-stat命令" class="headerlink" title="6.stat命令"></a>6.stat命令</h2><p>用于显示文件信息：</p>
 <p>用法：stat [文件或目录]</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412183616115.png"><img src="http://book.fsec.io/bookimages/image-20220412183616115.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412183616115.png"><img src="http://book.fsec.io/bookimages/image-20220412183616115.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412194944379.png"><img src="http://book.fsec.io/bookimages/image-20220412194944379.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412194944379.png"><img src="http://book.fsec.io/bookimages/image-20220412194944379.png" alt="">
 </a></p>
 <h2 id="7-split-命令"><a href="#7-split-命令" class="headerlink" title="7. split 命令"></a>7. split 命令</h2><p><code>split</code>命令可以将一个大文件分割成很多个小文件，有时需要将文件分割成更小的片段，比如为提高可读性，生成日志等。</p>
 <p>参数：</p>
@@ -142,32 +363,29 @@
 </ul>
 <p>案例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">split -b 30k messages    # 按照每个文件30K大小切割messages文件。</span><br><span class="line">split -l 300 messages    # 将messages文件切割为每3行一份。</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123024457498.png"><img src="http://book.fsec.io/bookimages/image-20211123024457498.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123024457498.png"><img src="http://book.fsec.io/bookimages/image-20211123024457498.png" alt="">
 </a></p>
 <h2 id="8-sort命令"><a href="#8-sort命令" class="headerlink" title="8.sort命令"></a>8.sort命令</h2><p><code>sort</code>命令是在Linux里非常有用，它将文件进行排序，并将排序结果标准输出。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat 1.txt|sort            #默认的排序方式，从首字母开始</span><br><span class="line">cat 1.txt|sort -t         #按照字典进行排序</span><br><span class="line">cat 1.txt|sort -n         #按照数字进行排序</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123025355278.png"><img src="http://book.fsec.io/bookimages/image-20211123025355278.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123025355278.png"><img src="http://book.fsec.io/bookimages/image-20211123025355278.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123025422931.png"><img src="http://book.fsec.io/bookimages/image-20211123025422931.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123025422931.png"><img src="http://book.fsec.io/bookimages/image-20211123025422931.png" alt="">
 </a></p>
 <h2 id="9-uniq-命令"><a href="#9-uniq-命令" class="headerlink" title="9. uniq 命令"></a>9. uniq 命令</h2><p><code>uniq</code>用于报告或忽略文件中的重复行，一般与sort命令结合使用。</p>
 <p>要注意先排序，后去重。因为uniq命令只能消除相邻且相同的行。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat 1.txt |sort -n |uniq              #排序去重</span><br><span class="line">cat 1.txt|sort -n |uniq -c            #列出重复的次数</span><br><span class="line">cat 1.txt |sort -n |uniq -d           #列出有哪些行是重复的</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123025657891.png"><img src="http://book.fsec.io/bookimages/image-20211123025657891.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123025657891.png"><img src="http://book.fsec.io/bookimages/image-20211123025657891.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123030635872.png"><img src="http://book.fsec.io/bookimages/image-20211123030635872.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123030635872.png"><img src="http://book.fsec.io/bookimages/image-20211123030635872.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123030719113.png"><img src="http://book.fsec.io/bookimages/image-20211123030719113.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123030719113.png"><img src="http://book.fsec.io/bookimages/image-20211123030719113.png" alt="">
 </a></p>
 <p>以上系列命令可以用于日志分析：</p>
 <p>如统计IP地址的访问数量并按照数量进行排序： <code>cat access_log |awk &#39;&#123;print($1)&#125;&#39;|sort|uniq -c |sort -nr |more</code></p>
 <p>针对访问量最大的IP分析其访问内容： <code>cat access_log |grep &#39;IP地址&#39;|head -n 100</code></p>
 <h2 id="10-nl-命令"><a href="#10-nl-命令" class="headerlink" title="10. nl 命令"></a>10. nl 命令</h2><p><code>nl</code>命令用于显示文件内容行号。</p>
 <p>案例：</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123030931008.png"><img src="http://book.fsec.io/bookimages/image-20211123030931008.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123030931008.png"><img src="http://book.fsec.io/bookimages/image-20211123030931008.png" alt="">
 </a></p>
 <h2 id="11-远程连接命令"><a href="#11-远程连接命令" class="headerlink" title="11.远程连接命令"></a>11.远程连接命令</h2><h3 id="11-1-ssh命令"><a href="#11-1-ssh命令" class="headerlink" title="11.1 ssh命令"></a>11.1 ssh命令</h3><p><code>ssh</code>命令是Linux的远程连接工具。</p>
 <p>ssh命令：Linux的远程连接工具</p>
@@ -179,13 +397,13 @@
 <p>执行<code>ssh</code>的默认情况下，会使用本地的用户名连接对方的用户名，例如本地的root连接对面服务器的root，如果两端用户名不一样，则需要使用<code>-l username</code>指定用户名。</p>
 <p>再确认密码后，方能登录成功，而同时变化的文件为：<code>/root/.ssh/known_hosts</code> 在第一次登录时，openssh将会提示不知道这台登录的主机，只要输入<code>yes</code>，就会把这台主机的“识别信息”添加到known_hosts文件中. 第二次登陆后，则无须此步骤，但是如果出现错误，例如主机产生变化，则需要删除<code>/root/.ssh/known_hosts</code>内容。</p>
 <h3 id="11-2-linux下远程连接smb"><a href="#11-2-linux下远程连接smb" class="headerlink" title="11.2 linux下远程连接smb"></a>11.2 linux下远程连接smb</h3><p>Smb服务为网络文件共享协议，它允许应用程序和终端用户从远端的文件服务器访问文件资源 用法：在kali的<code>文件</code>–&gt;<code>其他位置</code>--&gt;<code>连接到服务器</code>处输入：<code>smb://192.168.0.149/share</code></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123032507587.png"><img src="http://book.fsec.io/bookimages/image-20211123032507587.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123032507587.png"><img src="http://book.fsec.io/bookimages/image-20211123032507587.png" alt="">
 </a></p>
 <p>关于此部分知识，还将在后续有关windows的章节中详述。</p>
 <h3 id="11-3-rdesktop-命令"><a href="#11-3-rdesktop-命令" class="headerlink" title="11.3 rdesktop 命令"></a>11.3 rdesktop 命令</h3><p><code>rdesktop</code>命令用于在linux下链接windows远程桌面。</p>
 <p>用法：<code>rdesktop 192.168.0.178</code></p>
 <p>关于此部分知识，还将在后续有关windows的章节中详述。</p>
-<h2 id="12-URL-相关命令"><a href="#12-URL-相关命令" class="headerlink" title="12. URL 相关命令"></a>12. URL 相关命令</h2><p>URL，既是俗称的网址&#x2F;网页链接。</p>
+<h2 id="12-URL-相关命令"><a href="#12-URL-相关命令" class="headerlink" title="12. URL 相关命令"></a>12. URL 相关命令</h2><p>URL，既是俗称的网址/网页链接。</p>
 <h3 id="12-1-curl-命令"><a href="#12-1-curl-命令" class="headerlink" title="12.1 curl 命令"></a>12.1 curl 命令</h3><p><code>curl</code>命令是一个利用URL规则在命令行下工作的文件传输工具。它支持文件的上传和下载，所以是综合传输工具，但按传统，习惯称curl为下载工具。作为一款强力工具，curl支持包括HTTP、HTTPS、ftp等众多协议，还支持POST、cookies、认证、从指定偏移处下载部分文件、用户代理字符串、限速、文件大小、进度条等特征。</p>
 <p>用法：<code>curl [选项] [url]</code></p>
 <p>参数：</p>
@@ -196,92 +414,309 @@
 </ul>
 <p>案例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl www.farmsec.com</span><br><span class="line">curl www.farmsec.com -i</span><br><span class="line">curl www.farmsec.com -v</span><br><span class="line">curl -O https://bootstrap.pypa.io/get-pip.py</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123225552183.png"><img src="http://book.fsec.io/bookimages/image-20211123225552183.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123225552183.png"><img src="http://book.fsec.io/bookimages/image-20211123225552183.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123225645062.png"><img src="http://book.fsec.io/bookimages/image-20211123225645062.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123225645062.png"><img src="http://book.fsec.io/bookimages/image-20211123225645062.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123225755764.png"><img src="http://book.fsec.io/bookimages/image-20211123225755764.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123225755764.png"><img src="http://book.fsec.io/bookimages/image-20211123225755764.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123230640059.png"><img src="http://book.fsec.io/bookimages/image-20211123230640059.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123230640059.png"><img src="http://book.fsec.io/bookimages/image-20211123230640059.png" alt="">
 </a></p>
 <h3 id="12-2-wget-命令"><a href="#12-2-wget-命令" class="headerlink" title="12.2 wget 命令"></a>12.2 wget 命令</h3><p>wget命令：用来从指定的URL下载文件。wget非常稳定，它在带宽很窄的情况下和不稳定网络中有很强的适应性，如果是由于网络的原因下载失败，wget会不断的尝试，直到整个文件下载完毕。如果是服务器打断下载过程，它会再次联到服务器上从停止的地方继续下载。这对从那些限定了链接时间的服务器上下载大文件非常有用。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.io/get-pip.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123231255763.png"><img src="http://book.fsec.io/bookimages/image-20211123231255763.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123231255763.png"><img src="http://book.fsec.io/bookimages/image-20211123231255763.png" alt="">
 </a></p>
 <p>前面我们下载下的文件名都是乱码，所以我们需要给它自定义文件名 加入-O的参数即可指定文件名</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget  https://bootstrap.pypa.io/get-pip.py -O 123.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123231525997.png"><img src="http://book.fsec.io/bookimages/image-20211123231525997.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123231525997.png"><img src="http://book.fsec.io/bookimages/image-20211123231525997.png" alt="">
 </a></p>
 <p>如果文件比较大时，加入参数<code>-b</code>，进行后台下载，然后可使用使用<code>tail -f wget-log</code>查看进度。</p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123231737387.png"><img src="http://book.fsec.io/bookimages/image-20211123231737387.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123231737387.png"><img src="http://book.fsec.io/bookimages/image-20211123231737387.png" alt="">
 </a></p>
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123231723830.png"><img src="http://book.fsec.io/bookimages/image-20211123231723830.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20211123231723830.png"><img src="http://book.fsec.io/bookimages/image-20211123231723830.png" alt="">
 </a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-c：继续执行上次终端的任务；可以在下载中断后再次使用。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412191424135.png"><img src="http://book.fsec.io/bookimages/image-20220412191424135.png">
+<p><a target="_blank" rel="noopener" href="http://book.fsec.io/bookimages/image-20220412191424135.png"><img src="http://book.fsec.io/bookimages/image-20220412191424135.png" alt="">
 </a></p>
 
     </div>
 
     
-</div>
-    <div class="footer" id="footer">
-    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
     
-    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
-        <input type="checkbox" name="switch" id="update_style">
-        <span class="el-switch-style"></span>
-    </label>
 
-    <!--         <script type="text/javascript">
-    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script> -->
-</p>
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/16/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/05/18/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-awk-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">1. awk 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-sed-%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">2. sed 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-grep-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">3. grep 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-find-%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">4. find 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-ag-%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">5. ag 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-stat%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">6.stat命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-split-%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">7. split 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-sort%E5%91%BD%E4%BB%A4"><span class="nav-number">8.</span> <span class="nav-text">8.sort命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-uniq-%E5%91%BD%E4%BB%A4"><span class="nav-number">9.</span> <span class="nav-text">9. uniq 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-nl-%E5%91%BD%E4%BB%A4"><span class="nav-number">10.</span> <span class="nav-text">10. nl 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%91%BD%E4%BB%A4"><span class="nav-number">11.</span> <span class="nav-text">11.远程连接命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-1-ssh%E5%91%BD%E4%BB%A4"><span class="nav-number">11.1.</span> <span class="nav-text">11.1 ssh命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-linux%E4%B8%8B%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5smb"><span class="nav-number">11.2.</span> <span class="nav-text">11.2 linux下远程连接smb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-3-rdesktop-%E5%91%BD%E4%BB%A4"><span class="nav-number">11.3.</span> <span class="nav-text">11.3 rdesktop 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-URL-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-number">12.</span> <span class="nav-text">12. URL 相关命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-1-curl-%E5%91%BD%E4%BB%A4"><span class="nav-number">12.1.</span> <span class="nav-text">12.1 curl 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-wget-%E5%91%BD%E4%BB%A4"><span class="nav-number">12.2.</span> <span class="nav-text">12.2 wget 命令</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mortal</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AllofMortal" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AllofMortal" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/AllofMortal" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;AllofMortal" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mortal</span>
 </div>
 
-<input type="hidden" id="web_style" value="black">
-<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
-<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
-
-<script src="/libs/jquery.min.js"></script>
+        
 
 
-<script src="/libs/highlight/highlight.pack.js"></script>
 
-<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
-<script src="/js/js.js"></script>
 
-<style type="text/css">
-.v * {
-color: #698fca;
-}
-.v .vlist .vcard .vhead .vsys {
-color: #3a3e4a;
-}
-.v .vlist .vcard .vh .vmeta .vat {
-color: #638fd5;
-}
-.v .vlist .vcard .vhead .vnick {
-color: #6ba1ff;
-}
-.v a {
-color: #8696b1;
-}
-.v .vlist .vcard .vhead .vnick:hover {
-color: #669bfc;
-}
-</style>
-    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
 </body>
 </html>

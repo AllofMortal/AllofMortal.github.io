@@ -1,45 +1,244 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-Hans">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
-     <link rel="shortcut icon" href= /img/favicon.ico >
-    <title>
-        Hexo
-    </title>
-    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
-    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
-    
-<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/main.css">
 
-    
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body id="bodyx">
-    <div class="hd posts">
-    <a href="/index.html"><i class="fa fa-home
- replay-btn" aria-hidden="true"></i></a>
-    <div class="post-title">
-        <p>
-            Debian和redhat体系的软件安装
-        </p>
-        <hr>
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"allofmortal.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Drbian和redhat体系的软件安装1. Debian体系的软件安装在前文中，我们了解到linux系统的发行版主要分为debian和redhat两个体系。 两个体系最直观的不同是软件安装命令的不同。我们来学习debian体系的软件安装。 前文我们使用的Kali系统，就以本节所介绍的命令来管理软件的安装与卸载。 1.1 dpkg 命令dpkg 是为”Debian”操作系统专门开发的套件管理系统，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Debian和redhat体系的软件安装">
+<meta property="og:url" content="https://allofmortal.github.io/2022/04/24/Drbian%E5%92%8Credhat%E4%BD%93%E7%B3%BB%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Drbian和redhat体系的软件安装1. Debian体系的软件安装在前文中，我们了解到linux系统的发行版主要分为debian和redhat两个体系。 两个体系最直观的不同是软件安装命令的不同。我们来学习debian体系的软件安装。 前文我们使用的Kali系统，就以本节所介绍的命令来管理软件的安装与卸载。 1.1 dpkg 命令dpkg 是为”Debian”操作系统专门开发的套件管理系统，">
+<meta property="og:locale">
+<meta property="og:image" content="https://allofmortal.github.io/2022/bookimages/image-20220422100609634.png">
+<meta property="og:image" content="https://allofmortal.github.io/2022/bookimages/image-20220422100609634.png">
+<meta property="article:published_time" content="2022-04-24T12:07:09.000Z">
+<meta property="article:modified_time" content="2024-04-28T01:49:19.483Z">
+<meta property="article:author" content="Mortal">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://allofmortal.github.io/2022/bookimages/image-20220422100609634.png">
+
+<link rel="canonical" href="https://allofmortal.github.io/2022/04/24/Drbian%E5%92%8Credhat%E4%BD%93%E7%B3%BB%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Debian和redhat体系的软件安装 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    <div class="post-content">
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://allofmortal.github.io/2022/04/24/Drbian%E5%92%8Credhat%E4%BD%93%E7%B3%BB%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mortal">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Debian和redhat体系的软件安装
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2022-04-24 20:07:09" itemprop="dateCreated datePublished" datetime="2022-04-24T20:07:09+08:00">2022-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2024-04-28 09:49:19" itemprop="dateModified" datetime="2024-04-28T09:49:19+08:00">2024-04-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
+                </span>
+                  ، 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">命令</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
         <h1 id="Drbian和redhat体系的软件安装"><a href="#Drbian和redhat体系的软件安装" class="headerlink" title="Drbian和redhat体系的软件安装"></a>Drbian和redhat体系的软件安装</h1><h2 id="1-Debian体系的软件安装"><a href="#1-Debian体系的软件安装" class="headerlink" title="1. Debian体系的软件安装"></a>1. Debian体系的软件安装</h2><p>在前文中，我们了解到linux系统的发行版主要分为debian和redhat两个体系。</p>
 <p>两个体系最直观的不同是软件安装命令的不同。我们来学习debian体系的软件安装。</p>
 <p>前文我们使用的Kali系统，就以本节所介绍的命令来管理软件的安装与卸载。</p>
 <h3 id="1-1-dpkg-命令"><a href="#1-1-dpkg-命令" class="headerlink" title="1.1 dpkg 命令"></a>1.1 dpkg 命令</h3><p><code>dpkg</code> 是为”Debian”操作系统专门开发的套件管理系统，用于软件的安装，更新和移除。能被<code>dpkg</code>命令安装的软件包一般以<code>.deb</code>为文件后缀。</p>
 <p><code>dpkg</code> 是为”Debian”操作系统专门开发的套件管理系统，用于软件的安装，更新和移除。能被<code>dpkg</code>命令安装的软件包一般以<code>.deb</code>为文件后缀。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">`dpkg -i     # 安装软件包</span><br><span class="line">dpkg -r     # 移除软件（保留配置）</span><br><span class="line">dpkg -P     # 移除软件（不保留配置）</span><br><span class="line">dpkg -c     # 列出deb包的内容</span><br><span class="line">dpkg -l     # 配合|grep，查找主机包</span><br><span class="line">dpkg -s     # 查找包的详细信息</span><br><span class="line">dpkg -L     # 查看已安装的软件包，都存在系统哪有文件</span><br><span class="line">dpkg -S     # 显示指定包的状态信息`</span><br></pre></td></tr></table></figure>
-
 <h3 id="1-2-1-apt-命令"><a href="#1-2-1-apt-命令" class="headerlink" title="1.2.1. apt 命令"></a>1.2.1. apt 命令</h3><hr>
 <p><code>apt</code>是一个在Debian中的Shell前端软件包管理器。</p>
 <p><code>apt</code>命令提供了查找、安装、升级、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
@@ -48,53 +247,38 @@
 <p>kali系统的源文件在<code>/etc/apt/sources.list</code>。</p>
 <p>常见kali源：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">官方源</span><br><span class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">中科大源</span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">阿里云源</span><br><span class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">清华大学源</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">浙大源</span><br><span class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">东软大学源</span><br><span class="line">deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">新加坡kali源</span><br><span class="line">deb http://mirror.nus.edu.sg/kali/kali/ kali main non-free contrib</span><br><span class="line">deb-src http://mirror.nus.edu.sg/kali/kali/ kali main non-free contrib</span><br><span class="line">163 Kali源</span><br><span class="line">deb http://mirrors.163.com/debian wheezy main non-free contrib</span><br><span class="line">deb-src http://mirrors.163.com/debian wheezy main non-free contrib</span><br></pre></td></tr></table></figure>
-
 <p>可以编辑<code>/etc/apt/sources.list</code>文件，将源切换成需要的源。</p>
 <p>修改之后，需要通过<code>apt update</code>命令来更新源。</p>
 <h3 id="1-3-apt-命令"><a href="#1-3-apt-命令" class="headerlink" title="1.3. apt 命令"></a>1.3. apt 命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apt-get install      #安装软件包                </span><br><span class="line">apt-get remove       #仅卸载软件，但是并不卸载配置文件</span><br><span class="line">apt-get purge        #卸载指令，同时卸载相应的配置文件</span><br><span class="line">apt-get update       #将所有包的来源更新（更新源）</span><br><span class="line">apt-get upgrade      #将系统中旧版本的包升级成最新的</span><br><span class="line">apt-cache search     #用关键字搜索包</span><br><span class="line">apt-cache show       #显示特定包的基本信息</span><br><span class="line">apt-cache depends    #列出包的依赖</span><br><span class="line">apt-get clean        #清理本地包占用的磁盘空间(/var/cache/apt/archives)</span><br><span class="line">apt-get autoremove   #卸载软件的时候同时卸载那些当初作为依赖但是现在并不需要的包</span><br></pre></td></tr></table></figure>
-
 <h3 id="2-redhat体系的软件安装"><a href="#2-redhat体系的软件安装" class="headerlink" title="2. redhat体系的软件安装"></a>2. redhat体系的软件安装</h3><p>在前文中，我们了解到linux系统的发行版主要分为debian和redhat两个体系。两个体系最直观的不同是软件安装命令的不同。</p>
 <p>这一节，我们要来学习rehad体系的软件安装。前文我们使用的Centos实验环境，就以本节所介绍的命令来管理软件的安装与卸载。</p>
 <h2 id="1-rpm-命令"><a href="#1-rpm-命令" class="headerlink" title="1. rpm 命令"></a>1. rpm 命令</h2><p><code>rpm</code>命令用于管理软件。rpm原本是 Red Hat Linux 发行版专门用来管理 Linux 各项套件的程序，由于它遵循 GPL 规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM 套件管理方式的出现，让 Linux 易于安装，升级，间接提升了 Linux 的适用度。能被<code>rpm</code>命令安装的软件包一般以<code>.rpm</code>为文件后缀。</p>
 <h3 id="2-1-常见命令"><a href="#2-1-常见命令" class="headerlink" title="2.1 常见命令"></a>2.1 常见命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh [package_name]         #安装软件包</span><br><span class="line">rpm -evh [package_name]         #卸载软件</span><br><span class="line">rpm -qlp *.rpm                  #列出rpm包的内容</span><br><span class="line">rpm -qa |grep [字符串]           #在已安装的所有软件中查询包含某字符串的软件版本</span><br><span class="line">rpm -ql [软件名]                 #列出该软件所有文件与目录所在的完整文件名</span><br><span class="line">rpm -qc [软件名]                 #列出软件的所有设置文件</span><br><span class="line">rpm -qR [软件名]                 #查询某软件依赖的其他软件</span><br><span class="line">rpm -qf [文件名]                 #查询文件属于哪个软件包</span><br></pre></td></tr></table></figure>
-
 <h3 id="2-2-yum-命令"><a href="#2-2-yum-命令" class="headerlink" title="2.2. yum 命令"></a>2.2. yum 命令</h3><hr>
 <p><code>yum</code>命令是一个在 Fedora 和 RedHat 以及 SUSE 中的 Shell 前端软件包管理器。</p>
 <p>基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令。</p>
 <h3 id="2-3-yum-源配置"><a href="#2-3-yum-源配置" class="headerlink" title="2.3 yum 源配置"></a>2.3 yum 源配置</h3><p>同apt命令一样，<code>yum</code>依然从源获取软件。在centos中yum源文件存储在<code>/etc/yum.repos.d</code>目录中。</p>
-<p><img src="/../../../bookimages/image-20220422100609634.png"><br><img src="/../../../bookimages/image-20220422100609634.png"></p>
+<p><img src="../../../bookimages/image-20220422100609634.png" alt=""><br><img src="../../../bookimages/image-20220422100609634.png" alt=""></p>
 <p>repo文件的示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[baseos]</span><br><span class="line">name=Rocky Linux $releasever - BaseOS</span><br><span class="line">mirrorlist=https://mirrors.rockylinux.org/mirrorlist?arch=$basearch&amp;repo=BaseOS-$releasever</span><br><span class="line">#baseurl=http://dl.rockylinux.org/$contentdir/$releasever/BaseOS/$basearch/os/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rockyofficial</span><br></pre></td></tr></table></figure>
-
 <p>epel源是redhat系比较常用的源。</p>
 <p>EPEL (Extra Packages for Enterprise Linux)是基于Fedora的一个项目，为“红帽系”的操作系统提供额外的软件包，适用于RHEL、CentOS和Scientific Linux.</p>
 <p>安装epel源只需要安装一个叫”epel-release”的软件包，这个软件包会自动配置yum的软件仓库。</p>
 <p>命令为：<code>dnf install -y epel-release</code></p>
 <h3 id="2-2-yum-命令-1"><a href="#2-2-yum-命令-1" class="headerlink" title="2.2 yum 命令"></a>2.2 yum 命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum makecache                         #更新源（安装新源后执行）</span><br><span class="line">yum clean all                         #清除缓存目录（/var/cache/yum）下的软件包及旧的headers</span><br><span class="line">yum list |grep                        #显示所有已经安装和可以安装的程序包</span><br><span class="line">yum info [package-name]               #显示安装包信息</span><br><span class="line">yum -y install [package-name]         #安装软件,默认选yes</span><br><span class="line">yum remove [package-name]             #卸载</span><br><span class="line">yum deplist rpm                       #查看程序rpm依赖情况</span><br><span class="line">yum update                            #更新全部软件包</span><br><span class="line">yum group list                        #列出组</span><br><span class="line">yum group install &quot;Security Tools&quot;    #安装‘Security Tools’软件组</span><br><span class="line">yum search                            #检索安装包</span><br></pre></td></tr></table></figure>
-
 <h3 id="2-3-dnf-命令"><a href="#2-3-dnf-命令" class="headerlink" title="2.3 dnf 命令"></a>2.3 dnf 命令</h3><p><code>DNF</code>是新一代的rpm软件包管理器。它正在逐步取代<code>yum</code>命令。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">dnf repolist                                           #该命令用于显示系统中可用的 DNF 软件库</span><br><span class="line">dnf repolist all                                       #该命令用于显示系统中可用和不可用的所有的 DNF 软件库</span><br><span class="line">dnf list                                               #用户系统上的所有来自软件库的可用软件包和所有已经安装在系统上的软件包</span><br><span class="line">dnf list installed                                     #该命令用于列出所有安装了的 RPM 包</span><br><span class="line">dnf list available                                     #用于列出来自所有可用软件库的可供安装的软件包</span><br><span class="line">dnf search [pakage]                                    #用该命令来搜索软件包</span><br><span class="line">dnf provides /bin/bash                                 #查找某一文件的提供者</span><br><span class="line">dnf info nano                                          #查看软件包详情</span><br><span class="line">dnf install [pakage]                                   #安装软件包</span><br><span class="line">dnf update systemd                                     #该命令用于升级指定软件包</span><br><span class="line">dnf check-update                                       #该命令用于检查系统中所有软件包的更新</span><br><span class="line">dnf update                                             #该命令用于升级系统中所有有可用升级的软件包</span><br><span class="line">dnf remove [pakage]                                    #删除系统中指定的软件包</span><br><span class="line">dnf autoremove                                         #删除无用孤立的软件包</span><br><span class="line">dnf clean all                                          #删除缓存的无用软件包</span><br><span class="line">dnf history                                            #查看您系统上 DNF 命令的执行历史</span><br><span class="line">dnf grouplist                                          #该命令用于列出所有的软件包组</span><br><span class="line">dnf groupinstall ‘Educational Software’                #该命令用于安装一个软件包组</span><br><span class="line">dnf groupupdate ‘Educational Software’                 #升级一个软件包组中的软件包</span><br><span class="line">dnf groupremove ‘Educational Software’                 #该命令用于删除一个软件包组</span><br><span class="line">dnf reinstall [pakage]                                 #该命令用于重新安装特定软件包</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Debian-与-redhat-命令的异同"><a href="#3-Debian-与-redhat-命令的异同" class="headerlink" title="3. Debian 与 redhat 命令的异同"></a>3. Debian 与 redhat 命令的异同</h2><table>
-<th>功能</th> <th>debian</th> <th colspan="2">redhat</th>
-    <tr>
-<td>单机</td> <td>dpkg</td> <td colspan="2">rmp</td>
-    </tr>
-    <tr>
-<td>安装</td> <td>dpkg -i</td> <td colspan="2">rpm -ivh [package_name]</td>
-</tr>
-    <tr>
-<td rowspan="2">卸载</td> <td>dpkg -r (保留配置)</td> <td colspan="2"rowspan="2">rpm -evh [package_name]</td>
-</tr>
-    <tr>
+<h2 id="3-Debian-与-redhat-命令的异同"><a href="#3-Debian-与-redhat-命令的异同" class="headerlink" title="3. Debian 与 redhat 命令的异同"></a>3. Debian 与 redhat 命令的异同</h2><p><table></p>
+<p><th>功能</th> <th>debian</th> <th colspan="2">redhat</th><br>    <tr></p>
+<p><td>单机</td> <td>dpkg</td> <td colspan="2">rmp</td><br>    &lt;/tr&gt;<br>    <tr></p>
+<p><td>安装</td> <td>dpkg -i</td> <td colspan="2">rpm -ivh [package_name]</td><br>&lt;/tr&gt;<br>    <tr></p>
+<p><td rowspan="2">卸载</td> <td>dpkg -r (保留配置)</td> <td colspan="2"rowspan="2">rpm -evh [package_name]</td><br>&lt;/tr&gt;<br>    <tr>
         <td>dpkg -P (不保留配置)</td> <td colspan="2"></td>
-    </tr>
-    <tr>
+    </tr><br>    <tr>
         <td>查看对应包文件</td> <td>dpkg -s</td> <td colspan="2">rpm -qf [文件名]</td>
-    </tr>
-    <tr>
+    </tr><br>    <tr>
         <td>显示指定包的状态信息</td> </td> <td>dekp -L</td> <td colspan="2">rpm -ql [软件名]</td>
-    </tr>
+    </tr></p>
 <tr>
 <td>&nbsp;</td> <td>&nbsp;</td> <td colspan="2">&nbsp;</td>
 </tr>
@@ -126,60 +310,285 @@
     </div>
 
     
-</div>
-    <div class="footer" id="footer">
-    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
     
-    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
-        <input type="checkbox" name="switch" id="update_style">
-        <span class="el-switch-style"></span>
-    </label>
 
-    <!--         <script type="text/javascript">
-    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script> -->
-</p>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/21/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" rel="prev" title="Linux基础命令">
+      <i class="fa fa-chevron-left"></i> Linux基础命令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/11/02/nmap-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="nmap 常用命令">
+      nmap 常用命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Drbian%E5%92%8Credhat%E4%BD%93%E7%B3%BB%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Drbian和redhat体系的软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Debian%E4%BD%93%E7%B3%BB%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1. Debian体系的软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-dpkg-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 dpkg 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-apt-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2.1. apt 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E6%BA%90%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.2.2. 源的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-apt-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.3. apt 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-redhat%E4%BD%93%E7%B3%BB%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.5.</span> <span class="nav-text">2. redhat体系的软件安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-rpm-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">1. rpm 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 常见命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-yum-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2. yum 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-yum-%E6%BA%90%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 yum 源配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-yum-%E5%91%BD%E4%BB%A4-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.2 yum 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-dnf-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.3 dnf 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Debian-%E4%B8%8E-redhat-%E5%91%BD%E4%BB%A4%E7%9A%84%E5%BC%82%E5%90%8C"><span class="nav-number">1.3.</span> <span class="nav-text">3. Debian 与 redhat 命令的异同</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mortal</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AllofMortal" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AllofMortal" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/AllofMortal" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;AllofMortal" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mortal</span>
 </div>
 
-<input type="hidden" id="web_style" value="black">
-<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
-<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
-
-<script src="/libs/jquery.min.js"></script>
+        
 
 
-<script src="/libs/highlight/highlight.pack.js"></script>
 
-<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
-<script src="/js/js.js"></script>
 
-<style type="text/css">
-.v * {
-color: #698fca;
-}
-.v .vlist .vcard .vhead .vsys {
-color: #3a3e4a;
-}
-.v .vlist .vcard .vh .vmeta .vat {
-color: #638fd5;
-}
-.v .vlist .vcard .vhead .vnick {
-color: #6ba1ff;
-}
-.v a {
-color: #8696b1;
-}
-.v .vlist .vcard .vhead .vnick:hover {
-color: #669bfc;
-}
-</style>
-    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
 </body>
 </html>

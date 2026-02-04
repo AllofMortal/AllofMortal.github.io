@@ -1,46 +1,243 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-Hans">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
-     <link rel="shortcut icon" href= /img/favicon.ico >
-    <title>
-        Hexo
-    </title>
-    <meta name="description" content= 嘿，我是Mortal这是我的博客，用于记录自己的笔记。欢迎指正！ >
-    <meta name="keywords" content= Blog,Hexo,Theme,Mortal >
-    
-<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/main.css">
 
-    
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body id="bodyx">
-    <div class="hd posts">
-    <a href="/index.html"><i class="fa fa-home
- replay-btn" aria-hidden="true"></i></a>
-    <div class="post-title">
-        <p>
-            DIV CSS 基础
-        </p>
-        <hr>
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"allofmortal.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="DIV CSS 基础1. DIV和CSS样式层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DIV CSS 基础">
+<meta property="og:url" content="https://allofmortal.github.io/2021/09/13/DIV-CSS-%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DIV CSS 基础1. DIV和CSS样式层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-09-13T04:52:37.000Z">
+<meta property="article:modified_time" content="2021-09-17T14:54:48.931Z">
+<meta property="article:author" content="Mortal">
+<meta property="article:tag" content="DIV CSS 基础">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://allofmortal.github.io/2021/09/13/DIV-CSS-%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>DIV CSS 基础 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    <div class="post-content">
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://allofmortal.github.io/2021/09/13/DIV-CSS-%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mortal">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DIV CSS 基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2021-09-13 12:52:37" itemprop="dateCreated datePublished" datetime="2021-09-13T12:52:37+08:00">2021-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2021-09-17 22:54:48" itemprop="dateModified" datetime="2021-09-17T22:54:48+08:00">2021-09-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ، 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
         <h1 id="DIV-CSS-基础"><a href="#DIV-CSS-基础" class="headerlink" title="DIV CSS 基础"></a>DIV CSS 基础</h1><h2 id="1-DIV和CSS样式"><a href="#1-DIV和CSS样式" class="headerlink" title="1. DIV和CSS样式"></a>1. DIV和CSS样式</h2><p>层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。<br>CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力。</p>
 <p>DIV是html的一个标签 css是一个样式表</p>
 <h2 id="2-样式表类型"><a href="#2-样式表类型" class="headerlink" title="2.样式表类型"></a>2.样式表类型</h2><h3 id="2-1-嵌入样式表"><a href="#2-1-嵌入样式表" class="headerlink" title="2.1. 嵌入样式表"></a>2.1. 嵌入样式表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			.demo1&#123;</span><br><span class="line">				color: red;</span><br><span class="line">				width: 100px;</span><br><span class="line">				height: 100px;</span><br><span class="line">				background: blue;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div class=&quot;demo1&quot;&gt;</span><br><span class="line">			demo1</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-外部样式"><a href="#2-2-外部样式" class="headerlink" title="2.2. 外部样式"></a>2.2. 外部样式</h3><p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;/&gt;</code></p>
 <p>@import url<br>@import url(“g.css”);<br>.demo1{<br>                color: red;<br>                width: 100px;<br>                height: 100px;<br>                background: blue;<br>            }</p>
 <h3 id="2-3-内联样式"><a href="#2-3-内联样式" class="headerlink" title="2.3. 内联样式"></a>2.3. 内联样式</h3><p><code>&lt;div style=&quot;color: blue;width: 100px;height: 100px; background: black;&quot;&gt;demo2&lt;/div&gt;</code></p>
-<h2 id="3-注释"><a href="#3-注释" class="headerlink" title="3. 注释"></a>3. 注释</h2><p>&#x2F;* *&#x2F; 注释内容</p>
-<h2 id="4-样式选择器"><a href="#4-样式选择器" class="headerlink" title="4. 样式选择器"></a>4. 样式选择器</h2><p>元素选择器   div{属性:值}<br>border		边框 </p>
+<h2 id="3-注释"><a href="#3-注释" class="headerlink" title="3. 注释"></a>3. 注释</h2><p>/<em> </em>/ 注释内容</p>
+<h2 id="4-样式选择器"><a href="#4-样式选择器" class="headerlink" title="4. 样式选择器"></a>4. 样式选择器</h2><p>元素选择器   div{属性:值}<br>border        边框 </p>
 <p>ID选择器  #id{属性:值}</p>
 <p>class选择器  .类名{属性:值}</p>
 <p>子选择器    元数 空格 元素{属性:值}<br>可以改变标签内部样式的值</p>
@@ -48,11 +245,11 @@
 <p>属性选择器  元素[属性]{}<br>可以吧重复的值写到一起</p>
 <p>通配符选择器  *{属性:值}<br>可以选择所有元素 margin padding</p>
 <p>群组选择器 </p>
-<h2 id="5-背景"><a href="#5-背景" class="headerlink" title="5.背景"></a>5.背景</h2><p>background-color 	规定要使用的背景颜色。<br>background-position 	规定背景图像的位置。 	<br>background-size 	规定背景图片的尺寸。 	<br>background-repeat 	规定如何重复背景图像。 	<br>background-origin 	规定背景图片的定位区域。 	<br>background-clip 	规定背景的绘制区域。 	</p>
-<p>repeat	默认。背景图像将在垂直方向和水平方向重复。<br>repeat-x	背景图像将在水平方向重复。<br>repeat-y	背景图像将在垂直方向重复。<br>no-repeat	背景图像将仅显示一次。<br>inherit	规定应该从父元素继承 background-repeat 属性的设置。</p>
-<p>background-attachment 	规定背景图像是否固定或者随着页面的其余部分滚动。 	<br>background-image 	规定要使用的背景图像。 </p>
-<p>inherit 	规定应该从父元素继承 background 属性的设置。 	<br>left top<br>left center<br>left bottom<br>right top<br>right center<br>right bottom<br>center top<br>center center<br>center bottom</p>
-<p>简写<br>background: url(images&#x2F;bg.gif) no-repeat top right</p>
+<h2 id="5-背景"><a href="#5-背景" class="headerlink" title="5.背景"></a>5.背景</h2><p>background-color     规定要使用的背景颜色。<br>background-position     规定背景图像的位置。<br>background-size     规定背景图片的尺寸。<br>background-repeat     规定如何重复背景图像。<br>background-origin     规定背景图片的定位区域。<br>background-clip     规定背景的绘制区域。     </p>
+<p>repeat    默认。背景图像将在垂直方向和水平方向重复。<br>repeat-x    背景图像将在水平方向重复。<br>repeat-y    背景图像将在垂直方向重复。<br>no-repeat    背景图像将仅显示一次。<br>inherit    规定应该从父元素继承 background-repeat 属性的设置。</p>
+<p>background-attachment     规定背景图像是否固定或者随着页面的其余部分滚动。<br>background-image     规定要使用的背景图像。 </p>
+<p>inherit     规定应该从父元素继承 background 属性的设置。<br>left top<br>left center<br>left bottom<br>right top<br>right center<br>right bottom<br>center top<br>center center<br>center bottom</p>
+<p>简写<br>background: url(images/bg.gif) no-repeat top right</p>
 <p>背景图片的滚动</p>
 <p>背景图片是否随着内容的滚动而滚动由background-attachment设置</p>
 <p>background-attachment:fixed; 固定，不随内容的滚动而滚动</p>
@@ -64,9 +261,9 @@
 <p>上 右  下左<br>groove : 　根据border-color的值画3D凹槽<br>ridge : 　根据border-color的值画菱形边框<br>inset : 　根据border-color的值画3D凹边<br>outset : 　根据border-color的值画3D凸边<br>上 右 下左</p>
 <p>简写</p>
 <p>border:5px solid red;</p>
-<h2 id="7-文字属性"><a href="#7-文字属性" class="headerlink" title="7. 文字属性"></a>7. 文字属性</h2><p>color:red; 文字颜色 #ffeeees<br>font-size:12px; 文字大小<br>font-weight:bolds 文字粗细(bold&#x2F;normal)  <code>&lt;p&gt; &lt;span style=fontweight:  &gt;</code><br>font-family:”宋体”文字字体<br>font-variant:small-caps小写字母以大写字母显示</p>
-<h2 id="8-文本属性"><a href="#8-文本属性" class="headerlink" title="8. 文本属性"></a>8. 文本属性</h2><p>text-align:center; 文本对齐(right&#x2F;left&#x2F;center)<br>line-height:10px; 行间距(可通过它实现文本的垂直居中)<br>text-indent:20px; 首行缩进<br>text-decoration:none;<br>文本线(none&#x2F;underline&#x2F;overline&#x2F;line-through) underline&#x2F;overline&#x2F;line-through; 定义文本上的下划线&#x2F;上划线&#x2F;中划线<br>letter-spacing: 字间距</p>
-<h2 id="9-列表"><a href="#9-列表" class="headerlink" title="9. 列表"></a>9. 列表</h2><p>list-style-type 	设置列表项标记的类型。参阅：list-style-type 中可能的值。<br>list-style-position 	设置在何处放置列表项标记。参阅：list-style-position 中可能的值。<br>list-style-image 	使用图像来替换列表项的标记。参阅：list-style-image 中可能的值。<br>inherit 	规定应该从父元素继承 list-style 属性的值</p>
+<h2 id="7-文字属性"><a href="#7-文字属性" class="headerlink" title="7. 文字属性"></a>7. 文字属性</h2><p>color:red; 文字颜色 #ffeeees<br>font-size:12px; 文字大小<br>font-weight:bolds 文字粗细(bold/normal)  <code>&lt;p&gt; &lt;span style=fontweight:  &gt;</code><br>font-family:”宋体”文字字体<br>font-variant:small-caps小写字母以大写字母显示</p>
+<h2 id="8-文本属性"><a href="#8-文本属性" class="headerlink" title="8. 文本属性"></a>8. 文本属性</h2><p>text-align:center; 文本对齐(right/left/center)<br>line-height:10px; 行间距(可通过它实现文本的垂直居中)<br>text-indent:20px; 首行缩进<br>text-decoration:none;<br>文本线(none/underline/overline/line-through) underline/overline/line-through; 定义文本上的下划线/上划线/中划线<br>letter-spacing: 字间距</p>
+<h2 id="9-列表"><a href="#9-列表" class="headerlink" title="9. 列表"></a>9. 列表</h2><p>list-style-type     设置列表项标记的类型。参阅：list-style-type 中可能的值。<br>list-style-position     设置在何处放置列表项标记。参阅：list-style-position 中可能的值。<br>list-style-image     使用图像来替换列表项的标记。参阅：list-style-image 中可能的值。<br>inherit     规定应该从父元素继承 list-style 属性的值</p>
 <p>取值:disc | circle | square | decimal | decimal-leading-zero | lower-roman | upper-roman | lower-greek | lower-latin | upper-latin | armenian | georgian | lower-alpha </p>
 <p>| upper-alpha | none | inherit</p>
 <pre><code>    disc: 点
@@ -85,13 +282,12 @@
     upper-alpha: 大写拉丁文，例如: A, B, C, ... Z
     none: 无(取消所有的list样式)
     inherit:继承
-</code></pre>
-<p>list-style-position </p>
+</code></pre><p>list-style-position </p>
 <p>inside</p>
 <p>列表项目标记放置在文本以内，且环绕文本根据标记对齐。</p>
 <p>outside</p>
-<p>默认值。保持标记位于文本的左侧。列表项目标记放置在文本以外，且环绕文本不根据标记对齐。<br>简写<br>list-style:square inside url(‘&#x2F;i&#x2F;arrow.gif’);</p>
-<h2 id="10-超链接"><a href="#10-超链接" class="headerlink" title="10.  超链接"></a>10.  超链接</h2><p>a{text-decoration: none;}<br>a:link {color:#FF0000;} &#x2F;* 未访问的链接 <em>&#x2F;<br>a:visited {color:#00FF00;} &#x2F;</em> 已访问的链接 <em>&#x2F;<br>a:hover {color:#FF00FF;} &#x2F;</em> 鼠标划过链接 <em>&#x2F;<br>a:active {color:#0000FF;} &#x2F;</em> 已选中的链接 *&#x2F;</p>
+<p>默认值。保持标记位于文本的左侧。列表项目标记放置在文本以外，且环绕文本不根据标记对齐。<br>简写<br>list-style:square inside url(‘/i/arrow.gif’);</p>
+<h2 id="10-超链接"><a href="#10-超链接" class="headerlink" title="10.  超链接"></a>10.  超链接</h2><p>a{text-decoration: none;}<br>a:link {color:#FF0000;} /<em> 未访问的链接 </em>/<br>a:visited {color:#00FF00;} /<em> 已访问的链接 </em>/<br>a:hover {color:#FF00FF;} /<em> 鼠标划过链接 </em>/<br>a:active {color:#0000FF;} /<em> 已选中的链接 </em>/</p>
 <h2 id="11-盒子模型"><a href="#11-盒子模型" class="headerlink" title="11. 盒子模型"></a>11. 盒子模型</h2><p>盒子模型的组成部分</p>
 <p>外边距（margin）、边框（border）、内边距（padding）、内容（content）四个属性</p>
 <p>自身的身高 width height </p>
@@ -100,8 +296,8 @@
 <p>与其他盒子的距离 margin 外边距</p>
 <h2 id="12-Border-边框"><a href="#12-Border-边框" class="headerlink" title="12. Border 边框"></a>12. Border 边框</h2><p>常见的写法 border:1px solid #foo;</p>
 <p>单独属性:<br>border-widh:<br>border-style:<br>dotted 点状虚线<br>dashed（虚线）<br>solid（实线）<br>double（双实线）<br>border-color(颜色)</p>
-<p>12.1.	margin padding</p>
-<p>padding:内边距<br>值：像素&#x2F;厘米等长度单位、百分比<br>padding:10px; 上下左右<br>padding:10px 10px; 上下 左右<br>padding:10px 10px 10px; 上 左右 下<br>padding:10px 10px 10px 10px; 上 右 下 左（设置4个点–&gt;顺时针方向）<br>单独属性</p>
+<p>12.1.    margin padding</p>
+<p>padding:内边距<br>值：像素/厘米等长度单位、百分比<br>padding:10px; 上下左右<br>padding:10px 10px; 上下 左右<br>padding:10px 10px 10px; 上 左右 下<br>padding:10px 10px 10px 10px; 上 右 下 左（设置4个点—&gt;顺时针方向）<br>单独属性</p>
 <p>padding-top:<br>padding-right:<br>padding-bottom:<br>padding-left:</p>
 <p>当设置内边距的时候会把盒子撑大，为了保持盒子原来的大小，应该高度和宽度进行减小，根据width和height减小</p>
 <p>margin 外边距</p>
@@ -124,11 +320,11 @@
 <p>a - 锚点<br>b - 粗体(不推荐)<br>br- 换行<br>code - 计算机代码(在引用源码的时候需要)<br>em - 强调<br>i - 斜体<br>img - 图片（特殊的内联元素，同时是内联替换元素，替换元素可以设置宽高）<br>当图片和DIV在一起时，图片周围会出现margin现象，即元素不重合贴在一起，为了解决这个问题，设置img的css为{margin：0；display：block；border：0px}<br>input - 输入框<br>label - 表格标签<br>select - 项目选择<br>strong - 粗体强调<br>textarea - 多行文本输入框<br>u - 下划线<br>var - 定义变量</p>
 <p>替换元素有如下：（和img一样的设置方法）</p>
 <p><code>&lt;img&gt;、&lt;input&gt;、&lt;textarea&gt;、&lt;select&gt;</code><br><code>&lt;object&gt;</code>都是替换元素，这些元素都没有实际的内容</p>
-<h2 id="15-溢出"><a href="#15-溢出" class="headerlink" title="15. 溢出"></a>15. 溢出</h2><p>overflow 属性规定当内容溢出元素框时发生的事情。<br>visible	默认值。内容不会被修剪，会呈现在元素框之外。<br>hidden	内容会被修剪，并且其余内容是不可见的。<br>scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。<br>auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。<br>inherit	规定应该从父元素继承 overflow 属性的值。</p>
+<h2 id="15-溢出"><a href="#15-溢出" class="headerlink" title="15. 溢出"></a>15. 溢出</h2><p>overflow 属性规定当内容溢出元素框时发生的事情。<br>visible    默认值。内容不会被修剪，会呈现在元素框之外。<br>hidden    内容会被修剪，并且其余内容是不可见的。<br>scroll    内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。<br>auto    如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。<br>inherit    规定应该从父元素继承 overflow 属性的值。</p>
 <h2 id="16-定位"><a href="#16-定位" class="headerlink" title="16. 定位"></a>16. 定位</h2><p>position<br>static静态定位（不对它的位置进行改变，在哪里就在那里）</p>
-<p>默认值。没有定位，元素出现在正常的流中（忽略 top,bottom, left, right 或者z-index 声明）。<br>fixed固定定位（参照物–浏览器窗口）—做 弹窗广告用到</p>
+<p>默认值。没有定位，元素出现在正常的流中（忽略 top,bottom, left, right 或者z-index 声明）。<br>fixed固定定位（参照物—浏览器窗口）—-做 弹窗广告用到</p>
 <p>生成固定定位的元素，相对于浏览器窗口进行定位。 元素的位置通过 “left”, “top”, “right”以及 “bottom”属性进行规定。<br>relative（相对定位 ）（参照物以他本身）</p>
-<p>生成相对定位的元素，相对于其正常位置进行定位。<br>absolute（绝对定位）(除了static都可以，找到参照物–&gt;与它最近的已经有定位的父元素进行定位)</p>
+<p>生成相对定位的元素，相对于其正常位置进行定位。<br>absolute（绝对定位）(除了static都可以，找到参照物—&gt;与它最近的已经有定位的父元素进行定位)</p>
 <p>生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。<br>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定<br>z-index</p>
 <p>z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。</p>
 <p>定位的基本思想: 它允许你定义元素框相对于其正常位置应该出现的位置，或者相对于父元素、另一个元素甚至浏览器窗口本身的位置。</p>
@@ -136,60 +332,285 @@
     </div>
 
     
-</div>
-    <div class="footer" id="footer">
-    <p><h4>版权所有 © 2020 | 作者: Mortal | 主题 By <a class="theme-author" target="_blank" rel="noopener" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
     
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">本站浏览总访问量: <span id="busuanzi_value_site_pv"></span></span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv">本站访问人数: <span id="busuanzi_value_site_uv"></span></span>
     
-    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
-        <input type="checkbox" name="switch" id="update_style">
-        <span class="el-switch-style"></span>
-    </label>
 
-    <!--         <script type="text/javascript">
-    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script> -->
-</p>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/DIV-CSS-%E5%9F%BA%E7%A1%80/" rel="tag"><i class="fa fa-tag"></i> DIV CSS 基础</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/13/Md-%E8%AF%AD%E6%B3%95/" rel="prev" title="Md 语法">
+      <i class="fa fa-chevron-left"></i> Md 语法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/13/javascript%E5%9F%BA%E7%A1%80/" rel="next" title="javascript基础">
+      javascript基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DIV-CSS-%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">DIV CSS 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-DIV%E5%92%8CCSS%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">1. DIV和CSS样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%A0%B7%E5%BC%8F%E8%A1%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">2.样式表类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%B5%8C%E5%85%A5%E6%A0%B7%E5%BC%8F%E8%A1%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1. 嵌入样式表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2. 外部样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3. 内联样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B3%A8%E9%87%8A"><span class="nav-number">1.3.</span> <span class="nav-text">3. 注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%A0%B7%E5%BC%8F%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">1.4.</span> <span class="nav-text">4. 样式选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E8%83%8C%E6%99%AF"><span class="nav-number">1.5.</span> <span class="nav-text">5.背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E8%BE%B9%E6%A1%86"><span class="nav-number">1.6.</span> <span class="nav-text">6. 边框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E6%96%87%E5%AD%97%E5%B1%9E%E6%80%A7"><span class="nav-number">1.7.</span> <span class="nav-text">7. 文字属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E6%96%87%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="nav-number">1.8.</span> <span class="nav-text">8. 文本属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%88%97%E8%A1%A8"><span class="nav-number">1.9.</span> <span class="nav-text">9. 列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="nav-number">1.10.</span> <span class="nav-text">10.  超链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.11.</span> <span class="nav-text">11. 盒子模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Border-%E8%BE%B9%E6%A1%86"><span class="nav-number">1.12.</span> <span class="nav-text">12. Border 边框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-float-%E8%84%B1%E7%A6%BB%E6%96%87%E6%A1%A3%E6%B5%81%E6%B5%AE%E5%8A%A8"><span class="nav-number">1.13.</span> <span class="nav-text">13. float  脱离文档流浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E3%80%81%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0"><span class="nav-number">1.14.</span> <span class="nav-text">14. 块级元素、行内元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-%E6%BA%A2%E5%87%BA"><span class="nav-number">1.15.</span> <span class="nav-text">15. 溢出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-%E5%AE%9A%E4%BD%8D"><span class="nav-number">1.16.</span> <span class="nav-text">16. 定位</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mortal</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AllofMortal" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AllofMortal" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/AllofMortal" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;AllofMortal" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mortal</span>
 </div>
 
-<input type="hidden" id="web_style" value="black">
-<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
-<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
-
-<script src="/libs/jquery.min.js"></script>
+        
 
 
-<script src="/libs/highlight/highlight.pack.js"></script>
 
-<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
-<script src="/js/js.js"></script>
 
-<style type="text/css">
-.v * {
-color: #698fca;
-}
-.v .vlist .vcard .vhead .vsys {
-color: #3a3e4a;
-}
-.v .vlist .vcard .vh .vmeta .vat {
-color: #638fd5;
-}
-.v .vlist .vcard .vhead .vnick {
-color: #6ba1ff;
-}
-.v a {
-color: #8696b1;
-}
-.v .vlist .vcard .vhead .vnick:hover {
-color: #669bfc;
-}
-</style>
-    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
 </body>
 </html>
