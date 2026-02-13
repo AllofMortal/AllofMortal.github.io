@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">عُدل في</span>
-                <time title="عُدل: 2026-02-13 10:01:08" itemprop="dateModified" datetime="2026-02-13T10:01:08+08:00">2026-02-13</time>
+                <time title="عُدل: 2026-02-13 16:35:51" itemprop="dateModified" datetime="2026-02-13T16:35:51+08:00">2026-02-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,14 +231,14 @@
 <li>投影变换（projection transformation）： 它将点从相机空间进行投影，使得所有可见点在 $x$ 和 $y$ 方向上都落在 $-1$ 到 $1$ 的范围内。它仅取决于所需的投影类型。</li>
 <li>视口变换（viewport transformation）或 窗口变换（windowing transformation）： 它将这个（范围在 -1 到 1 的）单位图像矩形，映射为像素坐标系中所需的矩形。它仅取决于输出图像的大小和位置。</li>
 </ul>
-<p>为了便于描述这个过程的各个阶段，我们给这些作为变换输入和输出的坐标系起了名字：<br><img src="Viewing/Transformation.png" alt="object Transformations to screen"><br>将物体从其原始坐标（变换）到屏幕空间的一系列坐标空间和变换过程。</p>
+<p>为了便于描述这个过程的各个阶段，我们给这些作为变换输入和输出的坐标系起了名字：<br><img src="Transformation.png" alt="object Transformations to screen"><br>将物体从其原始坐标（变换）到屏幕空间的一系列坐标空间和变换过程。</p>
 <ul>
 <li>相机变换（The camera transformation） 将点从规范坐标（或世界空间）转换到相机坐标，或者说将它们放置在相机空间中。</li>
 <li>投影变换（The projection transformation） 将点从相机空间移动到规范视体积（canonical view volume） 中。</li>
 <li>视口变换（The viewport transformation） 将规范视体积映射到屏幕空间（screen space）。</li>
 </ul>
 <p>World Space 与 canonical view volume 是两个不同的空间<br>World Space (起点) $\xrightarrow{\text{相机变换}}$ Camera Space $\xrightarrow{\text{投影变换}}$ Canonical View Volume (中转站) $\xrightarrow{\text{视口变换}}$ Screen Space</p>
-<h3 id="The-Viewport-Transformation"><a href="#The-Viewport-Transformation" class="headerlink" title="The Viewport Transformation"></a>The Viewport Transformation</h3><p>规范视体积” (canonical view volume) 中，并且我们希望用一个看向 $-z$ 方向的正交相机来观察它，规范视体积是一个包含所有笛卡尔坐标在 $-1$ 和 $+1$ 之间的 3D 点的立方体——即 $(x, y, z) \in [-1, 1]^3$<br><img src="Viewing/coordinator%20cube.png" alt="coordinator cube"> 典型视图体积是一个边长为二、以原点为中心的立方体。</p>
+<h3 id="The-Viewport-Transformation"><a href="#The-Viewport-Transformation" class="headerlink" title="The Viewport Transformation"></a>The Viewport Transformation</h3><p>规范视体积” (canonical view volume) 中，并且我们希望用一个看向 $-z$ 方向的正交相机来观察它，规范视体积是一个包含所有笛卡尔坐标在 $-1$ 和 $+1$ 之间的 3D 点的立方体——即 $(x, y, z) \in [-1, 1]^3$<br><img src="Viewing/coordinatorcube.png" alt="coordinator cube"> 典型视图体积是一个边长为二、以原点为中心的立方体。</p>
 <p>我们将 $x = -1$ 投影到屏幕左侧，$x = +1$ 投影到屏幕右侧，$y = -1$ 投影到屏幕底部，以及 $y = +1$ 投影到屏幕顶部。</p>
 <p>每个像素“拥有”一个以整数坐标为中心的单位正方形；图像边界比像素中心多出半个单位的延伸量（overshoot）；并且最小的像素中心坐标是 $(0, 0)$。<br>[注：这意味着第0个像素的中心是0，但它的左边缘是 -0.5，右边缘是 0.5]</p>
 <p>如果我们要绘制到一个有 $n_x \times n_y$ 个像素的图像（或屏幕上的窗口）中，我们需要将正方形 $[-1, 1]^2$ 映射到矩形 $[-0.5, n_x - 0.5] \times [-0.5, n_y - 0.5]$。</p>
