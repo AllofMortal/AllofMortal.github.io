@@ -27,19 +27,19 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="ViewingThe transformations is project 3D points in the scene (world space) to 2D points in the image (image space) Rasterization(光栅化) 本质上是从 物体 $\rightarrow$ 经过矩阵变换 $\rightarrow$ 砸到屏幕（眼睛）上 左图：正交投影（Orth">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/View.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/View.png">
 <meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Transformation.png">
-<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/coordinatorcube.png">
-<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/orthography.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/coordinatorcube.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/orthography.png">
 <meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/near%20and%20far.png">
 <meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/coordinate.png">
-<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/ordinary%20coordinate.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/ordinary%20coordinate.png">
 <meta property="article:published_time" content="2026-02-05T13:50:03.000Z">
-<meta property="article:modified_time" content="2026-02-13T08:35:51.443Z">
+<meta property="article:modified_time" content="2026-02-13T08:39:07.916Z">
 <meta property="article:author" content="Mortal">
 <meta property="article:tag" content="graphic">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/View.png">
+<meta name="twitter:image" content="https://allofmortal.github.io/2026/02/05/Viewing/View.png">
 
 <link rel="canonical" href="https://allofmortal.github.io/2026/02/05/Viewing/">
 
@@ -211,7 +211,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">عُدل في</span>
-                <time title="عُدل: 2026-02-13 16:35:51" itemprop="dateModified" datetime="2026-02-13T16:35:51+08:00">2026-02-13</time>
+                <time title="عُدل: 2026-02-13 16:39:07" itemprop="dateModified" datetime="2026-02-13T16:39:07+08:00">2026-02-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
       
         <h1 id="Viewing"><a href="#Viewing" class="headerlink" title="Viewing"></a>Viewing</h1><p>The transformations is project 3D points in the scene (world space) to 2D points in the image (image space)</p>
 <p>Rasterization(光栅化) 本质上是从 物体 $\rightarrow$ 经过矩阵变换 $\rightarrow$ 砸到屏幕（眼睛）上</p>
-<p><img src="Viewing/View.png" alt="三视图"><br>左图：正交投影（Orthographic Projection）中图：透视投影（Perspective Projection） 右图：移除了隐藏线（Hidden Lines）的 透视投影 </p>
+<p><img src="View.png" alt="三视图"><br>左图：正交投影（Orthographic Projection）中图：透视投影（Perspective Projection） 右图：移除了隐藏线（Hidden Lines）的 透视投影 </p>
 <h2 id="The-Viewport-Transformation-视口变换"><a href="#The-Viewport-Transformation-视口变换" class="headerlink" title="The Viewport Transformation (视口变换)"></a>The Viewport Transformation (视口变换)</h2><p>视图变换（The viewing transformation）的任务是将以规范坐标系（canonical coordinate system）中的 <strong>(x, y, z)</strong> 坐标表示的 3D 位置，映射为以像素为单位表示的图像中的坐标。</p>
 <p>最好的处理方法是将其分解为几个更简单的变换的乘积。大多数图形系统通过使用以下三个变换序列来实现这一点：</p>
 <ul>
@@ -251,7 +251,7 @@
 <li>视口变换（The viewport transformation） 将规范视体积映射到屏幕空间（screen space）。</li>
 </ul>
 <p>World Space 与 canonical view volume 是两个不同的空间<br>World Space (起点) $\xrightarrow{\text{相机变换}}$ Camera Space $\xrightarrow{\text{投影变换}}$ Canonical View Volume (中转站) $\xrightarrow{\text{视口变换}}$ Screen Space</p>
-<h3 id="The-Viewport-Transformation"><a href="#The-Viewport-Transformation" class="headerlink" title="The Viewport Transformation"></a>The Viewport Transformation</h3><p>规范视体积” (canonical view volume) 中，并且我们希望用一个看向 $-z$ 方向的正交相机来观察它，规范视体积是一个包含所有笛卡尔坐标在 $-1$ 和 $+1$ 之间的 3D 点的立方体——即 $(x, y, z) \in [-1, 1]^3$<br><img src="Viewing/coordinatorcube.png" alt="coordinator cube"> 典型视图体积是一个边长为二、以原点为中心的立方体。</p>
+<h3 id="The-Viewport-Transformation"><a href="#The-Viewport-Transformation" class="headerlink" title="The Viewport Transformation"></a>The Viewport Transformation</h3><p>规范视体积” (canonical view volume) 中，并且我们希望用一个看向 $-z$ 方向的正交相机来观察它，规范视体积是一个包含所有笛卡尔坐标在 $-1$ 和 $+1$ 之间的 3D 点的立方体——即 $(x, y, z) \in [-1, 1]^3$<br><img src="coordinatorcube.png" alt="coordinator cube"> 典型视图体积是一个边长为二、以原点为中心的立方体。</p>
 <p>我们将 $x = -1$ 投影到屏幕左侧，$x = +1$ 投影到屏幕右侧，$y = -1$ 投影到屏幕底部，以及 $y = +1$ 投影到屏幕顶部。</p>
 <p>每个像素“拥有”一个以整数坐标为中心的单位正方形；图像边界比像素中心多出半个单位的延伸量（overshoot）；并且最小的像素中心坐标是 $(0, 0)$。<br>[注：这意味着第0个像素的中心是0，但它的左边缘是 -0.5，右边缘是 0.5]</p>
 <p>如果我们要绘制到一个有 $n_x \times n_y$ 个像素的图像（或屏幕上的窗口）中，我们需要将正方形 $[-1, 1]^2$ 映射到矩形 $[-0.5, n_x - 0.5] \times [-0.5, n_y - 0.5]$。</p>
@@ -271,7 +271,7 @@
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1
 \end{bmatrix}
-\quad (7.2)</script><h3 id="正交投影变换-The-Orthographic-Projection-Transformation"><a href="#正交投影变换-The-Orthographic-Projection-Transformation" class="headerlink" title="正交投影变换 (The Orthographic Projection Transformation)"></a>正交投影变换 (The Orthographic Projection Transformation)</h3><p>我们通常想要渲染的几何体，是位于“规范视体积”以外的某个空间区域内的。我们泛化（推广）视图的第一步是：保持观察方向和朝向固定不变（依然是沿着 $-z$ 轴看，$+y$ 轴朝上），但允许观察任意大小的矩形区域。与其替换掉（刚才讲的）视口矩阵，我们不如通过在它的右侧乘以另一个矩阵来扩充它。在这些约束下，视体积是一个“轴对齐的盒子”（axis-aligned box）。我们将命名其各个面的坐标，使得视体积表示为 $[l, r] \times [b, t] \times [f, n]$，如图所示<img src="Viewing/orthography.png" alt="orthography view volume"><br>我们把这个盒子称为“正交视体积”，并将其边界平面定义如下：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x =l ≡left plane,</span><br><span class="line">x =r≡rightplane,</span><br><span class="line">y =b≡bottomplane,</span><br><span class="line">y =t≡topplane,</span><br><span class="line">z =n≡nearplane,</span><br><span class="line">z =f ≡farplane.</span><br></pre></td></tr></table></figure><br>假设观察者是沿着 负 $z$ 轴观看的，且其头部指向 $y$ 方向。这意味着 $n &gt; f$，这可能有些反直觉。但如果你假设整个正交视体积的 $z$ 值都是负数，那么只有当 $n &gt; f$ 时，$z = n$ 的“近”平面才会离观察者更近;$f$ 是一个比 $n$ 更小的数，也就是说，它是一个绝对值比 $n$ 更大的负数。(eg:-10&gt;-100)个概念展示在图<img src="Viewing/near%20and%20far.png" alt="">。<br>从正交视体积到规范视体积的变换是另一种窗口变换，所以我们可以直接把正交视体积和规范视体积的边界代入方程 (6.7)，从而得到这个变换的矩阵：</p>
+\quad (7.2)</script><h3 id="正交投影变换-The-Orthographic-Projection-Transformation"><a href="#正交投影变换-The-Orthographic-Projection-Transformation" class="headerlink" title="正交投影变换 (The Orthographic Projection Transformation)"></a>正交投影变换 (The Orthographic Projection Transformation)</h3><p>我们通常想要渲染的几何体，是位于“规范视体积”以外的某个空间区域内的。我们泛化（推广）视图的第一步是：保持观察方向和朝向固定不变（依然是沿着 $-z$ 轴看，$+y$ 轴朝上），但允许观察任意大小的矩形区域。与其替换掉（刚才讲的）视口矩阵，我们不如通过在它的右侧乘以另一个矩阵来扩充它。在这些约束下，视体积是一个“轴对齐的盒子”（axis-aligned box）。我们将命名其各个面的坐标，使得视体积表示为 $[l, r] \times [b, t] \times [f, n]$，如图所示<img src="orthography.png" alt="orthography view volume"><br>我们把这个盒子称为“正交视体积”，并将其边界平面定义如下：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x =l ≡left plane,</span><br><span class="line">x =r≡rightplane,</span><br><span class="line">y =b≡bottomplane,</span><br><span class="line">y =t≡topplane,</span><br><span class="line">z =n≡nearplane,</span><br><span class="line">z =f ≡farplane.</span><br></pre></td></tr></table></figure><br>假设观察者是沿着 负 $z$ 轴观看的，且其头部指向 $y$ 方向。这意味着 $n &gt; f$，这可能有些反直觉。但如果你假设整个正交视体积的 $z$ 值都是负数，那么只有当 $n &gt; f$ 时，$z = n$ 的“近”平面才会离观察者更近;$f$ 是一个比 $n$ 更小的数，也就是说，它是一个绝对值比 $n$ 更大的负数。(eg:-10&gt;-100)个概念展示在图<img src="Viewing/near%20and%20far.png" alt="">。<br>从正交视体积到规范视体积的变换是另一种窗口变换，所以我们可以直接把正交视体积和规范视体积的边界代入方程 (6.7)，从而得到这个变换的矩阵：</p>
 <script type="math/tex; mode=display">\mathbf{M}_{\text{orth}} =
 \begin{bmatrix}
 \frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l} \\
@@ -293,7 +293,7 @@
 \mathbf{v} &= \mathbf{w} \times \mathbf{u}.
 \end{aligned}</script></li>
 </ul>
-<p>如果我们需要变换的所有点，都已经是以 $\mathbf{e}$ 为原点，且以基向量 $\mathbf{u}, \mathbf{v}, \mathbf{w}$ 为基底的坐标形式存储的，那么我们的工作就完成了。但是如图所示，模型的坐标是根据规范（或世界）原点 $\mathbf{o}$ 以及 $x, y, z$ 轴来存储的。<br><img src="Viewing/ordinary%20coordinate.png" alt="ordinary coordinate"> 为了任意查看，我们需要将要存储的点转换到“合适”的坐标系统。在这种情况下，它的原点为 e，并且坐标偏移以 uvw 表示。</p>
+<p>如果我们需要变换的所有点，都已经是以 $\mathbf{e}$ 为原点，且以基向量 $\mathbf{u}, \mathbf{v}, \mathbf{w}$ 为基底的坐标形式存储的，那么我们的工作就完成了。但是如图所示，模型的坐标是根据规范（或世界）原点 $\mathbf{o}$ 以及 $x, y, z$ 轴来存储的。<br><img src="ordinary%20coordinate.png" alt="ordinary coordinate"> 为了任意查看，我们需要将要存储的点转换到“合适”的坐标系统。在这种情况下，它的原点为 e，并且坐标偏移以 uvw 表示。</p>
 <p>为了使用我们已经开发好的（投影和视口变换）机制，我们只需要将希望绘制的线段端点的坐标，从 $xyz$ 坐标转换为 $uvw$ 坐标。执行此变换的矩阵是相机坐标系的“规范-基底”矩阵（即世界坐标到相机坐标的变换矩阵）：</p>
 <script type="math/tex; mode=display">\mathbf{M}_{\text{cam}} =
 \begin{bmatrix}
