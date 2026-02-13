@@ -81,7 +81,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -110,27 +110,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Startseite</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>Über</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Schlagwörter<span class="badge">20</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم<span class="badge">21</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Kategorien<span class="badge">15</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات<span class="badge">16</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archiv<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات<span class="badge">29</span></a>
 
   </li>
         <li class="menu-item menu-item-commonweal">
@@ -167,6 +167,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://allofmortal.github.io/2022/11/02/nmap-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mortal">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/02/nmap-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">nmap 常用命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+              
+
+              <time title="أُنشأ: 2022-11-02 10:37:35 / عُدل: 18:53:41" itemprop="dateCreated datePublished" datetime="2022-11-02T10:37:35+08:00">2022-11-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pentest/" itemprop="url" rel="index"><span itemprop="name">pentest</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="nmap-常用命令"><a href="#nmap-常用命令" class="headerlink" title="nmap 常用命令"></a>nmap 常用命令</h1><h2 id="必要命令"><a href="#必要命令" class="headerlink" title="必要命令"></a>必要命令</h2><p><code>-iL</code> xx.txt</p>
+<p><code>-sV</code>           # 服务版本</p>
+<p><code>-p</code>            # 端口</p>
+<p><code>-A -Pn 0-65536</code>                   # -A 全扫描 -Pn 直接发包<br>               -iL  xxx.txt</p>
+<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><p><code>-sP</code>      # 探测此网段的存活主机 可以连同 | grep nmap 一起使用 这样看起来更清爽一些</p>
+<p><code>-p 80</code>    # 检测特定端口</p>
+<p><code>-sT</code>      # 检测TCP端口</p>
+<p><code>-sU</code>      # 检测UDP端口</p>
+<p><code>-sV</code>      # 探测端口的服务和版本</p>
+<p><code>-O</code>       # 探测操作系统的类型和版本</p>
+<p><code>-Pn</code>      # 直接进行深度测试，不检测主机存活</p>
+<h4 id="组合技"><a href="#组合技" class="headerlink" title="组合技"></a>组合技</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">masscan -p 1-65535 192.168.0.0/24 --rate=2000 &gt;&gt;ports.txt</span><br><span class="line">cat ports.txt |awk &#x27;&#123;print($6&quot;:&quot;$4)&#125;&#x27;|sed &#x27;s#/tcp##g&#x27; &gt;&gt;portclean.txt</span><br><span class="line">nmap -sV -p 35386 192.168.0.</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
     <link itemprop="mainEntityOfPage" href="https://allofmortal.github.io/2022/04/24/Drbian%E5%92%8Credhat%E4%BD%93%E7%B3%BB%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -189,26 +267,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2022-04-24 20:07:09" itemprop="dateCreated datePublished" datetime="2022-04-24T20:07:09+08:00">2022-04-24</time>
+              <time title="أُنشأ: 2022-04-24 20:07:09" itemprop="dateCreated datePublished" datetime="2022-04-24T20:07:09+08:00">2022-04-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2024-04-28 09:49:19" itemprop="dateModified" datetime="2024-04-28T09:49:19+08:00">2024-04-28</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2024-04-28 09:49:19" itemprop="dateModified" datetime="2024-04-28T09:49:19+08:00">2024-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
                 </span>
-                  . 
+                  ، 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%B3%BB%E7%BB%9F/%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">命令</span></a>
                 </span>
@@ -339,26 +417,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2022-04-21 21:56:18" itemprop="dateCreated datePublished" datetime="2022-04-21T21:56:18+08:00">2022-04-21</time>
+              <time title="أُنشأ: 2022-04-21 21:56:18" itemprop="dateCreated datePublished" datetime="2022-04-21T21:56:18+08:00">2022-04-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2024-04-28 09:42:27" itemprop="dateModified" datetime="2024-04-28T09:42:27+08:00">2024-04-28</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2024-04-28 09:42:27" itemprop="dateModified" datetime="2024-04-28T09:42:27+08:00">2024-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
                 </span>
-                  . 
+                  ، 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%B3%BB%E7%BB%9F/%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">命令</span></a>
                 </span>
@@ -562,26 +640,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2022-03-14 14:10:09" itemprop="dateCreated datePublished" datetime="2022-03-14T14:10:09+08:00">2022-03-14</time>
+              <time title="أُنشأ: 2022-03-14 14:10:09" itemprop="dateCreated datePublished" datetime="2022-03-14T14:10:09+08:00">2022-03-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2024-04-28 09:42:32" itemprop="dateModified" datetime="2024-04-28T09:42:32+08:00">2024-04-28</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2024-04-28 09:42:32" itemprop="dateModified" datetime="2024-04-28T09:42:32+08:00">2024-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">语言</span></a>
                 </span>
-                  . 
+                  ، 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%AF%AD%E8%A8%80/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
                 </span>
@@ -1419,26 +1497,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2022-03-08 19:59:41" itemprop="dateCreated datePublished" datetime="2022-03-08T19:59:41+08:00">2022-03-08</time>
+              <time title="أُنشأ: 2022-03-08 19:59:41" itemprop="dateCreated datePublished" datetime="2022-03-08T19:59:41+08:00">2022-03-08</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2024-04-28 09:49:31" itemprop="dateModified" datetime="2024-04-28T09:49:31+08:00">2024-04-28</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2024-04-28 09:49:31" itemprop="dateModified" datetime="2024-04-28T09:49:31+08:00">2024-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%B8%97%E9%80%8F/" itemprop="url" rel="index"><span itemprop="name">渗透</span></a>
                 </span>
-                  . 
+                  ، 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%B8%97%E9%80%8F/web%E6%BC%8F%E6%B4%9E/" itemprop="url" rel="index"><span itemprop="name">web漏洞</span></a>
                 </span>
@@ -1624,26 +1702,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2022-03-08 00:36:35" itemprop="dateCreated datePublished" datetime="2022-03-08T00:36:35+08:00">2022-03-08</time>
+              <time title="أُنشأ: 2022-03-08 00:36:35" itemprop="dateCreated datePublished" datetime="2022-03-08T00:36:35+08:00">2022-03-08</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2026-02-04 22:19:38" itemprop="dateModified" datetime="2026-02-04T22:19:38+08:00">2026-02-04</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2026-02-04 22:19:38" itemprop="dateModified" datetime="2026-02-04T22:19:38+08:00">2026-02-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/pentest/" itemprop="url" rel="index"><span itemprop="name">pentest</span></a>
                 </span>
-                  . 
+                  ، 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/pentest/%E5%87%86%E5%A4%87/" itemprop="url" rel="index"><span itemprop="name">准备</span></a>
                 </span>
@@ -1878,26 +1956,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2021-12-09 16:42:29" itemprop="dateCreated datePublished" datetime="2021-12-09T16:42:29+08:00">2021-12-09</time>
+              <time title="أُنشأ: 2021-12-09 16:42:29" itemprop="dateCreated datePublished" datetime="2021-12-09T16:42:29+08:00">2021-12-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2022-01-28 23:12:46" itemprop="dateModified" datetime="2022-01-28T23:12:46+08:00">2022-01-28</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2022-01-28 23:12:46" itemprop="dateModified" datetime="2022-01-28T23:12:46+08:00">2022-01-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%B8%97%E9%80%8F/" itemprop="url" rel="index"><span itemprop="name">渗透</span></a>
                 </span>
-                  . 
+                  ، 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%B8%97%E9%80%8F/web%E6%BC%8F%E6%B4%9E/" itemprop="url" rel="index"><span itemprop="name">web漏洞</span></a>
                 </span>
@@ -2005,26 +2083,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2021-11-09 11:23:06" itemprop="dateCreated datePublished" datetime="2021-11-09T11:23:06+08:00">2021-11-09</time>
+              <time title="أُنشأ: 2021-11-09 11:23:06" itemprop="dateCreated datePublished" datetime="2021-11-09T11:23:06+08:00">2021-11-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2024-04-28 09:49:44" itemprop="dateModified" datetime="2024-04-28T09:49:44+08:00">2024-04-28</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2024-04-28 09:49:44" itemprop="dateModified" datetime="2024-04-28T09:49:44+08:00">2024-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%B8%97%E9%80%8F/" itemprop="url" rel="index"><span itemprop="name">渗透</span></a>
                 </span>
-                  . 
+                  ، 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%B8%97%E9%80%8F/%E7%A9%B7%E4%B8%BE/" itemprop="url" rel="index"><span itemprop="name">穷举</span></a>
                 </span>
@@ -2102,22 +2180,22 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2021-09-28 23:27:31" itemprop="dateCreated datePublished" datetime="2021-09-28T23:27:31+08:00">2021-09-28</time>
+              <time title="أُنشأ: 2021-09-28 23:27:31" itemprop="dateCreated datePublished" datetime="2021-09-28T23:27:31+08:00">2021-09-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2022-03-13 12:09:00" itemprop="dateModified" datetime="2022-03-13T12:09:00+08:00">2022-03-13</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2022-03-13 12:09:00" itemprop="dateModified" datetime="2022-03-13T12:09:00+08:00">2022-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%B8%97%E9%80%8F/" itemprop="url" rel="index"><span itemprop="name">渗透</span></a>
                 </span>
@@ -2208,26 +2286,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">نُشر في</span>
 
-              <time title="Erstellt: 2021-09-18 00:36:35" itemprop="dateCreated datePublished" datetime="2021-09-18T00:36:35+08:00">2021-09-18</time>
+              <time title="أُنشأ: 2021-09-18 00:36:35" itemprop="dateCreated datePublished" datetime="2021-09-18T00:36:35+08:00">2021-09-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2024-04-28 09:49:33" itemprop="dateModified" datetime="2024-04-28T09:49:33+08:00">2024-04-28</time>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2024-04-28 09:49:33" itemprop="dateModified" datetime="2024-04-28T09:49:33+08:00">2024-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">في</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/pentest/" itemprop="url" rel="index"><span itemprop="name">pentest</span></a>
                 </span>
-                  . 
+                  ، 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/pentest/%E5%87%86%E5%A4%87/" itemprop="url" rel="index"><span itemprop="name">准备</span></a>
                 </span>
@@ -2402,96 +2480,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="https://allofmortal.github.io/2021/09/15/kali%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mortal">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/15/kali%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">kali安装与使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-
-              <time title="Erstellt: 2021-09-15 23:21:34" itemprop="dateCreated datePublished" datetime="2021-09-15T23:21:34+08:00">2021-09-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2024-04-28 09:42:25" itemprop="dateModified" datetime="2024-04-28T09:42:25+08:00">2024-04-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pentest/" itemprop="url" rel="index"><span itemprop="name">pentest</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="kali安装与使用"><a href="#kali安装与使用" class="headerlink" title="kali安装与使用"></a>kali安装与使用</h1><h2 id="1-简单介绍"><a href="#1-简单介绍" class="headerlink" title="1.    简单介绍"></a>1.    简单介绍</h2><p>Kali Linux是基于Debian的Linux发行版， 设计用于数字取证操作系统。每一季度更新一次。由Offensive Security Ltd维护和资助。最先由Offensive Security的Mati Aharoni和Devon Kearns通过重写BackTrack来完成，BackTrack是他们之前写的用于取证的Linux发行版 。<br>Kali Linux预装了许多渗透测试软件，包括nmap 、Wireshark 、John the Ripper，以及Aircrack-ng. 用户可通过硬盘、live CD或live USB运行Kali Linux。Kali Linux既有32位和64位的镜像。可用于x86 指令集。同时还有基于ARM架构的镜像，可用于树莓派和三星的ARM Chromebook</p>
-<h2 id="2-Kali的版本"><a href="#2-Kali的版本" class="headerlink" title="2.    Kali的版本"></a>2.    Kali的版本</h2><p>根据系统的不同选择不同的版本。主要分为32/64版本 通常用64居多<br>同时也提供多个安装版本 直接安装的版本、虚拟机版本 （wmare /vbox）<br>安装版本<br><a target="_blank" rel="noopener" href="https://www.kali.org/downloads/">https://www.kali.org/downloads/</a></p>
-<p>账号和密码都是kali</p>
-<h2 id="3-配置"><a href="#3-配置" class="headerlink" title="3.    配置"></a>3.    配置</h2><h3 id="3-1-安装虚拟机open-vm-tools-desktop模块"><a href="#3-1-安装虚拟机open-vm-tools-desktop模块" class="headerlink" title="3.1.    安装虚拟机open-vm-tools-desktop模块"></a>3.1.    安装虚拟机open-vm-tools-desktop模块</h3><p>sudo apt-get install open-vm-tools-desktop</p>
-<h3 id="3-2-设置中文"><a href="#3-2-设置中文" class="headerlink" title="3.2.    设置中文"></a>3.2.    设置中文</h3><p>sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy<br>sudo dpkg-reconfigure locales<br>选择字符 zh_CN.UTF-8<br><img src="/image/中文设置.png" alt="中文设置"><br>重启 reboot</p>
-<h3 id="3-3-安装python3的pip"><a href="#3-3-安装python3的pip" class="headerlink" title="3.3.    安装python3的pip"></a>3.3.    安装python3的pip</h3><p>sudo apt-get install python3-pip<br>解决pip3 超时下载<br>python3的pip3默认源太慢，所以我们为了提升使用效果，通常选择国内源。<br>其实方法很简单，脚本如下：<br>mkdir -p ~/.pip<br>vim ~/.pip/pip.conf<br>然后将下列的内容写入~/.pip/pip.conf即可。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = http://pypi.douban.com/simple</span><br><span class="line">[install]</span><br><span class="line">trusted-host=pypi.douban.com</span><br></pre></td></tr></table></figure><br>我这里使用了豆瓣的源，只是使用习惯问题，当然我们也可以使用清华等其他国内源。</p>
-<p><em>国内其他pip源</em><br>清华：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a><br>中国科技大学<a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>华中理工大学：<a target="_blank" rel="noopener" href="http://pypi.hustunique.com/">http://pypi.hustunique.com/</a><br>山东理工大学：<a target="_blank" rel="noopener" href="http://pypi.sdutlinux.org/">http://pypi.sdutlinux.org/</a><br>豆瓣：<a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a></p>
-<h3 id="3-4-更新源"><a href="#3-4-更新源" class="headerlink" title="3.4.    更新源"></a>3.4.    更新源</h3><p>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak<br>sudo vim /etc/apt/sources.list</p>
-<h1 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h1><p>deb <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/kali">http://mirrors.aliyun.com/kali</a> kali-rolling main non-free contrib<br>deb-src <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/kali">http://mirrors.aliyun.com/kali</a> kali-rolling main non-free contrib</p>
-<h1 id="清华大学"><a href="#清华大学" class="headerlink" title="清华大学"></a>清华大学</h1><p>deb <a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/kali">http://mirrors.tuna.tsinghua.edu.cn/kali</a> kali-rolling main contrib non-free<br>deb-src <a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/kali">https://mirrors.tuna.tsinghua.edu.cn/kali</a> kali-rolling main contrib non-free</p>
-<h1 id="浙大"><a href="#浙大" class="headerlink" title="浙大"></a>浙大</h1><p>deb <a target="_blank" rel="noopener" href="http://mirrors.zju.edu.cn/kali">http://mirrors.zju.edu.cn/kali</a> kali-rolling main contrib non-free<br>deb-src <a target="_blank" rel="noopener" href="http://mirrors.zju.edu.cn/kali">http://mirrors.zju.edu.cn/kali</a> kali-rolling main contrib non-free</p>
-<p>apt-get update 更新系统<br>apt-get upgrade 升级已安装的所有软件包<br>apt-get dist-upgrade 升级软件 会自动处理依赖包</p>
-<p><em>vim 编辑器</em><br>sudo 使用特权 root权限<br>:wq 保存</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Vorherige Seite"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Nächste Seite"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="الصفحة السابقة"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="الصفحة التالية"></i></a>
   </nav>
 
 
@@ -2535,10 +2527,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Inhaltsverzeichnis
+          المحتويات
         </li>
         <li class="sidebar-nav-overview">
-          Übersicht
+          عام
         </li>
       </ul>
 
@@ -2557,21 +2549,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
-          <span class="site-state-item-name">Artikel</span>
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">Kategorien</span></a>
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
-        <span class="site-state-item-name">schlagwörter</span></a>
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">الوسوم</span></a>
       </div>
   </nav>
 </div>

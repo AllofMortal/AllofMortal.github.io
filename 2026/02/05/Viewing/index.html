@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"allofmortal.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="ViewingThe transformations is project 3D points in the scene (world space) to 2D points in the image (image space) Rasterization(光栅化) 本质上是从 物体 $\rightarrow$ 经过矩阵变换 $\rightarrow$ 砸到屏幕（眼睛）上 左图：正交投影（Orth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Viewing">
+<meta property="og:url" content="https://allofmortal.github.io/2026/02/05/Viewing/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ViewingThe transformations is project 3D points in the scene (world space) to 2D points in the image (image space) Rasterization(光栅化) 本质上是从 物体 $\rightarrow$ 经过矩阵变换 $\rightarrow$ 砸到屏幕（眼睛）上 左图：正交投影（Orth">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/View.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/Transformation.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/coordinator%20cube.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/orthography.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/near%20and%20far.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/coordinate.png">
+<meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/ordinary%20coordinate.png">
+<meta property="article:published_time" content="2026-02-05T13:50:03.000Z">
+<meta property="article:modified_time" content="2026-02-13T02:01:08.001Z">
+<meta property="article:author" content="Mortal">
+<meta property="article:tag" content="graphic">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://allofmortal.github.io/2026/02/05/Viewing/Viewing/View.png">
+
+<link rel="canonical" href="https://allofmortal.github.io/2026/02/05/Viewing/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-cn'
+  };
+</script>
+
+  <title>Viewing | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم<span class="badge">21</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات<span class="badge">29</span></a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://allofmortal.github.io/2026/02/05/Viewing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mortal">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Viewing
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: 2026-02-05 21:50:03" itemprop="dateCreated datePublished" datetime="2026-02-05T21:50:03+08:00">2026-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: 2026-02-13 10:01:08" itemprop="dateModified" datetime="2026-02-13T10:01:08+08:00">2026-02-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/graphic/" itemprop="url" rel="index"><span itemprop="name">graphic</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Viewing"><a href="#Viewing" class="headerlink" title="Viewing"></a>Viewing</h1><p>The transformations is project 3D points in the scene (world space) to 2D points in the image (image space)</p>
+<p>Rasterization(光栅化) 本质上是从 物体 $\rightarrow$ 经过矩阵变换 $\rightarrow$ 砸到屏幕（眼睛）上</p>
+<p><img src="Viewing/View.png" alt="三视图"><br>左图：正交投影（Orthographic Projection）中图：透视投影（Perspective Projection） 右图：移除了隐藏线（Hidden Lines）的 透视投影 </p>
+<h2 id="The-Viewport-Transformation-视口变换"><a href="#The-Viewport-Transformation-视口变换" class="headerlink" title="The Viewport Transformation (视口变换)"></a>The Viewport Transformation (视口变换)</h2><p>视图变换（The viewing transformation）的任务是将以规范坐标系（canonical coordinate system）中的 <strong>(x, y, z)</strong> 坐标表示的 3D 位置，映射为以像素为单位表示的图像中的坐标。</p>
+<p>最好的处理方法是将其分解为几个更简单的变换的乘积。大多数图形系统通过使用以下三个变换序列来实现这一点：</p>
+<ul>
+<li>相机变换（camera transformation）或 眼变换（eye transformation）： 这是一个刚体变换（rigid body transformation），负责将相机放置在原点，并调整到一个方便的朝向。它仅取决于相机的位置和朝向，即相机的 “位姿”（pose）。</li>
+<li>投影变换（projection transformation）： 它将点从相机空间进行投影，使得所有可见点在 $x$ 和 $y$ 方向上都落在 $-1$ 到 $1$ 的范围内。它仅取决于所需的投影类型。</li>
+<li>视口变换（viewport transformation）或 窗口变换（windowing transformation）： 它将这个（范围在 -1 到 1 的）单位图像矩形，映射为像素坐标系中所需的矩形。它仅取决于输出图像的大小和位置。</li>
+</ul>
+<p>为了便于描述这个过程的各个阶段，我们给这些作为变换输入和输出的坐标系起了名字：<br><img src="Viewing/Transformation.png" alt="object Transformations to screen"><br>将物体从其原始坐标（变换）到屏幕空间的一系列坐标空间和变换过程。</p>
+<ul>
+<li>相机变换（The camera transformation） 将点从规范坐标（或世界空间）转换到相机坐标，或者说将它们放置在相机空间中。</li>
+<li>投影变换（The projection transformation） 将点从相机空间移动到规范视体积（canonical view volume） 中。</li>
+<li>视口变换（The viewport transformation） 将规范视体积映射到屏幕空间（screen space）。</li>
+</ul>
+<p>World Space 与 canonical view volume 是两个不同的空间<br>World Space (起点) $\xrightarrow{\text{相机变换}}$ Camera Space $\xrightarrow{\text{投影变换}}$ Canonical View Volume (中转站) $\xrightarrow{\text{视口变换}}$ Screen Space</p>
+<h3 id="The-Viewport-Transformation"><a href="#The-Viewport-Transformation" class="headerlink" title="The Viewport Transformation"></a>The Viewport Transformation</h3><p>规范视体积” (canonical view volume) 中，并且我们希望用一个看向 $-z$ 方向的正交相机来观察它，规范视体积是一个包含所有笛卡尔坐标在 $-1$ 和 $+1$ 之间的 3D 点的立方体——即 $(x, y, z) \in [-1, 1]^3$<br><img src="Viewing/coordinator%20cube.png" alt="coordinator cube"> 典型视图体积是一个边长为二、以原点为中心的立方体。</p>
+<p>我们将 $x = -1$ 投影到屏幕左侧，$x = +1$ 投影到屏幕右侧，$y = -1$ 投影到屏幕底部，以及 $y = +1$ 投影到屏幕顶部。</p>
+<p>每个像素“拥有”一个以整数坐标为中心的单位正方形；图像边界比像素中心多出半个单位的延伸量（overshoot）；并且最小的像素中心坐标是 $(0, 0)$。<br>[注：这意味着第0个像素的中心是0，但它的左边缘是 -0.5，右边缘是 0.5]</p>
+<p>如果我们要绘制到一个有 $n_x \times n_y$ 个像素的图像（或屏幕上的窗口）中，我们需要将正方形 $[-1, 1]^2$ 映射到矩形 $[-0.5, n_x - 0.5] \times [-0.5, n_y - 0.5]$。</p>
+<p>由于视口变换将一个轴对齐矩形映射到另一个轴对齐矩形，它是公式 (6.6) 给出的窗口变换的一种情况：<script type="math/tex">\begin{bmatrix} x_{\text{screen}} \\ y_{\text{screen}} \\ 1 \end{bmatrix} =
+\begin{bmatrix}
+\frac{n_x}{2} & 0 & \frac{n_x - 1}{2} \\
+0 & \frac{n_y}{2} & \frac{n_y - 1}{2} \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix} x_{\text{canonical}} \\ y_{\text{canonical}} \\ 1 \end{bmatrix}
+\quad (7.1)</script></p>
+<p>注意，这个矩阵（指上一张图的 3x3 矩阵）忽略了规范视体积中点的 $z$ 坐标，因为一个点沿着投影方向的距离（即它有多远），并不会影响该点在图像（平面）上的投影位置。之前，我们（给矩阵）添加了一行和一列，以便在不改变 $z$ 坐标的情况下将其保留下来。最终我们将需要这些 $z$ 值，因为它们可以用来使较近的表面遮挡较远的表面</p>
+<script type="math/tex; mode=display">M_{\text{vp}} =
+\begin{bmatrix}
+\frac{n_x}{2} & 0 & 0 & \frac{n_x - 1}{2} \\
+0 & \frac{n_y}{2} & 0 & \frac{n_y - 1}{2} \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\quad (7.2)</script><h3 id="正交投影变换-The-Orthographic-Projection-Transformation"><a href="#正交投影变换-The-Orthographic-Projection-Transformation" class="headerlink" title="正交投影变换 (The Orthographic Projection Transformation)"></a>正交投影变换 (The Orthographic Projection Transformation)</h3><p>我们通常想要渲染的几何体，是位于“规范视体积”以外的某个空间区域内的。我们泛化（推广）视图的第一步是：保持观察方向和朝向固定不变（依然是沿着 $-z$ 轴看，$+y$ 轴朝上），但允许观察任意大小的矩形区域。与其替换掉（刚才讲的）视口矩阵，我们不如通过在它的右侧乘以另一个矩阵来扩充它。在这些约束下，视体积是一个“轴对齐的盒子”（axis-aligned box）。我们将命名其各个面的坐标，使得视体积表示为 $[l, r] \times [b, t] \times [f, n]$，如图所示<img src="Viewing/orthography.png" alt="orthography view volume"><br>我们把这个盒子称为“正交视体积”，并将其边界平面定义如下：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x =l ≡left plane,</span><br><span class="line">x =r≡rightplane,</span><br><span class="line">y =b≡bottomplane,</span><br><span class="line">y =t≡topplane,</span><br><span class="line">z =n≡nearplane,</span><br><span class="line">z =f ≡farplane.</span><br></pre></td></tr></table></figure><br>假设观察者是沿着 负 $z$ 轴观看的，且其头部指向 $y$ 方向。这意味着 $n &gt; f$，这可能有些反直觉。但如果你假设整个正交视体积的 $z$ 值都是负数，那么只有当 $n &gt; f$ 时，$z = n$ 的“近”平面才会离观察者更近;$f$ 是一个比 $n$ 更小的数，也就是说，它是一个绝对值比 $n$ 更大的负数。(eg:-10&gt;-100)个概念展示在图<img src="Viewing/near%20and%20far.png" alt="">。<br>从正交视体积到规范视体积的变换是另一种窗口变换，所以我们可以直接把正交视体积和规范视体积的边界代入方程 (6.7)，从而得到这个变换的矩阵：</p>
+<script type="math/tex; mode=display">\mathbf{M}_{\text{orth}} =
+\begin{bmatrix}
+\frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l} \\
+0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b} \\
+0 & 0 & \frac{2}{n-f} & -\frac{n+f}{n-f} \\
+0 & 0 & 0 & 1
+\end{bmatrix} 
+\quad (7.3)</script><p>为了在正交视体积中绘制 3D 线段，我们将它们投影到屏幕的 $x$ 和 $y$ 坐标中，并忽略 $z$ 坐标。我们通过组合方程 (7.2) 和 (7.3) 来实现这一点。请注意，在程序中，我们将这些矩阵相乘形成一个（复合）矩阵，然后按如下方式对点进行变换操作：</p>
+<script type="math/tex; mode=display">\begin{bmatrix} x_{\text{pixel}} \\ y_{\text{pixel}} \\ z_{\text{canonical}} \\ 1 \end{bmatrix} =
+(\mathbf{M}_{\text{vp}} \mathbf{M}_{\text{orth}})
+\begin{bmatrix} x \\ y \\ z \\ 1 \end{bmatrix}.</script><p>（变换后的）$z$ 坐标现在将位于 $[-1, 1]$ 范围内。<br>因此，绘制许多具有端点 $\mathbf{a}_i$ 和 $\mathbf{b}_i$ 的 3D 线段的代码变得既简单又高效：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">construct M_vp                              // 构建视口变换矩阵</span><br><span class="line">construct M_orth                            // 构建正交投影矩阵</span><br><span class="line">M = M_vp * M_orth                           // 关键步骤：矩阵预合并！</span><br><span class="line">for each line segment (a_i, b_i) do         // 遍历每一条线</span><br><span class="line">    p = M * a_i                             // 用合并后的矩阵变换点 a</span><br><span class="line">    q = M * b_i                             // 用合并后的矩阵变换点 b</span><br><span class="line">    drawline(x_p, y_p, x_q, y_q)            // 画线（只用 x, y 坐标）</span><br></pre></td></tr></table></figure></p>
+<h3 id="相机变换-The-Camera-Transformation"><a href="#相机变换-The-Camera-Transformation" class="headerlink" title="相机变换 (The Camera Transformation)"></a>相机变换 (The Camera Transformation)</h3><p>我们希望能能够在 3D 空间中改变视点，并朝向任意方向观察。关于如何指定观察者的位置和朝向，存在许多不同的惯例。我们将采用如下定义<br><img src="Viewing/coordinate.png" alt="">：</p>
+<ul>
+<li>眼位置（the eye position） $\mathbf{e}$，</li>
+<li>视线方向（the gaze direction） $\mathbf{g}$，</li>
+<li>视图向上向量（the view-up vector） $\mathbf{t}$。<br>眼位置是眼睛进行“观察”所在的点。如果将图形学看作摄影过程，它就是镜头的中心。视线方向是沿着观察者观看方向的任意向量。视图向上向量是位于将观察者头部平分为左右两半的那个平面内的任意向量，并且对于一个站在地面上的人来说，该向量指向“天空”。这些向量为我们提供了足够的信息，可以建立一个以 $\mathbf{e}$ 为原点、以及包含 $\mathbf{uvw}$ 基底的坐标系，使用如下结构公式：<script type="math/tex; mode=display">\begin{aligned}
+\mathbf{w} &= -\frac{\mathbf{g}}{\|\mathbf{g}\|}, \\
+\mathbf{u} &= \frac{\mathbf{t} \times \mathbf{w}}{\|\mathbf{t} \times \mathbf{w}\|}  \\
+\mathbf{v} &= \mathbf{w} \times \mathbf{u}.
+\end{aligned}</script></li>
+</ul>
+<p>如果我们需要变换的所有点，都已经是以 $\mathbf{e}$ 为原点，且以基向量 $\mathbf{u}, \mathbf{v}, \mathbf{w}$ 为基底的坐标形式存储的，那么我们的工作就完成了。但是如图所示，模型的坐标是根据规范（或世界）原点 $\mathbf{o}$ 以及 $x, y, z$ 轴来存储的。<br><img src="Viewing/ordinary%20coordinate.png" alt="ordinary coordinate"> 为了任意查看，我们需要将要存储的点转换到“合适”的坐标系统。在这种情况下，它的原点为 e，并且坐标偏移以 uvw 表示。</p>
+<p>为了使用我们已经开发好的（投影和视口变换）机制，我们只需要将希望绘制的线段端点的坐标，从 $xyz$ 坐标转换为 $uvw$ 坐标。执行此变换的矩阵是相机坐标系的“规范-基底”矩阵（即世界坐标到相机坐标的变换矩阵）：</p>
+<script type="math/tex; mode=display">\mathbf{M}_{\text{cam}} =
+\begin{bmatrix}
+\mathbf{u} & \mathbf{v} & \mathbf{w} & \mathbf{e} \\
+0 & 0 & 0 & 1
+\end{bmatrix}^{-1} =
+\begin{bmatrix}
+x_u & y_u & z_u & 0 \\
+x_v & y_v & z_v & 0 \\
+x_w & y_w & z_w & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 & -x_e \\
+0 & 1 & 0 & -y_e \\
+0 & 0 & 1 & -z_e \\
+0 & 0 & 0 & 1
+\end{bmatrix}.
+\quad (7.4)</script><p>或者，我们可以将这同一个变换理解为：首先将 $\mathbf{e}$ 移动到原点，然后将 $\mathbf{u}, \mathbf{v}, \mathbf{w}$ （旋转）对齐到 $\mathbf{x}, \mathbf{y}, \mathbf{z}$。为了使我们之前那个仅适用于（沿）$z$ 轴观察的算法，能够适用于具有任意位置和朝向的相机，我们只需要将这个相机变换添加到视口变换和投影变换的乘积中，这样它就能在投影之前将输入的点从世界坐标转换为相机坐标：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">construct M_vp                                          // 构建视口矩阵</span><br><span class="line">construct M_orth                                        // 构建正交投影矩阵</span><br><span class="line">construct M_cam                                         // 构建相机变换矩阵</span><br><span class="line">M = M_vp M_orth M_cam                                   // 将它们乘在一起（注意顺序：先乘相机，再投影，最后视口）</span><br><span class="line">for each line segment (a_i, b_i) do                     // 遍历每条线段</span><br><span class="line">    p = M a_i                                           // 变换点 a</span><br><span class="line">    q = M b_i                                           // 变换点 b</span><br><span class="line">    drawline(x_p, y_p, x_q, y_q)                        // 画线</span><br></pre></td></tr></table></figure><br>再一次地，一旦矩阵基础设施就位，几乎不需要编写什么代码。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/graphic/" rel="tag"><i class="fa fa-tag"></i> graphic</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/01/28/graphic/" rel="prev" title="graphic definition">
+      <i class="fa fa-chevron-left"></i> graphic definition
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Viewing"><span class="nav-number">1.</span> <span class="nav-text">Viewing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Viewport-Transformation-%E8%A7%86%E5%8F%A3%E5%8F%98%E6%8D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">The Viewport Transformation (视口变换)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Viewport-Transformation"><span class="nav-number">1.1.1.</span> <span class="nav-text">The Viewport Transformation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1%E5%8F%98%E6%8D%A2-The-Orthographic-Projection-Transformation"><span class="nav-number">1.1.2.</span> <span class="nav-text">正交投影变换 (The Orthographic Projection Transformation)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E5%8F%98%E6%8D%A2-The-Camera-Transformation"><span class="nav-number">1.1.3.</span> <span class="nav-text">相机变换 (The Camera Transformation)</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Mortal</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AllofMortal" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AllofMortal" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/AllofMortal" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;AllofMortal" rel="noopener" target="_blank"><i class="fab fa-steam fa-fw"></i>Steam</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mortal</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
