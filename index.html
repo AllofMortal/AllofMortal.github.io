@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-02-27 14:33:20" itemprop="dateModified" datetime="2026-02-27T14:33:20+08:00">2026-02-27</time>
+                <time title="Modified: 2026-02-27 14:42:14" itemprop="dateModified" datetime="2026-02-27T14:42:14+08:00">2026-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -338,14 +338,16 @@ f & 0 & 0 & 0 \\
 0 & f & 0 & 0 \\
 0 & 0 & 0 & fn \\
 0 & 0 & -1 & n+f
-\end{bmatrix}.</script><p>将其置于方程 (7.3) 中正交投影矩阵 $\mathbf{M}<em>{\text{orth}}$ 的语境下看，透视矩阵（$\mathbf{P}$）仅仅是将透视视锥体（perspective view volume，它的形状就像是金字塔的一个切片，或称为平截头体/frustum）映射为了正交视锥体（一个轴对齐的包围盒）。<br>透视矩阵的美妙之处在于，一旦我们应用了它，我们就可以直接使用正交变换，来进入规范视域体（canonical view volume，即 $[-1, 1]^3$ 的标准正方体）。因此，所有（之前写好的）正交投影机制都能继续使用，我们所添加的不过是一个矩阵（$\mathbf{P}$）和除以 $w$ 的操作。同样令人欣慰的是，我们四乘四矩阵的最底下一行也没有被“浪费”掉（终于派上用场了）！<br>将 $\mathbf{P}$ 与 $\mathbf{M}</em>{\text{orth}}$ 连接（相乘）起来，就得到了透视投影矩阵 (perspective projection matrix)：</p>
+\end{bmatrix}.</script><p>将其置于方程 (7.3) 中正交投影矩阵 $\mathbf{M}_{\text{orth}}$ 的语境下看，透视矩阵（$\mathbf{P}$）仅仅是将透视视锥体（perspective view volume，它的形状就像是金字塔的一个切片，或称为平截头体/frustum）映射为了正交视锥体（一个轴对齐的包围盒）。</p>
+<p>透视矩阵的美妙之处在于，一旦我们应用了它，我们就可以直接使用正交变换，来进入规范视域体（canonical view volume，即 $[-1, 1]^3$ 的标准正方体）。因此，所有（之前写好的）正交投影机制都能继续使用，我们所添加的不过是一个矩阵（$\mathbf{P}$）和除以 $w$ 的操作。同样令人欣慰的是，我们四乘四矩阵的最底下一行也没有被“浪费”掉（终于派上用场了）！</p>
+<p>将 $\mathbf{P}$ 与 $\mathbf{M}_{\text{orth}}$ 连接（相乘）起来，就得到了透视投影矩阵 (perspective projection matrix)：</p>
 <script type="math/tex; mode=display">
 \mathbf{M}_{\text{per}} = \mathbf{M}_{\text{orth}}\mathbf{P}</script><p>然而，有一个问题是：在透视投影中，$l, r, b, t$（左、右、下、上边界）是如何确定的？它们定义了我们观察世界时所通过的那个“窗口”。由于透视矩阵 $\mathbf{P}$ 不会改变在 $(z = n)$ 平面（近平面）上的 $x$ 和 $y$ 的值，因此我们就可以在该平面上直接指定 $(l, r, b, t)$。为了将透视矩阵整合到我们原有的正交投影基础架构中，我们只需将 $\mathbf{M}_{\text{orth}}$ 替换为 $\mathbf{M}_{\text{per}}$。这相当于在应用了相机矩阵 $\mathbf{M}_{\text{cam}}$ 之后、进行正交投影之前，插入了透视矩阵 $\mathbf{P}$。所以，用于透视观察的完整矩阵集为：</p>
 <script type="math/tex; mode=display">
 \mathbf{M} = \mathbf{M}_{\text{vp}}\mathbf{M}_{\text{orth}}\mathbf{P}\mathbf{M}_{\text{cam}}</script><p>最终的算法如下：</p>
 <ul>
 <li>compute $\mathbf{M}_{\text{vp}}$ (计算视口矩阵)</li>
-<li>compute $\mathbf{M}<em>{\text{per}}$ (计算透视投影矩阵，即 $\mathbf{M}</em>{\text{orth}}\mathbf{P}$)</li>
+<li>compute $\mathbf{M}_{\text{per}}$ (计算透视投影矩阵，即 $\mathbf{M}_{\text{orth}}\mathbf{P}$)</li>
 <li>compute $\mathbf{M}_{\text{cam}}$ (计算相机视图矩阵)</li>
 </ul>
 <script type="math/tex; mode=display">
@@ -354,7 +356,6 @@ f & 0 & 0 & 0 \\
 \mathbf{p} = \mathbf{M}\mathbf{a}_i</script><script type="math/tex; mode=display">
 \mathbf{q} = \mathbf{M}\mathbf{b}_i</script><script type="math/tex; mode=display">
 \text{drawline}(x_p/w_p, y_p/w_p, x_q/w_q, y_q/w_q)</script><p>请注意，除了增加了一个矩阵之外，唯一的变化就是除以了齐次坐标 $w$。</p>
-<p>请注意，除了增加了一个矩阵之外，唯一的变化就是除以了齐次坐标 $w$。</p>
 <p>乘开之后（将正交矩阵与透视矩阵相乘），矩阵 $\mathbf{M}_{\text{per}}$ 看起来像这样：</p>
 <script type="math/tex; mode=display">\mathbf{M}_{\text{per}} =
 \begin{bmatrix}
