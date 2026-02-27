@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/7.13.png">
 <meta property="og:image" content="https://allofmortal.github.io/2026/02/05/Viewing/field-of-view.png">
 <meta property="article:published_time" content="2026-02-05T13:50:03.000Z">
-<meta property="article:modified_time" content="2026-02-27T03:21:04.278Z">
+<meta property="article:modified_time" content="2026-02-27T03:28:28.369Z">
 <meta property="article:author" content="Mortal">
 <meta property="article:tag" content="graphic">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-02-27 11:21:04" itemprop="dateModified" datetime="2026-02-27T11:21:04+08:00">2026-02-27</time>
+                <time title="Modified: 2026-02-27 11:28:28" itemprop="dateModified" datetime="2026-02-27T11:28:28+08:00">2026-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -362,7 +362,26 @@ f & 0 & 0 & 0 \\
 <p>然而，有一个问题是：在透视投影中，$l, r, b, t$（左、右、下、上边界）是如何确定的？它们定义了我们观察世界时所通过的那个“窗口”。由于透视矩阵 $\mathbf{P}$ 不会改变在 $(z = n)$ 平面（近平面）上的 $x$ 和   $y$ 的值，因此我们就可以在该平面上直接指定 $(l, r, b, t)$。为了将透视矩阵整合到我们原有的正交投影基础架构中，我们只需将 $\mathbf{M}<em>{\text{orth}}$ 替换为 $\mathbf{M}</em>{\text{per}}$。这相当于在应用了相机矩阵 $\mathbf{M}<em>{\text{cam}}$ 之后、进行正交投影之前，插入了透视矩阵 $\mathbf{P}$所以，用于透视观察的完整矩阵集为：$$\mathbf{M} = \mathbf{M}</em>{\text{vp}}\mathbf{M}<em>{\text{orth}}\mathbf{P}\mathbf{M}</em>{\text{cam}}.$$</p>
 <p>然而，有一个问题是：在透视投影中，$l, r, b, t$ 是如何确定的？它们定义了我们观察时所通过的“窗口”。由于透视矩阵不改变 $(z = n)$ 平面上 $x$ 和 $y$ 的值，因此我们可以直接在该平面上指定 $(l, r, b, t)$。为了将透视矩阵整合到正交基础架构中，只需将 $\mathbf{M}<em>{\text{orth}}$ 替换为 $\mathbf{M}</em>{\text{per}}$，即在相机矩阵 $\mathbf{M}<em>{\text{cam}}$ 之后、正交投影之前插入透视矩阵 $\mathbf{P}$。因此，用于透视观察的完整矩阵集为：$$\mathbf{M} = \mathbf{M}</em>{\text{vp}}\mathbf{M}<em>{\text{orth}}\mathbf{P}\mathbf{M}</em>{\text{cam}}.$$<br>最终的算法如下：compute $\mathbf{M}<em>{\text{vp}}$  (计算视口矩阵)compute $\mathbf{M}</em>{\text{per}}$ (计算透视投影矩阵，即 $\mathbf{M}<em>{\text{orth}}\mathbf{P}$)compute $\mathbf{M}</em>{\text{cam}}$ (计算相机视图矩阵)</p>
 <script type="math/tex; mode=display">\mathbf{M} = \mathbf{M}_{\text{vp}}\mathbf{M}_{\text{per}}\mathbf{M}_{\text{cam}}$$for each line segment $(\mathbf{a}_i, \mathbf{b}_i)$ do
-$$\mathbf{p} = \mathbf{M}\mathbf{a}_i$$$$\mathbf{q} = \mathbf{M}\mathbf{b}_i$$$$\text{drawline}(x_p/w_p, y_p/w_p, x_q/w_q, y_q/w_q)</script><p>请注意，除了增加了一个矩阵之外，唯一的变化就是除以了齐次坐标 $w$。</p>
+$$\mathbf{p} = \mathbf{M}\mathbf{a}_i$$$$\mathbf{q} = \mathbf{M}\mathbf{b}_i$$$$\text{drawline}(x_p/w_p, y_p/w_p, x_q/w_q, y_q/w_q)</script><p>将其置于方程 (7.3) 中正交投影矩阵 $\mathbf{M}_{\text{orth}}$ 的语境下看，透视矩阵（$\mathbf{P}$）仅仅是将透视视锥体（perspective view volume，它的形状就像是金字塔的一个切片，或称为平截头体/frustum）映射为了正交视锥体（一个轴对齐的包围盒）。</p>
+<p>透视矩阵的美妙之处在于，一旦我们应用了它，我们就可以直接使用正交变换，来进入规范视域体（canonical view volume，即 $[-1, 1]^3$ 的标准正方体）。因此，所有（之前写好的）正交投影机制都能继续使用，我们所添加的不过是一个矩阵（$\mathbf{P}$）和除以 $w$ 的操作。同样令人欣慰的是，我们四乘四矩阵的最底下一行也没有被“浪费”掉（终于派上用场了）！</p>
+<p>将 $\mathbf{P}$ 与 $\mathbf{M}_{\text{orth}}$ 连接（相乘）起来，就得到了透视投影矩阵 (perspective projection matrix)：</p>
+<script type="math/tex; mode=display">
+\mathbf{M}_{\text{per}} = \mathbf{M}_{\text{orth}}\mathbf{P}</script><p>然而，有一个问题是：在透视投影中，$l, r, b, t$（左、右、下、上边界）是如何确定的？它们定义了我们观察世界时所通过的那个“窗口”。由于透视矩阵 $\mathbf{P}$ 不会改变在 $(z = n)$ 平面（近平面）上的 $x$ 和 $y$ 的值，因此我们就可以在该平面上直接指定 $(l, r, b, t)$。</p>
+<p>为了将透视矩阵整合到我们原有的正交投影基础架构中，我们只需将 $\mathbf{M}<em>{\text{orth}}$ 替换为 $\mathbf{M}</em>{\text{per}}$。这相当于在应用了相机矩阵 $\mathbf{M}_{\text{cam}}$ 之后、进行正交投影之前，插入了透视矩阵 $\mathbf{P}$。所以，用于透视观察的完整矩阵集为：</p>
+<script type="math/tex; mode=display">
+\mathbf{M} = \mathbf{M}_{\text{vp}}\mathbf{M}_{\text{orth}}\mathbf{P}\mathbf{M}_{\text{cam}}</script><p>最终的算法如下：</p>
+<ul>
+<li>compute $\mathbf{M}_{\text{vp}}$ (计算视口矩阵)</li>
+<li>compute $\mathbf{M}<em>{\text{per}}$ (计算透视投影矩阵，即 $\mathbf{M}</em>{\text{orth}}\mathbf{P}$)</li>
+<li>compute $\mathbf{M}_{\text{cam}}$ (计算相机视图矩阵)</li>
+</ul>
+<script type="math/tex; mode=display">
+\mathbf{M} = \mathbf{M}_{\text{vp}}\mathbf{M}_{\text{per}}\mathbf{M}_{\text{cam}}</script><p><strong>for</strong> each line segment $(\mathbf{a}_i, \mathbf{b}_i)$ <strong>do</strong></p>
+<script type="math/tex; mode=display">
+\mathbf{p} = \mathbf{M}\mathbf{a}_i</script><script type="math/tex; mode=display">
+\mathbf{q} = \mathbf{M}\mathbf{b}_i</script><script type="math/tex; mode=display">
+\text{drawline}(x_p/w_p, y_p/w_p, x_q/w_q, y_q/w_q)</script><p>请注意，除了增加了一个矩阵之外，唯一的变化就是除以了齐次坐标 $w$。</p>
+<p>请注意，除了增加了一个矩阵之外，唯一的变化就是除以了齐次坐标 $w$。</p>
 <p>乘开之后（将正交矩阵与透视矩阵相乘），矩阵 $\mathbf{M}_{\text{per}}$ 看起来像这样：</p>
 <script type="math/tex; mode=display">\mathbf{M}_{\text{per}} =
 \begin{bmatrix}
@@ -378,8 +397,7 @@ $$\mathbf{p} = \mathbf{M}\mathbf{a}_i$$$$\mathbf{q} = \mathbf{M}\mathbf{b}_i$$$$
 0 & 0 & \frac{|n|+|f|}{|n|-|f|} & \frac{2|f||n|}{|n|-|f|} \\
 0 & 0 & -1 & 0
 \end{bmatrix}.</script><p>其他一些 API 会将 $n$ 和 $f$ 分别映射到 $0$ 和 $1$。Blinn (J. Blinn, 1996) 建议为了提高效率，将规范视域体做成 $[0, 1]^3$。所有这些设定上的决定都会让投影矩阵发生轻微的改变。</p>
-<h2 id="Some-Properties-of-the-Perspective-Transform-透视变换的一些性质"><a href="#Some-Properties-of-the-Perspective-Transform-透视变换的一些性质" class="headerlink" title="Some Properties of the Perspective Transform (透视变换的一些性质)"></a>Some Properties of the Perspective Transform (透视变换的一些性质)</h2><p>透视变换的一个重要性质是，它将直线映射为直线，将平面映射为平面。此外，它还将视锥体（view volume）中的线段映射为规范视域体（canonical volume，即标准立方体）中的线段。为了理解这一点，请考虑以下线段方程：<script type="math/tex">\mathbf{q} + t(\mathbf{Q} - \mathbf{q}).</script>当被一个 $4 \times 4$ 矩阵 $\mathbf{M}$ 变换时，它（指上一页提到的线段上的点）变成了一个齐次坐标可能会发生变化的点：<script type="math/tex">\mathbf{Mq} + t(\mathbf{MQ} - \mathbf{Mq}) \equiv \mathbf{r} + t(\mathbf{R} - \mathbf{r}).</script><br>齐次化（即所有坐标除以 $w$ 分量）后的 3D 线段为：<script type="math/tex">\frac{\mathbf{r} + t(\mathbf{R} - \mathbf{r})}{w_r + t(w_R - w_r)}. \quad (7.6)</script><br>如果方程 (7.6) 可以被重写为如下形式：<script type="math/tex">\frac{\mathbf{r}}{w_r} + f(t) \left( \frac{\mathbf{R}}{w_R} - \frac{\mathbf{r}}{w_r} \right), \quad (7.7)</script><br>那么所有齐次化后的点就都位于一条 3D 直线上。对方程 (7.6) 进行硬核的代数推导（Brute force manipulation）确实可以得到这种形式，其中：<script type="math/tex">f(t) = \frac{w_R t}{w_r + t(w_R - w_r)}. \quad (7.8)</script><br>结果还表明，线段确实映射成了线段，并且保留了点的顺序，也就是说，它们不会被重新排序或“撕裂（torn）”。将线段映射为线段的变换所带来的一个必然结果是，它会将一个三角形的边和顶点，映射为另一个三角形的边和顶点。因此，它将三角形映射为三角形，将平面映射为平面。</p>
-<p>透视变换的一个重要性质是，它将直线映射为直线，将平面映射为平面。此外，它还将视锥体（view volume）中的线段映射为规范视域体（canonical volume，即标准立方体）中的线段。</p>
+<h2 id="Some-Properties-of-the-Perspective-Transform-透视变换的一些性质"><a href="#Some-Properties-of-the-Perspective-Transform-透视变换的一些性质" class="headerlink" title="Some Properties of the Perspective Transform (透视变换的一些性质)"></a>Some Properties of the Perspective Transform (透视变换的一些性质)</h2><p>透视变换的一个重要性质是，它将直线映射为直线，将平面映射为平面。此外，它还将视锥体（view volume）中的线段映射为规范视域体（canonical volume，即标准立方体）中的线段。</p>
 <p>为了理解这一点，请考虑以下线段方程：</p>
 <script type="math/tex; mode=display">
 \mathbf{q} + t(\mathbf{Q} - \mathbf{q}).</script><p>当被一个 $4 \times 4$ 矩阵 $\mathbf{M}$ 变换时，它（指上一页提到的线段上的点）变成了一个齐次坐标可能会发生变化的点：</p>
@@ -391,8 +409,7 @@ $$\mathbf{p} = \mathbf{M}\mathbf{a}_i$$$$\mathbf{q} = \mathbf{M}\mathbf{b}_i$$$$
 \frac{\mathbf{r}}{w_r} + f(t) \left( \frac{\mathbf{R}}{w_R} - \frac{\mathbf{r}}{w_r} \right), \quad (7.7)</script><p>那么所有齐次化后的点就都位于一条 3D 直线上。对方程 (7.6) 进行硬核的代数推导（Brute force manipulation）确实可以得到这种形式，其中：</p>
 <script type="math/tex; mode=display">
 f(t) = \frac{w_R t}{w_r + t(w_R - w_r)}. \quad (7.8)</script><p>结果还表明，线段确实映射成了线段，并且保留了点的顺序，也就是说，它们不会被重新排序或“撕裂（torn）”。</p>
-<p>将线段映射为线段的变换所带来的一个必然结果是，它会将一个三角形的边和顶点，映射为另一个三角形的边和顶点。因此，它将三角形映射为三角形，将平面映射为平面。</p>
-<p>透视变换的一个重要性质是，它将直线映射为直线，将平面映射为平面。此外，它还将视锥体（view volume）中的线段映射为规范视域体（canonical volume，即标准立方体）中的线段。</p>
+<p>将线段映射为线段的变换所带来的一个必然结果是，它会将一个三角形的边和顶点，映射为另一个三角形的边和顶点。因此，它将三角形映射为三角形，将平面映射为平面。<br>透视变换的一个重要性质是，它将直线映射为直线，将平面映射为平面。此外，它还将视锥体（view volume）中的线段映射为规范视域体（canonical volume，即标准立方体）中的线段。</p>
 <p>为了理解这一点，请考虑以下线段方程：</p>
 <script type="math/tex; mode=display">
 \mathbf{q} + t(\mathbf{Q} - \mathbf{q}).</script><p>当被一个 $4 \times 4$ 矩阵 $\mathbf{M}$ 变换时，它（指上一页提到的线段上的点）变成了一个齐次坐标可能会发生变化的点：</p>
